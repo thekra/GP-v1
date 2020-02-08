@@ -14,8 +14,10 @@ class onboardingViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     let locationManager = CLLocationManager()
     //@IBOutlet weak var b: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         image.isUserInteractionEnabled = true
         image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap)))
         // Do any additional setup after loading the view.

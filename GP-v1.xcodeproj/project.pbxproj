@@ -25,6 +25,8 @@
 		797F8C1323EA208600960C79 /* vViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C1223EA208600960C79 /* vViewController.swift */; };
 		797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C1423EC2C7E00960C79 /* mapViewController.swift */; };
 		797F8C1723EC323D00960C79 /* onboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C1623EC323D00960C79 /* onboardingViewController.swift */; };
+		798639F723EDCB2300131A9E /* ticketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798639F623EDCB2300131A9E /* ticketViewController.swift */; };
+		798639F923EEFD5A00131A9E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798639F823EEFD5900131A9E /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		797F8C1223EA208600960C79 /* vViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vViewController.swift; sourceTree = "<group>"; };
 		797F8C1423EC2C7E00960C79 /* mapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
 		797F8C1623EC323D00960C79 /* onboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onboardingViewController.swift; sourceTree = "<group>"; };
+		798639F623EDCB2300131A9E /* ticketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticketViewController.swift; sourceTree = "<group>"; };
+		798639F823EEFD5900131A9E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		99A16A7BC0D840E024DABE90 /* Pods-GP-v1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP-v1.release.xcconfig"; path = "Target Support Files/Pods-GP-v1/Pods-GP-v1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798639F923EEFD5A00131A9E /* CoreData.framework in Frameworks */,
 				0CF4954EBC4BC0255F872828 /* Pods_GP_v1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +178,7 @@
 				797F8C0C23EA0AF900960C79 /* signupViewController.swift */,
 				797F8C1423EC2C7E00960C79 /* mapViewController.swift */,
 				797F8C1623EC323D00960C79 /* onboardingViewController.swift */,
+				798639F623EDCB2300131A9E /* ticketViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -206,6 +212,7 @@
 		83F1AC4D0BE3AC63014BEB1B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				798639F823EEFD5900131A9E /* CoreData.framework */,
 				48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */,
 			);
 			name = Frameworks;
@@ -410,6 +417,7 @@
 				797F8C1723EC323D00960C79 /* onboardingViewController.swift in Sources */,
 				797F8C1123EA16E700960C79 /* signupResponse.swift in Sources */,
 				797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */,
+				798639F723EDCB2300131A9E /* ticketViewController.swift in Sources */,
 				797F8C1323EA208600960C79 /* vViewController.swift in Sources */,
 				797F8C0023E5E5F500960C79 /* Signin.swift in Sources */,
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,

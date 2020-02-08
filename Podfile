@@ -10,5 +10,6 @@ target 'GP-v1' do
 pod 'Alamofire'
 pod 'GoogleMaps'
   pod 'GooglePlaces'
+pod 'BonsaiController'
 
 end

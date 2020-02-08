@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/BonsaiController/BonsaiController.framework

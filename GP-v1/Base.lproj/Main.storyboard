@@ -158,23 +158,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rT1-Wg-Vgj" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Typ-Mb-gvy">
+                                <rect key="frame" x="0.0" y="772" width="414" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="124" id="EAy-Um-7uD"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="rT1-Wg-Vgj" firstAttribute="leading" secondItem="Kyf-Gu-j6o" secondAttribute="leading" id="PuW-Vx-ajP"/>
-                            <constraint firstAttribute="bottom" secondItem="rT1-Wg-Vgj" secondAttribute="bottom" id="TKj-tG-Ftv"/>
-                            <constraint firstItem="rT1-Wg-Vgj" firstAttribute="trailing" secondItem="Kyf-Gu-j6o" secondAttribute="trailing" id="bRx-Oz-aY6"/>
-                            <constraint firstItem="rT1-Wg-Vgj" firstAttribute="top" secondItem="jaJ-1q-QkQ" secondAttribute="top" id="w2G-bd-0bI"/>
+                            <constraint firstItem="Typ-Mb-gvy" firstAttribute="leading" secondItem="Kyf-Gu-j6o" secondAttribute="leading" id="Q0a-9K-rNh"/>
+                            <constraint firstAttribute="bottom" secondItem="Typ-Mb-gvy" secondAttribute="bottom" id="ZmN-QG-Zmc"/>
+                            <constraint firstItem="Typ-Mb-gvy" firstAttribute="trailing" secondItem="Kyf-Gu-j6o" secondAttribute="trailing" id="pNw-GQ-X5g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kyf-Gu-j6o"/>
                     </view>
                     <navigationItem key="navigationItem" id="vvk-U7-aIY"/>
                     <connections>
-                        <outlet property="mapView" destination="rT1-Wg-Vgj" id="OZ2-Nq-Wf1"/>
+                        <outlet property="confirmButton" destination="Typ-Mb-gvy" id="pDK-B6-Nch"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xdn-iq-ON5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -327,10 +329,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGt-dV-9MN">
-                                <rect key="frame" x="184" y="433" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QOC-wR-PoN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="781"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGt-dV-9MN">
+                                <rect key="frame" x="-37.5" y="749" width="489" height="147"/>
+                                <state key="normal" title="Button" image="conform_location"/>
                                 <connections>
                                     <action selector="pres:" destination="n2s-pb-26y" eventType="touchUpInside" id="PSR-6y-iMf"/>
                                     <segue destination="AtX-gK-LrB" kind="presentation" identifier="test" modalPresentationStyle="fullScreen" id="H02-kO-ptf"/>
@@ -338,12 +342,20 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JGt-dV-9MN" firstAttribute="centerX" secondItem="QOC-wR-PoN" secondAttribute="centerX" id="1mS-ss-Sha"/>
+                            <constraint firstItem="QOC-wR-PoN" firstAttribute="top" secondItem="Iny-WV-afg" secondAttribute="top" id="2VO-Oz-TOf"/>
+                            <constraint firstItem="JGt-dV-9MN" firstAttribute="top" secondItem="QOC-wR-PoN" secondAttribute="bottom" constant="-32" id="A1o-ku-XgL"/>
+                            <constraint firstItem="JGt-dV-9MN" firstAttribute="centerY" secondItem="Iny-WV-afg" secondAttribute="centerY" constant="374.5" id="QeY-Mp-7XU"/>
+                            <constraint firstItem="QOC-wR-PoN" firstAttribute="trailing" secondItem="Nwv-KY-5kH" secondAttribute="trailing" id="cyi-4e-DwY"/>
+                            <constraint firstItem="QOC-wR-PoN" firstAttribute="leading" secondItem="Nwv-KY-5kH" secondAttribute="leading" id="x6t-Cn-UA5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Nwv-KY-5kH"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3MB-v9-fif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="279" y="1481"/>
+            <point key="canvasLocation" x="137.68115942028987" y="2100.6696428571427"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="fXg-ZX-bBK">
@@ -379,7 +391,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c7L-c7-LpO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="1481"/>
+            <point key="canvasLocation" x="949" y="2101"/>
+        </scene>
+        <!--Ticket View Controller-->
+        <scene sceneID="Vmy-AE-f2d">
+            <objects>
+                <viewController storyboardIdentifier="ticket" id="wxm-EE-h19" customClass="ticketViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IKe-KA-TAB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="C9o-5l-eXX">
+                                <rect key="frame" x="20" y="78.5" width="80" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.arrow.down.on.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mbR-1w-XX6">
+                                <rect key="frame" x="116" y="77.5" width="80" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pencil.and.ellipsis.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YBU-oy-b2G">
+                                <rect key="frame" x="215" y="79.5" width="80" height="78.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pencil.and.outline" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="B7I-rB-tFC">
+                                <rect key="frame" x="317" y="78.5" width="80" height="80.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TW1-zM-w4v">
+                                <rect key="frame" x="20" y="244" width="378" height="169"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.080323077739999998" green="0.21182638409999999" blue="0.2289803624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEv-Hv-NzF">
+                                <rect key="frame" x="23" y="472" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.080323077739999998" green="0.21182638409999999" blue="0.2289803624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1l7-QQ-pfD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ih-Ti-clW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1700" y="2101"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="DEF-NG-CoP">
@@ -408,18 +468,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Shb-Gi-epa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1913.0434782608697" y="1478.5714285714284"/>
+            <point key="canvasLocation" x="1709" y="455"/>
         </scene>
     </scenes>
     <resources>
         <image name="black-background" width="435" height="615"/>
+        <image name="conform_location" width="435" height="147"/>
         <image name="email-text" width="280" height="26"/>
         <image name="main-hint" width="375" height="812"/>
         <image name="map" width="375" height="812"/>
         <image name="password-text" width="280" height="27"/>
+        <image name="pencil.and.ellipsis.rectangle" catalog="system" width="64" height="40"/>
+        <image name="pencil.and.outline" catalog="system" width="64" height="58"/>
         <image name="splash-screemn" width="184" height="182"/>
+        <image name="square.and.arrow.down.on.square.fill" catalog="system" width="60" height="64"/>
+        <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hcf-zb-E2j"/>
+        <segue reference="J7S-lx-1VX"/>
     </inferredMetricsTieBreakers>
 </document>
