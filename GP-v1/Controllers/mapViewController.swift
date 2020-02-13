@@ -12,66 +12,99 @@ import BonsaiController
 
 class mapViewController: UIViewController {
 
-    
+    var locationManager = CLLocationManager()
+  
+    @IBOutlet weak var mv: GMSMapView!
     @IBOutlet weak var confirmButton: UIButton!
-    
-    override func loadView() {
-       
-        // Creates a marker in the center of the map.
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: 39.826168, longitude: 39.826168)
-//        marker.title = "Mecca"
-//        marker.snippet = "Saudi Arabia"
-//        marker.map = mapView
-
-    }
-    
+    var longitude = 0.0
+    var latitude = 0.0
     override func viewDidLoad() {
         
         super.viewDidLoad()
-         //self.view.insertSubview(mapView, at: 0)
+       
        let camera = GMSCameraPosition.camera(withLatitude: 21.422510, longitude: 39.826168, zoom: 12)
-
-        let mapV = GMSMapView.map(withFrame: .zero, camera: camera)
-        let mapInsets = UIEdgeInsets(top: 0, left: 0.0, bottom: 90, right: 0)
-        mapV.padding = mapInsets
-        mapV.settings.compassButton = true
-        mapV.isMyLocationEnabled = true
-        mapV.settings.myLocationButton = true
-               view = mapV
+        mv.camera = camera
+        mv.settings.compassButton = true
+        mv.isMyLocationEnabled = true
+        mv.settings.myLocationButton = true
         
-        let revealButton = UIButton()
-        let btnImage = UIImage(named: "conform_location")
-        revealButton.setImage(btnImage, for: .normal)
-        //revealButton.frame = CGRect(x: 0, y: 0, width: 750, height: 185)
-        revealButton.frame = CGRect(x: -170, y: 735, width: 750, height: 185)
-        revealButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-//
-        self.view.addSubview(revealButton)
-    }
-    
-    @objc func buttonAction(sender: UIButton!) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticket") as! ticketViewController
-        vc.transitioningDelegate = self
-        vc.modalPresentationStyle = .custom
-        self.present(vc, animated: true, completion: nil)
+        
+        let marker = GMSMarker()
+              marker.position = CLLocationCoordinate2D(latitude: 21.422510, longitude: 39.826168)
+              marker.title = "Mecca"
+              marker.snippet = "Saudi Arabia"
+              marker.map = mv
+        
+        //Location Manager code to fetch current location
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
     }
 
+    @IBAction func confirmPressed(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticket") as! ticketViewController
+        vc.latitude = self.latitude
+        vc.longitude = self.longitude
+                vc.transitioningDelegate = self
+                vc.modalPresentationStyle = .custom
+                self.present(vc, animated: true, completion: nil)
+    }
 }
 
+
+
 extension mapViewController: CLLocationManagerDelegate {
+    
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D)
+//    func mapView(_ mapView: GMSMapView, didTapMyLocation location: CLLocationCoordinate2D) {
+//        print("Latitude: \(location.latitude) Longitude: \(location.longitude)")
+//    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
-        print("latitude = \(locValue.latitude) longitude =  \(locValue.longitude)")
+
+        let location = locations.last
+
+        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, zoom: 17)
+
+        self.mv?.animate(to: camera)
+        
+        print("Latitude: ")
+        print((Double(location?.coordinate.latitude ?? 0.0)))
+        
+        print("Longitude: ")
+        print((Double(location?.coordinate.longitude ?? 0.0)))
+        
+        self.longitude = (Double(location?.coordinate.longitude ?? 0.0))
+        self.latitude = (Double(location?.coordinate.latitude ?? 0.0))
+        
+        //Finally stop updating location otherwise it will come again and again in this delegate
+        self.locationManager.stopUpdatingLocation()
+
     }
+    //{
+        
+//        manager.delegate = self
+//        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate
+//            else {
+//
+//            return print("whha")
+//
+//        }
+//        print("latitude = \(locValue.latitude) longitude =  \(locValue.longitude)")
+//        if let location = locations.first{
+//        print("Latitude: \(coordinate.latitude) Longitude: \(coordinate.longitude)")
+        //}
+    //}
+    
 }
 
 extension mapViewController: BonsaiControllerDelegate {
 
 // return the frame of your Bonsai View Controller
 func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+//    print(containerViewFrame.height)
+//    print(containerViewFrame.height / (4/3))
+    return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 2), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
     
-    return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 2.5), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
 }
 
 // return a Bonsai Controller with SlideIn or Bubble transition animator

@@ -30,6 +30,7 @@ class onboardingViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
         
         let locStatus = CLLocationManager.authorizationStatus()
+        
         switch locStatus {
            case .notDetermined:
               locationManager.requestWhenInUseAuthorization()
