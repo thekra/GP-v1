@@ -19,6 +19,7 @@ class ticketViewController:  UIViewController {
     var imgView: UIImageView!
     var image: UIImage!
     
+    var imgArr = [Data]()
     var longitude = 0.0
     var latitude = 0.0
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
@@ -37,6 +38,7 @@ class ticketViewController:  UIViewController {
         print("latitude(TICKET): \(self.latitude)")
         print("longitude(TICKET): \(self.longitude)")
         print("Token(ticketViewDidLoad): \(self.token)")
+        print("Image Array: \(imgArr)")
     }
     
     
@@ -47,25 +49,17 @@ class ticketViewController:  UIViewController {
     
     func pic(sender: UIImageView!) {
         switch sender.tag {
+            
         case 1:
             setupPic(pic: pic_2, action: #selector(self.imageTap_2))
-            //    pic_2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap_2)))
             
         case 2: setupPic(pic: pic_3, action: #selector(self.imageTap_3))
-        //    pic_3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap_3)))
+       
         case 3: setupPic(pic: pic_4, action: #selector(self.imageTap_4))
-            
-            //    pic_4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap_4)))
-            
+          
         default:
-            setupPic(pic: pic_1, action: #selector(self.imageTap)) //pic_1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap)))
+            setupPic(pic: pic_1, action: #selector(self.imageTap))
         }
-        
-        //        pic_1.isUserInteractionEnabled = true
-        //        pic_2.isUserInteractionEnabled = true
-        //        pic_3.isUserInteractionEnabled = true
-        //        pic_4.isUserInteractionEnabled = true
-        
     }
     
     func setupPic(pic: UIImageView!, action: Selector){
@@ -99,7 +93,6 @@ class ticketViewController:  UIViewController {
     
     @IBAction func confirmTicket(_ sender: Any) {
         
-        let imgData = self.imgView.image!.jpegData(compressionQuality: 0.5)
         let urlString = "http://www.ai-rdm.website/api/ticket/create"
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -109,8 +102,7 @@ class ticketViewController:  UIViewController {
         
         
         let parameters = [
-            "description": "blahh",
-            "photos[0]": imgData!,
+            "description": "b", // Add text
             "latitude": latitude,
             "longitude": longitude,
             "city": 6,
@@ -120,15 +112,18 @@ class ticketViewController:  UIViewController {
         
         Alamofire.upload(multipartFormData:
             { (multipartFormData ) in
+                
+                    for i in 0..<self.imgArr.count {
+                    multipartFormData.append(
+                        self.imgArr[i] ,
+                        withName: "photos[\(i)]",
+                        fileName: "swift_file_\(i).jpeg",
+                        mimeType: "image/jpeg"
+                    )
+                }
+                
                 for (key, value) in parameters {
-                    if key == "photos[0]" {
-                        multipartFormData.append(
-                            value as! Data,
-                            withName: key,
-                            fileName: "swift_file.jpeg",
-                            mimeType: "image/jpeg"
-                        )
-                    }  else
+                    
                         if let temp = value as? String {
                             multipartFormData.append(temp.data(using: .utf8)!, withName: key)
                     }
@@ -154,6 +149,23 @@ class ticketViewController:  UIViewController {
                     print("REsponse Description: \(response.description))")
                     print("REsponse DEbug Desc: \(response.debugDescription))")
                     print("REsponse Metrices: \(response.metrics))")
+                    
+                   guard let data = response.data else {
+
+                       
+                       DispatchQueue.main.async {
+                           print(response.error!)
+                       }
+                       return
+                   }
+                    let decoder = JSONDecoder()
+                              do {
+                                let responseObject =  try decoder.decode(Ticket.self, from: data)
+                                print("response Object MESSAGE: \(responseObject.message)")
+                    } // end of do
+                    catch let parsingError {
+                            print("Error", parsingError)
+                    } // End of catch
                 }
             case .failure(let encodingError):
                 // hide progressbas here
@@ -161,98 +173,13 @@ class ticketViewController:  UIViewController {
             }
         })
         
+        dismiss(animated: true, completion: nil)
         
-        //        if let data = self.image.jpegData(compressionQuality: 1) {
-        //          let parameters: Parameters = [
-        //            "access_token" : self.token
-        //          ]
-        //          // You can change your image name here, i use NSURL image and convert into string
-        //          let imageURL = info[UIImagePickerControllerReferenceURL] as! NSURL
-        //          let fileName = imageURL.absouluteString
-        //          // Start Alamofire
-        //          Alamofire.upload(multipartFormData: { multipartFormData in
-        //          for (key,value) in parameters {
-        //               multipartFormData.append((value as! String).data(using: .utf8)!, withName: key)
-        //          }
-        //          multipartFormData.append(data, withName: "avatar", fileName: fileName!,mimeType: "image/jpeg")
-        //         },
-        //                           usingThreshold: UInt64.init(),
-        //         to: "YourURL",
-        //         method: .put,
-        //         encodingCompletion: { encodingResult in
-        //         switch encodingResult {
-        //           case .success(let upload, _, _):
-        //                 upload.responseJSON { response in
-        //                 debugPrint(response)
-        //                 }
-        //           case .failure(let encodingError):
-        //                print(encodingError)
-        //           }
-        //         })
-        //        }
-        
-        //-------------
-        
-        //        Alamofire.upload(multipartFormData: { (multipartFormData : MultipartFormData) in
-        //
-        //            let count = imageToUpload.count
-        //
-        //            for i in 0..<count{
-        //                multipartFormData.append(imageToUpload[i], withName: "morephoto[\(i)]", fileName: "photo\(i).jpeg" , mimeType: "image/jpeg")
-        //
-        //            }
-        //            for (key, value) in parameterrs {
-        //
-        //                    multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
-        //            }
-        //            print(multipartFormData)
-        //        }, to: urlString) { (result) in
-        //
-        //                switch result {
-        //                case .success(let upload, _ , _):
-        //
-        //                    upload.uploadProgress(closure: { (progress) in
-        //
-        //                        print("uploding: \(progress.fractionCompleted)")
-        //                    })
-        //
-        //                    upload.responseJSON { response in
-        //
-        //                    print(response.result.value!)
-        //                    let resp = response.result.value! as! NSDictionary
-        //                    if resp["status"] as! String == "success"{
-        //                        print(response.result.value!)
-        //                        let alert = UIAlertController(title: "Alert", message: "Image Upload Successful", preferredStyle: UIAlertController.Style.alert)
-        //                        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
-        //                        self.present(alert, animated: true, completion: nil)
-        //
-        //
-        //                    }
-        //                    else{
-        //
-        //                    }
-        //
-        //
-        //                }
-        //
-        //            case .failure(let encodingError):
-        //                print("failed")
-        //                print(encodingError)
-        //
-        //            }
-        //        }
-        //    }
-        
-    }
-//    let decoder = JSONDecoder()
-//                do {
-//                    let responseObject =  try decoder.decode(Ticket.self, from: data)
-//    }  catch let parsingError {
-//                        print("Error", parsingError)
-//
-//                }
+    } // End of ConfirmTicket Button
     
-}
+
+    
+} // End of class
 
 
 
@@ -269,8 +196,9 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         self.image = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
         
         self.imgView.image = self.image
-        
-        
+        let imgData = self.imgView.image!.jpegData(compressionQuality: 0.5)!
+        imgArr.append(imgData)
+        print("Image Array: \(imgArr)")
         // if != nil
         dismiss(animated: true, completion: nil)
     }

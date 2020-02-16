@@ -23,9 +23,18 @@ struct Ticket: Codable {
 //        city,
 //        neighborhood
 //    }
-    let errors: String
-    
-    enum CodingKeys: CodingKey {
-        case errors
-    }
+     let message: String
 }
+//     let errors: Errors
+//    }
+//
+//    // MARK: - Errors
+//    struct Errors: Codable {
+//       let latitude, longitude, city, neighborhood: [String]
+//        let photos: [String]
+//
+////        enum CodingKeys: String, CodingKey {
+////            case errorsDescription = "photos"
+////            //case errors
+////        }
+//    }
