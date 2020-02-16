@@ -99,7 +99,7 @@ class ticketViewController:  UIViewController {
     
     @IBAction func confirmTicket(_ sender: Any) {
         
-        let imgData = image.jpegData(compressionQuality: 0.5)
+        let imgData = self.imgView.image!.jpegData(compressionQuality: 0.5)
         let urlString = "http://www.ai-rdm.website/api/ticket/create"
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -110,7 +110,7 @@ class ticketViewController:  UIViewController {
         
         let parameters = [
             "description": "blahh",
-            "photos": imgData!,
+            "photos[0]": imgData!,
             "latitude": latitude,
             "longitude": longitude,
             "city": 6,
@@ -121,7 +121,7 @@ class ticketViewController:  UIViewController {
         Alamofire.upload(multipartFormData:
             { (multipartFormData ) in
                 for (key, value) in parameters {
-                    if key == "photos" {
+                    if key == "photos[0]" {
                         multipartFormData.append(
                             value as! Data,
                             withName: key,
@@ -244,6 +244,13 @@ class ticketViewController:  UIViewController {
         //    }
         
     }
+//    let decoder = JSONDecoder()
+//                do {
+//                    let responseObject =  try decoder.decode(Ticket.self, from: data)
+//    }  catch let parsingError {
+//                        print("Error", parsingError)
+//
+//                }
     
 }
 
@@ -263,6 +270,8 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         
         self.imgView.image = self.image
         
+        
+        // if != nil
         dismiss(animated: true, completion: nil)
     }
 }

@@ -9,18 +9,23 @@
 import Foundation
 
 struct Ticket: Codable {
-    let description: String
-    let photos: [String]
-    let latitude: Double
-    let longitude: Double
-    let city: Int
-    let neighborhood: Int
+//    let description: String
+//    let photos: [String]
+//    let latitude: Double
+//    let longitude: Double
+//    let city: Int
+//    let neighborhood: Int
+//
+//    enum CodingKeys: CodingKey {
+//        case description, photos,
+//        latitude,
+//        longitude,
+//        city,
+//        neighborhood
+//    }
+    let errors: String
     
     enum CodingKeys: CodingKey {
-        case description, photos,
-        latitude,
-        longitude,
-        city,
-        neighborhood
+        case errors
     }
 }
