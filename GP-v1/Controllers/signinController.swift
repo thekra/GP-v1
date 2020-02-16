@@ -16,7 +16,7 @@ class signinController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var token = UserDefaults.standard.string(forKey: "token") ?? ""
+    var token = "" //UserDefaults.standard.string(forKey: "access_token") ?? ""
     
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -26,7 +26,7 @@ class signinController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("TOKEN: \(self.token)")
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         mainV.addGestureRecognizer(tap)
 
@@ -103,9 +103,9 @@ class signinController: UIViewController {
     
     @IBAction func signinButton(_ sender: Any) {
         
-        let urlString = "http://testtamayoz.tamayyozz.net/api/login"
+        let urlString = "http://www.ai-rdm.website/api/auth/login"
         
-        let body = signin(email: emailTextField.text!, password: passwordTextField.text!)
+        let body = Signin(email: emailTextField.text!, password: passwordTextField.text!)
         
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
@@ -114,51 +114,66 @@ class signinController: UIViewController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        Alamofire.request(request).responseJSON { response in
-         guard case let .failure(error) = response.result else { return }
-
-            let status = response.response?.statusCode
-            print(status)
-            if status == 400 {
-                //self.showAlert(title: "Missing", message: "Please provide us your email/password")
-                print("info")
-            }
-             if let error = error as? AFError {
-                
-                 switch error {
-                 case .invalidURL(let url):
-                     print("Invalid URL: \(url) - \(error.localizedDescription)")
-                 case .parameterEncodingFailed(let reason):
-                     print("Parameter encoding failed: \(error.localizedDescription)")
-                     print("Failure Reason: \(reason)")
-                 case .multipartEncodingFailed(let reason):
-                     print("Multipart encoding failed: \(error.localizedDescription)")
-                     print("Failure Reason: \(reason)")
-                 case .responseValidationFailed(let reason):
-                     print("Response validation failed: \(error.localizedDescription)")
-                     print("Failure Reason: \(reason)")
-                 
-                     switch reason {
-                     case .dataFileNil, .dataFileReadFailed:
-                         print("Downloaded file could not be read")
-                     case .missingContentType(let acceptableContentTypes):
-                         print("Content Type Missing: \(acceptableContentTypes)")
-                     case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
-                         print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
-                     case .unacceptableStatusCode(let code):
-                         print("Response status code was unacceptable: \(code)")
-                     }
-                 case .responseSerializationFailed(let reason):
-                     print("Response serialization failed: \(error.localizedDescription)")
-                     print("Failure Reason: \(reason)")
-                 }
-
-                 print("Underlying error: \(error.underlyingError)")
-             } else if let error = error as? URLError {
-                 print("URLError occurred: \(error)")
-             } else {
-                 print("Unknown error: \(error)")
-             }
+        Alamofire.request(request).validate(statusCode: 200..<300).responseJSON { response in
+      print(response)
+           
+            switch response.result {
+            case .success:
+                print("Validation Successful")
+                print(response.result.description)
+                case let .failure(error):
+                    print(error)
+                }
+//                 guard let data = response.data else {
+//                     DispatchQueue.main.async {
+//                         print(response.error!)
+//                     }
+//                     return
+//                 }
+            //  guard case let .failure(error) = response.result else { return }
+//
+//            let status = response.response?.statusCode
+//            print(status)
+//            if status == 400 {
+//                //self.showAlert(title: "Missing", message: "Please provide us your email/password")
+//                print("info")
+//            }
+//             if let error = error as? AFError {
+//
+//                 switch error {
+//                 case .invalidURL(let url):
+//                     print("Invalid URL: \(url) - \(error.localizedDescription)")
+//                 case .parameterEncodingFailed(let reason):
+//                     print("Parameter encoding failed: \(error.localizedDescription)")
+//                     print("Failure Reason: \(reason)")
+//                 case .multipartEncodingFailed(let reason):
+//                     print("Multipart encoding failed: \(error.localizedDescription)")
+//                     print("Failure Reason: \(reason)")
+//                 case .responseValidationFailed(let reason):
+//                     print("Response validation failed: \(error.localizedDescription)")
+//                     print("Failure Reason: \(reason)")
+//
+//                     switch reason {
+//                     case .dataFileNil, .dataFileReadFailed:
+//                         print("Downloaded file could not be read")
+//                     case .missingContentType(let acceptableContentTypes):
+//                         print("Content Type Missing: \(acceptableContentTypes)")
+//                     case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+//                         print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+//                     case .unacceptableStatusCode(let code):
+//                         print("Response status code was unacceptable: \(code)")
+//                     }
+//                 case .responseSerializationFailed(let reason):
+//                     print("Response serialization failed: \(error.localizedDescription)")
+//                     print("Failure Reason: \(reason)")
+//                 }
+//
+//                 print("Underlying error: \(error.underlyingError)")
+//             } else if let error = error as? URLError {
+//                 print("URLError occurred: \(error)")
+//             } else {
+//                 print("Unknown error: \(error)")
+//             }
          
             guard let data = response.data else {
 
@@ -171,21 +186,27 @@ class signinController: UIViewController {
             }
             let decoder = JSONDecoder()
             do {
-                let responseObject =  try decoder.decode(signinResponse.self, from: data)
+                let responseObject =  try decoder.decode(SigninResponse.self, from: data)
                 
-                DispatchQueue.main.async {
-                    print(responseObject.success)
-                    self.token = responseObject.success.token
-                    UserDefaults.standard.set(responseObject.success.token, forKey: "token")
+                //DispatchQueue.main.async {
+//                    print("Body: \(responseObject)")
+               
+                    
+                  let tokenn = responseObject.accessToken
+                
+                print("Token: \(tokenn)")
+                UserDefaults.standard.set(tokenn, forKey: "access_token")
+                    
                     self.performSegue(withIdentifier: "Login", sender: nil)
-                }
-            } catch {
-                print("Error catch")
-                let status = response.response?.statusCode
+              //  }
+                
+            }  catch let parsingError {
+                    print("Error", parsingError)
+                //let status = response.response?.statusCode
                 
 //                print(response.error!)
                 //if status == 400 {
-                    self.showAlert(title: "Missing", message: "Please provide us your email/password")
+                   // self.showAlert(title: "Missing", message: "Please provide us your email/password")
                 //}
             }
             
@@ -195,7 +216,9 @@ class signinController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Login" {
-        let vc = segue.destination as! ViewController
+        let vc = segue.destination as! mapViewController
+            //vc.token = self.token
+            print("Token(signinSegue): \(self.token)")
             //vc.testt = self.token
             
         }

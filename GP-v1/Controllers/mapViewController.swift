@@ -18,10 +18,13 @@ class mapViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     var longitude = 0.0
     var latitude = 0.0
+    var token = UserDefaults.standard.string(forKey: "access_token")
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-       
+       print("Token(mapViewDidLoad): \(self.token)")
+        //print("Token(userDefault): \(UserDefaults.standard.string(forKey: "access_token"))")
        let camera = GMSCameraPosition.camera(withLatitude: 21.422510, longitude: 39.826168, zoom: 12)
         mv.camera = camera
         mv.settings.compassButton = true
@@ -38,15 +41,22 @@ class mapViewController: UIViewController {
         //Location Manager code to fetch current location
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
+        
     }
 
     @IBAction func confirmPressed(_ sender: Any) {
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticket") as! ticketViewController
+        
         vc.latitude = self.latitude
         vc.longitude = self.longitude
+       // vc.token = self.token
+        
+        //print("Token(ticketSegue): \(self.token)")
                 vc.transitioningDelegate = self
                 vc.modalPresentationStyle = .custom
                 self.present(vc, animated: true, completion: nil)
+        
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="n2s-pb-26y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -164,7 +164,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atO-vq-dKl">
-                                <rect key="frame" x="-10" y="729" width="435" height="147"/>
+                                <rect key="frame" x="-10" y="582" width="870" height="294"/>
                                 <state key="normal" backgroundImage="conform_location"/>
                                 <connections>
                                     <action selector="confirmPressed:" destination="gBG-02-eM7" eventType="touchUpInside" id="ZPq-Q7-A9r"/>
@@ -229,7 +229,7 @@
                                 </state>
                                 <connections>
                                     <action selector="signupButton:" destination="vcq-Mh-txs" eventType="touchUpInside" id="NFU-xC-gxg"/>
-                                    <segue destination="gBG-02-eM7" kind="presentation" modalPresentationStyle="fullScreen" id="J7S-lx-1VX"/>
+                                    <segue destination="gBG-02-eM7" kind="presentation" identifier="signedup" modalPresentationStyle="fullScreen" id="J7S-lx-1VX"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تسجيل جديد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5t6-86-aFy">
@@ -318,7 +318,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="I4K-ck-74S"/>
                     <connections>
-                        <outlet property="cPasswordTF" destination="sPK-d4-od4" id="jNj-Zc-gya"/>
                         <outlet property="conPasswordTF" destination="v23-lK-0Z1" id="3cW-JF-M3v"/>
                         <outlet property="emailTF" destination="eSE-Ld-Ue0" id="N2B-pO-6FK"/>
                         <outlet property="passwordTF" destination="1vH-ql-8HO" id="TWJ-kl-5Pb"/>
@@ -338,7 +337,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGt-dV-9MN">
-                                <rect key="frame" x="-37.5" y="374.5" width="489" height="147"/>
+                                <rect key="frame" x="-255" y="301" width="924" height="294"/>
                                 <state key="normal" title="Button" image="conform_location"/>
                                 <connections>
                                     <action selector="pres:" destination="n2s-pb-26y" eventType="touchUpInside" id="PSR-6y-iMf"/>
@@ -408,6 +407,9 @@
                                 <state key="normal" title="اعتماد التذكرة">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmTicket:" destination="wxm-EE-h19" eventType="touchUpInside" id="AF8-p1-Sd1"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="B7I-rB-tFC" userLabel="pic-1">
                                 <rect key="frame" x="314" y="102" width="88" height="84"/>
@@ -555,7 +557,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Shb-Gi-epa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709" y="455"/>
+            <point key="canvasLocation" x="2107" y="455"/>
         </scene>
     </scenes>
     <resources>
@@ -570,6 +572,6 @@
         <image name="splash-screemn" width="184" height="182"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hcf-zb-E2j"/>
+        <segue reference="J7S-lx-1VX"/>
     </inferredMetricsTieBreakers>
 </document>

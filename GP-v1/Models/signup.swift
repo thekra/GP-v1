@@ -8,14 +8,15 @@
 
 import Foundation
 
-struct signup: Codable {
+struct Signup: Codable {
     let email: String
     let password: String
-    let password_conformation: String
-    let mobile: String
-    let name: String
+    let password_confirmation: String
+//    let phone: String
+//    let name: String
     
     enum CodingKeys: String, CodingKey {
-        case email, password, password_conformation, mobile, name
+        case email, password, password_confirmation
+        //, phone, name
     }
 }

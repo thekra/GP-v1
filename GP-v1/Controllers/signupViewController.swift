@@ -10,13 +10,12 @@ import UIKit
 import Alamofire
 
 class signupViewController: UIViewController {
-var token = UserDefaults.standard.string(forKey: "token") ?? ""
+var token = UserDefaults.standard.string(forKey: "access_token") ?? ""
     var namee = UserDefaults.standard.string(forKey: "name") ?? ""
     
     @IBOutlet var signupview: UIView!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var cPasswordTF: UIImageView!
     @IBOutlet weak var conPasswordTF: UITextField!
     
     func showAlert(title: String, message: String) {
@@ -49,9 +48,9 @@ var token = UserDefaults.standard.string(forKey: "token") ?? ""
     
     
     @IBAction func signupButton(_ sender: Any) {
-        let urlString = "http://testtamayoz.tamayyozz.net/api/register"
+        let urlString = "http://www.ai-rdm.website/api/auth/register"
                 
-        let body = signup(email: emailTF.text!, password: passwordTF.text!, password_conformation: conPasswordTF.text!,mobile: "055153843",name: "thekra")
+        let body = Signup(email: emailTF.text!, password: passwordTF.text!, password_confirmation: conPasswordTF.text!)
                 
                 let url = URL(string: urlString)
                 var request = URLRequest(url: url!)
@@ -61,7 +60,7 @@ var token = UserDefaults.standard.string(forKey: "token") ?? ""
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
                 
                 Alamofire.request(request).responseJSON { response in
-                 
+                 print(response)
                     guard let data = response.data else {
 
                         
@@ -73,22 +72,23 @@ var token = UserDefaults.standard.string(forKey: "token") ?? ""
                     }
                     let decoder = JSONDecoder()
                     do {
-                        let responseObject =  try decoder.decode(signinResponse.self, from: data)
-                        self.token = responseObject.success.token
+                        let responseObject =  try decoder.decode(SignupResponse.self, from: data)
+                        self.token = responseObject.accessToken
                         //DispatchQueue.main.async {
-                            print(responseObject.success)
-                            self.token = responseObject.success.token
-                        self.namee = responseObject.success.user.name
-                        UserDefaults.standard.set(responseObject.success.token, forKey: "token")
-                        UserDefaults.standard.set(responseObject.success.user.email, forKey: "email")
-                         UserDefaults.standard.set(responseObject.success.user.name, forKey: "name")
-                        UserDefaults.standard.set(responseObject.success.user.mobile, forKey: "mobile")
+                        print(responseObject)
+                        
+                       // self.token = responseObject.accessToken
+                        //self.namee = responseObject.success.user_data.name
+                        //UserDefaults.standard.set(responseObject.accessToken, forKey: "access_token")
+                        //UserDefaults.standard.set(responseObject.user_data.email, forKey: "email")
+                        //UserDefaults.standard.set(responseObject.user_data.name, forKey: "name")
+                        
                         
                             self.performSegue(withIdentifier: "signedup", sender: nil)
                        // }
                     } catch let parsingError {
-                        print("Error", parsingError)
-                        self.showAlert(title: "error", message: parsingError as! String)
+                        print("Error:(signup)", parsingError)
+                        //self.showAlert(title: "error", message: parsingError as! String)
                     }
                     
                 }
@@ -96,7 +96,8 @@ var token = UserDefaults.standard.string(forKey: "token") ?? ""
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let v = segue.destination as! vViewController
+        let v = segue.destination as! mapViewController
+        v.token = self.token
        // v.name = self.namee
         
     }

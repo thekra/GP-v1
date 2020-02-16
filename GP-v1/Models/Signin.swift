@@ -17,7 +17,7 @@ import Foundation
   }
 }*/
 
-struct signin: Codable {
+struct Signin: Codable {
     let email: String
     let password: String
     
