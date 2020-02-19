@@ -113,7 +113,7 @@ extension mapViewController: BonsaiControllerDelegate {
 func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
 //    print(containerViewFrame.height)
 //    print(containerViewFrame.height / (4/3))
-    return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 2), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
+    return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
     
 }
 

@@ -10,6 +10,8 @@
 		0CF4954EBC4BC0255F872828 /* Pods_GP_v1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */; };
 		7924B91A23F949C000E889A2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7924B91923F949C000E889A2 /* Alamofire.framework */; };
 		794255C823F6AA170051DE63 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794255C723F6AA170051DE63 /* Ticket.swift */; };
+		794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8B23FD4BA7003CDE02 /* City.swift */; };
+		794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */; };
 		797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC723E56CB500960C79 /* AppDelegate.swift */; };
 		797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC923E56CB500960C79 /* SceneDelegate.swift */; };
 		797F8BCC23E56CB500960C79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BCB23E56CB500960C79 /* ViewController.swift */; };
@@ -54,6 +56,8 @@
 		7924B91523F945B500E889A2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7924B91923F949C000E889A2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		794255C723F6AA170051DE63 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		794A3A8B23FD4BA7003CDE02 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neighborhood.swift; sourceTree = "<group>"; };
 		797F8BC423E56CB500960C79 /* GP-v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GP-v1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		797F8BC723E56CB500960C79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		797F8BC923E56CB500960C79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				797F8C0E23EA169300960C79 /* signup.swift */,
 				797F8C1023EA16E700960C79 /* signupResponse.swift */,
 				794255C723F6AA170051DE63 /* Ticket.swift */,
+				794A3A8B23FD4BA7003CDE02 /* City.swift */,
+				794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -425,12 +431,14 @@
 				797F8C0223E7135E00960C79 /* signinResponse.swift in Sources */,
 				797F8C1723EC323D00960C79 /* onboardingViewController.swift in Sources */,
 				797F8C1123EA16E700960C79 /* signupResponse.swift in Sources */,
+				794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */,
 				794255C823F6AA170051DE63 /* Ticket.swift in Sources */,
 				797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */,
 				798639F723EDCB2300131A9E /* ticketViewController.swift in Sources */,
 				797F8C1323EA208600960C79 /* vViewController.swift in Sources */,
 				797F8C0023E5E5F500960C79 /* Signin.swift in Sources */,
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,
+				794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */,
 				797F8C0F23EA169300960C79 /* signup.swift in Sources */,
 				797F8C0D23EA0AF900960C79 /* signupViewController.swift in Sources */,
 				797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */,

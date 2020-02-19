@@ -11,6 +11,8 @@ import Alamofire
 
 class ticketViewController:  UIViewController {
     
+    
+    let picker: UIPickerView! = UIPickerView()
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var pic_1: UIImageView!
     @IBOutlet weak var pic_2: UIImageView!
@@ -18,22 +20,38 @@ class ticketViewController:  UIViewController {
     @IBOutlet weak var pic_4: UIImageView!
     var imgView: UIImageView!
     var image: UIImage!
+    @IBOutlet weak var choosenNei: UITextField!
+    
+    
+    var cityArr = [City]()
+    var NeiArr = [Neighborhood]()
+    //var neighborhoodArr : [[String:AnyObject]] = []
     
     var imgArr = [Data]()
+    
+    
+    var cityID: Int = 0
+    var neighboorhoodID: Int = 0
+    var selectedNeighborhood: String?
     var longitude = 0.0
     var latitude = 0.0
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getNeighborhoodList()
         // Text View UI
         setupTextViewUI()
+        
         
         pic(sender: pic_1)
         pic(sender: pic_2)
         pic(sender: pic_3)
         pic(sender: pic_4)
+        createPicker()
         
         print("latitude(TICKET): \(self.latitude)")
         print("longitude(TICKET): \(self.longitude)")
@@ -90,6 +108,27 @@ class ticketViewController:  UIViewController {
         self.imgView = pic_4
         showImage()
     }
+
+    func createPicker() {
+        picker.delegate = self
+        picker.dataSource = self
+        choosenNei.inputView = picker
+    }
+
+    func createToolBar() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissKeyboard))
+
+        toolbar.setItems([doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     
     @IBAction func confirmTicket(_ sender: Any) {
         
@@ -102,11 +141,11 @@ class ticketViewController:  UIViewController {
         
         
         let parameters = [
-            "description": "b", // Add text
+            "description": textView.text!,
             "latitude": latitude,
             "longitude": longitude,
-            "city": 6,
-            "neighborhood": 3377
+            "city": self.cityID,
+            "neighborhood": self.neighboorhoodID
             ] as [String : AnyObject]
         
         
@@ -130,7 +169,7 @@ class ticketViewController:  UIViewController {
                     if let temp = value as? Int {
                         multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
                     }
-                    
+                    print(parameters)
                 }
         }, to: urlString,
            method: .post,
@@ -152,7 +191,6 @@ class ticketViewController:  UIViewController {
                     
                    guard let data = response.data else {
 
-                       
                        DispatchQueue.main.async {
                            print(response.error!)
                        }
@@ -161,12 +199,21 @@ class ticketViewController:  UIViewController {
                     let decoder = JSONDecoder()
                               do {
                                 let responseObject =  try decoder.decode(Ticket.self, from: data)
-                                print("response Object MESSAGE: \(responseObject.message)")
+                                print("response Object MESSAGE: \([responseObject].self)")
                     } // end of do
                     catch let parsingError {
                             print("Error", parsingError)
                     } // End of catch
-                }
+                    
+                } // End of upload
+                
+                upload.responseJSON { response in
+                print("the resopnse code is : \(response.response?.statusCode)")
+                    
+                    // من هنا يطلع رسالة الايرور تمام
+                print("the response is : \(response)")
+                                    }
+                
             case .failure(let encodingError):
                 // hide progressbas here
                 print("ERROR RESPONSE: \(encodingError)")
@@ -178,6 +225,47 @@ class ticketViewController:  UIViewController {
     } // End of ConfirmTicket Button
     
 
+    func getNeighborhoodList() {
+        
+        let urlString = "http://www.ai-rdm.website/api/ticket/neighborhoods"
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(self.token)",
+            "Content-Type": "multipart/form-data",
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
+            response in
+            let result = response.result.value as? [[String : AnyObject]]
+            print(result!)
+            
+            print(response.response)
+            
+            guard let data = response.data else {
+
+                DispatchQueue.main.async {
+                    print(response.error!)
+                }
+                return
+            }
+             let decoder = JSONDecoder()
+                       do {
+                        let responseObject =  try decoder.decode([Neighborhood].self, from: data)
+                        print("response Object MESSAGE: \(responseObject.self)")
+                        self.NeiArr = responseObject.self
+                        print("NeiArr\(self.NeiArr)")
+                        
+             } // end of do
+             catch let parsingError {
+                     print("Error", parsingError)
+             }
+            DispatchQueue.main.async {
+                self.picker.reloadComponent(0)
+            }
+        }
+    }
+    
     
 } // End of class
 
@@ -201,6 +289,30 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         print("Image Array: \(imgArr)")
         // if != nil
         dismiss(animated: true, completion: nil)
+    }
+}
+
+
+
+extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return NeiArr.count
+    }
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.cityID = Int(NeiArr[row].cityID)!
+        self.neighboorhoodID = NeiArr[row].id
+        return NeiArr[row].nameAr
+    }
+//
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedNeighborhood = NeiArr[row].nameAr
+        choosenNei.text = selectedNeighborhood
     }
 }
 

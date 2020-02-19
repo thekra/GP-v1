@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="height" constant="63" id="gtb-UM-kkO"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="الايميل" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-Bp-kko" userLabel="emailTextField">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="الايميل" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-Bp-kko" userLabel="emailTextField">
                                 <rect key="frame" x="50" y="388" width="283" height="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -43,11 +43,11 @@
                                     <constraint firstAttribute="height" constant="63" id="A3L-qh-ya6"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="كلمة المرور" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cyu-28-MdJ" userLabel="passwordTextField">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="كلمة المرور" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cyu-28-MdJ" userLabel="passwordTextField">
                                 <rect key="frame" x="45" y="467" width="288" height="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -164,7 +164,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atO-vq-dKl">
-                                <rect key="frame" x="-10" y="582" width="870" height="294"/>
+                                <rect key="frame" x="-10" y="729" width="435" height="147"/>
                                 <state key="normal" backgroundImage="conform_location"/>
                                 <connections>
                                     <action selector="confirmPressed:" destination="gBG-02-eM7" eventType="touchUpInside" id="ZPq-Q7-A9r"/>
@@ -337,7 +337,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGt-dV-9MN">
-                                <rect key="frame" x="-255" y="301" width="924" height="294"/>
+                                <rect key="frame" x="-37.5" y="374.5" width="489" height="147"/>
                                 <state key="normal" title="Button" image="conform_location"/>
                                 <connections>
                                     <action selector="pres:" destination="n2s-pb-26y" eventType="touchUpInside" id="PSR-6y-iMf"/>
@@ -401,16 +401,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEv-Hv-NzF">
-                                <rect key="frame" x="20" y="417" width="374" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="اعتماد التذكرة">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="confirmTicket:" destination="wxm-EE-h19" eventType="touchUpInside" id="AF8-p1-Sd1"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="B7I-rB-tFC" userLabel="pic-1">
                                 <rect key="frame" x="314" y="102" width="88" height="84"/>
                                 <constraints>
@@ -439,8 +429,8 @@
                                     <constraint firstAttribute="width" constant="88" id="uib-wN-1vd"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="TW1-zM-w4v">
-                                <rect key="frame" x="12" y="266" width="390" height="120"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="TW1-zM-w4v">
+                                <rect key="frame" x="12" y="366" width="390" height="120"/>
                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="390" id="Dhe-p6-EuC"/>
@@ -456,8 +446,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الوصف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frK-l1-gLc">
-                                <rect key="frame" x="326" y="219" width="55" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="الوصف" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frK-l1-gLc">
+                                <rect key="frame" x="333" y="319" width="55" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -468,6 +458,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEv-Hv-NzF">
+                                <rect key="frame" x="20" y="509" width="374" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="اعتماد التذكرة">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmTicket:" destination="wxm-EE-h19" eventType="touchUpInside" id="AF8-p1-Sd1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الحي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHv-ku-Ef3">
+                                <rect key="frame" x="342" y="210" width="39" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XlO-j5-gL8">
+                                <rect key="frame" x="12" y="253" width="390" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -498,11 +511,12 @@
                         <viewLayoutGuide key="safeArea" id="1l7-QQ-pfD"/>
                     </view>
                     <connections>
+                        <outlet property="choosenNei" destination="XlO-j5-gL8" id="yTj-kg-2Yz"/>
                         <outlet property="pic_1" destination="B7I-rB-tFC" id="lfO-XQ-DCR"/>
                         <outlet property="pic_2" destination="sZ2-NR-RAA" id="4oG-S5-nme"/>
                         <outlet property="pic_3" destination="B2v-Ic-Bgm" id="s4I-95-YTj"/>
                         <outlet property="pic_4" destination="8YB-ev-NaE" id="SPw-zG-V0O"/>
-                        <outlet property="textView" destination="TW1-zM-w4v" id="Ui6-AK-FG1"/>
+                        <outlet property="textView" destination="TW1-zM-w4v" id="Dx1-Rg-nkn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ih-Ti-clW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -544,6 +558,10 @@
                                     <constraint firstAttribute="width" constant="414" id="blC-Vz-15E"/>
                                 </constraints>
                             </imageView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJz-Xn-xxZ">
+                                <rect key="frame" x="-8" y="340" width="414" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -572,6 +590,6 @@
         <image name="splash-screemn" width="184" height="182"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="J7S-lx-1VX"/>
+        <segue reference="Hcf-zb-E2j"/>
     </inferredMetricsTieBreakers>
 </document>
