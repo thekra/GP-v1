@@ -23,18 +23,17 @@ class ticketViewController:  UIViewController {
     @IBOutlet weak var choosenNei: UITextField!
     
     
-    var cityArr = [City]()
+    //var cityArr = [City]()
     var NeiArr = [Neighborhood]()
     //var neighborhoodArr : [[String:AnyObject]] = []
     
     var imgArr = [Data]()
     
-    
+    var longitude: Double = 0.0
+    var latitude: Double = 0.0
     var cityID: Int = 0
     var neighboorhoodID: Int = 0
     var selectedNeighborhood: String?
-    var longitude = 0.0
-    var latitude = 0.0
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     
     
@@ -46,11 +45,13 @@ class ticketViewController:  UIViewController {
         // Text View UI
         setupTextViewUI()
         
-        
+        // Method
         pic(sender: pic_1)
         pic(sender: pic_2)
         pic(sender: pic_3)
         pic(sender: pic_4)
+        
+        // Set up pickerview
         createPicker()
         
         print("latitude(TICKET): \(self.latitude)")
@@ -113,9 +114,10 @@ class ticketViewController:  UIViewController {
         picker.delegate = self
         picker.dataSource = self
         choosenNei.inputView = picker
+        choosenNei.inputAccessoryView = createToolBar()
     }
 
-    func createToolBar() {
+    func createToolBar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
 
@@ -123,6 +125,8 @@ class ticketViewController:  UIViewController {
 
         toolbar.setItems([doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
+        
+        return toolbar
     }
 
     @objc func dismissKeyboard() {
@@ -148,7 +152,7 @@ class ticketViewController:  UIViewController {
             "neighborhood": self.neighboorhoodID
             ] as [String : AnyObject]
         
-        
+    //if Connectivity.isConnectedToInternet {
         Alamofire.upload(multipartFormData:
             { (multipartFormData ) in
                 
@@ -166,9 +170,15 @@ class ticketViewController:  UIViewController {
                         if let temp = value as? String {
                             multipartFormData.append(temp.data(using: .utf8)!, withName: key)
                     }
+                    
                     if let temp = value as? Int {
                         multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
                     }
+                    
+                    if let temp = value as? Double {
+                        multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
+                    }
+                    
                     print(parameters)
                 }
         }, to: urlString,
@@ -178,6 +188,7 @@ class ticketViewController:  UIViewController {
             encodingResult in
             switch encodingResult {
             case .success(let upload, _, _):
+                
                 upload.responseData { response in
                     debugPrint("SUCCESS RESPONSE: \(response)")
                     debugPrint(response.debugDescription)
@@ -200,6 +211,7 @@ class ticketViewController:  UIViewController {
                               do {
                                 let responseObject =  try decoder.decode(Ticket.self, from: data)
                                 print("response Object MESSAGE: \([responseObject].self)")
+                                
                     } // end of do
                     catch let parsingError {
                             print("Error", parsingError)
@@ -208,10 +220,20 @@ class ticketViewController:  UIViewController {
                 } // End of upload
                 
                 upload.responseJSON { response in
+                    
+                    if  let statusCode = response.response?.statusCode{
+
+                    if(statusCode == 201){
+                     //internet available
+                      }
+                    }else{
+                    //internet not available
+
+                    }
                 print("the resopnse code is : \(response.response?.statusCode)")
                     
                     // من هنا يطلع رسالة الايرور تمام
-                print("the response is : \(response)")
+                    print("the response is : \(response)")
                                     }
                 
             case .failure(let encodingError):
@@ -220,10 +242,16 @@ class ticketViewController:  UIViewController {
             }
         })
         
-        dismiss(animated: true, completion: nil)
-        
+        goToTicketList()
+        //dismiss(animated: true, completion: nil)
+       // }
     } // End of ConfirmTicket Button
     
+    func goToTicketList() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
+        //vc.token = self.token
+        self.present(vc, animated: true, completion: nil)
+    }
 
     func getNeighborhoodList() {
         
@@ -237,10 +265,10 @@ class ticketViewController:  UIViewController {
         
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
-            let result = response.result.value as? [[String : AnyObject]]
-            print(result!)
+            //let result = response.result.value as? [[String : AnyObject]]
+            //print(result!)
             
-            print(response.response)
+            print(response.response!)
             
             guard let data = response.data else {
 
@@ -251,10 +279,11 @@ class ticketViewController:  UIViewController {
             }
              let decoder = JSONDecoder()
                        do {
-                        let responseObject =  try decoder.decode([Neighborhood].self, from: data)
+                        let responseObject =  try decoder.decode(Neighborhood.self, from: data)
                         print("response Object MESSAGE: \(responseObject.self)")
-                        self.NeiArr = responseObject.self
+                        self.NeiArr = [responseObject.self]
                         print("NeiArr\(self.NeiArr)")
+                        print("NeiArr Count\(self.NeiArr[0].neighborhoods.count)")
                         
              } // end of do
              catch let parsingError {
@@ -265,8 +294,6 @@ class ticketViewController:  UIViewController {
             }
         }
     }
-    
-    
 } // End of class
 
 
@@ -297,7 +324,7 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
 extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return NeiArr.count
+        return self.NeiArr[0].neighborhoods.count
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -305,13 +332,13 @@ extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.cityID = Int(NeiArr[row].cityID)!
-        self.neighboorhoodID = NeiArr[row].id
-        return NeiArr[row].nameAr
+        self.cityID = Int(NeiArr[0].self.neighborhoods[row].cityID)!
+        self.neighboorhoodID = NeiArr[0].self.neighborhoods[row].id
+        return NeiArr[0].neighborhoods[row].nameAr
     }
 //
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedNeighborhood = NeiArr[row].nameAr
+        selectedNeighborhood = NeiArr[0].self.neighborhoods[row].nameAr
         choosenNei.text = selectedNeighborhood
     }
 }

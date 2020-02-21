@@ -24,7 +24,7 @@ class mapViewController: UIViewController {
         
         super.viewDidLoad()
        print("Token(mapViewDidLoad): \(self.token)")
-        //print("Token(userDefault): \(UserDefaults.standard.string(forKey: "access_token"))")
+        
        let camera = GMSCameraPosition.camera(withLatitude: 21.422510, longitude: 39.826168, zoom: 12)
         mv.camera = camera
         mv.settings.compassButton = true
@@ -50,9 +50,6 @@ class mapViewController: UIViewController {
         
         vc.latitude = self.latitude
         vc.longitude = self.longitude
-       // vc.token = self.token
-        
-        //print("Token(ticketSegue): \(self.token)")
                 vc.transitioningDelegate = self
                 vc.modalPresentationStyle = .custom
                 self.present(vc, animated: true, completion: nil)
@@ -64,11 +61,6 @@ class mapViewController: UIViewController {
 
 extension mapViewController: CLLocationManagerDelegate {
     
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    //func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D)
-//    func mapView(_ mapView: GMSMapView, didTapMyLocation location: CLLocationCoordinate2D) {
-//        print("Latitude: \(location.latitude) Longitude: \(location.longitude)")
-//    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
         let location = locations.last
@@ -90,20 +82,6 @@ extension mapViewController: CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
 
     }
-    //{
-        
-//        manager.delegate = self
-//        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate
-//            else {
-//
-//            return print("whha")
-//
-//        }
-//        print("latitude = \(locValue.latitude) longitude =  \(locValue.longitude)")
-//        if let location = locations.first{
-//        print("Latitude: \(coordinate.latitude) Longitude: \(coordinate.longitude)")
-        //}
-    //}
     
 }
 

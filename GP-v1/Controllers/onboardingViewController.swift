@@ -13,19 +13,15 @@ class onboardingViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView!
     let locationManager = CLLocationManager()
-    //@IBOutlet weak var b: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         image.isUserInteractionEnabled = true
         image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap)))
-        // Do any additional setup after loading the view.
     }
     @objc func imageTap() {
-        //self.present(ViewController())
-        //self.navigationController?.push(vViewController())
-        //self.performSegue(withIdentifier: "ViewController", sender: nil)
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
         self.present(vc, animated: true, completion: nil)
         

@@ -9,14 +9,20 @@
 /* Begin PBXBuildFile section */
 		0CF4954EBC4BC0255F872828 /* Pods_GP_v1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */; };
 		7924B91A23F949C000E889A2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7924B91923F949C000E889A2 /* Alamofire.framework */; };
+		7932B5A124001C8D009FE071 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7932B59F24001C8C009FE071 /* Assets.xcassets */; };
 		794255C823F6AA170051DE63 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794255C723F6AA170051DE63 /* Ticket.swift */; };
 		794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8B23FD4BA7003CDE02 /* City.swift */; };
 		794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */; };
+		794A3A9023FE7BC1003CDE02 /* ticketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */; };
+		794A3A9223FE89D4003CDE02 /* TicketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9123FE89D4003CDE02 /* TicketCell.swift */; };
+		794A3A9423FE962E003CDE02 /* ticketListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9323FE962E003CDE02 /* ticketListTableViewCell.swift */; };
+		794A3A9623FEB31D003CDE02 /* TicketInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */; };
+		794A3A9923FEB4A0003CDE02 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9823FEB4A0003CDE02 /* Extension.swift */; };
+		794A3A9B23FFF7C4003CDE02 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9A23FFF7C3003CDE02 /* File.swift */; };
 		797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC723E56CB500960C79 /* AppDelegate.swift */; };
 		797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC923E56CB500960C79 /* SceneDelegate.swift */; };
 		797F8BCC23E56CB500960C79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BCB23E56CB500960C79 /* ViewController.swift */; };
 		797F8BCF23E56CB500960C79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797F8BCD23E56CB500960C79 /* Main.storyboard */; };
-		797F8BD123E56CBA00960C79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797F8BD023E56CBA00960C79 /* Assets.xcassets */; };
 		797F8BD423E56CBA00960C79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797F8BD223E56CBA00960C79 /* LaunchScreen.storyboard */; };
 		797F8BDF23E56CBB00960C79 /* GP_v1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BDE23E56CBB00960C79 /* GP_v1Tests.swift */; };
 		797F8BEA23E56CBB00960C79 /* GP_v1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BE923E56CBB00960C79 /* GP_v1UITests.swift */; };
@@ -55,15 +61,21 @@
 		48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP_v1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7924B91523F945B500E889A2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7924B91923F949C000E889A2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7932B5A024001C8C009FE071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/Assets.xcassets; sourceTree = "<group>"; };
 		794255C723F6AA170051DE63 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		794A3A8B23FD4BA7003CDE02 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neighborhood.swift; sourceTree = "<group>"; };
+		794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticketListViewController.swift; sourceTree = "<group>"; };
+		794A3A9123FE89D4003CDE02 /* TicketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketCell.swift; sourceTree = "<group>"; };
+		794A3A9323FE962E003CDE02 /* ticketListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticketListTableViewCell.swift; sourceTree = "<group>"; };
+		794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoViewController.swift; sourceTree = "<group>"; };
+		794A3A9823FEB4A0003CDE02 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		794A3A9A23FFF7C3003CDE02 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		797F8BC423E56CB500960C79 /* GP-v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GP-v1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		797F8BC723E56CB500960C79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		797F8BC923E56CB500960C79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		797F8BCB23E56CB500960C79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		797F8BCE23E56CB500960C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		797F8BD023E56CBA00960C79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		797F8BD323E56CBA00960C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		797F8BD523E56CBA00960C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		797F8BDA23E56CBB00960C79 /* GP-v1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GP-v1Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +135,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		794A3A9723FEB480003CDE02 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				794A3A9823FEB4A0003CDE02 /* Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		797F8BBB23E56CB500960C79 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +173,7 @@
 				797F8BCB23E56CB500960C79 /* ViewController.swift */,
 				797F8C1223EA208600960C79 /* vViewController.swift */,
 				797F8BFA23E56D1E00960C79 /* Network */,
+				794A3A9723FEB480003CDE02 /* Extension */,
 				797F8BF923E56D1800960C79 /* Models */,
 				797F8BF823E56D1300960C79 /* View */,
 				797F8BF723E56D0800960C79 /* Controllers */,
@@ -187,6 +208,9 @@
 				797F8C1423EC2C7E00960C79 /* mapViewController.swift */,
 				797F8C1623EC323D00960C79 /* onboardingViewController.swift */,
 				798639F623EDCB2300131A9E /* ticketViewController.swift */,
+				794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */,
+				794A3A9323FE962E003CDE02 /* ticketListTableViewCell.swift */,
+				794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -196,7 +220,7 @@
 			children = (
 				797F8BCD23E56CB500960C79 /* Main.storyboard */,
 				797F8BD223E56CBA00960C79 /* LaunchScreen.storyboard */,
-				797F8BD023E56CBA00960C79 /* Assets.xcassets */,
+				7932B59F24001C8C009FE071 /* Assets.xcassets */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +235,7 @@
 				794255C723F6AA170051DE63 /* Ticket.swift */,
 				794A3A8B23FD4BA7003CDE02 /* City.swift */,
 				794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */,
+				794A3A9123FE89D4003CDE02 /* TicketCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +243,7 @@
 		797F8BFA23E56D1E00960C79 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				794A3A9A23FFF7C3003CDE02 /* File.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -341,7 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				797F8BD423E56CBA00960C79 /* LaunchScreen.storyboard in Resources */,
-				797F8BD123E56CBA00960C79 /* Assets.xcassets in Resources */,
+				7932B5A124001C8D009FE071 /* Assets.xcassets in Resources */,
 				797F8BCF23E56CB500960C79 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				797F8BCC23E56CB500960C79 /* ViewController.swift in Sources */,
+				794A3A9023FE7BC1003CDE02 /* ticketListViewController.swift in Sources */,
 				797F8BFE23E5C11400960C79 /* signinController.swift in Sources */,
 				797F8C0223E7135E00960C79 /* signinResponse.swift in Sources */,
 				797F8C1723EC323D00960C79 /* onboardingViewController.swift in Sources */,
@@ -434,11 +461,16 @@
 				794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */,
 				794255C823F6AA170051DE63 /* Ticket.swift in Sources */,
 				797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */,
+				794A3A9B23FFF7C4003CDE02 /* File.swift in Sources */,
+				794A3A9223FE89D4003CDE02 /* TicketCell.swift in Sources */,
 				798639F723EDCB2300131A9E /* ticketViewController.swift in Sources */,
+				794A3A9923FEB4A0003CDE02 /* Extension.swift in Sources */,
 				797F8C1323EA208600960C79 /* vViewController.swift in Sources */,
 				797F8C0023E5E5F500960C79 /* Signin.swift in Sources */,
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,
+				794A3A9423FE962E003CDE02 /* ticketListTableViewCell.swift in Sources */,
 				794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */,
+				794A3A9623FEB31D003CDE02 /* TicketInfoViewController.swift in Sources */,
 				797F8C0F23EA169300960C79 /* signup.swift in Sources */,
 				797F8C0D23EA0AF900960C79 /* signupViewController.swift in Sources */,
 				797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */,
@@ -477,6 +509,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7932B59F24001C8C009FE071 /* Assets.xcassets */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7932B5A024001C8C009FE071 /* Base */,
+			);
+			name = Assets.xcassets;
+			sourceTree = "<group>";
+		};
 		797F8BCD23E56CB500960C79 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

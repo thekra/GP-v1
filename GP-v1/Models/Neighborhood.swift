@@ -8,8 +8,27 @@
 
 import Foundation
 
-// MARK: - NeighborhoodElement
+//// MARK: - NeighborhoodElement
+//struct Neighborhood: Codable {
+//    let id: Int
+//    let nameAr, nameEn, cityID: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id
+//        case nameAr = "name_ar"
+//        case nameEn = "name_en"
+//        case cityID = "city_id"
+//    }
+//}
+
+
+// MARK: - Neighborhood
 struct Neighborhood: Codable {
+    let neighborhoods: [NeighborhoodElement]
+}
+
+// MARK: - NeighborhoodElement
+struct NeighborhoodElement: Codable {
     let id: Int
     let nameAr, nameEn, cityID: String
 
@@ -20,4 +39,3 @@ struct Neighborhood: Codable {
         case cityID = "city_id"
     }
 }
-

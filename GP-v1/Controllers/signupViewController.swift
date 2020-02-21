@@ -10,19 +10,14 @@ import UIKit
 import Alamofire
 
 class signupViewController: UIViewController {
-var token = UserDefaults.standard.string(forKey: "access_token") ?? ""
-    var namee = UserDefaults.standard.string(forKey: "name") ?? ""
+
     
     @IBOutlet var signupview: UIView!
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var conPasswordTF: UITextField!
     
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(alertController, animated: true, completion: nil)
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +53,16 @@ var token = UserDefaults.standard.string(forKey: "access_token") ?? ""
                 request.httpBody = try! JSONEncoder().encode(body)
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.addValue("application/json", forHTTPHeaderField: "Accept")
-                
-                Alamofire.request(request).responseJSON { response in
+            if Connectivity.isConnectedToInternet {
+                Alamofire.request(request).validate(statusCode: 200..<300).responseJSON { response in
                  print(response)
+                       
+                       switch response.result {
+                       case .success:
+                           print("Validation Successful")
+                           print(response.result.description)
+                    
+                    
                     guard let data = response.data else {
 
                         
@@ -70,37 +72,48 @@ var token = UserDefaults.standard.string(forKey: "access_token") ?? ""
                         }
                         return
                     }
+                           
                     let decoder = JSONDecoder()
                     do {
                         let responseObject =  try decoder.decode(SignupResponse.self, from: data)
-                        self.token = responseObject.accessToken
-                        //DispatchQueue.main.async {
                         print(responseObject)
                         
-                       // self.token = responseObject.accessToken
-                        //self.namee = responseObject.success.user_data.name
-                        //UserDefaults.standard.set(responseObject.accessToken, forKey: "access_token")
-                        //UserDefaults.standard.set(responseObject.user_data.email, forKey: "email")
+                        let token = responseObject.accessToken
+                        //let name = responseObject.
+                        
+                        UserDefaults.standard.set(token, forKey: "access_token")
+                       
                         //UserDefaults.standard.set(responseObject.user_data.name, forKey: "name")
                         
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
+                        self.present(vc, animated: true, completion: nil)
                         
-                            self.performSegue(withIdentifier: "signedup", sender: nil)
-                       // }
                     } catch let parsingError {
                         print("Error:(signup)", parsingError)
-                        //self.showAlert(title: "error", message: parsingError as! String)
+                       
+                    }
+                        
+                        case let .failure(error):
+                          
+                        if response.response?.statusCode == 401 {
+                                      self.showAlert(title: "Error", message: "Email/password are not correct")
+                           
+                                  } else if response.response?.statusCode == 422 {
+                                      self.showAlert(title: "Error", message: "Invalid input/Missing Input")
+                                  } else if response.response?.statusCode == 500 {
+                                      self.showAlert(title: "Error", message: "Server Error")
+                           
+                                  }
+                           print(error)
                     }
                     
-                }
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let v = segue.destination as! mapViewController
-        v.token = self.token
-       // v.name = self.namee
-        
-    }
+                } // End of Alamofire
+        } // End of connection
+        else {
+        self.showAlert(title: "Error", message: "No Interent Connection")
+        } // end of else connection
+    } // End of Signup Button
+ 
     
 
      // MARK: - Keyboard Functions
