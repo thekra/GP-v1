@@ -17,7 +17,7 @@ struct City: Codable {
 struct CityElement: Codable {
     let id: Int
     let nameAr, nameEn: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case nameAr = "name_ar"

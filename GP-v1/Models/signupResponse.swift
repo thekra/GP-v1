@@ -51,7 +51,7 @@ import Foundation
 struct SignupResponse: Codable {
     let accessToken, tokenType, expiresAt: String
     let userData: UserData
-
+    
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
         case tokenType = "token_type"
@@ -64,7 +64,7 @@ struct SignupResponse: Codable {
 struct UserData: Codable {
     let email, updatedAt, createdAt: String
     let id: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case email
         case updatedAt = "updated_at"

@@ -16,7 +16,7 @@ class ticketListViewController: UIViewController {
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     var ticketCell = TicketCell()
     var ticketID = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +41,7 @@ class ticketListViewController: UIViewController {
             "Accept": "application/json"
         ]
         
-       
+        
         
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
@@ -51,26 +51,26 @@ class ticketListViewController: UIViewController {
             print("Response ticket cell: \(response.response!)")
             
             guard let data = response.data else {
-
+                
                 DispatchQueue.main.async {
                     print("Response async error \(response.error!)")
                 }
                 return
             }
-             let decoder = JSONDecoder()
-                       do {
-                        let responseObject =  try decoder.decode(TicketCell.self, from: data)
-                        self.ticketCell = responseObject
-                        if self.ticketCell.isEmpty {
-                                   self.showAlert(title: "لا شيء", message: "لا يوجد لديك تذاكر")
-                               }
-                        print("Ticket Cell: \(self.ticketCell)")
-                        
-                        
-             } // end of do
-             catch let parsingError {
-                     print("Error", parsingError)
-             }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject =  try decoder.decode(TicketCell.self, from: data)
+                self.ticketCell = responseObject
+                if self.ticketCell.isEmpty {
+                    self.showAlert(title: "لا شيء", message: "لا يوجد لديك تذاكر")
+                }
+                print("Ticket Cell: \(self.ticketCell)")
+                
+                
+            } // end of do
+            catch let parsingError {
+                print("Error", parsingError)
+            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -78,14 +78,14 @@ class ticketListViewController: UIViewController {
     }
     
     @IBAction func goBack(_ sender: Any) {
-          go()
-       }
-       
-       func go() {
-           let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
-           self.present(vc, animated: true, completion: nil)
-       }
-
+        go()
+    }
+    
+    func go() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
 }
 
 extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource {
@@ -94,7 +94,7 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.ticketCell.count
     }
-
+    
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.ticketID = ticketCell[indexPath.row].ticket.id
@@ -114,14 +114,14 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
     
     // create a cell for each table view row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         // create a new cell if needed or reuse an old one
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! ticketListTableViewCell
-
+        
         // set the text from the data model
         
         cell.ticketInfo.text = "\(self.ticketCell[indexPath.row].ticket.id)معلومات التذكرة"
-
+        
         return cell
     }
 }

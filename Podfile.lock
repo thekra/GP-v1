@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.9.0)
+  - AlamofireImage (3.5.2):
+    - Alamofire (~> 4.8)
   - BonsaiController (5.0.3)
   - GoogleMaps (3.5.0):
     - GoogleMaps/Maps (= 3.5.0)
@@ -11,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireImage
   - BonsaiController
   - GoogleMaps
   - GooglePlaces
@@ -18,16 +21,18 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - AlamofireImage
     - BonsaiController
     - GoogleMaps
     - GooglePlaces
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   BonsaiController: e4b1e4272b7b11130b8d4b98dcd66d1450fb92ea
   GoogleMaps: 32ca02de09de357a10ac773f2c70f1986751392d
   GooglePlaces: be6f19fe8aa6ff0b5bcccfa1b8805cc977ea1450
 
-PODFILE CHECKSUM: 5815d19ddab4e747daba1aa14d3627642a8e403c
+PODFILE CHECKSUM: 0565c9cbb155eeb657e94b93726009cd5e15a615
 
 COCOAPODS: 1.8.4

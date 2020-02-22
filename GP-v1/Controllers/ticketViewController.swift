@@ -73,9 +73,9 @@ class ticketViewController:  UIViewController {
             setupPic(pic: pic_2, action: #selector(self.imageTap_2))
             
         case 2: setupPic(pic: pic_3, action: #selector(self.imageTap_3))
-       
+            
         case 3: setupPic(pic: pic_4, action: #selector(self.imageTap_4))
-          
+            
         default:
             setupPic(pic: pic_1, action: #selector(self.imageTap))
         }
@@ -109,26 +109,26 @@ class ticketViewController:  UIViewController {
         self.imgView = pic_4
         showImage()
     }
-
+    
     func createPicker() {
         picker.delegate = self
         picker.dataSource = self
         choosenNei.inputView = picker
         choosenNei.inputAccessoryView = createToolBar()
     }
-
+    
     func createToolBar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-
+        
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissKeyboard))
-
+        
         toolbar.setItems([doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
         
         return toolbar
     }
-
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -163,102 +163,102 @@ class ticketViewController:  UIViewController {
             print("The neighborhood must be between 3377 and 3437.")
             self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
         }
-    if Connectivity.isConnectedToInternet {
-        Alamofire.upload(multipartFormData:
-            { (multipartFormData ) in
-               
-                    for i in 0..<self.imgArr.count {
-                    multipartFormData.append(
-                        self.imgArr[i] ,
-                        withName: "photos[\(i)]",
-                        fileName: "swift_file_\(i).jpeg",
-                        mimeType: "image/jpeg"
-                    )
-                
-            }
-                
-                for (key, value) in parameters {
+        if Connectivity.isConnectedToInternet {
+            Alamofire.upload(multipartFormData:
+                { (multipartFormData ) in
                     
+                    for i in 0..<self.imgArr.count {
+                        multipartFormData.append(
+                            self.imgArr[i] ,
+                            withName: "photos[\(i)]",
+                            fileName: "swift_file_\(i).jpeg",
+                            mimeType: "image/jpeg"
+                        )
+                        
+                    }
+                    
+                    for (key, value) in parameters {
+                        
                         if let temp = value as? String {
                             multipartFormData.append(temp.data(using: .utf8)!, withName: key)
+                        }
+                        
+                        if let temp = value as? Int {
+                            multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
+                        }
+                        
+                        if let temp = value as? Double {
+                            multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
+                        }
+                        
+                        print("Sent Parameters: \(parameters)")
                     }
+            }, to: urlString,
+               method: .post,
+               headers: headers,
+               encodingCompletion: {
+                encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
                     
-                    if let temp = value as? Int {
-                        multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-                    }
-                    
-                    if let temp = value as? Double {
-                        multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-                    }
-                    
-                    print("Sent Parameters: \(parameters)")
-                }
-        }, to: urlString,
-           method: .post,
-           headers: headers,
-           encodingCompletion: {
-            encodingResult in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                
-                upload.responseData { response in
-                    debugPrint("SUCCESS RESPONSE: \(response)")
-                    debugPrint(response.debugDescription)
-                    print("REsponse: \(response)")
-                    print("REsponde Data: \(response.data)")
-                    print("REsponse Result: \(response.result)")
-                    print("REsponse REquest: \(response.request))")
-                    print("REsponse Description: \(response.description))")
-                    print("REsponse DEbug Desc: \(response.debugDescription))")
-                    print("REsponse Metrices: \(response.metrics))")
-                    
-                   guard let data = response.data else {
-
-                       DispatchQueue.main.async {
-                           print(response.error!)
-                       }
-                       return
-                   }
-                    let decoder = JSONDecoder()
-                              do {
-                                let responseObject =  try decoder.decode(TicketResponse.self, from: data)
-                                print("response Object MESSAGE: \([responseObject].self)")
-                                
-                    } // end of do
-                    catch let parsingError {
+                    upload.responseData { response in
+                        debugPrint("SUCCESS RESPONSE: \(response)")
+                        debugPrint(response.debugDescription)
+                        print("REsponse: \(response)")
+                        print("REsponde Data: \(response.data)")
+                        print("REsponse Result: \(response.result)")
+                        print("REsponse REquest: \(response.request))")
+                        print("REsponse Description: \(response.description))")
+                        print("REsponse DEbug Desc: \(response.debugDescription))")
+                        print("REsponse Metrices: \(response.metrics))")
+                        
+                        guard let data = response.data else {
+                            
+                            DispatchQueue.main.async {
+                                print(response.error!)
+                            }
+                            return
+                        }
+                        let decoder = JSONDecoder()
+                        do {
+                            let responseObject =  try decoder.decode(TicketResponse.self, from: data)
+                            print("response Object MESSAGE: \([responseObject].self)")
+                            
+                        } // end of do
+                        catch let parsingError {
                             print("Error", parsingError)
-                    } // End of catch
+                        } // End of catch
+                        
+                    } // End of upload
                     
-                } // End of upload
-                
-                upload.responseJSON { response in
-                    
-                    if  let statusCode = response.response?.statusCode{
-
-                    if(statusCode == 201){
-                     //internet available
-                      }
-                    }else{
-                    //internet not available
-
+                    upload.responseJSON { response in
+                        
+                        if  let statusCode = response.response?.statusCode{
+                            
+                            if(statusCode == 201){
+                                //internet available
+                            }
+                        }else{
+                            //internet not available
+                            
+                        }
+                        print("the resopnse code is : \(response.response?.statusCode)")
+                        
+                        // من هنا يطلع رسالة الايرور تمام
+                        print("the response is : \(response)")
                     }
-                print("the resopnse code is : \(response.response?.statusCode)")
                     
-                    // من هنا يطلع رسالة الايرور تمام
-                    print("the response is : \(response)")
-                                    }
-                
-            case .failure(let encodingError):
-                // hide progressbas here
-                print("ERROR RESPONSE: \(encodingError)")
-            }
-        })
-        
-        goToTicketList()
-        //dismiss(animated: true, completion: nil)
+                case .failure(let encodingError):
+                    // hide progressbas here
+                    print("ERROR RESPONSE: \(encodingError)")
+                }
+            })
+            
+            goToTicketList()
+            //dismiss(animated: true, completion: nil)
         } // End of Connection check
         else {
-        self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
         } // end of else connection
         
     } // End of ConfirmTicket Button
@@ -268,7 +268,7 @@ class ticketViewController:  UIViewController {
         //vc.tableView.reloadData()
         self.present(vc, animated: true, completion: nil)
     }
-
+    
     func getNeighborhoodList() {
         
         let urlString = "http://www.ai-rdm.website/api/ticket/neighborhoods"
@@ -287,24 +287,24 @@ class ticketViewController:  UIViewController {
             print(response.response!)
             
             guard let data = response.data else {
-
+                
                 DispatchQueue.main.async {
                     print(response.error!)
                 }
                 return
             }
-             let decoder = JSONDecoder()
-                       do {
-                        let responseObject =  try decoder.decode(Neighborhood.self, from: data)
-                        print("response Object MESSAGE: \(responseObject.self)")
-                        self.NeiArr = [responseObject.self]
-                        print("NeiArr\(self.NeiArr)")
-                        print("NeiArr Count\(self.NeiArr[0].neighborhoods.count)")
-                        
-             } // end of do
-             catch let parsingError {
-                     print("Error", parsingError)
-             }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject =  try decoder.decode(Neighborhood.self, from: data)
+                print("response Object MESSAGE: \(responseObject.self)")
+                self.NeiArr = [responseObject.self]
+                print("NeiArr\(self.NeiArr)")
+                print("NeiArr Count\(self.NeiArr[0].neighborhoods.count)")
+                
+            } // end of do
+            catch let parsingError {
+                print("Error", parsingError)
+            }
             DispatchQueue.main.async {
                 self.picker.reloadComponent(0)
             }
@@ -338,20 +338,20 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
 
 
 extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.NeiArr[0].neighborhoods.count
     }
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-       
+        
         return NeiArr[0].neighborhoods[row].nameAr
     }
-//
+    //
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.cityID = Int(NeiArr[0].self.neighborhoods[row].cityID)!
         print("City ID: \(self.cityID)")

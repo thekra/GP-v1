@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 class onboardingViewController: UIViewController {
-
+    
     @IBOutlet weak var image: UIImageView!
     let locationManager = CLLocationManager()
     
@@ -28,21 +28,21 @@ class onboardingViewController: UIViewController {
         let locStatus = CLLocationManager.authorizationStatus()
         
         switch locStatus {
-           case .notDetermined:
-              locationManager.requestWhenInUseAuthorization()
-           return
-           case .denied, .restricted:
-              let alert = UIAlertController(title: "Location Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
-              let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-              alert.addAction(okAction)
-              present(alert, animated: true, completion: nil)
-           return
-           case .authorizedAlways, .authorizedWhenInUse:
-           break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            return
+        case .denied, .restricted:
+            let alert = UIAlertController(title: "Location Services are disabled", message: "Please enable Location Services in your Settings", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
         }
     }
-//    @IBAction func pressed(_ sender: UIButton) {
-//        performSegue(withIdentifier: "test", sender: nil)
-//    }
+    //    @IBAction func pressed(_ sender: UIButton) {
+    //        performSegue(withIdentifier: "test", sender: nil)
+    //    }
     
 }

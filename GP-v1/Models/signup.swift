@@ -12,8 +12,8 @@ struct Signup: Codable {
     let email: String
     let password: String
     let password_confirmation: String
-//    let phone: String
-//    let name: String
+    //    let phone: String
+    //    let name: String
     
     enum CodingKeys: String, CodingKey {
         case email, password, password_confirmation

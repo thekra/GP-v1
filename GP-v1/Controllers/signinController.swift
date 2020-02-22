@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 
 class signinController: UIViewController {
-        
+    
     @IBOutlet var mainV: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -21,22 +21,22 @@ class signinController: UIViewController {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         mainV.addGestureRecognizer(tap)
-
+        
     }
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
-       super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         subscribeToKeyboardNotification()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.unsubscribeToKeyboardNotification()
     }
-
+    
     //MARK: - dismiss keyboard function
     @objc func dismissKeyboard() {
-      mainV.endEditing(true)
+        mainV.endEditing(true)
     }
     
     //MARK: - Signup Button
@@ -51,7 +51,7 @@ class signinController: UIViewController {
         
         
         let body = Signin(email: emailTextField.text!, password: passwordTextField.text!)
-       
+        
         
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
@@ -60,60 +60,60 @@ class signinController: UIViewController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
-     if Connectivity.isConnectedToInternet {
-        Alamofire.request(request).validate(statusCode: 200..<300).responseJSON { response in
-      print(response)
-            
-            switch response.result {
-            case .success:
-                print("Validation Successful")
-                print(response.result.description)
-
-                guard let data = response.data else {
-
+        if Connectivity.isConnectedToInternet {
+            Alamofire.request(request).validate(statusCode: 200..<300).responseJSON { response in
+                print(response)
+                
+                switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    print(response.result.description)
                     
-                    DispatchQueue.main.async {
-                        print(response.error!)
+                    guard let data = response.data else {
+                        
+                        
+                        DispatchQueue.main.async {
+                            print(response.error!)
+                        }
+                        return
                     }
-                    return
-                }
-                
-                let decoder = JSONDecoder()
-                do {
-                    let responseObject =  try decoder.decode(SigninResponse.self, from: data)
                     
-                      let tokenn = responseObject.accessToken
-                    
-                    print("Token: \(tokenn)")
-                    UserDefaults.standard.set(tokenn, forKey: "access_token")
+                    let decoder = JSONDecoder()
+                    do {
+                        let responseObject =  try decoder.decode(SigninResponse.self, from: data)
+                        
+                        let tokenn = responseObject.accessToken
+                        
+                        print("Token: \(tokenn)")
+                        UserDefaults.standard.set(tokenn, forKey: "access_token")
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
-                    self.present(vc, animated: true, completion: nil)
-                    
-                }  catch let parsingError {
+                        self.present(vc, animated: true, completion: nil)
+                        
+                    }  catch let parsingError {
                         print("Error", parsingError)
-                }
-                
-            case let .failure(error):
-                   
-                 if response.response?.statusCode == 401 {
-                               self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
+                    }
                     
-                           } else if response.response?.statusCode == 422 {
-                               self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود")
-                           } else if response.response?.statusCode == 500 {
-                               self.showAlert(title: "خطأ", message: "خطأ في السيرفر")
+                case let .failure(error):
                     
-                           }
+                    if response.response?.statusCode == 401 {
+                        self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
+                        
+                    } else if response.response?.statusCode == 422 {
+                        self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود")
+                    } else if response.response?.statusCode == 500 {
+                        self.showAlert(title: "خطأ", message: "خطأ في السيرفر")
+                        
+                    }
                     print(error)
                 }
-         
-        } // End of Alamofire
-     
-     } // End of connection
-     else {
-        self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+                
+            } // End of Alamofire
+            
+        } // End of connection
+        else {
+            self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
         } // end of else connection
-} // End of signin button
+    } // End of signin button
     
     
     // MARK: - Keyboard Functions
@@ -135,15 +135,15 @@ class signinController: UIViewController {
     
     @objc func keyboardWillShow(_ notification: Notification) {
         if passwordTextField.isFirstResponder{
-        self.view.frame.origin.y =
-            getKeyboardHeight(notification) * -1
+            self.view.frame.origin.y =
+                getKeyboardHeight(notification) * -1
         }
     }
-
+    
     @objc func keyboardWillHide(_ notifcation: Notification) {
         if passwordTextField.isFirstResponder {
             self.view.frame.origin.y = 0}
-        }
+    }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue

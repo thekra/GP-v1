@@ -9,25 +9,25 @@
 import UIKit
 
 class ticketListTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var ticketInfo: UILabel!
-//    @IBOutlet weak var content: UIView!
-//
-//    override open var frame: CGRect {
-//        get {
-//            return super.frame
-//        }
-//        set (newFrame) {
-//            var frame =  newFrame
-//            frame.origin.y += 10
-//            frame.origin.x += 10
-//            frame.size.height -= 1
-//            frame.size.width -= 2 * 10
-//            super.frame = frame
-//        }
-//    }
+    //    @IBOutlet weak var content: UIView!
+    //
+    //    override open var frame: CGRect {
+    //        get {
+    //            return super.frame
+    //        }
+    //        set (newFrame) {
+    //            var frame =  newFrame
+    //            frame.origin.y += 10
+    //            frame.origin.x += 10
+    //            frame.size.height -= 1
+    //            frame.size.width -= 2 * 10
+    //            super.frame = frame
+    //        }
+    //    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,11 +36,11 @@ class ticketListTableViewCell: UITableViewCell {
         layer.cornerRadius = 15
         layer.masksToBounds = false
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }

@@ -9,13 +9,13 @@
 import Foundation
 
 /*struct signin: Codable {
-  let email: String
-  let password: String
-  
-  enum CodingKeys: String, CodingKey {
-    case email,password
-  }
-}*/
+ let email: String
+ let password: String
+ 
+ enum CodingKeys: String, CodingKey {
+ case email,password
+ }
+ }*/
 
 struct Signin: Codable {
     let email: String

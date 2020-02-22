@@ -56,54 +56,54 @@ import Foundation
 
 // MARK: - User
 /*struct Users: Codable {
-    let id: Int
-    let name, email, gender, age: String
-    let isCompany, type: String
-    let emailVerifiedAt: JSONNull?
-    let createdAt, updatedAt: String
-    
-    enum CodingKeys: String, CodingKey {
-        case id, name, email, gender, age, isCompany, type
-        case emailVerifiedAt = "email_verified_at"
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-    }
-}
+ let id: Int
+ let name, email, gender, age: String
+ let isCompany, type: String
+ let emailVerifiedAt: JSONNull?
+ let createdAt, updatedAt: String
  
-
-// MARK: - Encode/decode helpers
-
-class JSONNull: Codable, Hashable {
-    
-    public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        return true
-    }
-    
+ enum CodingKeys: String, CodingKey {
+ case id, name, email, gender, age, isCompany, type
+ case emailVerifiedAt = "email_verified_at"
+ case createdAt = "created_at"
+ case updatedAt = "updated_at"
+ }
+ }
+ 
+ 
+ // MARK: - Encode/decode helpers
+ 
+ class JSONNull: Codable, Hashable {
+ 
+ public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
+ return true
+ }
+ 
  public var hashValue: Int {
-        return 0
-    }
-    
-    public init() {}
-    
-    public required init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if !container.decodeNil() {
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
-        }
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encodeNil()
-    }
-}*/
+ return 0
+ }
+ 
+ public init() {}
+ 
+ public required init(from decoder: Decoder) throws {
+ let container = try decoder.singleValueContainer()
+ if !container.decodeNil() {
+ throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
+ }
+ }
+ 
+ public func encode(to encoder: Encoder) throws {
+ var container = encoder.singleValueContainer()
+ try container.encodeNil()
+ }
+ }*/
 
 
 
 struct SigninResponse: Codable {
     let accessToken, tokenType, expiresAt: String
     let userData: User_Data
-
+    
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
         case tokenType = "token_type"
@@ -119,7 +119,7 @@ struct User_Data: Codable {
     let email, active, roleID: String
     let company: JSONNull?
     let createdAt, updatedAt: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, name, phone, email, active
         case roleID = "role_id"
@@ -132,24 +132,24 @@ struct User_Data: Codable {
 // MARK: - Encode/decode helpers
 
 class JSONNull: Codable, Hashable {
-
+    
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
     }
-
+    
     public var hashValue: Int {
         return 0
     }
-
+    
     public init() {}
-
+    
     public required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if !container.decodeNil() {
             throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
         }
     }
-
+    
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encodeNil()

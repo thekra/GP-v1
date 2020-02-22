@@ -8,6 +8,7 @@ target 'GP-v1' do
 
   # Pods for GP-v1
 pod 'Alamofire'
+pod 'AlamofireImage'
 pod 'GoogleMaps'
   pod 'GooglePlaces'
 pod 'BonsaiController'
