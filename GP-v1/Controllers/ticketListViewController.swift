@@ -20,9 +20,12 @@ class ticketListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getTicketsList()
+        
         tableView.delegate = self
         tableView.dataSource = self
+        //tableView.reloadData()
+        getTicketsList()
+        
         tableView.layer.cornerRadius = 30
         
     }
@@ -38,17 +41,19 @@ class ticketListViewController: UIViewController {
             "Accept": "application/json"
         ]
         
+       
+        
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
             let result = response.result.value as? [[String : AnyObject]]
-            print(result!)
+            print("Result ticket cell: \(result!)")
             
-            print(response.response!)
+            print("Response ticket cell: \(response.response!)")
             
             guard let data = response.data else {
 
                 DispatchQueue.main.async {
-                    print(response.error!)
+                    print("Response async error \(response.error!)")
                 }
                 return
             }
@@ -56,6 +61,9 @@ class ticketListViewController: UIViewController {
                        do {
                         let responseObject =  try decoder.decode(TicketCell.self, from: data)
                         self.ticketCell = responseObject
+                        if self.ticketCell.isEmpty {
+                                   self.showAlert(title: "لا شيء", message: "لا يوجد لديك تذاكر")
+                               }
                         print("Ticket Cell: \(self.ticketCell)")
                         
                         
@@ -69,7 +77,14 @@ class ticketListViewController: UIViewController {
         }
     }
     
-    
+    @IBAction func goBack(_ sender: Any) {
+          go()
+       }
+       
+       func go() {
+           let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
+           self.present(vc, animated: true, completion: nil)
+       }
 
 }
 
@@ -85,6 +100,16 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         self.ticketID = ticketCell[indexPath.row].ticket.id
         print("TicketID: \(ticketID)")
         print("You tapped cell number \(indexPath.row).")
+        performSegue(withIdentifier: "showDetails", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let des = segue.destination as? TicketInfoViewController {
+            des.ticket = [ticketCell[(tableView.indexPathForSelectedRow?.row)!]]
+            //des.ticketID = self.ticketID
+        }
+        
     }
     
     // create a cell for each table view row

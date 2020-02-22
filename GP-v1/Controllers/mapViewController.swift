@@ -13,7 +13,8 @@ import BonsaiController
 class mapViewController: UIViewController {
 
     var locationManager = CLLocationManager()
-  
+    
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var mv: GMSMapView!
     @IBOutlet weak var confirmButton: UIButton!
     var longitude = 0.0
@@ -42,6 +43,14 @@ class mapViewController: UIViewController {
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
         
+        profileImage.isUserInteractionEnabled = true
+               profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTap)))
+        }
+    
+           @objc func imageTap() {
+               
+               let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
+               self.present(vc, animated: true, completion: nil)
     }
 
     @IBAction func confirmPressed(_ sender: Any) {

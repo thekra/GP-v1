@@ -1,5 +1,5 @@
 //
-//  Ticket.swift
+//  TicketResponse.swift
 //  GP-v1
 //
 //  Created by Thekra Faisal on 20/06/1441 AH.
@@ -45,7 +45,7 @@ import Foundation
 
 
 // MARK: - Ticket
-struct Ticket: Codable {
+struct TicketResponse: Codable {
     let message: String
     let errors: Errors
 }

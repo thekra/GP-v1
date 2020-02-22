@@ -96,12 +96,12 @@ class signinController: UIViewController {
             case let .failure(error):
                    
                  if response.response?.statusCode == 401 {
-                               self.showAlert(title: "Error", message: "Email/password are not correct")
+                               self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
                     
                            } else if response.response?.statusCode == 422 {
-                               self.showAlert(title: "Error", message: "Invalid input/Missing Input")
+                               self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود")
                            } else if response.response?.statusCode == 500 {
-                               self.showAlert(title: "Error", message: "Server Error")
+                               self.showAlert(title: "خطأ", message: "خطأ في السيرفر")
                     
                            }
                     print(error)
@@ -111,7 +111,7 @@ class signinController: UIViewController {
      
      } // End of connection
      else {
-        self.showAlert(title: "Error", message: "No Interent Connection")
+        self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
         } // end of else connection
 } // End of signin button
     

@@ -40,7 +40,7 @@ class ticketViewController:  UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        textView.text = "." // Temporary till I figure it out
         getNeighborhoodList()
         // Text View UI
         setupTextViewUI()
@@ -152,10 +152,21 @@ class ticketViewController:  UIViewController {
             "neighborhood": self.neighboorhoodID
             ] as [String : AnyObject]
         
-    //if Connectivity.isConnectedToInternet {
+        if self.imgArr.isEmpty {
+            print("Array Count: \(self.imgArr.count)")
+            self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
+        }
+        switch self.neighboorhoodID {
+        case 3377...3437:
+            print("passed")
+        default:
+            print("The neighborhood must be between 3377 and 3437.")
+            self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
+        }
+    if Connectivity.isConnectedToInternet {
         Alamofire.upload(multipartFormData:
             { (multipartFormData ) in
-                
+               
                     for i in 0..<self.imgArr.count {
                     multipartFormData.append(
                         self.imgArr[i] ,
@@ -163,7 +174,8 @@ class ticketViewController:  UIViewController {
                         fileName: "swift_file_\(i).jpeg",
                         mimeType: "image/jpeg"
                     )
-                }
+                
+            }
                 
                 for (key, value) in parameters {
                     
@@ -179,7 +191,7 @@ class ticketViewController:  UIViewController {
                         multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
                     }
                     
-                    print(parameters)
+                    print("Sent Parameters: \(parameters)")
                 }
         }, to: urlString,
            method: .post,
@@ -209,7 +221,7 @@ class ticketViewController:  UIViewController {
                    }
                     let decoder = JSONDecoder()
                               do {
-                                let responseObject =  try decoder.decode(Ticket.self, from: data)
+                                let responseObject =  try decoder.decode(TicketResponse.self, from: data)
                                 print("response Object MESSAGE: \([responseObject].self)")
                                 
                     } // end of do
@@ -244,12 +256,16 @@ class ticketViewController:  UIViewController {
         
         goToTicketList()
         //dismiss(animated: true, completion: nil)
-       // }
+        } // End of Connection check
+        else {
+        self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+        } // end of else connection
+        
     } // End of ConfirmTicket Button
     
     func goToTicketList() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
-        //vc.token = self.token
+        //vc.tableView.reloadData()
         self.present(vc, animated: true, completion: nil)
     }
 
@@ -332,12 +348,16 @@ extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.cityID = Int(NeiArr[0].self.neighborhoods[row].cityID)!
-        self.neighboorhoodID = NeiArr[0].self.neighborhoods[row].id
+       
         return NeiArr[0].neighborhoods[row].nameAr
     }
 //
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.cityID = Int(NeiArr[0].self.neighborhoods[row].cityID)!
+        print("City ID: \(self.cityID)")
+        self.neighboorhoodID = NeiArr[0].neighborhoods[row].id
+        print("Nei ID: \(self.neighboorhoodID)")
+        print("Nei name: \(NeiArr[0].neighborhoods[row].nameAr)")
         selectedNeighborhood = NeiArr[0].self.neighborhoods[row].nameAr
         choosenNei.text = selectedNeighborhood
     }

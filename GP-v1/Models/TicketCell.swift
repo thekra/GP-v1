@@ -7,7 +7,7 @@ import Foundation
 
 // MARK: - TicketCellElement
 struct TicketCellElement: Codable {
-    let ticket: Tickett
+    let ticket: Ticket
     let location: [Locationn]
     let photos: [Photo]
     let ticketHistories, userRating: [JSONAny]
@@ -16,22 +16,24 @@ struct TicketCellElement: Codable {
 // MARK: - Location
 struct Locationn: Codable {
     let id: Int
-    let latitude, longitude: String
-    let city: Cityy
-    let neighborhood: Neighborhoodd
+    let latitude, longitude, city, neighborhood: String
+    //, neighborhood
+//    let city: Cityy
+   //let neighborhood: Neighborhood
 }
 
-enum Cityy: String, Codable {
-    case مكةالمكرمة = "مكة المكرمة"
-}
-
-enum Neighborhoodd: String, Codable {
-    case الجميزة = "الجميزة"
-    case الخالدية = "الخالدية"
-    case العدل = "العدل"
-    case جبلالنور = "جبل النور"
-
-}
+//enum Cityy: String, Codable {
+//    case مكةالمكرمة = "مكة المكرمة"
+//}
+//
+//enum Neighborhoodd: String, Codable {
+//    case الجميزة = "الجميزة"
+//    case الخالدية = "الخالدية"
+//    case العدل = "العدل"
+//    case جبلالنور = "جبل النور"
+//    case الروضة = "الروضة"
+//    case الهنداوية = "الهنداوية"
+//}
 
 // MARK: - Photo
 struct Photo: Codable {
@@ -47,7 +49,7 @@ struct Photo: Codable {
 }
 
 // MARK: - Ticket
-struct Tickett: Codable {
+struct Ticket: Codable {
     let id: Int
     let ticketDescription: String
     let status: Status
