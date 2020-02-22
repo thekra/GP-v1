@@ -17,23 +17,8 @@ struct TicketCellElement: Codable {
 struct Locationn: Codable {
     let id: Int
     let latitude, longitude, city, neighborhood: String
-    //, neighborhood
-    //    let city: Cityy
-    //let neighborhood: Neighborhood
 }
 
-//enum Cityy: String, Codable {
-//    case مكةالمكرمة = "مكة المكرمة"
-//}
-//
-//enum Neighborhoodd: String, Codable {
-//    case الجميزة = "الجميزة"
-//    case الخالدية = "الخالدية"
-//    case العدل = "العدل"
-//    case جبلالنور = "جبل النور"
-//    case الروضة = "الروضة"
-//    case الهنداوية = "الهنداوية"
-//}
 
 // MARK: - Photo
 struct Photo: Codable {
@@ -55,14 +40,14 @@ struct Ticket: Codable {
     let status: Status
     let classification: Classification
     let locationID: String
-    // let userRatingID: JSONNull?
+    let userRatingID: JSONNull?
     
     enum CodingKeys: String, CodingKey {
         case id
         case ticketDescription = "description"
         case status, classification
         case locationID = "location_id"
-        // case userRatingID = "user_rating_id"
+        case userRatingID = "user_rating_id"
     }
 }
 

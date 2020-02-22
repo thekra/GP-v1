@@ -16,6 +16,7 @@ class ticketListViewController: UIViewController {
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     var ticketCell = TicketCell()
     var ticketID = 0
+    //var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +24,20 @@ class ticketListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.reloadData()
         getTicketsList()
-        
+        //startTimer()
         tableView.layer.cornerRadius = 30
         
     }
+//    func startTimer() {
+////        let timer =
+//        Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.getTicketsList), userInfo: nil, repeats: true)
+//        //timer.invalidate()
+//    }
     
-    
-    func getTicketsList() {
+    @objc func getTicketsList() {
+        
+        //var temp = TicketCell()
         
         let urlString = "http://www.ai-rdm.website/api/ticket/list"
         
@@ -60,7 +66,9 @@ class ticketListViewController: UIViewController {
             let decoder = JSONDecoder()
             do {
                 let responseObject =  try decoder.decode(TicketCell.self, from: data)
+                //temp = responseObject
                 self.ticketCell = responseObject
+               // if temp.isEmpty {
                 if self.ticketCell.isEmpty {
                     self.showAlert(title: "لا شيء", message: "لا يوجد لديك تذاكر")
                 }
@@ -72,10 +80,17 @@ class ticketListViewController: UIViewController {
                 print("Error", parsingError)
             }
             DispatchQueue.main.async {
+               // self.ticketCell = temp
                 self.tableView.reloadData()
+                //self.timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.getTicketsList), userInfo: nil, repeats: false)
             }
         }
+        
     }
+//
+//    deinit {
+//        self.timer.invalidate()
+//    }
     
     @IBAction func goBack(_ sender: Any) {
         go()
@@ -107,7 +122,6 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         
         if let des = segue.destination as? TicketInfoViewController {
             des.ticket = [ticketCell[(tableView.indexPathForSelectedRow?.row)!]]
-            //des.ticketID = self.ticketID
         }
         
     }
