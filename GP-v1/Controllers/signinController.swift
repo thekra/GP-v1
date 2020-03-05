@@ -15,15 +15,19 @@ class signinController: UIViewController {
     @IBOutlet var mainV: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signinButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         mainV.addGestureRecognizer(tap)
-        
+        setupButtonUI()
     }
-    
+    func setupButtonUI() {
+        signinButton.clipsToBounds = true
+        signinButton.layer.cornerRadius = 20
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,6 +55,7 @@ class signinController: UIViewController {
         
         
         let body = Signin(email: emailTextField.text!, password: passwordTextField.text!)
+        //, name: "New_User101", phone: "0551538433")
         
         
         let url = URL(string: urlString)
@@ -83,9 +88,18 @@ class signinController: UIViewController {
                         let responseObject =  try decoder.decode(SigninResponse.self, from: data)
                         
                         let tokenn = responseObject.accessToken
+                        let name = responseObject.userData.name
+                        let phone = responseObject.userData.phone
                         
                         print("Token: \(tokenn)")
                         UserDefaults.standard.set(tokenn, forKey: "access_token")
+                        
+                        UserDefaults.standard.set(name, forKey: "name")
+                        
+                        UserDefaults.standard.set(phone, forKey: "phone")
+                        
+                       // (responseObject.userData.name as AnyObject? as? String) ?? ""
+                        
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
                         self.present(vc, animated: true, completion: nil)
                         

@@ -35,29 +35,43 @@ struct Photo: Codable {
 
 // MARK: - Ticket
 struct Ticket: Codable {
+//    let id: Int
+//    let ticketDescription: String
+//    let status: Status
+//    let classification: Classification
+//    let locationID: String
+//    let userRatingID: JSONNull?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case id
+//        case ticketDescription = "description"
+//        case status, classification
+//        case locationID = "location_id"
+//        case userRatingID = "user_rating_id"
+//    }
     let id: Int
-    let ticketDescription: String
-    let status: Status
-    let classification: Classification
-    let locationID: String
-    let userRatingID: JSONNull?
-    
+    let ticketDescription, status, statusAr, classification: String
+    let classificationAr, createdAt, updatedAt: String
+
     enum CodingKeys: String, CodingKey {
         case id
         case ticketDescription = "description"
-        case status, classification
-        case locationID = "location_id"
-        case userRatingID = "user_rating_id"
+        case status
+        case statusAr = "status_ar"
+        case classification
+        case classificationAr = "classification_ar"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }
 
-enum Classification: String, Codable {
-    case other = "OTHER"
-}
-
-enum Status: String, Codable {
-    case statusOPEN = "OPEN"
-}
+//enum Classification: String, Codable {
+//    case other = "OTHER"
+//}
+//
+//enum Status: String, Codable {
+//    case statusOPEN = "OPEN"
+//}
 
 typealias TicketCell = [TicketCellElement]
 

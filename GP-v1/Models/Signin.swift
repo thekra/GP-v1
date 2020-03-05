@@ -8,20 +8,13 @@
 
 import Foundation
 
-/*struct signin: Codable {
- let email: String
- let password: String
- 
- enum CodingKeys: String, CodingKey {
- case email,password
- }
- }*/
-
 struct Signin: Codable {
     let email: String
     let password: String
+    //let name, phone: String
     
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys: CodingKey {
         case email, password
+        //, name, phone
     }
 }

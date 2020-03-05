@@ -19,12 +19,12 @@ class mapViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     var longitude = 0.0
     var latitude = 0.0
-    var token = UserDefaults.standard.string(forKey: "access_token")
+   // var token = UserDefaults.standard.string(forKey: "access_token")
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print("Token(mapViewDidLoad): \(self.token)")
+       // print("Token(mapViewDidLoad): \(self.token)")
         
         let camera = GMSCameraPosition.camera(withLatitude: 21.422510, longitude: 39.826168, zoom: 12)
         mv.camera = camera

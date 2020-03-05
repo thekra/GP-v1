@@ -54,6 +54,10 @@ class TicketInfoViewController: UIViewController {
 //    }
  
     }
+    @IBAction func deleteTicket(_ sender: Any) {
+        
+    }
+    
     
     func setImage(img: String, pic: UIImageView) {
         //var images = [Data]()
@@ -119,6 +123,8 @@ class TicketInfoViewController: UIViewController {
 //            }
         }
     }
+    
+    
 }
 
 

@@ -16,6 +16,7 @@ class signupViewController: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var conPasswordTF: UITextField!
+    @IBOutlet weak var signupButton: UIButton!
     
     
     
@@ -24,7 +25,15 @@ class signupViewController: UIViewController {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         signupview.addGestureRecognizer(tap)
+        
+        setupButtonUI()
     }
+    
+    func setupButtonUI() {
+        signupButton.clipsToBounds = true
+        signupButton.layer.cornerRadius = 20
+    }
+    
     //MARK: - dismiss keyboard function
     @objc func dismissKeyboard() {
         signupview.endEditing(true)

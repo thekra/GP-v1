@@ -156,6 +156,7 @@ class ticketViewController:  UIViewController {
             print("Array Count: \(self.imgArr.count)")
             self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
         }
+        
         switch self.neighboorhoodID {
         case 3377...3437:
             print("passed")
@@ -163,6 +164,7 @@ class ticketViewController:  UIViewController {
             print("The neighborhood must be between 3377 and 3437.")
             self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
         }
+        
         if Connectivity.isConnectedToInternet {
             Alamofire.upload(multipartFormData:
                 { (multipartFormData ) in
@@ -205,12 +207,6 @@ class ticketViewController:  UIViewController {
                         debugPrint("SUCCESS RESPONSE: \(response)")
                         debugPrint(response.debugDescription)
                         print("REsponse: \(response)")
-                        print("REsponde Data: \(response.data)")
-                        print("REsponse Result: \(response.result)")
-                        print("REsponse REquest: \(response.request))")
-                        print("REsponse Description: \(response.description))")
-                        print("REsponse DEbug Desc: \(response.debugDescription))")
-                        print("REsponse Metrices: \(response.metrics))")
                         
                         guard let data = response.data else {
                             
@@ -255,7 +251,7 @@ class ticketViewController:  UIViewController {
             })
             
             goToTicketList()
-            //dismiss(animated: true, completion: nil)
+            
         } // End of Connection check
         else {
             self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
@@ -265,7 +261,6 @@ class ticketViewController:  UIViewController {
     
     func goToTicketList() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
-        //vc.tableView.reloadData()
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -281,8 +276,6 @@ class ticketViewController:  UIViewController {
         
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
-            //let result = response.result.value as? [[String : AnyObject]]
-            //print(result!)
             
             print(response.response!)
             
@@ -295,11 +288,15 @@ class ticketViewController:  UIViewController {
             }
             let decoder = JSONDecoder()
             do {
-                let responseObject =  try decoder.decode(Neighborhood.self, from: data)
+                let responseObject =  try decoder.decode([Neighborhood].self, from: data)
                 print("response Object MESSAGE: \(responseObject.self)")
-                self.NeiArr = [responseObject.self]
+                self.NeiArr = responseObject.self
                 print("NeiArr\(self.NeiArr)")
-                print("NeiArr Count\(self.NeiArr[0].neighborhoods.count)")
+                
+                self.choosenNei.text = responseObject[0].nameAr
+                self.neighboorhoodID = responseObject[0].id
+                self.cityID = Int(responseObject[0].cityID)!
+                
                 
             } // end of do
             catch let parsingError {
@@ -330,7 +327,7 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         let imgData = self.imgView.image!.jpegData(compressionQuality: 0.5)!
         imgArr.append(imgData)
         print("Image Array: \(imgArr)")
-        // if != nil
+        
         dismiss(animated: true, completion: nil)
     }
 }
@@ -340,7 +337,7 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
 extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.NeiArr[0].neighborhoods.count
+        return self.NeiArr.count
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -348,17 +345,18 @@ extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        return NeiArr[0].neighborhoods[row].nameAr
+        return NeiArr[row].nameAr
     }
-    //
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.cityID = Int(NeiArr[0].self.neighborhoods[row].cityID)!
+        
+        self.cityID = Int(NeiArr[row].cityID)!
         print("City ID: \(self.cityID)")
-        self.neighboorhoodID = NeiArr[0].neighborhoods[row].id
+        
+        self.neighboorhoodID = NeiArr[row].id
         print("Nei ID: \(self.neighboorhoodID)")
-        print("Nei name: \(NeiArr[0].neighborhoods[row].nameAr)")
-        selectedNeighborhood = NeiArr[0].self.neighborhoods[row].nameAr
+        
+        selectedNeighborhood = NeiArr[row].nameAr
         choosenNei.text = selectedNeighborhood
     }
 }

@@ -115,7 +115,8 @@ struct SigninResponse: Codable {
 // MARK: - UserData
 struct User_Data: Codable {
     let id: Int
-    let name, phone: JSONNull?
+    //let phone: JSONNull?
+    let name, phone: String?
     let email, active, roleID: String
     let company: JSONNull?
     let createdAt, updatedAt: String
@@ -154,4 +155,6 @@ class JSONNull: Codable, Hashable {
         var container = encoder.singleValueContainer()
         try container.encodeNil()
     }
+    
+    
 }

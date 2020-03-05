@@ -12,22 +12,25 @@ import Alamofire
 class ticketListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noTickets: UILabel!
     
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     var ticketCell = TicketCell()
     var ticketID = 0
+    var ticketsCount = 0
     //var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        //self.ticketsCount = self.ticketCell.count
+        print("view did tickets count\(self.ticketsCount)")
         tableView.delegate = self
         tableView.dataSource = self
         getTicketsList()
         //startTimer()
         tableView.layer.cornerRadius = 30
-        
+        noTickets.isHidden = true
     }
 //    func startTimer() {
 ////        let timer =
@@ -70,8 +73,12 @@ class ticketListViewController: UIViewController {
                 self.ticketCell = responseObject
                // if temp.isEmpty {
                 if self.ticketCell.isEmpty {
-                    self.showAlert(title: "لا شيء", message: "لا يوجد لديك تذاكر")
+                    self.noTickets.isHidden = false
                 }
+               let ticketsCount = self.ticketCell.count
+                self.ticketsCount = ticketsCount
+            //UserDefaults.standard.set(ticketsCount, forKey: "count")
+               print("in tickets count\(self.ticketsCount)")
                 print("Ticket Cell: \(self.ticketCell)")
                 
                 
@@ -91,15 +98,8 @@ class ticketListViewController: UIViewController {
 //    deinit {
 //        self.timer.invalidate()
 //    }
+
     
-    @IBAction func goBack(_ sender: Any) {
-        go()
-    }
-    
-    func go() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
-        self.present(vc, animated: true, completion: nil)
-    }
     
 }
 

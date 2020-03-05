@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0CF4954EBC4BC0255F872828 /* Pods_GP_v1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */; };
 		7924B91A23F949C000E889A2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7924B91923F949C000E889A2 /* Alamofire.framework */; };
+		792D5B9624041833007D46C8 /* userProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5B9524041833007D46C8 /* userProfileViewController.swift */; };
+		792D5B982406F300007D46C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5B972406F300007D46C8 /* User.swift */; };
+		792D5B9A24100969007D46C8 /* UpdateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5B9924100969007D46C8 /* UpdateResponse.swift */; };
+		792D5B9C24113944007D46C8 /* switchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5B9B24113944007D46C8 /* switchViewController.swift */; };
 		7932B5A124001C8D009FE071 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7932B59F24001C8C009FE071 /* Assets.xcassets */; };
 		7932B5A324007A85009FE071 /* TicketID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932B5A224007A85009FE071 /* TicketID.swift */; };
 		794255C823F6AA170051DE63 /* TicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794255C723F6AA170051DE63 /* TicketResponse.swift */; };
@@ -62,6 +66,10 @@
 		48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP_v1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7924B91523F945B500E889A2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7924B91923F949C000E889A2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		792D5B9524041833007D46C8 /* userProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfileViewController.swift; sourceTree = "<group>"; };
+		792D5B972406F300007D46C8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		792D5B9924100969007D46C8 /* UpdateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateResponse.swift; sourceTree = "<group>"; };
+		792D5B9B24113944007D46C8 /* switchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = switchViewController.swift; sourceTree = "<group>"; };
 		7932B5A024001C8C009FE071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/Assets.xcassets; sourceTree = "<group>"; };
 		7932B5A224007A85009FE071 /* TicketID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketID.swift; sourceTree = "<group>"; };
 		794255C723F6AA170051DE63 /* TicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketResponse.swift; sourceTree = "<group>"; };
@@ -213,6 +221,8 @@
 				794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */,
 				794A3A9323FE962E003CDE02 /* ticketListTableViewCell.swift */,
 				794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */,
+				792D5B9524041833007D46C8 /* userProfileViewController.swift */,
+				792D5B9B24113944007D46C8 /* switchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -239,6 +249,8 @@
 				794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */,
 				794A3A9123FE89D4003CDE02 /* TicketCell.swift */,
 				7932B5A224007A85009FE071 /* TicketID.swift */,
+				792D5B972406F300007D46C8 /* User.swift */,
+				792D5B9924100969007D46C8 /* UpdateResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -456,10 +468,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				797F8BCC23E56CB500960C79 /* ViewController.swift in Sources */,
+				792D5B9624041833007D46C8 /* userProfileViewController.swift in Sources */,
 				794A3A9023FE7BC1003CDE02 /* ticketListViewController.swift in Sources */,
+				792D5B982406F300007D46C8 /* User.swift in Sources */,
 				797F8BFE23E5C11400960C79 /* signinController.swift in Sources */,
 				7932B5A324007A85009FE071 /* TicketID.swift in Sources */,
 				797F8C0223E7135E00960C79 /* signinResponse.swift in Sources */,
+				792D5B9C24113944007D46C8 /* switchViewController.swift in Sources */,
 				797F8C1723EC323D00960C79 /* onboardingViewController.swift in Sources */,
 				797F8C1123EA16E700960C79 /* signupResponse.swift in Sources */,
 				794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */,
@@ -476,6 +491,7 @@
 				794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */,
 				794A3A9623FEB31D003CDE02 /* TicketInfoViewController.swift in Sources */,
 				797F8C0F23EA169300960C79 /* signup.swift in Sources */,
+				792D5B9A24100969007D46C8 /* UpdateResponse.swift in Sources */,
 				797F8C0D23EA0AF900960C79 /* signupViewController.swift in Sources */,
 				797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */,
 			);
