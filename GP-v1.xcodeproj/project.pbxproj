@@ -16,6 +16,8 @@
 		792D5B9E2413C499007D46C8 /* resetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5B9D2413C498007D46C8 /* resetPasswordViewController.swift */; };
 		792D5BA2241416CC007D46C8 /* GlobalV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BA1241416CB007D46C8 /* GlobalV.swift */; };
 		792D5BA42414BE35007D46C8 /* rateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BA32414BE35007D46C8 /* rateViewController.swift */; };
+		792D5BA624155B92007D46C8 /* showRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BA524155B92007D46C8 /* showRateViewController.swift */; };
+		792D5BA824158167007D46C8 /* ShowTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BA724158167007D46C8 /* ShowTicket.swift */; };
 		7932B5A124001C8D009FE071 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7932B59F24001C8C009FE071 /* Assets.xcassets */; };
 		7932B5A324007A85009FE071 /* TicketID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932B5A224007A85009FE071 /* TicketID.swift */; };
 		794255C823F6AA170051DE63 /* TicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794255C723F6AA170051DE63 /* TicketResponse.swift */; };
@@ -76,6 +78,8 @@
 		792D5B9D2413C498007D46C8 /* resetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetPasswordViewController.swift; sourceTree = "<group>"; };
 		792D5BA1241416CB007D46C8 /* GlobalV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalV.swift; sourceTree = "<group>"; };
 		792D5BA32414BE35007D46C8 /* rateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rateViewController.swift; sourceTree = "<group>"; };
+		792D5BA524155B92007D46C8 /* showRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showRateViewController.swift; sourceTree = "<group>"; };
+		792D5BA724158167007D46C8 /* ShowTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTicket.swift; sourceTree = "<group>"; };
 		7932B5A024001C8C009FE071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/Assets.xcassets; sourceTree = "<group>"; };
 		7932B5A224007A85009FE071 /* TicketID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketID.swift; sourceTree = "<group>"; };
 		794255C723F6AA170051DE63 /* TicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketResponse.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 			children = (
 				797F8BFD23E5C11400960C79 /* signinController.swift */,
 				797F8C0C23EA0AF900960C79 /* signupViewController.swift */,
+				792D5B9D2413C498007D46C8 /* resetPasswordViewController.swift */,
 				797F8C1423EC2C7E00960C79 /* mapViewController.swift */,
 				797F8C1623EC323D00960C79 /* onboardingViewController.swift */,
 				798639F623EDCB2300131A9E /* ticketViewController.swift */,
@@ -230,8 +235,8 @@
 				794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */,
 				792D5B9524041833007D46C8 /* userProfileViewController.swift */,
 				792D5B9B24113944007D46C8 /* switchViewController.swift */,
-				792D5B9D2413C498007D46C8 /* resetPasswordViewController.swift */,
 				792D5BA32414BE35007D46C8 /* rateViewController.swift */,
+				792D5BA524155B92007D46C8 /* showRateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				7932B5A224007A85009FE071 /* TicketID.swift */,
 				792D5B972406F300007D46C8 /* User.swift */,
 				792D5B9924100969007D46C8 /* UpdateResponse.swift */,
+				792D5BA724158167007D46C8 /* ShowTicket.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -492,8 +498,10 @@
 				797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */,
 				794A3A9B23FFF7C4003CDE02 /* File.swift in Sources */,
 				794A3A9223FE89D4003CDE02 /* TicketCell.swift in Sources */,
+				792D5BA824158167007D46C8 /* ShowTicket.swift in Sources */,
 				798639F723EDCB2300131A9E /* ticketViewController.swift in Sources */,
 				794A3A9923FEB4A0003CDE02 /* Extension.swift in Sources */,
+				792D5BA624155B92007D46C8 /* showRateViewController.swift in Sources */,
 				797F8C1323EA208600960C79 /* vViewController.swift in Sources */,
 				797F8C0023E5E5F500960C79 /* Signin.swift in Sources */,
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,

@@ -11,5 +11,6 @@ import Foundation
 class GlobalV {
      struct glovalVariable {
      static var ticketsCount = Int();
+     static var starsRating = Int();
     }
 }

@@ -18,10 +18,10 @@ class ticketViewController:  UIViewController {
     @IBOutlet weak var pic_2: UIImageView!
     @IBOutlet weak var pic_3: UIImageView!
     @IBOutlet weak var pic_4: UIImageView!
+    @IBOutlet weak var choosenNei: UITextField!
     var imgView: UIImageView!
     var image: UIImage!
-    @IBOutlet weak var choosenNei: UITextField!
-    
+
     
     //var cityArr = [City]()
     var NeiArr = [Neighborhood]()
@@ -261,6 +261,8 @@ class ticketViewController:  UIViewController {
     
     func goToTicketList() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
+        vc.getTicketsList()
+        //vc.t.getTicketsList()
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -302,6 +304,7 @@ class ticketViewController:  UIViewController {
             catch let parsingError {
                 print("Error", parsingError)
             }
+            
             DispatchQueue.main.async {
                 self.picker.reloadComponent(0)
             }

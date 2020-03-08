@@ -18,6 +18,7 @@ class TicketInfoViewController: UIViewController {
     @IBOutlet weak var descView: UITextView!
     // @IBOutlet weak var descLabel: UILabel!
     
+    @IBOutlet weak var showRatingB: UIButton!
     @IBOutlet weak var rateButton: UIButton!
     @IBOutlet weak var pic_1: UIImageView!
     @IBOutlet weak var pic_2: UIImageView!
@@ -33,6 +34,7 @@ class TicketInfoViewController: UIViewController {
     var img_4 = ""
     var imagesCount = 0
     var ticket_id = 0
+    var ratingCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +43,17 @@ class TicketInfoViewController: UIViewController {
         descView.layer.cornerRadius = 30
         neighborhood.layer.masksToBounds = true
         neighborhood.layer.cornerRadius = 20
+        //raitngCount = (ticket?[0].userRating.count)!
         deleteButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+        rateButton.roundCorners(corners: [.topLeft, .topRight], radius: 15)
+        showRatingB.roundCorners(corners: [.topLeft, .topRight], radius: 15)
        // descLabel.layer.masksToBounds = true
-        descView.text = ticket?[0].ticket.ticketDescription
+        //descView.text = ticket?[0].ticket.ticketDescription
+        if ticket?[0].ticket.ticketDescription == "." {
+            descView.text = ""
+        } else {
+            descView.text = ticket?[0].ticket.ticketDescription
+        }
         neighborhood.text = ticket?[0].location[0].neighborhood
         showImages()
         self.imagesCount = (ticket?[0].photos.count)!
@@ -54,16 +64,28 @@ class TicketInfoViewController: UIViewController {
 //                setImage(img: self.img_1, pic: self.pic_1)
 //        // }
 //    }
-        check()
+        checkForRating()
     }
     
-    func check() {
+    func checkForRating() {
+        
         if ticket?[0].ticket.status == "CLOSED" {
             deleteButton.isHidden = true
-            rateButton.isHidden = false
+            print("user rating : \(ticket?[0].userRating.count)")
+            //self.raitngCount = (ticket?[0].userRating.count)!
+            if ticket?[0].userRating.count == 0 {
+                rateButton.isHidden = false
+                showRatingB.isHidden = true
+            } else {
+                rateButton.isHidden = true
+                showRatingB.isHidden = false
+                
+            }
+            
         } else {
             deleteButton.isHidden = false
             rateButton.isHidden = true
+            showRatingB.isHidden = true
         }
     }
     
@@ -74,7 +96,15 @@ class TicketInfoViewController: UIViewController {
     @IBAction func ratePressed(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "rate") as! rateViewController
         vc.ticket_id = ticket_id
+        
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func showRatingPressed(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "showRate") as! showRateViewController
+               vc.ticket_id = ticket_id
+        //vc.ratingCount = 1
+               self.present(vc, animated: true, completion: nil)
     }
     
     func setImage(img: String, pic: UIImageView) {

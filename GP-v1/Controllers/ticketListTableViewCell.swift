@@ -13,6 +13,7 @@ class ticketListTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var ticketInfo: UILabel!
+    @IBOutlet weak var cellImg: UIImageView!
     //    @IBOutlet weak var content: UIView!
     //
     //    override open var frame: CGRect {

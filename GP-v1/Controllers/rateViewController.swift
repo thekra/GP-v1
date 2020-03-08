@@ -17,24 +17,27 @@ class rateViewController: UIViewController {
     @IBOutlet weak var star3: UIImageView!
     @IBOutlet weak var star4: UIImageView!
     @IBOutlet weak var star5: UIImageView!
+    @IBOutlet weak var rateButton: UIButton!
+    
     var stars = [UIImageView]()
     var starsRating = 0
      var token: String = UserDefaults.standard.string(forKey: "access_token")!
     var ticket_id = 0
+    var ratingCount = 0
     
-    @IBOutlet weak var rateButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textV.layer.cornerRadius = 20
         stars = [star1, star2, star3, star4, star5]
         
-        pic(sender: star1)
-        pic(sender: star2)
-        pic(sender: star3)
-        pic(sender: star4)
-        pic(sender: star5)
         
+        allPic()
         set(rating: starsRating)
+        GlobalV.glovalVariable.starsRating = self.starsRating
+        rateButton.roundCorners(corners: [.topLeft, .topRight], radius: 15)
+        print("load \(ratingCount)")
+        
     }
     
     func pic(sender: UIImageView!) {
@@ -57,11 +60,21 @@ class rateViewController: UIViewController {
         }
     }
     
+    func allPic() {
+            pic(sender: star1)
+            pic(sender: star2)
+            pic(sender: star3)
+            pic(sender: star4)
+            pic(sender: star5)
+        //}
+    }
+    
     func setupPic(pic: UIImageView!, action: Selector){
         pic.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
         pic.isUserInteractionEnabled = true
         
     }
+    
     func set(rating: Int) {
         self.starsRating = rating
         for i in stars {
@@ -112,12 +125,18 @@ class rateViewController: UIViewController {
         
         
         let parameters = [
-            "comment": "textV.text!",
+            "comment": textV.text!,
             "ticket_id": ticket_id,
             "rating": self.starsRating
             ] as [String : AnyObject]
         
-        
+        if textV.text == "" {
+            self.showAlert(title: "تنبيه", message: "الرجاء تعبئة حقل التعليق")
+        }
+        if self.starsRating == 0 {
+            self.showAlert(title: "تنبيه", message: "الرجاء تحديد التقييم")
+        }
+        else {
         if Connectivity.isConnectedToInternet {
             Alamofire.upload(multipartFormData:
                 { (multipartFormData ) in
@@ -148,6 +167,10 @@ class rateViewController: UIViewController {
                         debugPrint(response.debugDescription)
                         print("REsponse: \(response)")
                         self.showAlert(title: "نجاح", message: "تم ارسال تقييمك بنجاح!")
+                        self.textV.isEditable = false
+                        for i in self.stars {
+                            i.isUserInteractionEnabled = false
+                        }
                         self.rateButton.isHidden = true
                         
                     } // End of upload
@@ -174,11 +197,12 @@ class rateViewController: UIViewController {
                     print("ERROR RESPONSE: \(encodingError)")
                 }
             })
-            
-            
-        } // End of Connection check
+            }
         else {
             self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+
+        } // End of Connection check
+        
         } // end of else
     }
 }

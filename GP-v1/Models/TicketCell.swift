@@ -10,7 +10,8 @@ struct TicketCellElement: Codable {
     let ticket: Ticket
     let location: [Locationn]
     let photos: [Photo]
-    let ticketHistories, userRating: [JSONAny]
+    let ticketHistories: [JSONAny]
+    let userRating: [UserRating]
 }
 
 // MARK: - Location
@@ -32,7 +33,17 @@ struct Photo: Codable {
         case roleID = "role_id"
     }
 }
+// MARK: - UserRating
+struct UserRating: Codable {
+    let id: Int
+    let rating, comment, createdAt, updatedAt: String
 
+    enum CodingKeys: String, CodingKey {
+        case id, rating, comment
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
+}
 // MARK: - Ticket
 struct Ticket: Codable {
 //    let id: Int

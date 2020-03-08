@@ -15,11 +15,14 @@ class ticketListViewController: UIViewController {
     @IBOutlet weak var noTickets: UILabel!
     
     
+    
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
+    var ticket: TicketCell?
     var ticketCell = TicketCell()
     var ticketID = 0
     var refreshControl: UIRefreshControl?
     //var timer = Timer()
+   // var t = ticketListViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +35,7 @@ class ticketListViewController: UIViewController {
         tableView.layer.cornerRadius = 30
         noTickets.isHidden = true
         addRefresh()
+        //check()
     }
     
 //    func startTimer() {
@@ -39,6 +43,7 @@ class ticketListViewController: UIViewController {
 //        Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.getTicketsList), userInfo: nil, repeats: true)
 //        //timer.invalidate()
 //    }
+    
     
     func addRefresh() {
         refreshControl = UIRefreshControl()
@@ -79,8 +84,11 @@ class ticketListViewController: UIViewController {
                 }
                 return
             }
+            
             let decoder = JSONDecoder()
+            
             do {
+                
                 let responseObject =  try decoder.decode(TicketCell.self, from: data)
                 //temp = responseObject
                 self.ticketCell = responseObject
@@ -143,6 +151,15 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         // create a new cell if needed or reuse an old one
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! ticketListTableViewCell
         
+        if self.ticketCell[indexPath.row].ticket.status == "OPEN" {
+            cell.cellImg.image = UIImage(named: "Group 3-open")
+            
+        } else if self.ticketCell[indexPath.row].ticket.status == "ASSIGNED" {
+            cell.cellImg.image = UIImage(named: "Group 3-assigned")
+            
+        } else if self.ticketCell[indexPath.row].ticket.status == "CLOSED" {
+            cell.cellImg.image = UIImage(named: "closed")
+        }
         // set the text from the data model
         
         cell.ticketInfo.text = String(self.ticketCell[indexPath.row].ticket.id)

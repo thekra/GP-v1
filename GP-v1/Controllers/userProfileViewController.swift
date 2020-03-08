@@ -40,8 +40,10 @@ class userProfileViewController: UIViewController {
         super.viewDidLoad()
         
         updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-        profileView.layer.cornerRadius = 30
-        scrollView.layer.cornerRadius = 30
+        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        //.layer.cornerRadius = 30
+        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        //.layer.cornerRadius = 30
         
         getUserInfo()
         createPicker()
@@ -210,6 +212,8 @@ class userProfileViewController: UIViewController {
                                 UserDefaults.standard.set(name, forKey: "name")
                                 
                                 UserDefaults.standard.set(phone, forKey: "phone")
+                                
+                                
                                 
                             } // end of do
                             catch let parsingError {

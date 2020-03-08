@@ -17,7 +17,7 @@ class resetPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resetButton.clipsToBounds = true
+        //resetButton.clipsToBounds = true
         resetButton.layer.cornerRadius = 20
     }
     

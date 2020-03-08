@@ -50,6 +50,9 @@ class mapViewController: UIViewController {
     @objc func imageTap() {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
+        //GlobalV.glovalVariable.ticketsCount
+        vc.getTicketsList()
+        //vc.cou = GlobalV.glovalVariable.ticketsCount
         self.present(vc, animated: true, completion: nil)
     }
     
