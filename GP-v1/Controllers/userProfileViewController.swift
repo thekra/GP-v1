@@ -20,9 +20,10 @@ class userProfileViewController: UIViewController {
     
     @IBOutlet weak var profileView: UIView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     let picker1: UIPickerView! = UIPickerView()
     let picker2: UIPickerView! = UIPickerView()
-
+    
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     
     
@@ -40,6 +41,7 @@ class userProfileViewController: UIViewController {
         
         updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
         profileView.layer.cornerRadius = 30
+        scrollView.layer.cornerRadius = 30
         
         getUserInfo()
         createPicker()
@@ -101,11 +103,13 @@ class userProfileViewController: UIViewController {
             let decoder = JSONDecoder()
             do {
                 let responseObject =  try decoder.decode(User.self, from: data)
-                //let name = (responseObject.name as AnyObject? as? String) ?? ""
+                
                 if let uName = responseObject.name {
                     self.userName.text = uName
                     self.name = uName
+                    
                 } else {
+                    
                     self.userName.text = ""
                 }
                 
@@ -116,35 +120,7 @@ class userProfileViewController: UIViewController {
                     self.userPhone.text = ""
                 }
                 
-//                if responseObject.name == "New_User101" {
-//                    self.userName.text = ""
-//                } else {
-//                    self.userName.text = //responseObject.name
-//                    //self.name
-//                    responseObject.name
-//                }
-                //            if ( name != nil ) {
-                //            self.userName.text = self.nullToNil(value: name) as? String
-                //            }
-                //self.userName.text = name
-                //            if responseObject.name is String {
-                //
-                //            }
                 self.userEmail.text = responseObject.email
-                
-//                if responseObject.phone == "0551538433" {
-//                    self.userPhone.text = ""
-//                } else {
-//                    self.userPhone.text = //responseObject.phone
-//                    //self.phone
-//                    responseObject.phone
-//                }
-//                self.name = responseObject.name
-//                self.phone = responseObject.phone
-                //            if ( responseObject.phone != nil ) {
-                //                self.userPhone.text? = self.nullToNil(value: responseObject.phone) as! String
-                //            }
-                //self.userPhone.text = responseObject.phone
                 
                 print("User Info: \(responseObject)")
                 
@@ -182,130 +158,97 @@ class userProfileViewController: UIViewController {
         //            print("The neighborhood must be between 3377 and 3437.")
         //            self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
         //        }
-       
-        print("Be namee \(self.name)")
-        
-        print("Be phonee \(self.phone)")
-        
-        print("name \(String(describing: self.userName.text))")
-        print("Phone \(String(describing: self.userPhone.text))")
         
         if Connectivity.isConnectedToInternet {
             
-            print("in namee \(self.name)")
-            
-            print("in phonee \(self.phone)")
-            
-            print("in namee \(self.userName.text)")
-            
-            print("in phonee \(self.userPhone.text)")
             if self.name == self.userName.text || self.phone == self.userPhone.text {
-                       self.showAlert(title: "تنبيه", message: "لا يوجد ما يتم تحديثه")
+                self.showAlert(title: "تنبيه", message: "لا يوجد ما يتم تحديثه")
                 
             } else {
                 
-            Alamofire.upload(multipartFormData:
-                { (multipartFormData ) in
-                    
-                    for (key, value) in parameters {
-                        if let temp = value as? String { multipartFormData.append(temp.data(using: .utf8)!, withName: key)
-                            
-                        }
-                        print("Sent Parameters: \(parameters)")
-                    }
-            }, to: urlString,
-               method: .post,
-               headers: headers,
-               encodingCompletion: {
-                encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    
-                                        
-                                          
-                    upload.responseData { response in
-                        debugPrint("SUCCESS RESPONSE: \(response)")
-                        debugPrint(response.debugDescription)
-                        print("REsponse: \(response)")
+                Alamofire.upload(multipartFormData:
+                    { (multipartFormData ) in
                         
-                        guard let data = response.data else {
-                            
-                            DispatchQueue.main.async {
-                                print(response.error!)
+                        for (key, value) in parameters {
+                            if let temp = value as? String { multipartFormData.append(temp.data(using: .utf8)!, withName: key)
+                                
                             }
-                            return
+                            print("Sent Parameters: \(parameters)")
                         }
-                        let decoder = JSONDecoder()
-                        do {
-                            let responseObject =  try decoder.decode(UpdateResponse.self, from: data)
-                            print("response Object MESSAGE: \([responseObject].self)")
-                            
-                            let name = responseObject.userInfo.name
-                            
-                            let phone = responseObject.userInfo.phone
-                            self.name = name
-                            self.phone = phone
-                            UserDefaults.standard.set(name, forKey: "name")
-
-                            UserDefaults.standard.set(phone, forKey: "phone")
-                            
-                            print("self namee \(self.name)")
-
-                                   print("self phonee \(self.phone)")
-                            
-                            print("userde be name \(UserDefaults.standard.string(forKey: "name")!)")
-                                       print("userde be Phone \( UserDefaults.standard.string(forKey: "phone")!)")
-                                       
-                                   
-                                   print("name \(String(describing: self.userName.text))")
-                                   print("Phone \(String(describing: self.userPhone.text))")
-                            
-                        } // end of do
-                        catch let parsingError {
-                            print("Error", parsingError)
-                        } // End of catch
+                }, to: urlString,
+                   method: .post,
+                   headers: headers,
+                   encodingCompletion: {
+                    encodingResult in
+                    switch encodingResult {
+                    case .success(let upload, _, _):
                         
-                    } // End of upload
-                    
-                    upload.responseJSON { response in
-//                        print("name \(self.name)")
-//                        print("phone \(self.phone)")
-                         print("Be namee \(self.name)")
-                               
-                               print("Be phonee \(self.phone)")
-                               
-                               print("name \(String(describing: self.userName.text))")
-                               print("Phone \(String(describing: self.userPhone.text))")
                         
-                        if  let statusCode = response.response?.statusCode{
+                        
+                        upload.responseData { response in
+                            debugPrint("SUCCESS RESPONSE: \(response)")
+                            debugPrint(response.debugDescription)
+                            print("REsponse: \(response)")
                             
-                            if(statusCode == 201){
-                                //internet available
+                            guard let data = response.data else {
+                                
+                                DispatchQueue.main.async {
+                                    print(response.error!)
+                                }
+                                return
                             }
-                        }else{
-                            //internet not available
+                            let decoder = JSONDecoder()
+                            do {
+                                let responseObject =  try decoder.decode(UpdateResponse.self, from: data)
+                                print("response Object MESSAGE: \([responseObject].self)")
+                                
+                                let name = responseObject.userInfo.name
+                                
+                                let phone = responseObject.userInfo.phone
+                                self.name = name
+                                self.phone = phone
+                                UserDefaults.standard.set(name, forKey: "name")
+                                
+                                UserDefaults.standard.set(phone, forKey: "phone")
+                                
+                            } // end of do
+                            catch let parsingError {
+                                print("Error", parsingError)
+                            } // End of catch
                             
+                        } // End of upload
+                        
+                        upload.responseJSON { response in
+                            
+                            //                        if  let statusCode = response.response?.statusCode{
+                            //
+                            //                            if(statusCode == 201){
+                            //                                //internet available
+                            //                            }
+                            //                        }else{
+                            //                            //internet not available
+                            //
+                            //                        }
+                            print("the resopnse code is : \(response.response?.statusCode ?? 0)")
+                            
+                            self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
+                            
+                            // من هنا يطلع رسالة الايرور تمام
+                            print("the response is : \(response)")
                         }
-                        print("the resopnse code is : \(response.response?.statusCode ?? 0)")
                         
-                        self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
-                        
-                        // من هنا يطلع رسالة الايرور تمام
-                        print("the response is : \(response)")
+                    case .failure(let encodingError):
+                        // hide progressbas here
+                        print("ERROR RESPONSE: \(encodingError)")
                     }
-                    
-                case .failure(let encodingError):
-                    // hide progressbas here
-                    print("ERROR RESPONSE: \(encodingError)")
-                }
-            }) // End of Alamofire
+                }) // End of Alamofire
             } // End of else
             
         } // End of Connection check
         else {
             self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
         } // end of else connection
-            
+        
     }
     
     func getNeighborhoodList() {
@@ -385,14 +328,6 @@ class userProfileViewController: UIViewController {
             }
         }
     }
-    
-//    func nullToNil(value : AnyObject?) -> AnyObject? {
-//        if value is JSONNull {
-//            return nil
-//        } else {
-//            return value
-//        }
-//    }
 }
 
 extension userProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource {

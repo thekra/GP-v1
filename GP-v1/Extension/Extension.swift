@@ -8,6 +8,14 @@
 
 import Foundation
 import UIKit
+import SwiftEntryKit
+
+
+extension UserDefaults {
+    static func contains(_ key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
+}
 
 extension UIButton {
     func roundCorners(corners: UIRectCorner, radius: Int = 8) {
@@ -27,23 +35,75 @@ extension UIViewController {
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
+    
+    func startAnActivityIndicator() -> UIActivityIndicatorView {
+           let ai = UIActivityIndicatorView(style: .gray)
+           self.view.addSubview(ai)
+           self.view.bringSubviewToFront(ai)
+           ai.center = self.view.center
+           ai.hidesWhenStopped = true
+           ai.startAnimating()
+           return ai
+       }
+//        
+//    func swiftEntry(title: String, message: String) {
+//        let customView = UIView()
+//        var attributes = EKAttributes(windowLevel: <#<<error type>>#>)
+//        attributes.name = title
+//    }
+    
 }
 
-extension UIViewController {
-    func startAnActivityIndicator() -> UIActivityIndicatorView {
-        let ai = UIActivityIndicatorView(style: .gray)
-        self.view.addSubview(ai)
-        self.view.bringSubviewToFront(ai)
-        ai.center = self.view.center
-        ai.hidesWhenStopped = true
-        ai.startAnimating()
-        return ai
-    }
-}
+
+
+//extension UIViewController {
+//    func startAnActivityIndicator() -> UIActivityIndicatorView {
+//        let ai = UIActivityIndicatorView(style: .gray)
+//        self.view.addSubview(ai)
+//        self.view.bringSubviewToFront(ai)
+//        ai.center = self.view.center
+//        ai.hidesWhenStopped = true
+//        ai.startAnimating()
+//        return ai
+//    }
+//}
 
 //extension UIViewController {
 ////MARK: - dismiss keyboard function
 //    @objc func dismissKeyboard(view: UIView) {
 //     view.endEditing(true)
 //   }
+//}
+//public struct EKAttributes {
+//
+//    // Identification
+//    public var name: String?
+//
+//    // Display
+//    public var windowLevel: WindowLevel
+//    public var position: Position
+//    public var precedence: Precedence
+//    public var displayDuration: DisplayDuration
+//    public var positionConstraints: PositionConstraints
+//
+//    // User Interaction
+//    public var screenInteraction: UserInteraction
+//    public var entryInteraction: UserInteraction
+//    public var scroll: Scroll
+//    public var hapticFeedbackType: NotificationHapticFeedback
+//    public var lifecycleEvents: LifecycleEvents
+//
+//    // Theme & Style
+//    public var displayMode = DisplayMode.inferred
+//    public var entryBackground: BackgroundStyle
+//    public var screenBackground: BackgroundStyle
+//    public var shadow: Shadow
+//    public var roundCorners: RoundCorners
+//    public var border: Border
+//    public var statusBar: StatusBar
+//
+//    // Animations
+//    public var entranceAnimation: Animation
+//    public var exitAnimation: Animation
+//    public var popBehavior: PopBehavior
 //}

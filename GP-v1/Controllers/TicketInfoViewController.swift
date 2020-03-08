@@ -18,6 +18,7 @@ class TicketInfoViewController: UIViewController {
     @IBOutlet weak var descView: UITextView!
     // @IBOutlet weak var descLabel: UILabel!
     
+    @IBOutlet weak var rateButton: UIButton!
     @IBOutlet weak var pic_1: UIImageView!
     @IBOutlet weak var pic_2: UIImageView!
     @IBOutlet weak var pic_3: UIImageView!
@@ -31,6 +32,7 @@ class TicketInfoViewController: UIViewController {
     var img_3 = ""
     var img_4 = ""
     var imagesCount = 0
+    var ticket_id = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,19 +47,35 @@ class TicketInfoViewController: UIViewController {
         neighborhood.text = ticket?[0].location[0].neighborhood
         showImages()
         self.imagesCount = (ticket?[0].photos.count)!
-        
+        self.ticket_id = (ticket?[0].ticket.id)!
 //         for i in 0..<self.imagesCount {
 //            //for j in 1..<self.imagesCount{
 //                self.img_1 = (ticket?[0].photos[i].photoName)!
 //                setImage(img: self.img_1, pic: self.pic_1)
 //        // }
 //    }
- 
+        check()
     }
+    
+    func check() {
+        if ticket?[0].ticket.status == "CLOSED" {
+            deleteButton.isHidden = true
+            rateButton.isHidden = false
+        } else {
+            deleteButton.isHidden = false
+            rateButton.isHidden = true
+        }
+    }
+    
     @IBAction func deleteTicket(_ sender: Any) {
         
     }
     
+    @IBAction func ratePressed(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "rate") as! rateViewController
+        vc.ticket_id = ticket_id
+        self.present(vc, animated: true, completion: nil)
+    }
     
     func setImage(img: String, pic: UIImageView) {
         //var images = [Data]()

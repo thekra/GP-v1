@@ -10,6 +10,9 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (3.5.0):
     - GoogleMaps/Base (= 3.5.0)
+  - QuickLayout (3.0.0)
+  - SwiftEntryKit (1.2.0):
+    - QuickLayout (= 3.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -17,6 +20,7 @@ DEPENDENCIES:
   - BonsaiController
   - GoogleMaps
   - GooglePlaces
+  - SwiftEntryKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -25,6 +29,8 @@ SPEC REPOS:
     - BonsaiController
     - GoogleMaps
     - GooglePlaces
+    - QuickLayout
+    - SwiftEntryKit
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
@@ -32,7 +38,9 @@ SPEC CHECKSUMS:
   BonsaiController: e4b1e4272b7b11130b8d4b98dcd66d1450fb92ea
   GoogleMaps: 32ca02de09de357a10ac773f2c70f1986751392d
   GooglePlaces: be6f19fe8aa6ff0b5bcccfa1b8805cc977ea1450
+  QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
+  SwiftEntryKit: 8303faf480f405b57df16b6fc2b251647cf40349
 
-PODFILE CHECKSUM: 0565c9cbb155eeb657e94b93726009cd5e15a615
+PODFILE CHECKSUM: c0f8638055f7711da7636d70b175e09c68185fc5
 
 COCOAPODS: 1.8.4

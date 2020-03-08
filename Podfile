@@ -10,7 +10,8 @@ target 'GP-v1' do
 pod 'Alamofire'
 pod 'AlamofireImage'
 pod 'GoogleMaps'
-  pod 'GooglePlaces'
+pod 'GooglePlaces'
 pod 'BonsaiController'
+pod 'SwiftEntryKit'
 
 end

@@ -87,12 +87,12 @@ class signinController: UIViewController {
                     do {
                         let responseObject =  try decoder.decode(SigninResponse.self, from: data)
                         
-                        let tokenn = responseObject.accessToken
+                        let token = responseObject.accessToken
                         let name = responseObject.userData.name
                         let phone = responseObject.userData.phone
                         
-                        print("Token: \(tokenn)")
-                        UserDefaults.standard.set(tokenn, forKey: "access_token")
+                        print("Token: \(token)")
+                        UserDefaults.standard.set(token, forKey: "access_token")
                         
                         UserDefaults.standard.set(name, forKey: "name")
                         

@@ -14,29 +14,42 @@ class ticketListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noTickets: UILabel!
     
+    
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     var ticketCell = TicketCell()
     var ticketID = 0
-    var ticketsCount = 0
+    var refreshControl: UIRefreshControl?
     //var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.ticketsCount = self.ticketCell.count
-        print("view did tickets count\(self.ticketsCount)")
+        
         tableView.delegate = self
         tableView.dataSource = self
         getTicketsList()
         //startTimer()
         tableView.layer.cornerRadius = 30
         noTickets.isHidden = true
+        addRefresh()
     }
+    
 //    func startTimer() {
 ////        let timer =
 //        Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.getTicketsList), userInfo: nil, repeats: true)
 //        //timer.invalidate()
 //    }
+    
+    func addRefresh() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshlist), for: .valueChanged)
+        tableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshlist() {
+        refreshControl?.endRefreshing()
+        getTicketsList()
+    }
     
     @objc func getTicketsList() {
         
@@ -76,9 +89,7 @@ class ticketListViewController: UIViewController {
                     self.noTickets.isHidden = false
                 }
                let ticketsCount = self.ticketCell.count
-                self.ticketsCount = ticketsCount
-            //UserDefaults.standard.set(ticketsCount, forKey: "count")
-               print("in tickets count\(self.ticketsCount)")
+                GlobalV.glovalVariable.ticketsCount = ticketsCount
                 print("Ticket Cell: \(self.ticketCell)")
                 
                 
@@ -134,8 +145,9 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         
         // set the text from the data model
         
-        cell.ticketInfo.text = "\(self.ticketCell[indexPath.row].ticket.id)معلومات التذكرة"
+        cell.ticketInfo.text = String(self.ticketCell[indexPath.row].ticket.id)
         
+        cell.statusLabel.text = self.ticketCell[indexPath.row].ticket.statusAr
         return cell
     }
 }
