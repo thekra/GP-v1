@@ -21,8 +21,11 @@ class ticketListViewController: UIViewController {
     var ticketCell = TicketCell()
     var ticketID = 0
     var refreshControl: UIRefreshControl?
-    //var timer = Timer()
-   // var t = ticketListViewController()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getTicketsList()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,19 +34,10 @@ class ticketListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         getTicketsList()
-        //startTimer()
         tableView.layer.cornerRadius = 30
         noTickets.isHidden = true
         addRefresh()
-        //check()
     }
-    
-//    func startTimer() {
-////        let timer =
-//        Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.getTicketsList), userInfo: nil, repeats: true)
-//        //timer.invalidate()
-//    }
-    
     
     func addRefresh() {
         refreshControl = UIRefreshControl()
@@ -58,8 +52,6 @@ class ticketListViewController: UIViewController {
     
     @objc func getTicketsList() {
         
-        //var temp = TicketCell()
-        
         let urlString = "http://www.ai-rdm.website/api/ticket/list"
         
         let headers: HTTPHeaders = [
@@ -67,7 +59,6 @@ class ticketListViewController: UIViewController {
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
-        
         
         
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
@@ -96,8 +87,7 @@ class ticketListViewController: UIViewController {
                 if self.ticketCell.isEmpty {
                     self.noTickets.isHidden = false
                 }
-               let ticketsCount = self.ticketCell.count
-                GlobalV.glovalVariable.ticketsCount = ticketsCount
+                
                 print("Ticket Cell: \(self.ticketCell)")
                 
                 
@@ -106,19 +96,13 @@ class ticketListViewController: UIViewController {
                 print("Error", parsingError)
             }
             DispatchQueue.main.async {
-               // self.ticketCell = temp
+                
                 self.tableView.reloadData()
-                //self.timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.getTicketsList), userInfo: nil, repeats: false)
+                
             }
         }
         
     }
-//
-//    deinit {
-//        self.timer.invalidate()
-//    }
-
-    
     
 }
 

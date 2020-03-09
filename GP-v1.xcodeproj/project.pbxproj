@@ -18,6 +18,7 @@
 		792D5BA42414BE35007D46C8 /* rateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BA32414BE35007D46C8 /* rateViewController.swift */; };
 		792D5BA624155B92007D46C8 /* showRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BA524155B92007D46C8 /* showRateViewController.swift */; };
 		792D5BA824158167007D46C8 /* ShowTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BA724158167007D46C8 /* ShowTicket.swift */; };
+		792D5BAA2416BE4B007D46C8 /* TicketsCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BA92416BE4A007D46C8 /* TicketsCount.swift */; };
 		7932B5A124001C8D009FE071 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7932B59F24001C8C009FE071 /* Assets.xcassets */; };
 		7932B5A324007A85009FE071 /* TicketID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932B5A224007A85009FE071 /* TicketID.swift */; };
 		794255C823F6AA170051DE63 /* TicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794255C723F6AA170051DE63 /* TicketResponse.swift */; };
@@ -80,6 +81,7 @@
 		792D5BA32414BE35007D46C8 /* rateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rateViewController.swift; sourceTree = "<group>"; };
 		792D5BA524155B92007D46C8 /* showRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showRateViewController.swift; sourceTree = "<group>"; };
 		792D5BA724158167007D46C8 /* ShowTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTicket.swift; sourceTree = "<group>"; };
+		792D5BA92416BE4A007D46C8 /* TicketsCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsCount.swift; sourceTree = "<group>"; };
 		7932B5A024001C8C009FE071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/Assets.xcassets; sourceTree = "<group>"; };
 		7932B5A224007A85009FE071 /* TicketID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketID.swift; sourceTree = "<group>"; };
 		794255C723F6AA170051DE63 /* TicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketResponse.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				792D5B972406F300007D46C8 /* User.swift */,
 				792D5B9924100969007D46C8 /* UpdateResponse.swift */,
 				792D5BA724158167007D46C8 /* ShowTicket.swift */,
+				792D5BA92416BE4A007D46C8 /* TicketsCount.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				794A3A9923FEB4A0003CDE02 /* Extension.swift in Sources */,
 				792D5BA624155B92007D46C8 /* showRateViewController.swift in Sources */,
 				797F8C1323EA208600960C79 /* vViewController.swift in Sources */,
+				792D5BAA2416BE4B007D46C8 /* TicketsCount.swift in Sources */,
 				797F8C0023E5E5F500960C79 /* Signin.swift in Sources */,
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,
 				794A3A9423FE962E003CDE02 /* ticketListTableViewCell.swift in Sources */,

@@ -54,6 +54,7 @@ class TicketInfoViewController: UIViewController {
         } else {
             descView.text = ticket?[0].ticket.ticketDescription
         }
+        
         neighborhood.text = ticket?[0].location[0].neighborhood
         showImages()
         self.imagesCount = (ticket?[0].photos.count)!

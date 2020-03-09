@@ -23,9 +23,7 @@ class ticketViewController:  UIViewController {
     var image: UIImage!
 
     
-    //var cityArr = [City]()
     var NeiArr = [Neighborhood]()
-    //var neighborhoodArr : [[String:AnyObject]] = []
     
     var imgArr = [Data]()
     
@@ -40,7 +38,7 @@ class ticketViewController:  UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView.text = "." // Temporary till I figure it out
+        
         getNeighborhoodList()
         // Text View UI
         setupTextViewUI()
@@ -143,6 +141,10 @@ class ticketViewController:  UIViewController {
             "Accept": "application/json"
         ]
         
+        if self.textView.text == "" {
+            self.textView.textColor = UIColor.lightGray //need to change the color
+            self.textView.text = "."
+        }
         
         let parameters = [
             "description": textView.text!,
@@ -156,6 +158,8 @@ class ticketViewController:  UIViewController {
             print("Array Count: \(self.imgArr.count)")
             self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
         }
+        
+        
         
         switch self.neighboorhoodID {
         case 3377...3437:
@@ -208,6 +212,8 @@ class ticketViewController:  UIViewController {
                         debugPrint(response.debugDescription)
                         print("REsponse: \(response)")
                         
+                        self.goToTicketList()
+                        
                         guard let data = response.data else {
                             
                             DispatchQueue.main.async {
@@ -215,11 +221,12 @@ class ticketViewController:  UIViewController {
                             }
                             return
                         }
+                        
                         let decoder = JSONDecoder()
                         do {
                             let responseObject =  try decoder.decode(TicketResponse.self, from: data)
                             print("response Object MESSAGE: \([responseObject].self)")
-                            
+
                         } // end of do
                         catch let parsingError {
                             print("Error", parsingError)
@@ -250,8 +257,6 @@ class ticketViewController:  UIViewController {
                 }
             })
             
-            goToTicketList()
-            
         } // End of Connection check
         else {
             self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
@@ -262,7 +267,6 @@ class ticketViewController:  UIViewController {
     func goToTicketList() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
         vc.getTicketsList()
-        //vc.t.getTicketsList()
         self.present(vc, animated: true, completion: nil)
     }
     

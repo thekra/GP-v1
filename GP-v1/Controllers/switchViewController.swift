@@ -13,13 +13,13 @@ class switchViewController: UIViewController {
 
     @IBOutlet weak var ticketsCount: UILabel!
     @IBOutlet weak var hiUser: UILabel!
+    var token: String = UserDefaults.standard.string(forKey: "access_token")!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCount()
     
-        //var namee = UserDefaults.standard.string(forKey: "name")!
-    //var ticket: TicketCell?
-    var count = 0
-    //self.imagesCount = (ticket?[0].photos.count)!
-    //var ticket = ticketListViewController()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +28,53 @@ class switchViewController: UIViewController {
             let namee = UserDefaults.standard.string(forKey: "name")!
              hiUser.text = "مرحباً، \(namee)"
         } else {
-           
+
             hiUser.text = "مرحباً،"
         }
         
-        //self.count = self.ticket.ticketsCount
-        //self.count = self.ticket!.count
-        //print("tickets count switch\(self.ticket.ticketsCount)")
-        ticketsCount.text = //String(UserDefaults.standard.integer(forKey: "count"))
-            String(GlobalV.glovalVariable.ticketsCount)
+        getCount()
     }
     
     func isKeyPresentInUserDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
+    }
+    
+    func getCount() {
+        let urlString = "http://www.ai-rdm.website/api/ticket/ticketsCount"
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(self.token)",
+            "Content-Type": "multipart/form-data",
+            "Accept": "application/json"
+        ]
+        
+        Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
+            response in
+           
+            
+            print("Count: \(response)")
+            
+            guard let data = response.data else {
+                
+                DispatchQueue.main.async {
+                    print("Response async error \(response.error!)")
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                
+                let responseObject =  try decoder.decode(TicketsCount.self, from: data)
+                
+                self.ticketsCount.text =  String(responseObject.ticketsCount)
+                
+            } // end of do
+            catch let parsingError {
+                print("Error", parsingError)
+            }
+        }
     }
     
     @IBAction func signOut(_ sender: Any) {

@@ -132,7 +132,7 @@ class rateViewController: UIViewController {
         
         if textV.text == "" {
             self.showAlert(title: "تنبيه", message: "الرجاء تعبئة حقل التعليق")
-        }
+        } else // new
         if self.starsRating == 0 {
             self.showAlert(title: "تنبيه", message: "الرجاء تحديد التقييم")
         }
@@ -177,15 +177,6 @@ class rateViewController: UIViewController {
                     
                     upload.responseJSON { response in
                         
-                        if  let statusCode = response.response?.statusCode{
-                            
-                            if(statusCode == 201){
-                                //internet available
-                            }
-                        }else{
-                            //internet not available
-                            
-                        }
                         print("the resopnse code is : \(response.response?.statusCode)")
                         
                         // من هنا يطلع رسالة الايرور تمام

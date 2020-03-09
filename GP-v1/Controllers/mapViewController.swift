@@ -51,7 +51,8 @@ class mapViewController: UIViewController {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
         //GlobalV.glovalVariable.ticketsCount
-        vc.getTicketsList()
+        //vc.getTicketsList()
+        
         //vc.cou = GlobalV.glovalVariable.ticketsCount
         self.present(vc, animated: true, completion: nil)
     }

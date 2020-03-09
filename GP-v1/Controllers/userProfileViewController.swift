@@ -36,6 +36,12 @@ class userProfileViewController: UIViewController {
     var neighboorhoodID = 0
     var selectedNeighborhood: String?
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getUserInfo()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -209,11 +215,10 @@ class userProfileViewController: UIViewController {
                                 let phone = responseObject.userInfo.phone
                                 self.name = name
                                 self.phone = phone
+                                
                                 UserDefaults.standard.set(name, forKey: "name")
                                 
                                 UserDefaults.standard.set(phone, forKey: "phone")
-                                
-                                
                                 
                             } // end of do
                             catch let parsingError {
@@ -224,19 +229,10 @@ class userProfileViewController: UIViewController {
                         
                         upload.responseJSON { response in
                             
-                            //                        if  let statusCode = response.response?.statusCode{
-                            //
-                            //                            if(statusCode == 201){
-                            //                                //internet available
-                            //                            }
-                            //                        }else{
-                            //                            //internet not available
-                            //
-                            //                        }
                             print("the resopnse code is : \(response.response?.statusCode ?? 0)")
                             
-                            self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
-                            
+                            self.update()
+                            //self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
                             // من هنا يطلع رسالة الايرور تمام
                             print("the response is : \(response)")
                         }
@@ -253,6 +249,14 @@ class userProfileViewController: UIViewController {
             self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
         } // end of else connection
         
+    }
+    
+    func update() {
+        //self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "userProfilee") as! userProfileViewController
+        
+        self.present(vc, animated: true, completion: nil)
+        self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
     }
     
     func getNeighborhoodList() {
