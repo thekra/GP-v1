@@ -9,7 +9,9 @@
 import UIKit
 import Alamofire
 
-class userProfileViewController: UIViewController {
+class userProfileViewController: UIViewController{
+    
+    
     
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var userName: UITextField!
@@ -230,8 +232,8 @@ class userProfileViewController: UIViewController {
                         upload.responseJSON { response in
                             
                             print("the resopnse code is : \(response.response?.statusCode ?? 0)")
-                            
-                            self.showAnAlert()
+                          
+                            //self.showAnAlert()
                             
                             // من هنا يطلع رسالة الايرور تمام
                             print("the response is : \(response)")

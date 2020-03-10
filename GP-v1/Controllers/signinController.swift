@@ -110,7 +110,10 @@ class signinController: UIViewController {
                 case let .failure(error):
                     
                     if response.response?.statusCode == 401 {
-                        self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
+                        //self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
+                        AlertView.instance.showAlert(message: "الايميل/الكلمة السرية غير صحيحة", alertType: .failure)
+                        self.view.addSubview(AlertView.instance.ParentView)
+
                         
                     } else if response.response?.statusCode == 422 {
                         self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود")
