@@ -44,8 +44,21 @@ extension UIView {
 extension UIViewController {
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func showAnAlert() {
+        let alert = UIAlertController(title: "نجاح", message: "تم تحديث بياناتك!", preferredStyle: .alert)
+        let action = UIAlertAction(title: "حسناً", style: .default) { (action) -> Void in
+            
+            let viewControllerYouWantToPresent = self.storyboard?.instantiateViewController(withIdentifier: "userProfilee") as! userProfileViewController
+            
+            self.present(viewControllerYouWantToPresent, animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func startAnActivityIndicator() -> UIActivityIndicatorView {

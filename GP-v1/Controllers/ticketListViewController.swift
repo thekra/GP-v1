@@ -63,10 +63,10 @@ class ticketListViewController: UIViewController {
         
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
-            let result = response.result.value as? [[String : AnyObject]]
-            print("Result ticket cell: \(result!)")
-            
-            print("Response ticket cell: \(response.response!)")
+//            let result = response.result.value as? [[String : AnyObject]]
+//            print("Result ticket cell: \(result!)")
+//
+//            print("Response ticket cell: \(response.response!)")
             
             guard let data = response.data else {
                 

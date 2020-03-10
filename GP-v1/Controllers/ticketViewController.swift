@@ -236,15 +236,7 @@ class ticketViewController:  UIViewController {
                     
                     upload.responseJSON { response in
                         
-                        if  let statusCode = response.response?.statusCode{
-                            
-                            if(statusCode == 201){
-                                //internet available
-                            }
-                        }else{
-                            //internet not available
-                            
-                        }
+                     
                         print("the resopnse code is : \(response.response?.statusCode)")
                         
                         // من هنا يطلع رسالة الايرور تمام

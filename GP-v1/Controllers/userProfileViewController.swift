@@ -231,8 +231,8 @@ class userProfileViewController: UIViewController {
                             
                             print("the resopnse code is : \(response.response?.statusCode ?? 0)")
                             
-                            self.update()
-                            //self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
+                            self.showAnAlert()
+                            
                             // من هنا يطلع رسالة الايرور تمام
                             print("the response is : \(response)")
                         }
@@ -251,13 +251,6 @@ class userProfileViewController: UIViewController {
         
     }
     
-    func update() {
-        //self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "userProfilee") as! userProfileViewController
-        
-        self.present(vc, animated: true, completion: nil)
-        self.showAlert(title: "نجاح", message: "تم تحديث بياناتك!")
-    }
     
     func getNeighborhoodList() {
         
