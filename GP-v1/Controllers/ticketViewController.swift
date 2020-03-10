@@ -24,22 +24,32 @@ class ticketViewController:  UIViewController {
 
     
     var NeiArr = [Neighborhood]()
-    
+    var temp = Data()
     var imgArr = [Data]()
+    
+    var count1 = 0
+    var count2 = 0
+    var count3 = 0
+    var count4 = 0
     
     var longitude: Double = 0.0
     var latitude: Double = 0.0
     var cityID: Int = 0
     var neighboorhoodID: Int = 0
     var selectedNeighborhood: String?
+    
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        firstPicUI()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getNeighborhoodList()
+        
         // Text View UI
         setupTextViewUI()
         
@@ -64,6 +74,21 @@ class ticketViewController:  UIViewController {
         textView.layer.cornerRadius = 20
     }
     
+    
+    func firstPicUI() {
+        pic_1.isUserInteractionEnabled = true
+        
+        pic_2.isUserInteractionEnabled = false
+        pic_2.image = UIImage(named: "Rectangle 3")
+        
+        pic_3.isUserInteractionEnabled = false
+        pic_3.image = UIImage(named: "Rectangle 3")
+        
+        pic_4.isUserInteractionEnabled = false
+        pic_4.image = UIImage(named: "Rectangle 3")
+    }
+    
+    
     func pic(sender: UIImageView!) {
         switch sender.tag {
             
@@ -71,39 +96,54 @@ class ticketViewController:  UIViewController {
             setupPic(pic: pic_2, action: #selector(self.imageTap_2))
             
         case 2: setupPic(pic: pic_3, action: #selector(self.imageTap_3))
-            
+           
         case 3: setupPic(pic: pic_4, action: #selector(self.imageTap_4))
             
         default:
             setupPic(pic: pic_1, action: #selector(self.imageTap))
+            
         }
     }
     
+    
     func setupPic(pic: UIImageView!, action: Selector){
         pic.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
-        pic.isUserInteractionEnabled = true
+    }
+    
+    func enablePic(pic: UIImageView) {
+        
+            pic.isUserInteractionEnabled = true
+            pic.image = UIImage(named: "Repeat Grid 1 copy")
+        
     }
     
     @objc func imageTap() {
         print("image clicked")
+        
         self.imgView = pic_1
         showImage()
+        enablePic(pic: pic_2)
     }
     
     @objc func imageTap_2() {
         print("image 2 clicked")
+        
         self.imgView = pic_2
         showImage()
+       enablePic(pic: pic_3)
     }
     
     @objc func imageTap_3() {
         print("image 3 clicked")
+        
         self.imgView = self.pic_3
         showImage()
+       enablePic(pic: pic_4)
     }
     
     @objc func imageTap_4() {
         print("image 4 clicked")
+        
         self.imgView = pic_4
         showImage()
     }
@@ -319,18 +359,105 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         self.present(imgPicker, animated: true, completion: nil)
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        if self.imgView.tag == 0 {
+            pic_2.isUserInteractionEnabled = false
+            pic_2.image = UIImage(named: "Rectangle 3")
+            dismiss(animated: true, completion: nil)
+        }
+
+        if self.imgView.tag == 1 {
+         pic_3.isUserInteractionEnabled = false
+          pic_3.image = UIImage(named: "Rectangle 3")
+            dismiss(animated: true, completion: nil)
+               }
+
+        if self.imgView.tag == 2 {
+             pic_4.isUserInteractionEnabled = false
+            pic_4.image = UIImage(named: "Rectangle 3")
+            dismiss(animated: true, completion: nil)
+               }
+        
+        if self.imgView.tag == 3 {
+         pic_4.isUserInteractionEnabled = false
+        pic_4.image = UIImage(named: "Rectangle 3")
+        dismiss(animated: true, completion: nil)
+           }
+        
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.image = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
-        
+    
         self.imgView.image = self.image
         let imgData = self.imgView.image!.jpegData(compressionQuality: 0.5)!
-        imgArr.append(imgData)
+        print("img tag \(self.imgView.tag)")
+        
+        if self.imgView.tag == 0 {
+            
+            if count1 == 0 {
+                self.temp = imgData
+                imgArr.append(imgData)
+                count1 += 1
+            } else if count1 == 1 {
+                let i = imgArr.firstIndex(of: temp)!
+                imgArr.remove(at: i)
+                imgArr.append(imgData)
+                count1 -= 1
+            }
+            print("c1 \(count1)")
+        }
+        
+        if self.imgView.tag == 1 {
+          
+                   if count2 == 0 {
+                       self.temp = imgData
+                       imgArr.append(imgData)
+                       count2 += 1
+                   } else if count2 == 1 {
+                       let i = imgArr.firstIndex(of: temp)!
+                       imgArr.remove(at: i)
+                       imgArr.append(imgData)
+                       count2 -= 1
+                   }
+            print("c2 \(count2)")
+               }
+        
+        if self.imgView.tag == 2 {
+                   if count3 == 0 {
+                       self.temp = imgData
+                       imgArr.append(imgData)
+                       count3 += 1
+                   } else if count3 == 1 {
+                       let i = imgArr.firstIndex(of: temp)!
+                       imgArr.remove(at: i)
+                       imgArr.append(imgData)
+                       count3 -= 1
+                   }
+            print("c3 \(count3)")
+               }
+        
+        if self.imgView.tag == 3 {
+                   if count4 == 0 {
+                       self.temp = imgData
+                       imgArr.append(imgData)
+                       count4 += 1
+                   } else if count4 == 1 {
+                       let i = imgArr.firstIndex(of: temp)!
+                       imgArr.remove(at: i)
+                       imgArr.append(imgData)
+                       count4 -= 1
+                   }
+            print("c4 \(count4)")
+               }
+        
+        
         print("Image Array: \(imgArr)")
         
         dismiss(animated: true, completion: nil)
     }
 }
-
 
 
 extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {

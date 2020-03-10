@@ -18,7 +18,8 @@ class showRateViewController: UIViewController {
     @IBOutlet weak var star4: UIImageView!
     @IBOutlet weak var star5: UIImageView!
     @IBOutlet weak var comment: UITextView!
-
+    @IBOutlet weak var back: UIButton!
+    
     var ticket_id = 0
     var starsRating = 0
      var stars = [UIImageView]()
@@ -137,5 +138,12 @@ class showRateViewController: UIViewController {
                   self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
               }
     }
-
+    
+    
+    @IBAction func back(_ sender: Any) {
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticketInfo") as! TicketInfoViewController
+//        vc.ticket_id = self.ticket_id
+//        self.present(vc, animated: true, completion: nil)
+    }
+    
 }

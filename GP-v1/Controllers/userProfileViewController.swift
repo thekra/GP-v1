@@ -169,7 +169,7 @@ class userProfileViewController: UIViewController {
         
         if Connectivity.isConnectedToInternet {
             
-            if self.name == self.userName.text || self.phone == self.userPhone.text {
+            if self.name == self.userName.text && self.phone == self.userPhone.text {
                 self.showAlert(title: "تنبيه", message: "لا يوجد ما يتم تحديثه")
                 
             } else {

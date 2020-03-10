@@ -699,7 +699,7 @@
         <!--Ticket Info View Controller-->
         <scene sceneID="h8n-63-57W">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="HOB-Cc-GWf" customClass="TicketInfoViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ticketInfo" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="HOB-Cc-GWf" customClass="TicketInfoViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dVT-eT-psn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1063,6 +1063,14 @@
                                     <constraint firstItem="Ovp-Ja-XLo" firstAttribute="leading" secondItem="54E-HP-BBt" secondAttribute="trailing" constant="12" id="xEH-e1-3Iy"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvA-nU-fcf" userLabel="goToMap">
+                                <rect key="frame" x="24" y="274" width="14" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Icon ionic-ios-arrow-back"/>
+                                <connections>
+                                    <action selector="goToMap:" destination="dao-zn-6i0" eventType="touchUpInside" id="JlI-Tz-jzC"/>
+                                </connections>
+                            </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jU8-r8-Qsf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="248"/>
                                 <constraints>
@@ -1275,7 +1283,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4e-Jf-MeK">
-                                        <rect key="frame" x="0.0" y="256" width="414" height="553"/>
+                                        <rect key="frame" x="0.0" y="256" width="414" height="640"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U3Z-za-hKQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="569"/>
@@ -1450,7 +1458,7 @@
                                 <constraints>
                                     <constraint firstItem="a4e-Jf-MeK" firstAttribute="top" secondItem="cKe-An-349" secondAttribute="bottom" constant="8" symbolic="YES" id="Bwn-QT-sfG"/>
                                     <constraint firstItem="a4e-Jf-MeK" firstAttribute="trailing" secondItem="MI1-aZ-cW7" secondAttribute="trailing" id="CpW-Fx-CER"/>
-                                    <constraint firstItem="vCJ-9q-maz" firstAttribute="top" secondItem="a4e-Jf-MeK" secondAttribute="bottom" constant="8" symbolic="YES" id="R2k-Ck-yjJ"/>
+                                    <constraint firstItem="vCJ-9q-maz" firstAttribute="top" secondItem="a4e-Jf-MeK" secondAttribute="bottom" constant="-79" id="R2k-Ck-yjJ"/>
                                     <constraint firstAttribute="bottom" secondItem="vCJ-9q-maz" secondAttribute="bottom" id="XIp-Xc-HP6"/>
                                     <constraint firstItem="cKe-An-349" firstAttribute="leading" secondItem="MI1-aZ-cW7" secondAttribute="leading" id="Yn3-1n-FPx"/>
                                     <constraint firstItem="cKe-An-349" firstAttribute="trailing" secondItem="MI1-aZ-cW7" secondAttribute="trailing" id="d50-d3-Wj5"/>
@@ -1478,7 +1486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2HA-hA-IvQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4261" y="2790"/>
+            <point key="canvasLocation" x="4260.8695652173919" y="2789.7321428571427"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Qsr-9D-Umi">
@@ -1861,6 +1869,15 @@
                                     <constraint firstItem="kdc-qF-nbB" firstAttribute="top" secondItem="7Jb-0x-Cgq" secondAttribute="bottom" constant="37" id="zO1-dG-xP3"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Li0-pV-GsL" userLabel="back">
+                                <rect key="frame" x="10" y="265" width="14" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Icon ionic-ios-arrow-back"/>
+                                <connections>
+                                    <action selector="back:" destination="OOv-gf-24G" eventType="touchUpInside" id="Aqz-3W-6OQ"/>
+                                    <action selector="goToMap:" destination="dao-zn-6i0" eventType="touchUpInside" id="YVG-oa-ni7"/>
+                                </connections>
+                            </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLt-io-duY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="248"/>
                                 <constraints>
@@ -1886,6 +1903,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="zKd-o5-DLI"/>
                     <connections>
+                        <outlet property="back" destination="Li0-pV-GsL" id="5fV-xG-LCY"/>
                         <outlet property="comment" destination="DRq-9n-wrr" id="wAf-jH-bKa"/>
                         <outlet property="showRatingView" destination="GiF-am-w7d" id="bAk-Bf-7Qn"/>
                         <outlet property="star1" destination="SZc-1Y-7Ri" id="mDY-PX-0Hk"/>
@@ -1906,6 +1924,7 @@
         <image name="Group 33" width="172" height="172"/>
         <image name="Group 44" width="143" height="143"/>
         <image name="Icon feather-settings" width="154" height="154"/>
+        <image name="Icon ionic-ios-arrow-back" width="13.5" height="24"/>
         <image name="Icon ionic-ios-log-out" width="27.5" height="23"/>
         <image name="Icon ionic-ios-star-unfill" width="37" height="34.5"/>
         <image name="Logo-1" width="260" height="260"/>
@@ -1926,6 +1945,6 @@
         <image name="profile" width="154" height="154"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8NX-EO-8nn"/>
+        <segue reference="XWl-kb-fiy"/>
     </inferredMetricsTieBreakers>
 </document>
