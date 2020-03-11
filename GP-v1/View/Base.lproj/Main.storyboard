@@ -345,7 +345,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGt-dV-9MN">
-                                <rect key="frame" x="-255" y="301" width="924" height="294"/>
+                                <rect key="frame" x="-37.5" y="374.5" width="489" height="147"/>
                                 <state key="normal" title="Button" image="conform_location"/>
                                 <connections>
                                     <action selector="pres:" destination="n2s-pb-26y" eventType="touchUpInside" id="PSR-6y-iMf"/>
@@ -937,6 +937,7 @@
                                             <constraint firstAttribute="width" constant="380" id="Vsa-Hj-CvG"/>
                                             <constraint firstAttribute="height" constant="120" id="ktG-cV-gOg"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>

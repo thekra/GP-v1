@@ -50,6 +50,8 @@
 		798639F723EDCB2300131A9E /* ticketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798639F623EDCB2300131A9E /* ticketViewController.swift */; };
 		798639F923EEFD5A00131A9E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 798639F823EEFD5900131A9E /* CoreData.framework */; };
 		79BFCA052418412000067783 /* Alert_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BFCA042418412000067783 /* Alert_View.xib */; };
+		79BFCA072419356A00067783 /* onBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BFCA062419356A00067783 /* onBoarding.swift */; };
+		79BFCA092419358000067783 /* onBoarding.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BFCA082419358000067783 /* onBoarding.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		798639F623EDCB2300131A9E /* ticketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticketViewController.swift; sourceTree = "<group>"; };
 		798639F823EEFD5900131A9E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		79BFCA042418412000067783 /* Alert_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Alert_View.xib; sourceTree = "<group>"; };
+		79BFCA062419356A00067783 /* onBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoarding.swift; sourceTree = "<group>"; };
+		79BFCA082419358000067783 /* onBoarding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = onBoarding.xib; sourceTree = "<group>"; };
 		99A16A7BC0D840E024DABE90 /* Pods-GP-v1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP-v1.release.xcconfig"; path = "Target Support Files/Pods-GP-v1/Pods-GP-v1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +171,7 @@
 				794A3A9823FEB4A0003CDE02 /* Extension.swift */,
 				792D5BA1241416CB007D46C8 /* GlobalV.swift */,
 				792D5BAF24182E16007D46C8 /* AlertView.swift */,
+				79BFCA062419356A00067783 /* onBoarding.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				797F8BD223E56CBA00960C79 /* LaunchScreen.storyboard */,
 				7932B59F24001C8C009FE071 /* Assets.xcassets */,
 				79BFCA042418412000067783 /* Alert_View.xib */,
+				79BFCA082419358000067783 /* onBoarding.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -405,6 +411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79BFCA092419358000067783 /* onBoarding.xib in Resources */,
 				79BFCA052418412000067783 /* Alert_View.xib in Resources */,
 				797F8BD423E56CBA00960C79 /* LaunchScreen.storyboard in Resources */,
 				7932B5A124001C8D009FE071 /* Assets.xcassets in Resources */,
@@ -516,6 +523,7 @@
 				792D5BAA2416BE4B007D46C8 /* TicketsCount.swift in Sources */,
 				797F8C0023E5E5F500960C79 /* Signin.swift in Sources */,
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,
+				79BFCA072419356A00067783 /* onBoarding.swift in Sources */,
 				794A3A9423FE962E003CDE02 /* ticketListTableViewCell.swift in Sources */,
 				794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */,
 				794A3A9623FEB31D003CDE02 /* TicketInfoViewController.swift in Sources */,

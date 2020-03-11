@@ -34,7 +34,7 @@ class resetPasswordViewController: UIViewController {
                 let parameters = [
                     "email": emailT.text
                     ] as [String : AnyObject]
-                
+                 let i = self.startAnActivityIndicator()
                 if Connectivity.isConnectedToInternet {
                      Alamofire.upload(multipartFormData:
                         { (multipartFormData ) in
@@ -54,7 +54,9 @@ class resetPasswordViewController: UIViewController {
                         case .success(let upload, _, _):
                             
                                                 
-                            self.showAlert(title: "تم الارسال", message: "لقد تم ارسال رسالة استعادة كلمة المرور الى بريدك المدخل")
+                            //self.showAlert(title: "تم الارسال", message: "لقد تم ارسال رسالة استعادة كلمة المرور الى بريدك المدخل")
+                            
+                            
                             upload.responseData { response in
                                 debugPrint("SUCCESS RESPONSE: \(response)")
                                 debugPrint(response.debugDescription)
@@ -76,7 +78,26 @@ class resetPasswordViewController: UIViewController {
                                     
                                     
                                 print("the resopnse code is : \(response.response?.statusCode ?? 0)")
+                                if response.response?.statusCode == 404 {
+                                    i.stopAnimating()
+                                    //self.showAlert(title: "خطأ", message: "خطأ في السيرفر")
+                                    AlertView.instance.showAlert(message: "البريد المدخل غير موجود", alertType: .failure)
+                                    self.view.addSubview(AlertView.instance.ParentView)
+                                    
+                                }
+                                else
+                                if response.response?.statusCode == 422 {
+                                    i.stopAnimating()
+                                //self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود/ الايميل موجود مسبقاً")
+                                AlertView.instance.showAlert(message: "مدخل غير صالح/مدخل مفقود", alertType: .failure)
+                                                       self.view.addSubview(AlertView.instance.ParentView)
+                                } else
                                 
+                                if response.response?.statusCode == 200 {
+                                    i.stopAnimating()
+                                    AlertView.instance.showAlert(message:"تم ارسال رسالة استعادة الكلمة السرية الى بريدك المدخل", alertType: .success)
+                                    self.view.addSubview(AlertView.instance.ParentView)
+                                }
                                 // من هنا يطلع رسالة الايرور تمام
                                 print("the response is : \(response)")
                             }
@@ -90,7 +111,10 @@ class resetPasswordViewController: UIViewController {
                     
                 } // End of Connection check
                 else {
-                    self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+                    //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+                    i.stopAnimating()
+                    AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+                    self.view.addSubview(AlertView.instance.ParentView)
                 }
     }
     

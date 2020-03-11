@@ -62,7 +62,9 @@ class signupViewController: UIViewController {
         request.httpBody = try! JSONEncoder().encode(body)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let i = self.startAnActivityIndicator()
         if Connectivity.isConnectedToInternet {
+            
             Alamofire.request(request).validate(statusCode: 200..<300).responseJSON { response in
                 print(response)
                 
@@ -93,10 +95,11 @@ class signupViewController: UIViewController {
                         UserDefaults.standard.set(token, forKey: "access_token")
                         
                         //UserDefaults.standard.set(responseObject.user_data.name, forKey: "name")
-                        
+                        if response.response?.statusCode == 200 {
+                            i.stopAnimating()
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
                         self.present(vc, animated: true, completion: nil)
-                        
+                        }
                     } catch let parsingError {
                         print("Error:(signup)", parsingError)
                         
@@ -105,13 +108,20 @@ class signupViewController: UIViewController {
                 case let .failure(error):
                     
                     if response.response?.statusCode == 401 {
-                        self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
-                        
+                        //self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
+                        i.stopAnimating()
+                        AlertView.instance.showAlert(message: "الايميل/الكلمة السرية غير صحيحة", alertType: .failure)
+                                               self.view.addSubview(AlertView.instance.ParentView)
                     } else if response.response?.statusCode == 422 {
-                        self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود")
+                        i.stopAnimating()
+                        //self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود/ الايميل موجود مسبقاً")
+                        AlertView.instance.showAlert(message: "مدخل غير صالح/مدخل مفقود/ الايميل موجود مسبقاً", alertType: .failure)
+                                               self.view.addSubview(AlertView.instance.ParentView)
                     } else if response.response?.statusCode == 500 {
-                        self.showAlert(title: "خطأ", message: "خطأ في السيرفر")
-                        
+                        i.stopAnimating()
+                       // self.showAlert(title: "خطأ", message: "خطأ في السيرفر")
+                        AlertView.instance.showAlert(message: "خطأ في السيرفر", alertType: .failure)
+                                              self.view.addSubview(AlertView.instance.ParentView)
                         
                     }
                     print(error)
@@ -120,7 +130,10 @@ class signupViewController: UIViewController {
             } // End of Alamofire
         } // End of connection
         else {
-            self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            i.stopAnimating()
+            //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection
     } // End of Signup Button
     

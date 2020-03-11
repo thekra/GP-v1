@@ -130,6 +130,8 @@ class rateViewController: UIViewController {
             "rating": self.starsRating
             ] as [String : AnyObject]
         
+         let i = self.startAnActivityIndicator()
+        
         if textV.text == "" {
             self.showAlert(title: "تنبيه", message: "الرجاء تعبئة حقل التعليق")
         } else // new
@@ -166,6 +168,7 @@ class rateViewController: UIViewController {
                         debugPrint("SUCCESS RESPONSE: \(response)")
                         debugPrint(response.debugDescription)
                         print("REsponse: \(response)")
+                        i.stopAnimating()
                         self.showAlert(title: "نجاح", message: "تم ارسال تقييمك بنجاح!")
                         self.textV.isEditable = false
                         for i in self.stars {
@@ -190,6 +193,7 @@ class rateViewController: UIViewController {
             })
             }
         else {
+            i.stopAnimating()
             self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
 
         } // End of Connection check

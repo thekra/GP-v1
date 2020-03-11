@@ -17,60 +17,65 @@ class AlertView: UIView {
    
     
     @IBOutlet var ParentView: UIView!
-    @IBOutlet weak var alertImg: UIButton!
     
+    @IBOutlet weak var alertImg: UIImageView!
     @IBOutlet weak var alertLabel: UILabel!
     
+    @IBOutlet weak var okButton: UIButton!
     override init(frame: CGRect) {
          super.init(frame: frame)
          Bundle.main.loadNibNamed("Alert_View", owner: self, options: nil)
          commonInit()
+        setupView(view: ParentView, action: #selector(self.viewTapped))
      }
      
      required init?(coder aDecoder: NSCoder) {
          fatalError("init(coder:) has not been implemented")
      }
+    
      
      private func commonInit() {
-//         img.layer.cornerRadius = 30
-//         img.layer.borderColor = UIColor.white.cgColor
-//         img.layer.borderWidth = 2
-//
-//         alertView.layer.cornerRadius = 10
-
+        okButton.layer.cornerRadius = 15
          ParentView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
          ParentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
      }
      
+    func setupView(view: UIView!, action: Selector){
+             view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: action))
+         }
+    
+     @objc func viewTapped() {
+             ParentView.removeFromSuperview()
+         }
+    
      enum AlertType {
          case success
          case failure
      }
      
      func showAlert(message: String, alertType: AlertType) {
-         //self.titleLbl.text = title
+        
         self.alertLabel.text = message
-       //alertLabel.alpha = 1
+        
          switch alertType {
          case .success:
-            alertImg.imageView?.image = UIImage(named: "success")
-           // alertImg.alpha = 1
+            alertImg.image = UIImage(named: "success")
+            okButton.setTitleColor(#colorLiteral(red: 0.5098039216, green: 0.7647058824, blue: 0.3803921569, alpha: 1), for: .normal)
              //doneBtn.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
          case .failure:
-             alertImg.imageView?.image = UIImage(named: "failure")
-            //alertImg.alpha = 1
+             alertImg.image = UIImage(named: "failure")
+            okButton.setTitleColor(#colorLiteral(red: 0.9411764706, green: 0.2549019608, blue: 0.2549019608, alpha: 1), for: .normal)
+            
              //doneBtn.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
          }
-         
-         //addSubview(parentView)
      }
     
-    @IBAction func alretPressed(_ sender: Any) {
-        
-//        alertImg.alpha = 0
-//        alertLabel.alpha = 0
-        ParentView.removeFromSuperview()
-    }
+
     
+    @IBAction func okPressed(_ sender: Any) {
+        ParentView.removeFromSuperview()
+
+    }
     
 }

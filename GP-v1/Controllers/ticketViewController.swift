@@ -173,7 +173,7 @@ class ticketViewController:  UIViewController {
     
     
     @IBAction func confirmTicket(_ sender: Any) {
-        
+        // let i = self.startAnActivityIndicator()
         let urlString = "http://www.ai-rdm.website/api/ticket/create"
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -193,10 +193,16 @@ class ticketViewController:  UIViewController {
             "city": self.cityID,
             "neighborhood": self.neighboorhoodID
             ] as [String : AnyObject]
-        
+        let i = self.startAnActivityIndicator1()
+
         if self.imgArr.isEmpty {
             print("Array Count: \(self.imgArr.count)")
-            self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
+            i.stopAnimating()
+            //self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
+            
+            AlertView.instance.showAlert(message: "الرجاء ارفاق ١ - ٤ صور", alertType: .failure)
+            AlertView.instance.ParentView.frame = CGRect(x: 0, y: -200, width: 414, height: 896)
+            self.view.addSubview(AlertView.instance.ParentView)
         }
         
         
@@ -206,7 +212,11 @@ class ticketViewController:  UIViewController {
             print("passed")
         default:
             print("The neighborhood must be between 3377 and 3437.")
-            self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
+           i.stopAnimating()
+            //self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
+            
+//            AlertView.instance.showAlert(message: "الرجاء اختيار حي", alertType: .failure)
+//            self.view.addSubview(AlertView.instance.ParentView)
         }
         
         if Connectivity.isConnectedToInternet {
@@ -252,8 +262,11 @@ class ticketViewController:  UIViewController {
                         debugPrint(response.debugDescription)
                         print("REsponse: \(response)")
                         
-                        self.goToTicketList()
                         
+                        if response.response?.statusCode == 200 {
+                            i.stopAnimating()
+                        self.goToTicketList()
+                        }
                         guard let data = response.data else {
                             
                             DispatchQueue.main.async {
@@ -291,14 +304,18 @@ class ticketViewController:  UIViewController {
             
         } // End of Connection check
         else {
-            self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            i.stopAnimating()
+            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+            AlertView.instance.ParentView.frame = CGRect(x: 0, y: -200, width: 414, height: 896)
+            self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection
         
     } // End of ConfirmTicket Button
     
     func goToTicketList() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
-        vc.getTicketsList()
+        //vc.getTicketsList()
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -311,7 +328,8 @@ class ticketViewController:  UIViewController {
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
-        
+        if Connectivity.isConnectedToInternet {
+
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
             
@@ -346,6 +364,7 @@ class ticketViewController:  UIViewController {
             }
         }
     }
+    }
 } // End of class
 
 
@@ -356,6 +375,7 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         imgPicker.delegate = self
         // imgPicker.sourceType = .camera
         imgPicker.sourceType = .photoLibrary
+        imgPicker.modalPresentationStyle = .overFullScreen
         self.present(imgPicker, animated: true, completion: nil)
     }
     

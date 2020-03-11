@@ -78,31 +78,36 @@ class switchViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
-//        let urlString = "http://www.ai-rdm.website/api/auth/logout"
-//
-//               let headers: HTTPHeaders = [
-//                   "Authorization": "Bearer \(self.token)",
-//                   "Content-Type": "multipart/form-data",
-//                   "Accept": "application/json"
-//               ]
-//
-//               Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
-//                   response in
-//
-//                   print(response.response!)
-//
-//                   guard let data = response.data else {
-//
-//                       DispatchQueue.main.async {
-//                           print(response.error!)
-//                       }
-//                       return
-//                   }
-//
-//               }
-        UserDefaults.standard.removeObject(forKey: "access_token")
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signinController
-        self.present(vc, animated: true, completion: nil)
+        let urlString = "http://www.ai-rdm.website/api/auth/logout"
+
+               let headers: HTTPHeaders = [
+                   "Authorization": "Bearer \(self.token)",
+                   "Content-Type": "multipart/form-data",
+                   "Accept": "application/json"
+               ]
+
+               Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
+                   response in
+
+                   print(response.response!)
+
+                   guard let data = response.data else {
+
+                       DispatchQueue.main.async {
+                           print(response.error!)
+                       }
+                       return
+                   }
+                if response.response?.statusCode == 200 {
+                                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signinController
+                                                          self.present(vc, animated: true, completion: nil)
+
+               }
+                 print("the response is : \(response)")
+        //UserDefaults.standard.removeObject(forKey: "access_token")
+       // let vc = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signinController
+        //self.present(vc, animated: true, completion: nil)
+    }
     }
     
     @IBAction func goToMap(_ sender: Any) {

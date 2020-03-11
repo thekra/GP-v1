@@ -55,7 +55,7 @@ class showRateViewController: UIViewController {
             "ticket_id": self.ticket_id
         ] as [String : AnyObject]
 
-
+ //let i = self.startAnActivityIndicator()
          if Connectivity.isConnectedToInternet {
                       
                       Alamofire.upload(multipartFormData:
@@ -93,7 +93,7 @@ class showRateViewController: UIViewController {
                                   do {
                                     let responseObject =  try decoder.decode(ShowTicket.self, from: data)
                                       print("response Object MESSAGE: \(responseObject)")
-                                      
+                                  //  i.stopAnimating()
                                     self.starsRating = Int(responseObject.userRating[0].rating)!
                                     if self.starsRating == 1 {
                                         self.set(rating: 1)
@@ -135,6 +135,7 @@ class showRateViewController: UIViewController {
                   
               } // End of Connection check
               else {
+           // i.stopAnimating()
                   self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
               }
     }

@@ -25,6 +25,12 @@ class mapViewController: UIViewController {
         
         super.viewDidLoad()
        // print("Token(mapViewDidLoad): \(self.token)")
+        if onBoarding.instance.flag == true {
+            //onBoarding.instance.showAlert(alertType: .show)
+            self.view.addSubview(onBoarding.instance.pView)
+        } else {
+            onBoarding.instance.pView.removeFromSuperview()
+        }
         
         let camera = GMSCameraPosition.camera(withLatitude: 21.422510, longitude: 39.826168, zoom: 12)
         mv.camera = camera
@@ -33,11 +39,11 @@ class mapViewController: UIViewController {
         mv.settings.myLocationButton = true
         
         
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 21.422510, longitude: 39.826168)
-        marker.title = "Mecca"
-        marker.snippet = "Saudi Arabia"
-        marker.map = mv
+//        let marker = GMSMarker()
+//        marker.position = CLLocationCoordinate2D(latitude: 21.422510, longitude: 39.826168)
+//        marker.title = "Mecca"
+//        marker.snippet = "Saudi Arabia"
+//        marker.map = mv
         
         //Location Manager code to fetch current location
         self.locationManager.delegate = self
@@ -50,10 +56,6 @@ class mapViewController: UIViewController {
     @objc func imageTap() {
         
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
-        //GlobalV.glovalVariable.ticketsCount
-        //vc.getTicketsList()
-        
-        //vc.cou = GlobalV.glovalVariable.ticketsCount
         self.present(vc, animated: true, completion: nil)
     }
     

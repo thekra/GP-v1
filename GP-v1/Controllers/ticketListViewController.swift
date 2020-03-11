@@ -59,14 +59,10 @@ class ticketListViewController: UIViewController {
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
-        
-        
+         let i = self.startAnActivityIndicator()
+    if Connectivity.isConnectedToInternet {
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
-//            let result = response.result.value as? [[String : AnyObject]]
-//            print("Result ticket cell: \(result!)")
-//
-//            print("Response ticket cell: \(response.response!)")
             
             guard let data = response.data else {
                 
@@ -81,10 +77,11 @@ class ticketListViewController: UIViewController {
             do {
                 
                 let responseObject =  try decoder.decode(TicketCell.self, from: data)
-                //temp = responseObject
+                
                 self.ticketCell = responseObject
-               // if temp.isEmpty {
+                
                 if self.ticketCell.isEmpty {
+                    i.stopAnimating()
                     self.noTickets.isHidden = false
                 }
                 
@@ -95,16 +92,24 @@ class ticketListViewController: UIViewController {
             catch let parsingError {
                 print("Error", parsingError)
             }
+            
             DispatchQueue.main.async {
-                
+                i.stopAnimating()
                 self.tableView.reloadData()
                 
             }
-        }
+        } // end of alamofire
         
-    }
+    } else {
+        //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+        i.stopAnimating()
+        AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+        self.view.addSubview(AlertView.instance.ParentView)
+        } // end of else connection
+        
+} // end of function
     
-}
+} // end of class
 
 extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource {
     
@@ -118,6 +123,7 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         self.ticketID = ticketCell[indexPath.row].ticket.id
         print("TicketID: \(ticketID)")
         print("You tapped cell number \(indexPath.row).")
+        
         performSegue(withIdentifier: "showDetails", sender: self)
     }
     

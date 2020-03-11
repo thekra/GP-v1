@@ -168,12 +168,14 @@ class userProfileViewController: UIViewController{
         //            print("The neighborhood must be between 3377 and 3437.")
         //            self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
         //        }
-        
+         let i = self.startAnActivityIndicator()
         if Connectivity.isConnectedToInternet {
             
             if self.name == self.userName.text && self.phone == self.userPhone.text {
-                self.showAlert(title: "تنبيه", message: "لا يوجد ما يتم تحديثه")
-                
+                i.stopAnimating()
+                //self.showAlert(title: "تنبيه", message: "لا يوجد ما يتم تحديثه")
+                AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
+                self.view.addSubview(AlertView.instance.ParentView)
             } else {
                 
                 Alamofire.upload(multipartFormData:
@@ -232,8 +234,15 @@ class userProfileViewController: UIViewController{
                         upload.responseJSON { response in
                             
                             print("the resopnse code is : \(response.response?.statusCode ?? 0)")
-                          
+                            if response.response?.statusCode == 200 {
+                            i.stopAnimating()
                             //self.showAnAlert()
+                                           AlertView.instance.showAlert(message: "تم تحديث بياناتك", alertType: .success)
+                                
+                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "userProfilee") as! userProfileViewController
+                                vc.view.addSubview(AlertView.instance.ParentView)
+                                           self.present(vc, animated: true, completion: nil)
+                            }
                             
                             // من هنا يطلع رسالة الايرور تمام
                             print("the response is : \(response)")
@@ -248,7 +257,11 @@ class userProfileViewController: UIViewController{
             
         } // End of Connection check
         else {
-            self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            i.stopAnimating()
+           // self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            
+                       AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+                       self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection
         
     }
@@ -263,7 +276,8 @@ class userProfileViewController: UIViewController{
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
-        
+        if Connectivity.isConnectedToInternet {
+
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
             
@@ -290,6 +304,7 @@ class userProfileViewController: UIViewController{
             DispatchQueue.main.async {
                 self.picker2.reloadComponent(0)
             }
+            }
         }
     }
     
@@ -302,7 +317,8 @@ class userProfileViewController: UIViewController{
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
-        
+        if Connectivity.isConnectedToInternet {
+
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
             response in
             
@@ -329,6 +345,7 @@ class userProfileViewController: UIViewController{
             DispatchQueue.main.async {
                 self.picker1.reloadComponent(0)
             }
+        }
         }
     }
 }

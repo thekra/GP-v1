@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftEntryKit
 
 
 extension UserDefaults {
@@ -65,70 +64,30 @@ extension UIViewController {
            let ai = UIActivityIndicatorView(style: .gray)
            self.view.addSubview(ai)
            self.view.bringSubviewToFront(ai)
+           ai.transform = CGAffineTransform(scaleX: 2, y: 2)
            ai.center = self.view.center
            ai.hidesWhenStopped = true
            ai.startAnimating()
            return ai
        }
-//        
-//    func swiftEntry(title: String, message: String) {
-//        let customView = UIView()
-//        var attributes = EKAttributes(windowLevel: <#<<error type>>#>)
-//        attributes.name = title
-//    }
-    
+    func startAnActivityIndicator1() -> UIActivityIndicatorView {
+        let ai = UIActivityIndicatorView(style: .gray)
+        self.view.addSubview(ai)
+        self.view.bringSubviewToFront(ai)
+        ai.transform = CGAffineTransform(scaleX: 2, y: 2)
+        //ai.frame = CGRect(x: UIScreen.main.bounds.maxX, y: UIScreen.main.bounds.maxY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        ai.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        ai.frame = CGRect(x: 210, y: 290, width: 5, height: 5)
+        //ai.frame = CGRect(x: self.view.bounds/CGFloat(3), y: 290, width: 5, height: 5)
+        //ai.topAnchor =
+       // ai.topAnchor.anchorWithOffset(to: )
+//        let top = ai.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50)
+//        top.isActive = true
+//        let left = ai.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 50)
+//        left.isActive = true
+        
+        ai.hidesWhenStopped = true
+        ai.startAnimating()
+        return ai
+    }
 }
-
-
-
-//extension UIViewController {
-//    func startAnActivityIndicator() -> UIActivityIndicatorView {
-//        let ai = UIActivityIndicatorView(style: .gray)
-//        self.view.addSubview(ai)
-//        self.view.bringSubviewToFront(ai)
-//        ai.center = self.view.center
-//        ai.hidesWhenStopped = true
-//        ai.startAnimating()
-//        return ai
-//    }
-//}
-
-//extension UIViewController {
-////MARK: - dismiss keyboard function
-//    @objc func dismissKeyboard(view: UIView) {
-//     view.endEditing(true)
-//   }
-//}
-//public struct EKAttributes {
-//
-//    // Identification
-//    public var name: String?
-//
-//    // Display
-//    public var windowLevel: WindowLevel
-//    public var position: Position
-//    public var precedence: Precedence
-//    public var displayDuration: DisplayDuration
-//    public var positionConstraints: PositionConstraints
-//
-//    // User Interaction
-//    public var screenInteraction: UserInteraction
-//    public var entryInteraction: UserInteraction
-//    public var scroll: Scroll
-//    public var hapticFeedbackType: NotificationHapticFeedback
-//    public var lifecycleEvents: LifecycleEvents
-//
-//    // Theme & Style
-//    public var displayMode = DisplayMode.inferred
-//    public var entryBackground: BackgroundStyle
-//    public var screenBackground: BackgroundStyle
-//    public var shadow: Shadow
-//    public var roundCorners: RoundCorners
-//    public var border: Border
-//    public var statusBar: StatusBar
-//
-//    // Animations
-//    public var entranceAnimation: Animation
-//    public var exitAnimation: Animation
-//    public var popBehavior: PopBehavior
-//}
