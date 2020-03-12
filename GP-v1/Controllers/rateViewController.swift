@@ -133,10 +133,14 @@ class rateViewController: UIViewController {
          let i = self.startAnActivityIndicator()
         
         if textV.text == "" {
-            self.showAlert(title: "تنبيه", message: "الرجاء تعبئة حقل التعليق")
+            //self.showAlert(title: "تنبيه", message: "الرجاء تعبئة حقل التعليق")
+            AlertView.instance.showAlert(message: "الرجاء تعبئة حقل التعليق", alertType: .failure)
+                       self.view.addSubview(AlertView.instance.ParentView)
         } else // new
         if self.starsRating == 0 {
-            self.showAlert(title: "تنبيه", message: "الرجاء تحديد التقييم")
+            //self.showAlert(title: "تنبيه", message: "الرجاء تحديد التقييم")
+            AlertView.instance.showAlert(message: "الرجاء تحديد التقييم", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
         }
         else {
         if Connectivity.isConnectedToInternet {
@@ -168,13 +172,17 @@ class rateViewController: UIViewController {
                         debugPrint("SUCCESS RESPONSE: \(response)")
                         debugPrint(response.debugDescription)
                         print("REsponse: \(response)")
+                        if response.response?.statusCode == 200 {
                         i.stopAnimating()
-                        self.showAlert(title: "نجاح", message: "تم ارسال تقييمك بنجاح!")
+                       // self.showAlert(title: "نجاح", message: "تم ارسال تقييمك بنجاح!")
+                            AlertView.instance.showAlert(message: "تم ارسال تقييمك بنجاح", alertType: .success)
+                            self.view.addSubview(AlertView.instance.ParentView)
                         self.textV.isEditable = false
                         for i in self.stars {
                             i.isUserInteractionEnabled = false
                         }
                         self.rateButton.isHidden = true
+                        }
                         
                     } // End of upload
                     
@@ -194,8 +202,9 @@ class rateViewController: UIViewController {
             }
         else {
             i.stopAnimating()
-            self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
-
+            //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
         } // End of Connection check
         
         } // end of else

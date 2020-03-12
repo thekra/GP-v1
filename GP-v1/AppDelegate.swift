@@ -10,6 +10,8 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,10 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyDI52bchwS2xOevs0m2aG8Nv7pBtflAanA")
         GMSPlacesClient.provideAPIKey("AIzaSyDI52bchwS2xOevs0m2aG8Nv7pBtflAanA")
 //        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        
+//
 //        
 //        self.window?.rootViewController = vc
 //        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

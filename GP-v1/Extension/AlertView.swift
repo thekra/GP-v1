@@ -57,6 +57,7 @@ class AlertView: UIView {
      func showAlert(message: String, alertType: AlertType) {
         
         self.alertLabel.text = message
+        self.alertLabel.textColor = UIColor.white
         
          switch alertType {
          case .success:

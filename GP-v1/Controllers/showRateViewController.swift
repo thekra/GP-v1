@@ -136,7 +136,9 @@ class showRateViewController: UIViewController {
               } // End of Connection check
               else {
            // i.stopAnimating()
-                  self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+                  //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
               }
     }
     

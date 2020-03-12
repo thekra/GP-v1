@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Ahlan-world-Arbfonts.otf">
+            <string>AhlanworldArbfonts</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertView" customModule="GP_v1" customModuleProvider="target">
             <connections>
@@ -35,16 +40,16 @@
                                 <constraint firstAttribute="width" constant="250" id="D64-zI-d7k"/>
                                 <constraint firstAttribute="height" constant="71" id="U72-mR-f17"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
+                            <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIw-CO-Zg2">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIw-CO-Zg2">
                             <rect key="frame" x="104.5" y="232.5" width="65" height="29.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="65" id="uni-Cb-f1Z"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                             <state key="normal" title="حسناً">
                                 <color key="titleColor" red="0.50980392159999999" green="0.76470588240000004" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>

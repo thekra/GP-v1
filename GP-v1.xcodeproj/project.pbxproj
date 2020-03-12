@@ -52,6 +52,7 @@
 		79BFCA052418412000067783 /* Alert_View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BFCA042418412000067783 /* Alert_View.xib */; };
 		79BFCA072419356A00067783 /* onBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BFCA062419356A00067783 /* onBoarding.swift */; };
 		79BFCA092419358000067783 /* onBoarding.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BFCA082419358000067783 /* onBoarding.xib */; };
+		79BFCA0D241A35C800067783 /* Ahlan-world-Arbfonts.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79BFCA0C241A358A00067783 /* Ahlan-world-Arbfonts.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,7 @@
 		79BFCA042418412000067783 /* Alert_View.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Alert_View.xib; sourceTree = "<group>"; };
 		79BFCA062419356A00067783 /* onBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoarding.swift; sourceTree = "<group>"; };
 		79BFCA082419358000067783 /* onBoarding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = onBoarding.xib; sourceTree = "<group>"; };
+		79BFCA0C241A358A00067783 /* Ahlan-world-Arbfonts.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ahlan-world-Arbfonts.otf"; sourceTree = "<group>"; };
 		99A16A7BC0D840E024DABE90 /* Pods-GP-v1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP-v1.release.xcconfig"; path = "Target Support Files/Pods-GP-v1/Pods-GP-v1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +207,7 @@
 				797F8BC923E56CB500960C79 /* SceneDelegate.swift */,
 				797F8BCB23E56CB500960C79 /* ViewController.swift */,
 				797F8C1223EA208600960C79 /* vViewController.swift */,
+				79BFCA0A241A355600067783 /* Fonts */,
 				797F8BFA23E56D1E00960C79 /* Network */,
 				794A3A9723FEB480003CDE02 /* Extension */,
 				797F8BF923E56D1800960C79 /* Models */,
@@ -291,6 +294,14 @@
 				794A3A9A23FFF7C3003CDE02 /* File.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		79BFCA0A241A355600067783 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				79BFCA0C241A358A00067783 /* Ahlan-world-Arbfonts.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		83F1AC4D0BE3AC63014BEB1B /* Frameworks */ = {
@@ -411,6 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79BFCA0D241A35C800067783 /* Ahlan-world-Arbfonts.otf in Resources */,
 				79BFCA092419358000067783 /* onBoarding.xib in Resources */,
 				79BFCA052418412000067783 /* Alert_View.xib in Resources */,
 				797F8BD423E56CBA00960C79 /* LaunchScreen.storyboard in Resources */,

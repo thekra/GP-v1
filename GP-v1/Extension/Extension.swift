@@ -90,4 +90,27 @@ extension UIViewController {
         ai.startAnimating()
         return ai
     }
+    
+    func convertEngNumToArabicNum(num: Int, textF: UILabel) {
+        
+        let number = NSNumber(value: Int(num))
+        let Formatter = NumberFormatter()
+        Formatter.locale = Locale(identifier: "ar")
+        if let final = Formatter.string(from: number) {
+            print(final)
+            textF.text =  final
+        }
+        
+    }
+    
+    func convertDateFormater(_ date: String, textF: UILabel)
+           {
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+               let date = dateFormatter.date(from: date)
+               //dateFormatter.dateFormat = "yyyy-M-d"
+            dateFormatter.dateFormat = "d-M-yyyy"
+               dateFormatter.locale = Locale(identifier: "ar")
+               textF.text = dateFormatter.string(from: date!)
+           }
 }

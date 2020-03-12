@@ -36,12 +36,15 @@ class TicketInfoViewController: UIViewController {
     var ticket_id = 0
     var ratingCount = 0
     
+    var picArr = [UIImageView]()
+    var images = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ticketInfoView.layer.cornerRadius = 30
         descView.layer.cornerRadius = 30
+        self.imagesCount = (ticket?[0].photos.count)!
         neighborhood.layer.masksToBounds = true
         neighborhood.layer.cornerRadius = 20
         //raitngCount = (ticket?[0].userRating.count)!
@@ -59,17 +62,16 @@ class TicketInfoViewController: UIViewController {
         
         neighborhood.text = ticket?[0].location[0].neighborhood
         
-        showImages()
-        self.imagesCount = (ticket?[0].photos.count)!
+        picArr = [pic_1, pic_2, pic_3, pic_4]
+        
+        loadImages()
+        
         self.ticket_id = (ticket?[0].ticket.id)!
-//         for i in 0..<self.imagesCount {
-//            //for j in 1..<self.imagesCount{
-//                self.img_1 = (ticket?[0].photos[i].photoName)!
-//                setImage(img: self.img_1, pic: self.pic_1)
-//        // }
-//    }
+        
         checkForRating()
     }
+    
+   
     
     func checkForRating() {
         
@@ -109,11 +111,25 @@ class TicketInfoViewController: UIViewController {
                vc.ticket_id = ticket_id
                self.present(vc, animated: true, completion: nil)
     }
+
+    func loadImages() {
+        
+        for k in 0..<self.imagesCount {
+            
+            for i in (ticket?[0].photos[k].roleID)! {
+                if i == "1" {
+                    let img_name = ticket?[0].photos[k].photoName
+                    setImage(img: img_name!, count: k)
+                }
+            }
+        }
+    }
     
-    func setImage(img: String, pic: UIImageView) {
-        //var images = [Data]()
+    func setImage(img: String, count: Int)  {
         let urlString = "http://www.ai-rdm.website/storage/photos/\(img)"
+        
          let i = self.startAnActivityIndicator()
+        
     if Connectivity.isConnectedToInternet {
         Alamofire.request(urlString, method: .get).responseImage { response in
             guard let image = response.result.value else {
@@ -125,69 +141,15 @@ class TicketInfoViewController: UIViewController {
             if case .success(let image) = response.result {
                 i.stopAnimating()
                 print("image downloaded: \(image)")
-                pic.image = image
+                
+                       self.picArr[count].image =  image
+
             }
             }
             
-        }
+        } // end of interent check
     }
-    
-    //    func imageNumber(num: Int, img: String) {
-    //       var img = (ticket?[0].photos[num].photoName)!
-    //    }
-    
-    func showImages() {
-        print("photos count: \(String(describing: ticket?[0].photos.count))")
-        
-        
-        if ticket?[0].photos.count == 1 {
-            self.img_1_name = (ticket?[0].photos[0].photoName)!
-            setImage(img: self.img_1_name, pic: self.pic_1)
-        }
-        
-        if ticket?[0].photos.count == 2 {
-            print("photos count 2: \(String(describing: ticket?[0].photos.count))")
-            self.img_1_name = (ticket?[0].photos[0].photoName)!
-            self.img_2_name = (ticket?[0].photos[1].photoName)!
-//            if self.img_2.hasSuffix("jpeg") {
-                setImage(img: self.img_1_name, pic: self.pic_1)
-                setImage(img: self.img_2_name, pic: self.pic_2)
-//            }
-        }
-        
-        if ticket?[0].photos.count == 3 {
-            print("photos count 3: \(String(describing: ticket?[0].photos.count))")
-            self.img_1_name = (ticket?[0].photos[0].photoName)!
-            self.img_2_name = (ticket?[0].photos[1].photoName)!
-            self.img_3_name = (ticket?[0].photos[2].photoName)!
-//            if self.img_3.hasSuffix("jpeg") {
-                setImage(img: self.img_1_name, pic: self.pic_1)
-                setImage(img: self.img_2_name, pic: self.pic_2)
-                setImage(img: self.img_3_name, pic: self.pic_3)
-//            }
-        }
-        
-        if ticket?[0].photos.count == 4 {
-            print("photos count 4: \(String(describing: ticket?[0].photos.count))")
-            self.img_1_name = (ticket?[0].photos[0].photoName)!
-            self.img_2_name = (ticket?[0].photos[1].photoName)!
-            self.img_3_name = (ticket?[0].photos[2].photoName)!
-            self.img_4_name = (ticket?[0].photos[3].photoName)!
-//            if self.img_4.hasSuffix("jpeg") {
-                setImage(img: self.img_1_name, pic: self.pic_1)
-                setImage(img: self.img_2_name, pic: self.pic_2)
-                setImage(img: self.img_3_name, pic: self.pic_3)
-                setImage(img: self.img_4_name, pic: self.pic_4)
-//            }
-        }
-    }
-    
-//    func count() {
-//        var c = 0
-//        for i in ticket?[0].photos {
-//
-//        }
-//    }
+   
     
 }
 

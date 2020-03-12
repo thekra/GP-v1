@@ -10,10 +10,13 @@ import UIKit
 import Alamofire
 
 class switchViewController: UIViewController {
-
+    
+    //static let instance = switchViewController()
+    
     @IBOutlet weak var ticketsCount: UILabel!
     @IBOutlet weak var hiUser: UILabel!
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,7 +34,6 @@ class switchViewController: UIViewController {
 
             hiUser.text = "مرحباً،"
         }
-        
         getCount()
     }
     
@@ -68,7 +70,8 @@ class switchViewController: UIViewController {
                 
                 let responseObject =  try decoder.decode(TicketsCount.self, from: data)
                 
-                self.ticketsCount.text =  String(responseObject.ticketsCount)
+                let tCount = responseObject.ticketsCount
+                self.convertEngNumToArabicNum(num: tCount, textF: self.ticketsCount)
                 
             } // end of do
             catch let parsingError {

@@ -79,7 +79,7 @@ class ticketListViewController: UIViewController {
                 let responseObject =  try decoder.decode(TicketCell.self, from: data)
                 
                 self.ticketCell = responseObject
-                
+//                switchViewController.instance.ticketCount = self.ticketCell.count
                 if self.ticketCell.isEmpty {
                     i.stopAnimating()
                     self.noTickets.isHidden = false
@@ -142,18 +142,21 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! ticketListTableViewCell
         
         if self.ticketCell[indexPath.row].ticket.status == "OPEN" {
-            cell.cellImg.image = UIImage(named: "Group 3-open")
+            cell.cellImg.image = UIImage(named: "open")
             
         } else if self.ticketCell[indexPath.row].ticket.status == "ASSIGNED" {
-            cell.cellImg.image = UIImage(named: "Group 3-assigned")
+            cell.cellImg.image = UIImage(named: "assigned")
             
         } else if self.ticketCell[indexPath.row].ticket.status == "CLOSED" {
-            cell.cellImg.image = UIImage(named: "closed")
+            cell.cellImg.image = UIImage(named: "closed-1")
         }
         // set the text from the data model
         
-        cell.ticketInfo.text = String(self.ticketCell[indexPath.row].ticket.id)
+        let ticketID = self.ticketCell[indexPath.row].ticket.id
+        self.convertEngNumToArabicNum(num: ticketID, textF: cell.ticketInfo)
         
+        let ticketDate = self.ticketCell[indexPath.row].ticket.createdAt
+        self.convertDateFormater(ticketDate, textF: cell.dateLabel)
         cell.statusLabel.text = self.ticketCell[indexPath.row].ticket.statusAr
         return cell
     }
