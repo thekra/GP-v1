@@ -43,7 +43,7 @@ class showRateViewController: UIViewController {
         showRatingView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         stars = [star1, star2, star3, star4, star5]
         self.imagesCount = (ticket?[0].photos.count)!
-        picArr = [pic_1, pic_2, pic_3, pic_4]
+        picArr = [pic_1, pic_2, pic_3, pic_4 ,pic_1, pic_2, pic_3, pic_4]
         starsRating = Int((ticket?[0].userRating[0].rating)!)!
         self.comment.text = ticket?[0].userRating[0].comment
         //showRating()
@@ -52,12 +52,15 @@ class showRateViewController: UIViewController {
     }
     func loadImages() {
         
-        for k in 0..<self.imagesCount {
+        for k in 4..<self.imagesCount {
             print("imagesCount \(imagesCount)")
             for i in (ticket?[0].photos[k].roleID)! {
                 if i == "3" {
+                   // var c = 0
                     let img_name = ticket?[0].photos[k].photoName
+                    print("img_name \(img_name)")
                     setImage(img: img_name!, count: k)
+                    //c += 1
                 }
             }
         }
@@ -81,7 +84,7 @@ class showRateViewController: UIViewController {
                 print("image downloaded: \(image)")
                 
                        self.picArr[count].image =  image
-
+                      //  count += 1
             }
             }
             

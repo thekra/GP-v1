@@ -46,8 +46,8 @@ class rateViewController: UIViewController {
         rateView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         self.imagesCount = (ticket?[0].photos.count)!
         stars = [star1, star2, star3, star4, star5]
-        picArr = [pic_1, pic_2, pic_3, pic_4]
-       
+        picArr = [pic_1, pic_2, pic_3, pic_4 ,pic_1, pic_2, pic_3, pic_4]
+
         allPic()
         set(rating: starsRating)
         GlobalV.glovalVariable.starsRating = self.starsRating
