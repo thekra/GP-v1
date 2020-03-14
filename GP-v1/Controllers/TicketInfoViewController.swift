@@ -25,6 +25,8 @@ class TicketInfoViewController: UIViewController {
     @IBOutlet weak var rateButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     
+    var token: String = UserDefaults.standard.string(forKey: "access_token")!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.imagesCount = (ticket?[0].photos.count)!
@@ -142,7 +144,70 @@ class TicketInfoViewController: UIViewController {
     }
     
     @IBAction func deleteTicket(_ sender: Any) {
+        let urlString = "http://www.ai-rdm.website/api/ticket/delete"
         
+        let headers: HTTPHeaders = [
+                   "Authorization": "Bearer \(self.token)",
+                   "Content-Type": "multipart/form-data",
+                   "Accept": "application/json"
+               ]
+               let parameters = [
+                   "ticket_id": self.ticket_id
+               ] as [String : AnyObject]
+
+        //let i = self.startAnActivityIndicator()
+                if Connectivity.isConnectedToInternet {
+                             
+                             Alamofire.upload(multipartFormData:
+                                 { (multipartFormData ) in
+                                     
+                                     for (key, value) in parameters {
+                                         if let temp = value as? Int {
+                                             multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
+                                         }
+                                         print("Sent Parameters: \(parameters)")
+                                     }
+                             }, to: urlString,
+                                method: .post,
+                                headers: headers,
+                                encodingCompletion: {
+                                 encodingResult in
+                                 switch encodingResult {
+                                 case .success(let upload, _, _):
+                                     
+                                     
+                                     
+                                     upload.responseData { response in
+                                         debugPrint("SUCCESS RESPONSE: \(response)")
+                                         debugPrint(response.debugDescription)
+                                         print("REsponse: \(response)")
+                                         
+                                         
+                                     } // End of upload
+                                     
+                                     upload.responseJSON { response in
+                                                              
+                                         print("the resopnse code is : \(response.response?.statusCode ?? 0)")            // من هنا يطلع رسالة الايرور تمام
+                                         print("the response is : \(response)")
+                                        if response.response?.statusCode == 200 {
+                                             let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
+                                            self.present(vc, animated: true, completion: nil)
+                                        }
+                                     }
+                                     
+                                 case .failure(let encodingError):
+                                     // hide progressbas here
+                                     print("ERROR RESPONSE: \(encodingError)")
+                                 }
+                             }) // End of Alamofire
+                        
+                         
+                     } // End of Connection check
+                     else {
+                  // i.stopAnimating()
+                   AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+                   self.view.addSubview(AlertView.instance.ParentView)
+                     }
     }
     
     @IBAction func ratePressed(_ sender: Any) {
