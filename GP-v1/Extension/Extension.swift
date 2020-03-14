@@ -40,6 +40,18 @@ extension UIView {
     }
 }
 
+extension UILabel {
+    func roundCornerr(corners: UIRectCorner, radius: Int = 8) {
+        let maskPath1 = UIBezierPath(roundedRect: bounds,
+                                     byRoundingCorners: corners,
+                                     cornerRadii: CGSize(width: radius, height: radius))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = bounds
+        maskLayer1.path = maskPath1.cgPath
+        layer.mask = maskLayer1
+    }
+}
+
 extension UIViewController {
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -102,6 +114,18 @@ extension UIViewController {
         }
         
     }
+    
+    func convertEngNumToArabicNumm(num: Int) -> String {
+        var f = ""
+          let number = NSNumber(value: Int(num))
+          let Formatter = NumberFormatter()
+          Formatter.locale = Locale(identifier: "ar")
+          if let final = Formatter.string(from: number) {
+            f = final
+              print(final)
+          }
+          return f
+      }
     
     func convertDateFormater(_ date: String, textF: UILabel)
            {

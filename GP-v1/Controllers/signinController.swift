@@ -94,6 +94,18 @@ class signinController: UIViewController {
                         print("Token: \(token)")
                         UserDefaults.standard.set(token, forKey: "access_token")
                         
+//                        if name!.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
+//
+//                            print("One word")
+//
+//                        UserDefaults.standard.set(name, forKey: "name")
+//
+//                        } else {
+//                            print("Not one word")
+//                            let firstName = name!.components(separatedBy: " ")
+//
+//                            UserDefaults.standard.set(firstName[0], forKey: "name")
+//                        }
                         UserDefaults.standard.set(name, forKey: "name")
                         
                         UserDefaults.standard.set(phone, forKey: "phone")
@@ -145,6 +157,10 @@ class signinController: UIViewController {
         } // end of else connection
     } // End of signin button
     
+
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
     
     // MARK: - Keyboard Functions
     

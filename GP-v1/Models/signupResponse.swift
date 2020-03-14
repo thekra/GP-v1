@@ -50,7 +50,7 @@ import Foundation
 
 struct SignupResponse: Codable {
     let accessToken, tokenType, expiresAt: String
-    let userData: UserData
+    let userData: User_Data//UserData
     
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"

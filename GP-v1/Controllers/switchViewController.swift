@@ -29,7 +29,20 @@ class switchViewController: UIViewController {
         
         if isKeyPresentInUserDefaults(key: "name") == true {
             let namee = UserDefaults.standard.string(forKey: "name")!
-             hiUser.text = "مرحباً، \(namee)"
+            if namee.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
+            
+                                        print("One word")
+            
+                                   hiUser.text = "مرحباً، \(namee)" //UserDefaults.standard.set(namee, forKey: "name")
+            
+                                    } else {
+                                        print("Not one word")
+                let firstName = namee.components(separatedBy: " ")
+            
+                                       hiUser.text = "مرحباً، \(firstName[0])" //UserDefaults.standard.set(firstName[0], forKey: "name")
+                                    }
+            //let namee = UserDefaults.standard.string(forKey: "name")!
+             //hiUser.text = "مرحباً، \(namee)"
         } else {
 
             hiUser.text = "مرحباً،"

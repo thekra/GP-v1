@@ -90,11 +90,24 @@ class signupViewController: UIViewController {
                         print(responseObject)
                         
                         let token = responseObject.accessToken
-                        //let name = responseObject.
+                        let name = responseObject.userData.name
                         
                         UserDefaults.standard.set(token, forKey: "access_token")
                         
-                        //UserDefaults.standard.set(responseObject.user_data.name, forKey: "name")
+//                        if name!.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
+//
+//                                                   print("One word")
+//
+//                                               UserDefaults.standard.set(name, forKey: "name")
+//
+//                                               } else {
+//                                                   print("Not one word")
+//                                                   let firstName = name!.components(separatedBy: " ")
+//
+//                                                   UserDefaults.standard.set(firstName[0], forKey: "name")
+//                                               }
+                        UserDefaults.standard.set(name, forKey: "name")
+                        
                         if response.response?.statusCode == 200 {
                             i.stopAnimating()
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController

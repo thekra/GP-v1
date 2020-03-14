@@ -8,36 +8,90 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 class rateViewController: UIViewController {
     
-    @IBOutlet weak var textV: UITextView!
+    @IBOutlet weak var pic_1: UIImageView!
+    @IBOutlet weak var pic_2: UIImageView!
+    @IBOutlet weak var pic_3: UIImageView!
+    @IBOutlet weak var pic_4: UIImageView!
+    
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var star2: UIImageView!
     @IBOutlet weak var star3: UIImageView!
     @IBOutlet weak var star4: UIImageView!
     @IBOutlet weak var star5: UIImageView!
-    @IBOutlet weak var rateButton: UIButton!
     
+    @IBOutlet weak var textV: UITextView!
+    @IBOutlet weak var rateButton: UIButton!
+    @IBOutlet weak var rateView: UIView!
+    
+    var ticket: TicketCell?
     var stars = [UIImageView]()
     var starsRating = 0
      var token: String = UserDefaults.standard.string(forKey: "access_token")!
     var ticket_id = 0
     var ratingCount = 0
+    var imagesCount = 0
+    var picArr = [UIImageView]()
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+        loadImages()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         textV.layer.cornerRadius = 20
+        rateView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        self.imagesCount = (ticket?[0].photos.count)!
         stars = [star1, star2, star3, star4, star5]
-        
-        
+        picArr = [pic_1, pic_2, pic_3, pic_4]
+       
         allPic()
         set(rating: starsRating)
         GlobalV.glovalVariable.starsRating = self.starsRating
         rateButton.roundCorners(corners: [.topLeft, .topRight], radius: 15)
         print("load \(ratingCount)")
+        loadImages()
+    }
+    
+    func loadImages() {
         
+        for k in 0..<self.imagesCount {
+            print("imagesCount \(imagesCount)")
+            for i in (ticket?[0].photos[k].roleID)! {
+                if i == "3" {
+                    let img_name = ticket?[0].photos[k].photoName
+                    setImage(img: img_name!, count: k)
+                }
+            }
+        }
+    }
+    
+    func setImage(img: String, count: Int)  {
+        let urlString = "http://www.ai-rdm.website/storage/photos/\(img)"
+        
+         let i = self.startAnActivityIndicator()
+        
+    if Connectivity.isConnectedToInternet {
+        Alamofire.request(urlString, method: .get).responseImage { response in
+            guard let image = response.result.value else {
+                // Handle error
+                return
+            }
+            print("Image: \(image)")
+            // Do stuff with your image
+            if case .success(let image) = response.result {
+                i.stopAnimating()
+                print("image downloaded: \(image)")
+                
+                       self.picArr[count].image =  image
+
+            }
+            }
+            
+        } // end of interent check
     }
     
     func pic(sender: UIImageView!) {
@@ -113,6 +167,12 @@ class rateViewController: UIViewController {
     }
     
     
+    @IBAction func backToTicket(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticketInfo") as! TicketInfoViewController
+        
+                vc.ticket = self.ticket
+                self.present(vc, animated: true, completion: nil)
+    }
     
     @IBAction func ratePressed(_ sender: Any) {
         let urlString = "http://www.ai-rdm.website/api/ticket/rate"

@@ -13,6 +13,7 @@ class userProfileViewController: UIViewController{
     
     
     
+    @IBOutlet weak var startUpdate: UIButton!
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userEmail: UITextField!
@@ -37,6 +38,8 @@ class userProfileViewController: UIViewController{
     var cityID = 0
     var neighboorhoodID = 0
     var selectedNeighborhood: String?
+    var selectedCity: String?
+    //var oldSelectedNei = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,18 +50,44 @@ class userProfileViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+//        updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+//        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+//        //.layer.cornerRadius = 30
+//        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         //.layer.cornerRadius = 30
-        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
-        //.layer.cornerRadius = 30
-        
         getUserInfo()
+        setUI(flag: false, button: updateButton, button2: startUpdate)
         createPicker()
         getCityList()
         getNeighborhoodList()
     }
+    func setUI(flag: Bool, button: UIButton, button2: UIButton) {
+        button.isHidden = true
+        button2.isHidden = false
+        userName.isUserInteractionEnabled = flag
+        userPhone.isUserInteractionEnabled = flag
+        chooseNeighborhood.isUserInteractionEnabled = flag
+        if flag == false {
+            userName.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            userPhone.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            chooseNeighborhood.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        } else {
+            userName.backgroundColor = #colorLiteral(red: 0.9489166141, green: 0.9490789771, blue: 0.9489063621, alpha: 1)
+            userPhone.backgroundColor = #colorLiteral(red: 0.9489166141, green: 0.9490789771, blue: 0.9489063621, alpha: 1)
+            chooseNeighborhood.backgroundColor = #colorLiteral(red: 0.9489166141, green: 0.9490789771, blue: 0.9489063621, alpha: 1)
+        }
+        chooseCity.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        chooseCity.isUserInteractionEnabled = false
+        userEmail.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+        startUpdate.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        }
     
+    @IBAction func startupdate(_ sender: Any) {
+        setUI(flag: true, button: startUpdate, button2: updateButton)
+    }
     func createPicker() {
         picker1.delegate = self
         picker1.dataSource = self
@@ -124,6 +153,7 @@ class userProfileViewController: UIViewController{
                 }
                 
                 if let uPhone = responseObject.phone {
+                    //let phoneCon = self.convertEngNumToArabicNumm(num: Int(uPhone)!)
                     self.userPhone.text = uPhone
                     self.phone = uPhone
                 } else {
@@ -132,6 +162,18 @@ class userProfileViewController: UIViewController{
                 
                 self.userEmail.text = responseObject.email
                 
+                if let chosenNei = responseObject.neighborhood?.nameAr{
+                    
+                self.chooseNeighborhood.text = chosenNei
+                //self.oldSelectedNei = chosenNei
+                }
+                
+                if let chosenCity = responseObject.city?.nameAr {
+                    
+                self.chooseCity.text = chosenCity
+                    
+                }
+                //self.neighboorhoodID = responseObject.neighborhood.id
                 print("User Info: \(responseObject)")
                 
                 
@@ -145,21 +187,29 @@ class userProfileViewController: UIViewController{
     
     @IBAction func saveUpdates(_ sender: Any) {
         let urlString = "http://www.ai-rdm.website/api/user/update"
-        
+        var parameters = [:] as [String : AnyObject]
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
         
+        if userName.text != "" {
+            parameters["name"] = userName.text! as AnyObject
+        }
+
+        if userPhone.text != "" {
+            parameters["phone"] =  userPhone.text! as AnyObject
+        }
         
-        let parameters = [
-            "name": userName.text,
-            "phone": userPhone.text
-            //            "city": self.cityID,
-            //            "neighborhood": self.neighboorhoodID
-            ] as [String : AnyObject]
-        
+        if neighboorhoodID != 0 {
+            parameters["neighborhood"] = self.neighboorhoodID  as AnyObject
+        }
+
+        if parameters.isEmpty {
+            AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
+        }
         
         //        switch self.neighboorhoodID {
         //        case 3377...3437:
@@ -168,22 +218,19 @@ class userProfileViewController: UIViewController{
         //            print("The neighborhood must be between 3377 and 3437.")
         //            self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
         //        }
+        
          let i = self.startAnActivityIndicator()
         if Connectivity.isConnectedToInternet {
             
-            if self.name == self.userName.text && self.phone == self.userPhone.text {
-                i.stopAnimating()
-                //self.showAlert(title: "تنبيه", message: "لا يوجد ما يتم تحديثه")
-                AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
-                self.view.addSubview(AlertView.instance.ParentView)
-            } else {
-                
                 Alamofire.upload(multipartFormData:
                     { (multipartFormData ) in
                         
                         for (key, value) in parameters {
                             if let temp = value as? String { multipartFormData.append(temp.data(using: .utf8)!, withName: key)
                                 
+                            }
+                            if let temp = value as? Int {
+                                multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
                             }
                             print("Sent Parameters: \(parameters)")
                         }
@@ -211,18 +258,35 @@ class userProfileViewController: UIViewController{
                             }
                             let decoder = JSONDecoder()
                             do {
-                                let responseObject =  try decoder.decode(UpdateResponse.self, from: data)
+                                let responseObject =  try decoder.decode(User.self, from: data)
                                 print("response Object MESSAGE: \([responseObject].self)")
                                 
-                                let name = responseObject.userInfo.name
+                                let name = responseObject.name
                                 
-                                let phone = responseObject.userInfo.phone
-                                self.name = name
-                                self.phone = phone
-                                
+                                if name!.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
+                                    
+                                    print("One word")
+                                    self.name = name!
                                 UserDefaults.standard.set(name, forKey: "name")
+
+                                } else {
+                                    print("Not one word")
+                                    let firstName = name!.components(separatedBy: " ")
+                                    self.name = firstName[0]
+                                    UserDefaults.standard.set(firstName[0], forKey: "name")
+                                }
+                                
+                                let phone = responseObject.phone
+                                //let convertedPhone = self.convertEngNumToArabicNumm(num: Int(phone)!)
+                                //self.name = name
+                                self.phone = phone!
+                                
+                                //UserDefaults.standard.set(name, forKey: "name")
                                 
                                 UserDefaults.standard.set(phone, forKey: "phone")
+                                self.chooseNeighborhood.text = responseObject.neighborhood?.nameAr
+                                //self.chooseNeighborhood.text = self.selectedNeighborhood
+                                //self.neighboorhoodID = responseObject.neighborhood.id
                                 
                             } // end of do
                             catch let parsingError {
@@ -243,6 +307,9 @@ class userProfileViewController: UIViewController{
                                 vc.view.addSubview(AlertView.instance.ParentView)
                                            self.present(vc, animated: true, completion: nil)
                             }
+                            if response.response?.statusCode == 422 {
+                                
+                            }
                             
                             // من هنا يطلع رسالة الايرور تمام
                             print("the response is : \(response)")
@@ -253,7 +320,7 @@ class userProfileViewController: UIViewController{
                         print("ERROR RESPONSE: \(encodingError)")
                     }
                 }) // End of Alamofire
-            } // End of else
+            //} // End of else
             
         } // End of Connection check
         else {
@@ -383,11 +450,11 @@ extension userProfileViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == picker1 {
-            self.cityID = Int(NeiArr[row].cityID)!
+            self.cityID = Int(cityArr[row].cities[row].id)
             print("City ID: \(self.cityID)")
-            
-            selectedNeighborhood = cityArr[row].cities[0].nameAr
-            chooseNeighborhood.text = selectedNeighborhood
+
+            selectedCity = cityArr[row].cities[row].nameAr
+            chooseCity.text = selectedCity
         } else
             if pickerView == picker2 {
                 

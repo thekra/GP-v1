@@ -79,7 +79,7 @@ class ticketListViewController: UIViewController {
                 let responseObject =  try decoder.decode(TicketCell.self, from: data)
                 
                 self.ticketCell = responseObject
-//                switchViewController.instance.ticketCount = self.ticketCell.count
+                
                 if self.ticketCell.isEmpty {
                     i.stopAnimating()
                     self.noTickets.isHidden = false
@@ -140,15 +140,22 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         
         // create a new cell if needed or reuse an old one
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as! ticketListTableViewCell
+        cell.statusLabel.text = self.ticketCell[indexPath.row].ticket.statusAr
+        let status = self.ticketCell[indexPath.row].ticket.status
         
-        if self.ticketCell[indexPath.row].ticket.status == "OPEN" {
+        if status == "OPEN" {
             cell.cellImg.image = UIImage(named: "open")
             
-        } else if self.ticketCell[indexPath.row].ticket.status == "ASSIGNED" {
+        } else if status == "ASSIGNED" || status == "IN_PROGRESS" || status == "SOLVED" || status == "DONE"{
             cell.cellImg.image = UIImage(named: "assigned")
+            cell.statusLabel.text = "قيد التنفيذ"
             
-        } else if self.ticketCell[indexPath.row].ticket.status == "CLOSED" {
-            cell.cellImg.image = UIImage(named: "closed-1")
+        } else if status == "CLOSED" {
+            cell.cellImg.image = UIImage(named: "solved")
+        
+        } else if status == "EXCLUDED" {
+            cell.cellImg.image = UIImage(named: "closed-2")
+            
         }
         // set the text from the data model
         
@@ -157,7 +164,7 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         
         let ticketDate = self.ticketCell[indexPath.row].ticket.createdAt
         self.convertDateFormater(ticketDate, textF: cell.dateLabel)
-        cell.statusLabel.text = self.ticketCell[indexPath.row].ticket.statusAr
+        
         return cell
     }
 }

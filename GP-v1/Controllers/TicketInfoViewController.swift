@@ -13,44 +13,59 @@ import AlamofireImage
 class TicketInfoViewController: UIViewController {
     
     @IBOutlet weak var ticketInfoView: UIView!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var neighborhood: UILabel!
-    @IBOutlet weak var descView: UITextView!
-    // @IBOutlet weak var descLabel: UILabel!
-    
-    @IBOutlet weak var showRatingB: UIButton!
-    @IBOutlet weak var rateButton: UIButton!
     @IBOutlet weak var pic_1: UIImageView!
     @IBOutlet weak var pic_2: UIImageView!
     @IBOutlet weak var pic_3: UIImageView!
     @IBOutlet weak var pic_4: UIImageView!
+
+    @IBOutlet weak var neighborhood: UILabel!
+    @IBOutlet weak var descView: UITextView!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var showRatingB: UIButton!
+    @IBOutlet weak var rateButton: UIButton!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.imagesCount = (ticket?[0].photos.count)!
+        if ticket?[0].ticket.ticketDescription == "." {
+                   descView.text = ""
+               } else {
+                   descView.text = ticket?[0].ticket.ticketDescription
+               }
+               
+               neighborhood.text = ticket?[0].location[0].neighborhood
+               
+               picArr = [pic_1, pic_2, pic_3, pic_4]
+               
+               loadImages()
+               
+               self.ticket_id = (ticket?[0].ticket.id)!
+               
+               checkForRating()
+    }
     
     var ticket: TicketCell?
-    var token: String = UserDefaults.standard.string(forKey: "access_token")!
-    
-    var img_1_name = ""
-    var img_2_name = ""
-    var img_3_name = ""
-    var img_4_name = ""
+   
     var imagesCount = 0
     var ticket_id = 0
-    var ratingCount = 0
     
     var picArr = [UIImageView]()
     var images = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //setHiddenUI()
         ticketInfoView.layer.cornerRadius = 30
         descView.layer.cornerRadius = 30
-        self.imagesCount = (ticket?[0].photos.count)!
+        //self.imagesCount = (ticket?[0].photos.count)!
         neighborhood.layer.masksToBounds = true
         neighborhood.layer.cornerRadius = 20
-        //raitngCount = (ticket?[0].userRating.count)!
+        
         deleteButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
         rateButton.roundCorners(corners: [.topLeft, .topRight], radius: 15)
         showRatingB.roundCorners(corners: [.topLeft, .topRight], radius: 15)
+        statusLabel.roundCornerr(corners: [.topLeft, .topRight], radius: 15)
        // descLabel.layer.masksToBounds = true
         //descView.text = ticket?[0].ticket.ticketDescription
         
@@ -66,33 +81,64 @@ class TicketInfoViewController: UIViewController {
         
         loadImages()
         
-        self.ticket_id = (ticket?[0].ticket.id)!
+//        self.ticket_id = (ticket?[0].ticket.id)!
         
         checkForRating()
     }
     
-   
+    func setHiddenUI() {
+        rateButton.isHidden = true
+        showRatingB.isHidden = true
+        statusLabel.isHidden = true
+    }
     
     func checkForRating() {
+        let status = ticket?[0].ticket.status
         
-        if ticket?[0].ticket.status == "CLOSED" {
+        if status == "CLOSED" {
             deleteButton.isHidden = true
-            print("user rating : \(ticket?[0].userRating.count)")
-            //self.raitngCount = (ticket?[0].userRating.count)!
+            statusLabel.isHidden = true
             if ticket?[0].userRating.count == 0 {
                 rateButton.isHidden = false
                 showRatingB.isHidden = true
             } else {
                 rateButton.isHidden = true
                 showRatingB.isHidden = false
-                
             }
             
-        } else {
+        } else if status == "OPEN" {
             deleteButton.isHidden = false
             rateButton.isHidden = true
             showRatingB.isHidden = true
-        }
+            statusLabel.isHidden = true
+            //setHiddenUI()
+            
+        } else if status == "ASSIGNED" {
+            deleteButton.isHidden = true
+            rateButton.isHidden = true
+            showRatingB.isHidden = true
+            statusLabel.text = "تم اسناد التذكرة"
+            
+        } else if status == "SOLVED" || status == "DONE" {
+                    deleteButton.isHidden = true
+                    rateButton.isHidden = true
+                    showRatingB.isHidden = true
+                    statusLabel.text = "تمت معالجة التذكرة وفي انتظار اغلاقها"
+                    
+                
+        } else if status == "IN_PROGRESS" {
+            deleteButton.isHidden = true
+            rateButton.isHidden = true
+            showRatingB.isHidden = true
+            statusLabel.text = "التذكرة قيد التنفيذ"
+            
+        } else if status == "EXCLUDED" {
+                    deleteButton.isHidden = true
+                    rateButton.isHidden = true
+                    showRatingB.isHidden = true
+                    statusLabel.text = "التذكرة لم تتوافق"
+                    
+                }
     }
     
     @IBAction func deleteTicket(_ sender: Any) {
@@ -102,13 +148,21 @@ class TicketInfoViewController: UIViewController {
     @IBAction func ratePressed(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "rate") as! rateViewController
         vc.ticket_id = ticket_id
-        
+        vc.ticket = self.ticket
+        //vc.de
         self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func showRatingPressed(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "showRate") as! showRateViewController
-               vc.ticket_id = ticket_id
+        
+        vc.ticket_id = ticket_id
+        vc.ticket = self.ticket
+//        vc.des = (ticket?[0].ticket.ticketDescription)!
+//        vc.nei = (ticket?[0].location[0].neighborhood)!
+//        vc.images = self.images
+//        vc.imagesCount = self.imagesCount
+        
                self.present(vc, animated: true, completion: nil)
     }
 
