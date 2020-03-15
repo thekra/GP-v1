@@ -39,7 +39,7 @@ class userProfileViewController: UIViewController{
     var neighboorhoodID = 0
     var selectedNeighborhood: String?
     var selectedCity: String?
-    //var oldSelectedNei = ""
+    var oldSelectedNei = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -165,7 +165,7 @@ class userProfileViewController: UIViewController{
                 if let chosenNei = responseObject.neighborhood?.nameAr{
                     
                 self.chooseNeighborhood.text = chosenNei
-                //self.oldSelectedNei = chosenNei
+                self.oldSelectedNei = chosenNei
                 }
                 
                 if let chosenCity = responseObject.city?.nameAr {
@@ -219,9 +219,16 @@ class userProfileViewController: UIViewController{
         //            self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
         //        }
         
+        
          let i = self.startAnActivityIndicator()
         if Connectivity.isConnectedToInternet {
             
+            if self.name == self.userName.text && self.phone == self.userPhone.text && chooseNeighborhood.text == oldSelectedNei {
+                           i.stopAnimating()
+                           AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
+                           self.view.addSubview(AlertView.instance.ParentView)
+                       } else {
+                
                 Alamofire.upload(multipartFormData:
                     { (multipartFormData ) in
                         
@@ -320,7 +327,7 @@ class userProfileViewController: UIViewController{
                         print("ERROR RESPONSE: \(encodingError)")
                     }
                 }) // End of Alamofire
-            //} // End of else
+            } // End of else
             
         } // End of Connection check
         else {

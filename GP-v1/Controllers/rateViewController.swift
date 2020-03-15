@@ -17,6 +17,9 @@ class rateViewController: UIViewController {
     @IBOutlet weak var pic_3: UIImageView!
     @IBOutlet weak var pic_4: UIImageView!
     
+    @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var previewImg: UIImageView!
+    
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var star2: UIImageView!
     @IBOutlet weak var star3: UIImageView!
@@ -28,37 +31,48 @@ class rateViewController: UIViewController {
     @IBOutlet weak var rateView: UIView!
     
     var ticket: TicketCell?
-    var stars = [UIImageView]()
+    
+    var token: String = UserDefaults.standard.string(forKey: "access_token")!
     var starsRating = 0
-     var token: String = UserDefaults.standard.string(forKey: "access_token")!
     var ticket_id = 0
     var ratingCount = 0
     var imagesCount = 0
+    var stars = [UIImageView]()
     var picArr = [UIImageView]()
     
     override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
         loadImages()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        textV.layer.cornerRadius = 20
-        rateView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
-        self.imagesCount = (ticket?[0].photos.count)!
-        stars = [star1, star2, star3, star4, star5]
-        picArr = [pic_1, pic_2, pic_3, pic_4 ,pic_1, pic_2, pic_3, pic_4]
-
+        
+        setUI()
         allPic()
+        setAllOpenPic()
         set(rating: starsRating)
-        GlobalV.glovalVariable.starsRating = self.starsRating
-        rateButton.roundCorners(corners: [.topLeft, .topRight], radius: 15)
         print("load \(ratingCount)")
         loadImages()
     }
     
+    func setUI() {
+        textV.layer.cornerRadius = 20
+        rateView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        rateButton.roundCorners(corners: [.topLeft, .topRight], radius: 15)
+        
+                self.imagesCount = (ticket?[0].photos.count)!
+                stars = [star1, star2, star3, star4, star5]
+                picArr = [pic_1, pic_2, pic_3, pic_4 ,pic_1, pic_2, pic_3, pic_4]
+
+        previewImg.isHidden = true
+        previewView.isHidden = true
+        setupPic(pic: previewImg, action: #selector(self.previewTap))
+    }
+    
     func loadImages() {
         
-        for k in 0..<self.imagesCount {
+        for k in 4..<self.imagesCount {
             print("imagesCount \(imagesCount)")
             for i in (ticket?[0].photos[k].roleID)! {
                 if i == "3" {
@@ -166,6 +180,68 @@ class rateViewController: UIViewController {
         set(rating: 5)
     }
     
+    func openPic(sender: UIImageView!) {
+        switch sender.tag {
+            
+        case 0:
+            setupPic(pic: pic_1, action: #selector(self.imageTap))
+            
+        case 1:
+            setupPic(pic: pic_2, action: #selector(self.imageTap2))
+
+        case 2: setupPic(pic: pic_3, action: #selector(self.imageTap3))
+
+        case 3: setupPic(pic: pic_4, action: #selector(self.imageTap4))
+            
+        default: break
+            //setupPic(pic: star1, action: #selector(self.imageTap(sender:)))
+        }
+    }
+    
+    func setAllOpenPic() {
+        openPic(sender: pic_1)
+        openPic(sender: pic_2)
+        openPic(sender: pic_3)
+        openPic(sender: pic_4)
+
+    }
+    
+    @objc func picTap() {
+           print("image  clicked")
+           previewImg.isHidden = false
+           previewView.isHidden = false
+           previewImg.image = pic_1.image
+           
+       }
+       
+       @objc func picTap2() {
+              print("image 2 clicked")
+              previewImg.isHidden = false
+              previewView.isHidden = false
+              previewImg.image = pic_2.image
+              
+          }
+       
+       @objc func picTap3() {
+              print("image 3 clicked")
+              previewImg.isHidden = false
+              previewView.isHidden = false
+              previewImg.image = pic_3.image
+              
+          }
+       
+       @objc func picTap4() {
+              print("image 4 clicked")
+              previewImg.isHidden = false
+              previewView.isHidden = false
+              previewImg.image = pic_4.image
+              
+          }
+       
+       @objc func previewTap() {
+           previewImg.isHidden = true
+           previewView.isHidden = true
+       }
     
     @IBAction func backToTicket(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticketInfo") as! TicketInfoViewController
@@ -193,12 +269,12 @@ class rateViewController: UIViewController {
          let i = self.startAnActivityIndicator()
         
         if textV.text == "" {
-            //self.showAlert(title: "تنبيه", message: "الرجاء تعبئة حقل التعليق")
+            
             AlertView.instance.showAlert(message: "الرجاء تعبئة حقل التعليق", alertType: .failure)
                        self.view.addSubview(AlertView.instance.ParentView)
         } else // new
         if self.starsRating == 0 {
-            //self.showAlert(title: "تنبيه", message: "الرجاء تحديد التقييم")
+            
             AlertView.instance.showAlert(message: "الرجاء تحديد التقييم", alertType: .failure)
             self.view.addSubview(AlertView.instance.ParentView)
         }

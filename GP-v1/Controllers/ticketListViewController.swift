@@ -34,7 +34,7 @@ class ticketListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         getTicketsList()
-        tableView.layer.cornerRadius = 30
+        tableView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         noTickets.isHidden = true
         addRefresh()
     }

@@ -1097,6 +1097,24 @@
                                     <constraint firstItem="Ovp-Ja-XLo" firstAttribute="leading" secondItem="54E-HP-BBt" secondAttribute="trailing" constant="12" id="xEH-e1-3Iy"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FV-Dl-gvd">
+                                <rect key="frame" x="-1" y="255" width="415" height="640"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oKE-q4-kH9">
+                                        <rect key="frame" x="21" y="79" width="373" height="299"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="373" id="JAJ-8r-BdU"/>
+                                            <constraint firstAttribute="height" constant="299" id="wD7-wi-Np4"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.60084011130000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="oKE-q4-kH9" firstAttribute="centerX" secondItem="9FV-Dl-gvd" secondAttribute="centerX" id="6Ik-kl-FoO"/>
+                                    <constraint firstItem="oKE-q4-kH9" firstAttribute="leading" secondItem="9FV-Dl-gvd" secondAttribute="leading" constant="21" id="Td5-6X-UmB"/>
+                                    <constraint firstItem="oKE-q4-kH9" firstAttribute="top" secondItem="9FV-Dl-gvd" secondAttribute="top" constant="79" id="noO-ad-8ff"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jU8-r8-Qsf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="248"/>
                                 <constraints>
@@ -1110,11 +1128,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.40478605029999998" green="0.60844057799999995" blue="0.61368316410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="9FV-Dl-gvd" firstAttribute="top" secondItem="jU8-r8-Qsf" secondAttribute="bottom" constant="7" id="0CB-P2-cOq"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="9FV-Dl-gvd" secondAttribute="bottom" constant="-33" id="8OR-HT-6Kk"/>
                             <constraint firstItem="IZF-g3-ZKj" firstAttribute="leading" secondItem="RGV-jP-7wt" secondAttribute="leading" id="BnM-4l-AYm"/>
                             <constraint firstItem="jU8-r8-Qsf" firstAttribute="trailing" secondItem="qpb-pb-r4n" secondAttribute="trailing" id="eM9-EL-ptv"/>
                             <constraint firstItem="jU8-r8-Qsf" firstAttribute="top" secondItem="RGV-jP-7wt" secondAttribute="top" id="geu-5s-RJS"/>
                             <constraint firstAttribute="bottom" secondItem="IZF-g3-ZKj" secondAttribute="bottom" id="qCK-Ub-jkO"/>
                             <constraint firstItem="jU8-r8-Qsf" firstAttribute="leading" secondItem="qpb-pb-r4n" secondAttribute="leading" id="rgq-nM-HY3"/>
+                            <constraint firstItem="9FV-Dl-gvd" firstAttribute="trailing" secondItem="IZF-g3-ZKj" secondAttribute="trailing" id="yNN-H2-teW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qpb-pb-r4n"/>
                     </view>
@@ -1124,6 +1145,8 @@
                         <outlet property="pic_2" destination="54E-HP-BBt" id="5DK-C4-J3L"/>
                         <outlet property="pic_3" destination="yO7-2P-Nlv" id="6mx-LM-WQX"/>
                         <outlet property="pic_4" destination="nrD-Mo-8fV" id="Z9j-IC-gYa"/>
+                        <outlet property="previewImg" destination="oKE-q4-kH9" id="DVZ-Ux-jgP"/>
+                        <outlet property="previewView" destination="9FV-Dl-gvd" id="hhN-zX-iYF"/>
                         <outlet property="rateButton" destination="3JR-5I-fIF" id="Yp3-0x-Nt3"/>
                         <outlet property="rateView" destination="IZF-g3-ZKj" id="bjj-0T-bnd"/>
                         <outlet property="star1" destination="VvB-FI-Bs7" id="fez-yD-ykk"/>
@@ -1933,6 +1956,24 @@
                                     <constraint firstItem="kdc-qF-nbB" firstAttribute="top" secondItem="7Jb-0x-Cgq" secondAttribute="bottom" constant="37" id="zO1-dG-xP3"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wj0-bY-gBI">
+                                <rect key="frame" x="0.0" y="256" width="415" height="640"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ASL-99-LUd">
+                                        <rect key="frame" x="21" y="79" width="373" height="299"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="299" id="EOl-Ra-9ip"/>
+                                            <constraint firstAttribute="width" constant="373" id="O3N-J3-Go1"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.60084011130136983" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ASL-99-LUd" firstAttribute="leading" secondItem="wj0-bY-gBI" secondAttribute="leading" constant="21" id="28U-m7-r46"/>
+                                    <constraint firstItem="ASL-99-LUd" firstAttribute="top" secondItem="wj0-bY-gBI" secondAttribute="top" constant="79" id="T1a-Ec-h9M"/>
+                                    <constraint firstItem="ASL-99-LUd" firstAttribute="centerX" secondItem="wj0-bY-gBI" secondAttribute="centerX" id="u1K-f3-5KD"/>
+                                </constraints>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLt-io-duY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="248"/>
                                 <constraints>
@@ -1947,8 +1988,11 @@
                         <color key="backgroundColor" red="0.40478605029999998" green="0.60844057799999995" blue="0.61368316410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GiF-am-w7d" firstAttribute="top" secondItem="OLt-io-duY" secondAttribute="bottom" constant="8" id="0pK-v7-JlW"/>
+                            <constraint firstItem="wj0-bY-gBI" firstAttribute="leading" secondItem="GiF-am-w7d" secondAttribute="leading" id="E5v-lT-ldK"/>
                             <constraint firstItem="OLt-io-duY" firstAttribute="top" secondItem="Qdi-pg-C7M" secondAttribute="top" id="M0m-MQ-K02"/>
                             <constraint firstItem="GiF-am-w7d" firstAttribute="leading" secondItem="Qdi-pg-C7M" secondAttribute="leading" id="X5I-WZ-FsM"/>
+                            <constraint firstItem="wj0-bY-gBI" firstAttribute="bottom" secondItem="GiF-am-w7d" secondAttribute="bottom" id="aoz-sc-Deq"/>
+                            <constraint firstItem="wj0-bY-gBI" firstAttribute="top" secondItem="GiF-am-w7d" secondAttribute="top" id="cee-1t-NZ0"/>
                             <constraint firstAttribute="bottom" secondItem="GiF-am-w7d" secondAttribute="bottom" id="e32-3q-OMR"/>
                             <constraint firstItem="OLt-io-duY" firstAttribute="leading" secondItem="GGG-we-g4E" secondAttribute="leading" id="qAR-m3-gjB"/>
                             <constraint firstItem="OLt-io-duY" firstAttribute="trailing" secondItem="GGG-we-g4E" secondAttribute="trailing" id="qnh-4v-0EG"/>
@@ -1964,6 +2008,8 @@
                         <outlet property="pic_2" destination="wId-MU-yRs" id="yNr-Sv-QSE"/>
                         <outlet property="pic_3" destination="GZc-8g-kbe" id="khy-fh-Rkz"/>
                         <outlet property="pic_4" destination="x8l-dg-JPg" id="2kU-X5-0aB"/>
+                        <outlet property="preview" destination="ASL-99-LUd" id="BgA-uU-gtT"/>
+                        <outlet property="previewView" destination="wj0-bY-gBI" id="Zuq-G3-0RQ"/>
                         <outlet property="showRatingView" destination="GiF-am-w7d" id="bAk-Bf-7Qn"/>
                         <outlet property="star1" destination="SZc-1Y-7Ri" id="mDY-PX-0Hk"/>
                         <outlet property="star2" destination="LRJ-kG-oCG" id="29o-bW-F2R"/>
@@ -1974,7 +2020,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZ6-yk-5zB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="3488"/>
+            <point key="canvasLocation" x="1244.9275362318842" y="3487.5"/>
         </scene>
     </scenes>
     <resources>
@@ -2004,6 +2050,6 @@
         <image name="profile" width="154" height="154"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gdb-mx-XRY"/>
+        <segue reference="gFk-vd-kFC"/>
     </inferredMetricsTieBreakers>
 </document>
