@@ -47,20 +47,18 @@ class userProfileViewController: UIViewController{
         getUserInfo()
         
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-//        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
-//        //.layer.cornerRadius = 30
-//        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
-        //.layer.cornerRadius = 30
         getUserInfo()
         setUI(flag: false, button: updateButton, button2: startUpdate)
         createPicker()
         getCityList()
         getNeighborhoodList()
     }
+    
+    
     func setUI(flag: Bool, button: UIButton, button2: UIButton) {
         button.isHidden = true
         button2.isHidden = false
@@ -85,9 +83,12 @@ class userProfileViewController: UIViewController{
         scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         }
     
+    
     @IBAction func startupdate(_ sender: Any) {
         setUI(flag: true, button: startUpdate, button2: updateButton)
     }
+    
+    
     func createPicker() {
         picker1.delegate = self
         picker1.dataSource = self
@@ -165,7 +166,7 @@ class userProfileViewController: UIViewController{
                 if let chosenNei = responseObject.neighborhood?.nameAr{
                     
                 self.chooseNeighborhood.text = chosenNei
-                self.oldSelectedNei = chosenNei
+                //self.oldSelectedNei = responseObject.neighborhood!.nameAr//chosenNei
                 }
                 
                 if let chosenCity = responseObject.city?.nameAr {
@@ -188,28 +189,49 @@ class userProfileViewController: UIViewController{
     @IBAction func saveUpdates(_ sender: Any) {
         let urlString = "http://www.ai-rdm.website/api/user/update"
         var parameters = [:] as [String : AnyObject]
+        
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
-        
-        if userName.text != "" {
-            parameters["name"] = userName.text! as AnyObject
+         let i = self.startAnActivityIndicator()
+        if userName.text!.isEmpty {
+            AlertView.instance.showAlert(message: "لا يمكن ترك حقل الاسم فارغ", alertType: .failure)
+                self.view.addSubview(AlertView.instance.ParentView)
         }
 
-        if userPhone.text != "" {
+        if userPhone.text!.isEmpty {
+            AlertView.instance.showAlert(message: "لا يمكن ترك حقل رقم الجوال فارغ", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
+        }
+        
+        if userName.text != self.name {
+            i.stopAnimating()
+            parameters["name"] = userName.text! as AnyObject
+        }
+       
+        if userPhone.text != self.phone {
+            if self.isValidPhone(phone: userPhone.text!) == true {
+                print("isValid? \(self.isValidPhone(phone: userPhone.text!))")
             parameters["phone"] =  userPhone.text! as AnyObject
+            } else {
+                i.stopAnimating()
+                print("isValid ? \(self.isValidPhone(phone: userPhone.text!))")
+                AlertView.instance.showAlert(message: "صيغة الجوال غير صحيحة", alertType: .failure)
+                self.view.addSubview(AlertView.instance.ParentView)
+            }
         }
         
         if neighboorhoodID != 0 {
             parameters["neighborhood"] = self.neighboorhoodID  as AnyObject
         }
 
-        if parameters.isEmpty {
-            AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
-            self.view.addSubview(AlertView.instance.ParentView)
-        }
+//       else if parameters.isEmpty {
+//            i.stopAnimating()
+//            AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
+//            self.view.addSubview(AlertView.instance.ParentView)
+//        }
         
         //        switch self.neighboorhoodID {
         //        case 3377...3437:
@@ -220,14 +242,14 @@ class userProfileViewController: UIViewController{
         //        }
         
         
-         let i = self.startAnActivityIndicator()
+        
         if Connectivity.isConnectedToInternet {
             
-            if self.name == self.userName.text && self.phone == self.userPhone.text && chooseNeighborhood.text == oldSelectedNei {
-                           i.stopAnimating()
-                           AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
-                           self.view.addSubview(AlertView.instance.ParentView)
-                       } else {
+//            if self.name == self.userName.text && self.phone == self.userPhone.text && chooseNeighborhood.text == oldSelectedNei {
+//                           i.stopAnimating()
+//                           AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
+//                           self.view.addSubview(AlertView.instance.ParentView)
+//                       } else {
                 
                 Alamofire.upload(multipartFormData:
                     { (multipartFormData ) in
@@ -269,19 +291,19 @@ class userProfileViewController: UIViewController{
                                 print("response Object MESSAGE: \([responseObject].self)")
                                 
                                 let name = responseObject.name
-                                
-                                if name!.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
-                                    
-                                    print("One word")
-                                    self.name = name!
+//
+//                                if name!.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
+//
+//                                    print("One word")
+//                                    self.name = name!
                                 UserDefaults.standard.set(name, forKey: "name")
-
-                                } else {
-                                    print("Not one word")
-                                    let firstName = name!.components(separatedBy: " ")
-                                    self.name = firstName[0]
-                                    UserDefaults.standard.set(firstName[0], forKey: "name")
-                                }
+//
+//                                } else {
+//                                    print("Not one word")
+//                                    let firstName = name!.components(separatedBy: " ")
+//                                    self.name = firstName[0]
+//                                    UserDefaults.standard.set(firstName[0], forKey: "name")
+//                                }
                                 
                                 let phone = responseObject.phone
                                 //let convertedPhone = self.convertEngNumToArabicNumm(num: Int(phone)!)
@@ -314,8 +336,9 @@ class userProfileViewController: UIViewController{
                                 vc.view.addSubview(AlertView.instance.ParentView)
                                            self.present(vc, animated: true, completion: nil)
                             }
+                            
                             if response.response?.statusCode == 422 {
-                                
+                                i.stopAnimating()
                             }
                             
                             // من هنا يطلع رسالة الايرور تمام
@@ -327,7 +350,7 @@ class userProfileViewController: UIViewController{
                         print("ERROR RESPONSE: \(encodingError)")
                     }
                 }) // End of Alamofire
-            } // End of else
+            //} // End of else
             
         } // End of Connection check
         else {

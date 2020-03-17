@@ -11,6 +11,7 @@ import Alamofire
 
 class ticketListViewController: UIViewController {
     
+    @IBOutlet weak var ViewT: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noTickets: UILabel!
     
@@ -34,7 +35,7 @@ class ticketListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         getTicketsList()
-        tableView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        ViewT.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         noTickets.isHidden = true
         addRefresh()
     }
@@ -131,6 +132,7 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
         
         if let des = segue.destination as? TicketInfoViewController {
             des.ticket = [ticketCell[(tableView.indexPathForSelectedRow?.row)!]]
+            //des.ticket_id = ticketCell[indexPath.row].ticket.id
         }
         
     }

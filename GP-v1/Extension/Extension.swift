@@ -133,8 +133,16 @@ extension UIViewController {
                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                let date = dateFormatter.date(from: date)
                //dateFormatter.dateFormat = "yyyy-M-d"
-            dateFormatter.dateFormat = "d-M-yyyy"
+               dateFormatter.dateFormat = "d-M-yyyy"
                dateFormatter.locale = Locale(identifier: "ar")
                textF.text = dateFormatter.string(from: date!)
            }
+    
+    func isValidPhone(phone: String) -> Bool {
+        
+        let phoneRegex = "[^05](5|0|3|6|4|9|1|8|7)([0-9]{7})$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phoneTest.evaluate(with: phone)
+    }
+    
 }

@@ -39,6 +39,7 @@ class TicketInfoViewController: UIViewController {
                neighborhood.text = ticket?[0].location[0].neighborhood
                
                picArr = [pic_1, pic_2, pic_3, pic_4]
+        images = [pic_1.image!, pic_2.image!, pic_3.image!, pic_4.image!]
                
                loadImages()
                
@@ -54,6 +55,7 @@ class TicketInfoViewController: UIViewController {
     
     var picArr = [UIImageView]()
     var images = [UIImage]()
+    var hasLoaded: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,10 +83,10 @@ class TicketInfoViewController: UIViewController {
         
         picArr = [pic_1, pic_2, pic_3, pic_4]
         
+        //self.ticket_id = (ticket?[0].ticket.id)!
         loadImages()
-        
-//        self.ticket_id = (ticket?[0].ticket.id)!
-        
+        //flag()
+
         checkForRating()
     }
     
@@ -92,6 +94,23 @@ class TicketInfoViewController: UIViewController {
         rateButton.isHidden = true
         showRatingB.isHidden = true
         statusLabel.isHidden = true
+    }
+    
+    func flag() {
+        let id = (ticket?[0].ticket.id)!
+        
+        if hasLoaded == false {
+            loadImages()
+            hasLoaded = true
+        } else {
+            if id == self.ticket_id {
+            for k in 0..<picArr.count {
+            for i in images {
+                picArr[k].image = i
+            }
+        }
+        }
+        }
     }
     
     func checkForRating() {
@@ -214,7 +233,6 @@ class TicketInfoViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "rate") as! rateViewController
         vc.ticket_id = ticket_id
         vc.ticket = self.ticket
-        //vc.de
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -223,10 +241,6 @@ class TicketInfoViewController: UIViewController {
         
         vc.ticket_id = ticket_id
         vc.ticket = self.ticket
-//        vc.des = (ticket?[0].ticket.ticketDescription)!
-//        vc.nei = (ticket?[0].location[0].neighborhood)!
-//        vc.images = self.images
-//        vc.imagesCount = self.imagesCount
         
                self.present(vc, animated: true, completion: nil)
     }
@@ -262,7 +276,7 @@ class TicketInfoViewController: UIViewController {
                 print("image downloaded: \(image)")
                 
                        self.picArr[count].image =  image
-
+                      // self.images[count] = image
             }
             }
             

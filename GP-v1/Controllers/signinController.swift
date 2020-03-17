@@ -13,6 +13,7 @@ import Alamofire
 class signinController: UIViewController {
     
     @IBOutlet var mainV: UIView!
+    @IBOutlet weak var childView: UIView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
@@ -22,11 +23,13 @@ class signinController: UIViewController {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         mainV.addGestureRecognizer(tap)
-        setupButtonUI()
+        setupUI()
     }
-    func setupButtonUI() {
+    
+    func setupUI() {
         signinButton.clipsToBounds = true
         signinButton.layer.cornerRadius = 20
+        childView.roundCorner(corners: [.topRight, .topLeft] , radius: 15)
     }
     
     override func viewWillAppear(_ animated: Bool) {

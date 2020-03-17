@@ -52,6 +52,7 @@ struct TicketResponse: Codable {
 
 // MARK: - Errors
 struct Errors: Codable {
-    let latitude, longitude, city, neighborhood: [String]
-    let photos: [String]
+//    let latitude, longitude, city, neighborhood: [String]
+//    let photos: [String]
+    let name, phone: [String]
 }
