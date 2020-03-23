@@ -17,7 +17,7 @@ class AlertView: UIView {
    
     
     @IBOutlet var ParentView: UIView!
-    
+    @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var alertImg: UIImageView!
     @IBOutlet weak var alertLabel: UILabel!
     

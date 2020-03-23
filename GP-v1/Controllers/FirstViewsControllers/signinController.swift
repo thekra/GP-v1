@@ -1,42 +1,35 @@
 //
-//  signupViewController.swift
+//  signinController.swift
 //  GP-v1
 //
-//  Created by Thekra Faisal on 10/06/1441 AH.
+//  Created by Thekra Faisal on 07/06/1441 AH.
 //  Copyright © 1441 Thekra Faisal. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import Alamofire
 
-class signupViewController: UIViewController {
+class signinController: UIViewController {
     
-    
-    @IBOutlet var signupview: UIView!
-    @IBOutlet weak var emailTF: UITextField!
-    @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var conPasswordTF: UITextField!
-    @IBOutlet weak var signupButton: UIButton!
-    
+    @IBOutlet var mainV: UIView!
+    @IBOutlet weak var childView: UIView!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signinButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        signupview.addGestureRecognizer(tap)
-        
-        setupButtonUI()
+        mainV.addGestureRecognizer(tap)
+        setupUI()
     }
     
-    func setupButtonUI() {
-        signupButton.clipsToBounds = true
-        signupButton.layer.cornerRadius = 20
-    }
-    
-    //MARK: - dismiss keyboard function
-    @objc func dismissKeyboard() {
-        signupview.endEditing(true)
+    func setupUI() {
+        signinButton.clipsToBounds = true
+        signinButton.layer.cornerRadius = 20
+        childView.roundCorner(corners: [.topRight, .topLeft] , radius: 15)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,13 +41,23 @@ class signupViewController: UIViewController {
         self.unsubscribeToKeyboardNotification()
     }
     
+    //MARK: - dismiss keyboard function
+    @objc func dismissKeyboard() {
+        mainV.endEditing(true)
+    }
+    
+    //MARK: - Signup Button
+    @IBAction func signupButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "signup", sender: nil)
+    }
     
     
-    
-    @IBAction func signupButton(_ sender: Any) {
-        let urlString = "http://www.ai-rdm.website/api/auth/register"
+    @IBAction func signinButton(_ sender: Any) {
         
-        let body = Signup(email: emailTF.text!, password: passwordTF.text!, password_confirmation: conPasswordTF.text!)
+        let urlString = "http://www.ai-rdm.website/api/auth/login"
+        
+        
+        let body = Signin(email: emailTextField.text!, password: passwordTextField.text!)
         
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
@@ -62,6 +65,7 @@ class signupViewController: UIViewController {
         request.httpBody = try! JSONEncoder().encode(body)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
         let i = self.startAnActivityIndicator()
         if Connectivity.isConnectedToInternet {
             
@@ -73,49 +77,50 @@ class signupViewController: UIViewController {
                     print("Validation Successful")
                     print(response.result.description)
                     
-                    
                     guard let data = response.data else {
                         
                         
                         DispatchQueue.main.async {
                             print(response.error!)
-                            
                         }
                         return
                     }
                     
                     let decoder = JSONDecoder()
                     do {
-                        let responseObject =  try decoder.decode(SignupResponse.self, from: data)
-                        print(responseObject)
+                        let responseObject =  try decoder.decode(SigninResponse.self, from: data)
                         
                         let token = responseObject.accessToken
                         let name = responseObject.userData.name
+                        let phone = responseObject.userData.phone
                         
+                        print("Token: \(token)")
                         UserDefaults.standard.set(token, forKey: "access_token")
                         
 //                        if name!.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
 //
-//                                                   print("One word")
+//                            print("One word")
 //
-//                                               UserDefaults.standard.set(name, forKey: "name")
+//                        UserDefaults.standard.set(name, forKey: "name")
 //
-//                                               } else {
-//                                                   print("Not one word")
-//                                                   let firstName = name!.components(separatedBy: " ")
+//                        } else {
+//                            print("Not one word")
+//                            let firstName = name!.components(separatedBy: " ")
 //
-//                                                   UserDefaults.standard.set(firstName[0], forKey: "name")
-//                                               }
+//                            UserDefaults.standard.set(firstName[0], forKey: "name")
+//                        }
                         UserDefaults.standard.set(name, forKey: "name")
                         
-                        if response.response?.statusCode == 200 {
-                            i.stopAnimating()
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
+                        UserDefaults.standard.set(phone, forKey: "phone")
+                        
+                       // (responseObject.userData.name as AnyObject? as? String) ?? ""
+                       if response.response?.statusCode == 200 {
+                        i.stopAnimating()
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapVieww") as! mapViewController
                         self.present(vc, animated: true, completion: nil)
                         }
-                    } catch let parsingError {
-                        print("Error:(signup)", parsingError)
-                        
+                    }  catch let parsingError {
+                        print("Error", parsingError)
                     }
                     
                 case let .failure(error):
@@ -124,33 +129,41 @@ class signupViewController: UIViewController {
                         //self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
                         i.stopAnimating()
                         AlertView.instance.showAlert(message: "الايميل/الكلمة السرية غير صحيحة", alertType: .failure)
-                                               self.view.addSubview(AlertView.instance.ParentView)
+                        self.view.addSubview(AlertView.instance.ParentView)
+
+                        
                     } else if response.response?.statusCode == 422 {
+                       // self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود")
                         i.stopAnimating()
-                        //self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود/ الايميل موجود مسبقاً")
-                        AlertView.instance.showAlert(message: "مدخل غير صالح/مدخل مفقود/ الايميل موجود مسبقاً", alertType: .failure)
-                                               self.view.addSubview(AlertView.instance.ParentView)
+                        AlertView.instance.showAlert(message: "مدخل غير صالح/مدخل مفقود", alertType: .failure)
+                        self.view.addSubview(AlertView.instance.ParentView)
+                        
                     } else if response.response?.statusCode == 500 {
+                        //self.showAlert(title: "خطأ", message: "خطأ في السيرفر")
                         i.stopAnimating()
-                       // self.showAlert(title: "خطأ", message: "خطأ في السيرفر")
                         AlertView.instance.showAlert(message: "خطأ في السيرفر", alertType: .failure)
-                                              self.view.addSubview(AlertView.instance.ParentView)
+                        self.view.addSubview(AlertView.instance.ParentView)
                         
                     }
                     print(error)
                 }
                 
             } // End of Alamofire
+            
         } // End of connection
         else {
             i.stopAnimating()
             //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
             AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
             self.view.addSubview(AlertView.instance.ParentView)
+            
         } // end of else connection
-    } // End of Signup Button
+    } // End of signin button
     
-    
+
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
     
     // MARK: - Keyboard Functions
     
@@ -170,14 +183,14 @@ class signupViewController: UIViewController {
     
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        if conPasswordTF.isFirstResponder{
+        if passwordTextField.isFirstResponder{
             self.view.frame.origin.y =
                 getKeyboardHeight(notification) * -1
         }
     }
     
     @objc func keyboardWillHide(_ notifcation: Notification) {
-        if conPasswordTF.isFirstResponder {
+        if passwordTextField.isFirstResponder {
             self.view.frame.origin.y = 0}
     }
     
@@ -188,3 +201,12 @@ class signupViewController: UIViewController {
         
     }
 }
+/*
+ - Storyboard: You're using a large SB -> Split it up -> 1 SB : 1 Controller
+    - Folder: LoginController
+        - LoginController.storyboardboard
+        - LoginController.swift
+        - Class: LoginController
+ - Naming: Class name starts with Uppercase
+ 
+ */

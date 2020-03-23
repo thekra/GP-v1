@@ -17,9 +17,10 @@ class TicketInfoViewController: UIViewController {
     @IBOutlet weak var pic_2: UIImageView!
     @IBOutlet weak var pic_3: UIImageView!
     @IBOutlet weak var pic_4: UIImageView!
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var neighborhood: UILabel!
-    @IBOutlet weak var descView: UITextView!
+    @IBOutlet weak var descView: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var showRatingB: UIButton!
     @IBOutlet weak var rateButton: UIButton!
@@ -60,9 +61,11 @@ class TicketInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //setHiddenUI()
-        ticketInfoView.layer.cornerRadius = 30
-        descView.layer.cornerRadius = 30
-        //self.imagesCount = (ticket?[0].photos.count)!
+        ticketInfoView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        descView.layer.masksToBounds = true
+        descView.layer.cornerRadius = 20
+        
         neighborhood.layer.masksToBounds = true
         neighborhood.layer.cornerRadius = 20
         

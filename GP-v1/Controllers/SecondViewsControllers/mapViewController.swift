@@ -24,6 +24,10 @@ class mapViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        confirmButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+        confirmButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        confirmButton.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        confirmButton.layer.shadowOpacity = 1.0
        // print("Token(mapViewDidLoad): \(self.token)")
         if onBoarding.instance.flag == true {
             //onBoarding.instance.showAlert(alertType: .show)

@@ -17,6 +17,7 @@
                 <outlet property="ParentView" destination="iN0-l3-epB" id="s94-QT-CJa"/>
                 <outlet property="alertImg" destination="L6v-9l-Uog" id="FgO-WV-KNm"/>
                 <outlet property="alertLabel" destination="nA1-Q2-NxO" id="J0f-qH-1Sj"/>
+                <outlet property="alertView" destination="AFa-yF-jLH" id="dpb-j4-iOy"/>
                 <outlet property="okButton" destination="YIw-CO-Zg2" id="70V-ih-xPt"/>
             </connections>
         </placeholder>

@@ -127,7 +127,7 @@ class switchViewController: UIViewController {
     }
     
     @IBAction func goToMap(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapView") as! mapViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapVieww") as! mapViewController
                self.present(vc, animated: true, completion: nil)
     }
     

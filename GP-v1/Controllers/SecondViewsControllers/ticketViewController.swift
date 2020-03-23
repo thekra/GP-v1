@@ -182,7 +182,7 @@ class ticketViewController:  UIViewController {
         ]
         
         if self.textView.text == "" {
-            self.textView.textColor = UIColor.lightGray //need to change the color
+            self.textView.textColor = UIColor.lightGray // Need to change the color
             self.textView.text = "."
         }
         
@@ -201,7 +201,7 @@ class ticketViewController:  UIViewController {
             //self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
             
             AlertView.instance.showAlert(message: "الرجاء ارفاق ١ - ٤ صور", alertType: .failure)
-            AlertView.instance.ParentView.frame = CGRect(x: 0, y: -200, width: 414, height: 896)
+            AlertView.instance.ParentView.frame = CGRect(x: 0, y: -221, width: 414, height: 896) // not AutoLayout
             self.view.addSubview(AlertView.instance.ParentView)
         }
         

@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 class resetPasswordViewController: UIViewController {
+    @IBOutlet weak var bottomView: UIView!
     
     @IBOutlet weak var emailT: UITextField!
     @IBOutlet weak var resetButton: UIButton!
@@ -18,6 +19,7 @@ class resetPasswordViewController: UIViewController {
         super.viewDidLoad()
         
         //resetButton.clipsToBounds = true
+       bottomView.roundCorner(corners: [.topRight, .topLeft] , radius: 15)
         resetButton.layer.cornerRadius = 20
     }
     

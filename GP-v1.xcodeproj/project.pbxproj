@@ -33,7 +33,6 @@
 		794A3A9B23FFF7C4003CDE02 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9A23FFF7C3003CDE02 /* File.swift */; };
 		797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC723E56CB500960C79 /* AppDelegate.swift */; };
 		797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC923E56CB500960C79 /* SceneDelegate.swift */; };
-		797F8BCC23E56CB500960C79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BCB23E56CB500960C79 /* ViewController.swift */; };
 		797F8BCF23E56CB500960C79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797F8BCD23E56CB500960C79 /* Main.storyboard */; };
 		797F8BD423E56CBA00960C79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797F8BD223E56CBA00960C79 /* LaunchScreen.storyboard */; };
 		797F8BDF23E56CBB00960C79 /* GP_v1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BDE23E56CBB00960C79 /* GP_v1Tests.swift */; };
@@ -44,7 +43,6 @@
 		797F8C0D23EA0AF900960C79 /* signupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C0C23EA0AF900960C79 /* signupViewController.swift */; };
 		797F8C0F23EA169300960C79 /* signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C0E23EA169300960C79 /* signup.swift */; };
 		797F8C1123EA16E700960C79 /* signupResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C1023EA16E700960C79 /* signupResponse.swift */; };
-		797F8C1323EA208600960C79 /* vViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C1223EA208600960C79 /* vViewController.swift */; };
 		797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C1423EC2C7E00960C79 /* mapViewController.swift */; };
 		797F8C1723EC323D00960C79 /* onboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8C1623EC323D00960C79 /* onboardingViewController.swift */; };
 		798639F723EDCB2300131A9E /* ticketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798639F623EDCB2300131A9E /* ticketViewController.swift */; };
@@ -53,6 +51,7 @@
 		79BFCA072419356A00067783 /* onBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BFCA062419356A00067783 /* onBoarding.swift */; };
 		79BFCA092419358000067783 /* onBoarding.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79BFCA082419358000067783 /* onBoarding.xib */; };
 		79BFCA0D241A35C800067783 /* Ahlan-world-Arbfonts.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79BFCA0C241A358A00067783 /* Ahlan-world-Arbfonts.otf */; };
+		79CABF702425546C00FBB906 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79CABF6F2425546C00FBB906 /* Onboarding.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +101,6 @@
 		797F8BC423E56CB500960C79 /* GP-v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GP-v1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		797F8BC723E56CB500960C79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		797F8BC923E56CB500960C79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		797F8BCB23E56CB500960C79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		797F8BCE23E56CB500960C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		797F8BD323E56CBA00960C79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		797F8BD523E56CBA00960C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 		797F8C0C23EA0AF900960C79 /* signupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signupViewController.swift; sourceTree = "<group>"; };
 		797F8C0E23EA169300960C79 /* signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signup.swift; sourceTree = "<group>"; };
 		797F8C1023EA16E700960C79 /* signupResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signupResponse.swift; sourceTree = "<group>"; };
-		797F8C1223EA208600960C79 /* vViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vViewController.swift; sourceTree = "<group>"; };
 		797F8C1423EC2C7E00960C79 /* mapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
 		797F8C1623EC323D00960C79 /* onboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onboardingViewController.swift; sourceTree = "<group>"; };
 		798639F623EDCB2300131A9E /* ticketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticketViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +124,7 @@
 		79BFCA062419356A00067783 /* onBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoarding.swift; sourceTree = "<group>"; };
 		79BFCA082419358000067783 /* onBoarding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = onBoarding.xib; sourceTree = "<group>"; };
 		79BFCA0C241A358A00067783 /* Ahlan-world-Arbfonts.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ahlan-world-Arbfonts.otf"; sourceTree = "<group>"; };
+		79CABF6F2425546C00FBB906 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		99A16A7BC0D840E024DABE90 /* Pods-GP-v1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP-v1.release.xcconfig"; path = "Target Support Files/Pods-GP-v1/Pods-GP-v1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,8 +203,6 @@
 			children = (
 				797F8BC723E56CB500960C79 /* AppDelegate.swift */,
 				797F8BC923E56CB500960C79 /* SceneDelegate.swift */,
-				797F8BCB23E56CB500960C79 /* ViewController.swift */,
-				797F8C1223EA208600960C79 /* vViewController.swift */,
 				79BFCA0A241A355600067783 /* Fonts */,
 				797F8BFA23E56D1E00960C79 /* Network */,
 				794A3A9723FEB480003CDE02 /* Extension */,
@@ -239,19 +235,9 @@
 		797F8BF723E56D0800960C79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				797F8BFD23E5C11400960C79 /* signinController.swift */,
-				797F8C0C23EA0AF900960C79 /* signupViewController.swift */,
-				792D5B9D2413C498007D46C8 /* resetPasswordViewController.swift */,
-				797F8C1423EC2C7E00960C79 /* mapViewController.swift */,
-				797F8C1623EC323D00960C79 /* onboardingViewController.swift */,
-				798639F623EDCB2300131A9E /* ticketViewController.swift */,
-				794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */,
-				794A3A9323FE962E003CDE02 /* ticketListTableViewCell.swift */,
-				794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */,
-				792D5B9524041833007D46C8 /* userProfileViewController.swift */,
-				792D5B9B24113944007D46C8 /* switchViewController.swift */,
-				792D5BA32414BE35007D46C8 /* rateViewController.swift */,
-				792D5BA524155B92007D46C8 /* showRateViewController.swift */,
+				798BEF2F2427A0740005E05B /* FirstViewsControllers */,
+				798BEF302427A0A10005E05B /* SecondViewsControllers */,
+				798BEF312427A0EE0005E05B /* ThirdViewsControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -264,6 +250,7 @@
 				7932B59F24001C8C009FE071 /* Assets.xcassets */,
 				79BFCA042418412000067783 /* Alert_View.xib */,
 				79BFCA082419358000067783 /* onBoarding.xib */,
+				79CABF6F2425546C00FBB906 /* Onboarding.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +281,40 @@
 				794A3A9A23FFF7C3003CDE02 /* File.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		798BEF2F2427A0740005E05B /* FirstViewsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				797F8BFD23E5C11400960C79 /* signinController.swift */,
+				797F8C0C23EA0AF900960C79 /* signupViewController.swift */,
+				792D5B9D2413C498007D46C8 /* resetPasswordViewController.swift */,
+			);
+			path = FirstViewsControllers;
+			sourceTree = "<group>";
+		};
+		798BEF302427A0A10005E05B /* SecondViewsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				797F8C1423EC2C7E00960C79 /* mapViewController.swift */,
+				797F8C1623EC323D00960C79 /* onboardingViewController.swift */,
+				798639F623EDCB2300131A9E /* ticketViewController.swift */,
+			);
+			path = SecondViewsControllers;
+			sourceTree = "<group>";
+		};
+		798BEF312427A0EE0005E05B /* ThirdViewsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				792D5B9B24113944007D46C8 /* switchViewController.swift */,
+				794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */,
+				794A3A9323FE962E003CDE02 /* ticketListTableViewCell.swift */,
+				794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */,
+				792D5BA32414BE35007D46C8 /* rateViewController.swift */,
+				792D5BA524155B92007D46C8 /* showRateViewController.swift */,
+				792D5B9524041833007D46C8 /* userProfileViewController.swift */,
+			);
+			path = ThirdViewsControllers;
 			sourceTree = "<group>";
 		};
 		79BFCA0A241A355600067783 /* Fonts */ = {
@@ -426,6 +447,7 @@
 				79BFCA092419358000067783 /* onBoarding.xib in Resources */,
 				79BFCA052418412000067783 /* Alert_View.xib in Resources */,
 				797F8BD423E56CBA00960C79 /* LaunchScreen.storyboard in Resources */,
+				79CABF702425546C00FBB906 /* Onboarding.storyboard in Resources */,
 				7932B5A124001C8D009FE071 /* Assets.xcassets in Resources */,
 				797F8BCF23E56CB500960C79 /* Main.storyboard in Resources */,
 			);
@@ -512,7 +534,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				792D5BA2241416CC007D46C8 /* GlobalV.swift in Sources */,
-				797F8BCC23E56CB500960C79 /* ViewController.swift in Sources */,
 				792D5B9624041833007D46C8 /* userProfileViewController.swift in Sources */,
 				794A3A9023FE7BC1003CDE02 /* ticketListViewController.swift in Sources */,
 				792D5B982406F300007D46C8 /* User.swift in Sources */,
@@ -531,7 +552,6 @@
 				798639F723EDCB2300131A9E /* ticketViewController.swift in Sources */,
 				794A3A9923FEB4A0003CDE02 /* Extension.swift in Sources */,
 				792D5BA624155B92007D46C8 /* showRateViewController.swift in Sources */,
-				797F8C1323EA208600960C79 /* vViewController.swift in Sources */,
 				792D5BAA2416BE4B007D46C8 /* TicketsCount.swift in Sources */,
 				797F8C0023E5E5F500960C79 /* Signin.swift in Sources */,
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,
