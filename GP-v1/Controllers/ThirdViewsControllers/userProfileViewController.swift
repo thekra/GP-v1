@@ -245,11 +245,11 @@ class userProfileViewController: UIViewController{
         
         if Connectivity.isConnectedToInternet {
             
-//            if self.name == self.userName.text && self.phone == self.userPhone.text && chooseNeighborhood.text == oldSelectedNei {
-//                           i.stopAnimating()
-//                           AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
-//                           self.view.addSubview(AlertView.instance.ParentView)
-//                       } else {
+            if self.name == self.userName.text && self.phone == self.userPhone.text && chooseNeighborhood.text == oldSelectedNei {
+                           i.stopAnimating()
+                           AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
+                           self.view.addSubview(AlertView.instance.ParentView)
+                       } else {
                 
                 Alamofire.upload(multipartFormData:
                     { (multipartFormData ) in
@@ -350,7 +350,7 @@ class userProfileViewController: UIViewController{
                         print("ERROR RESPONSE: \(encodingError)")
                     }
                 }) // End of Alamofire
-            //} // End of else
+            } // End of else
             
         } // End of Connection check
         else {

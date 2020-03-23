@@ -14,6 +14,9 @@ extension UserDefaults {
     static func contains(_ key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
+//    func isKeyPresentInUserDefaults(key: String) -> Bool {
+//           return UserDefaults.standard.object(forKey: key) != nil
+//       }
 }
 
 extension UIButton {
@@ -53,6 +56,11 @@ extension UILabel {
 }
 
 extension UIViewController {
+    
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+              return UserDefaults.standard.object(forKey: key) != nil
+          }
+    
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))

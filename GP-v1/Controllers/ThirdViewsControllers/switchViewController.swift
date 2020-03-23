@@ -27,7 +27,7 @@ class switchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if isKeyPresentInUserDefaults(key: "name") == true {
+        if self.isKeyPresentInUserDefaults(key: "name") == true {
             let namee = UserDefaults.standard.string(forKey: "name")!
             if namee.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
             
@@ -50,9 +50,6 @@ class switchViewController: UIViewController {
         getCount()
     }
     
-    func isKeyPresentInUserDefaults(key: String) -> Bool {
-        return UserDefaults.standard.object(forKey: key) != nil
-    }
     
     func getCount() {
         let urlString = "http://www.ai-rdm.website/api/ticket/ticketsCount"

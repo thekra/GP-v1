@@ -25,9 +25,10 @@ class mapViewController: UIViewController {
         
         super.viewDidLoad()
         confirmButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-        confirmButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        confirmButton.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-        confirmButton.layer.shadowOpacity = 1.0
+//        confirmButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
+//        confirmButton.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
+//        confirmButton.layer.shadowRadius = 1.7
+//        confirmButton.layer.shadowOpacity = 1.0
        // print("Token(mapViewDidLoad): \(self.token)")
         if onBoarding.instance.flag == true {
             //onBoarding.instance.showAlert(alertType: .show)
@@ -108,9 +109,10 @@ extension mapViewController: BonsaiControllerDelegate {
     
     // return the frame of your Bonsai View Controller
     func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
-        //    print(containerViewFrame.height)
-        //    print(containerViewFrame.height / (4/3))
-        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
+            print(containerViewFrame.height)
+            print(containerViewFrame.height / (4/3))
+        
+        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (3/2)))
         
     }
     
