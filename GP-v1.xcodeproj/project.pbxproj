@@ -22,6 +22,12 @@
 		792D5BB024182E16007D46C8 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5BAF24182E16007D46C8 /* AlertView.swift */; };
 		7932B5A124001C8D009FE071 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7932B59F24001C8C009FE071 /* Assets.xcassets */; };
 		7932B5A324007A85009FE071 /* TicketID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932B5A224007A85009FE071 /* TicketID.swift */; };
+		7934B3C4242A777800D46436 /* Employee.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7934B3C3242A777800D46436 /* Employee.storyboard */; };
+		7934B3C8242A84DD00D46436 /* TicketsListEmpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934B3C7242A84DD00D46436 /* TicketsListEmpViewController.swift */; };
+		7934B3CA242A893E00D46436 /* TicketsListEmpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934B3C9242A893E00D46436 /* TicketsListEmpTableViewCell.swift */; };
+		7934B3CC242A8CAF00D46436 /* switchEmpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934B3CB242A8CAF00D46436 /* switchEmpViewController.swift */; };
+		7934B3CE242AAFE600D46436 /* TicketInfoEmpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934B3CD242AAFE600D46436 /* TicketInfoEmpViewController.swift */; };
+		7934B3D0242AB3CC00D46436 /* closeTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934B3CF242AB3CC00D46436 /* closeTicketViewController.swift */; };
 		794255C823F6AA170051DE63 /* TicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794255C723F6AA170051DE63 /* TicketResponse.swift */; };
 		794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8B23FD4BA7003CDE02 /* City.swift */; };
 		794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */; };
@@ -89,6 +95,12 @@
 		792D5BAF24182E16007D46C8 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		7932B5A024001C8C009FE071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Base; path = Base.lproj/Assets.xcassets; sourceTree = "<group>"; };
 		7932B5A224007A85009FE071 /* TicketID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketID.swift; sourceTree = "<group>"; };
+		7934B3C3242A777800D46436 /* Employee.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Employee.storyboard; sourceTree = "<group>"; };
+		7934B3C7242A84DD00D46436 /* TicketsListEmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsListEmpViewController.swift; sourceTree = "<group>"; };
+		7934B3C9242A893E00D46436 /* TicketsListEmpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsListEmpTableViewCell.swift; sourceTree = "<group>"; };
+		7934B3CB242A8CAF00D46436 /* switchEmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = switchEmpViewController.swift; sourceTree = "<group>"; };
+		7934B3CD242AAFE600D46436 /* TicketInfoEmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoEmpViewController.swift; sourceTree = "<group>"; };
+		7934B3CF242AB3CC00D46436 /* closeTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = closeTicketViewController.swift; sourceTree = "<group>"; };
 		794255C723F6AA170051DE63 /* TicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketResponse.swift; sourceTree = "<group>"; };
 		794A3A8B23FD4BA7003CDE02 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neighborhood.swift; sourceTree = "<group>"; };
@@ -163,6 +175,32 @@
 				99A16A7BC0D840E024DABE90 /* Pods-GP-v1.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		7934B3C5242A847800D46436 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				792D5B9B24113944007D46C8 /* switchViewController.swift */,
+				794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */,
+				794A3A9323FE962E003CDE02 /* ticketListTableViewCell.swift */,
+				794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */,
+				792D5BA32414BE35007D46C8 /* rateViewController.swift */,
+				792D5BA524155B92007D46C8 /* showRateViewController.swift */,
+				792D5B9524041833007D46C8 /* userProfileViewController.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		7934B3C6242A848200D46436 /* Employee */ = {
+			isa = PBXGroup;
+			children = (
+				7934B3C7242A84DD00D46436 /* TicketsListEmpViewController.swift */,
+				7934B3C9242A893E00D46436 /* TicketsListEmpTableViewCell.swift */,
+				7934B3CB242A8CAF00D46436 /* switchEmpViewController.swift */,
+				7934B3CD242AAFE600D46436 /* TicketInfoEmpViewController.swift */,
+				7934B3CF242AB3CC00D46436 /* closeTicketViewController.swift */,
+			);
+			path = Employee;
 			sourceTree = "<group>";
 		};
 		794A3A9723FEB480003CDE02 /* Extension */ = {
@@ -245,8 +283,9 @@
 		797F8BF823E56D1300960C79 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				797F8BCD23E56CB500960C79 /* Main.storyboard */,
 				797F8BD223E56CBA00960C79 /* LaunchScreen.storyboard */,
+				797F8BCD23E56CB500960C79 /* Main.storyboard */,
+				7934B3C3242A777800D46436 /* Employee.storyboard */,
 				7932B59F24001C8C009FE071 /* Assets.xcassets */,
 				79BFCA042418412000067783 /* Alert_View.xib */,
 				79BFCA082419358000067783 /* onBoarding.xib */,
@@ -306,13 +345,8 @@
 		798BEF312427A0EE0005E05B /* ThirdViewsControllers */ = {
 			isa = PBXGroup;
 			children = (
-				792D5B9B24113944007D46C8 /* switchViewController.swift */,
-				794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */,
-				794A3A9323FE962E003CDE02 /* ticketListTableViewCell.swift */,
-				794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */,
-				792D5BA32414BE35007D46C8 /* rateViewController.swift */,
-				792D5BA524155B92007D46C8 /* showRateViewController.swift */,
-				792D5B9524041833007D46C8 /* userProfileViewController.swift */,
+				7934B3C5242A847800D46436 /* User */,
+				7934B3C6242A848200D46436 /* Employee */,
 			);
 			path = ThirdViewsControllers;
 			sourceTree = "<group>";
@@ -445,6 +479,7 @@
 			files = (
 				79BFCA0D241A35C800067783 /* Ahlan-world-Arbfonts.otf in Resources */,
 				79BFCA092419358000067783 /* onBoarding.xib in Resources */,
+				7934B3C4242A777800D46436 /* Employee.storyboard in Resources */,
 				79BFCA052418412000067783 /* Alert_View.xib in Resources */,
 				797F8BD423E56CBA00960C79 /* LaunchScreen.storyboard in Resources */,
 				79CABF702425546C00FBB906 /* Onboarding.storyboard in Resources */,
@@ -534,8 +569,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				792D5BA2241416CC007D46C8 /* GlobalV.swift in Sources */,
+				7934B3CA242A893E00D46436 /* TicketsListEmpTableViewCell.swift in Sources */,
 				792D5B9624041833007D46C8 /* userProfileViewController.swift in Sources */,
+				7934B3CC242A8CAF00D46436 /* switchEmpViewController.swift in Sources */,
 				794A3A9023FE7BC1003CDE02 /* ticketListViewController.swift in Sources */,
+				7934B3C8242A84DD00D46436 /* TicketsListEmpViewController.swift in Sources */,
 				792D5B982406F300007D46C8 /* User.swift in Sources */,
 				797F8BFE23E5C11400960C79 /* signinController.swift in Sources */,
 				7932B5A324007A85009FE071 /* TicketID.swift in Sources */,
@@ -553,6 +591,7 @@
 				794A3A9923FEB4A0003CDE02 /* Extension.swift in Sources */,
 				792D5BA624155B92007D46C8 /* showRateViewController.swift in Sources */,
 				792D5BAA2416BE4B007D46C8 /* TicketsCount.swift in Sources */,
+				7934B3D0242AB3CC00D46436 /* closeTicketViewController.swift in Sources */,
 				797F8C0023E5E5F500960C79 /* Signin.swift in Sources */,
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,
 				79BFCA072419356A00067783 /* onBoarding.swift in Sources */,
@@ -566,6 +605,7 @@
 				797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */,
 				792D5B9E2413C499007D46C8 /* resetPasswordViewController.swift in Sources */,
 				792D5BB024182E16007D46C8 /* AlertView.swift in Sources */,
+				7934B3CE242AAFE600D46436 /* TicketInfoEmpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

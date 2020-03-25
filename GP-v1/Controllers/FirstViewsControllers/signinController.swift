@@ -116,8 +116,16 @@ class signinController: UIViewController {
                        // (responseObject.userData.name as AnyObject? as? String) ?? ""
                        if response.response?.statusCode == 200 {
                         i.stopAnimating()
+                        let roleID = responseObject.userData.roleID
+                        if roleID == "1" {
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapVieww") as! mapViewController
                         self.present(vc, animated: true, completion: nil)
+                            
+                        } else if roleID == "4" {
+                            let storyboard = UIStoryboard(name: "Employee", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "TableViewEmp") as! TicketsListEmpViewController
+                            self.present(vc, animated: true, completion: nil)
+                        }
                         }
                     }  catch let parsingError {
                         print("Error", parsingError)

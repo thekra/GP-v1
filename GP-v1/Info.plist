@@ -88,5 +88,7 @@
 	<string>googlechromes</string>
 	<key>item 1</key>
 	<string>comgooglemaps</string>
+    <key>item 2</key>
+     <string>comgooglemaps-x-callback</string>
 </dict>
 </plist>

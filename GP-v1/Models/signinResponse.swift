@@ -118,7 +118,7 @@ struct User_Data: Codable {
     //let phone: JSONNull?
     let name, phone: String?
     let email, active, roleID: String
-    let company: JSONNull?
+    let company: String?
     let createdAt, updatedAt: String
     
     enum CodingKeys: String, CodingKey {

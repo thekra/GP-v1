@@ -40,7 +40,7 @@ class TicketInfoViewController: UIViewController {
                neighborhood.text = ticket?[0].location[0].neighborhood
                
                picArr = [pic_1, pic_2, pic_3, pic_4]
-        images = [pic_1.image!, pic_2.image!, pic_3.image!, pic_4.image!]
+       // images = [pic_1.image!, pic_2.image!, pic_3.image!, pic_4.image!]
                
                loadImages()
                

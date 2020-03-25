@@ -23,6 +23,8 @@ class userProfileViewController: UIViewController{
     
     @IBOutlet weak var profileView: UIView!
     
+    @IBOutlet weak var maleB: UIButton!
+    @IBOutlet weak var femaleB: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     let picker1: UIPickerView! = UIPickerView()
     let picker2: UIPickerView! = UIPickerView()
@@ -32,6 +34,7 @@ class userProfileViewController: UIViewController{
     
     var name = ""
     var phone = ""
+    var gender = ""
     
     var cityArr = [City]()
     var NeiArr = [Neighborhood]()
@@ -51,6 +54,12 @@ class userProfileViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+        startUpdate.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+        maleB.layer.cornerRadius = 15
+        femaleB.layer.cornerRadius = 15
+        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         getUserInfo()
         setUI(flag: false, button: updateButton, button2: startUpdate)
         createPicker()
@@ -77,15 +86,38 @@ class userProfileViewController: UIViewController{
         chooseCity.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         chooseCity.isUserInteractionEnabled = false
         userEmail.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-        startUpdate.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
-        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        maleB.isUserInteractionEnabled = flag
+        femaleB.isUserInteractionEnabled = flag
+//        updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+//        startUpdate.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+//        maleB.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+//        femaleB.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
+//        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+//        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         }
     
     
+    @IBAction func malePressed(_ sender: Any) {
+        isSelected(button: maleB, button2: femaleB)
+        gender = "MALE"
+
+    }
+    
+    @IBAction func femalePressed(_ sender: Any) {
+        isSelected(button: femaleB, button2: maleB)
+        gender = "FEMALE"
+    }
+    
+    func isSelected(button: UIButton, button2: UIButton) {
+           button.backgroundColor = #colorLiteral(red: 0.4047860503, green: 0.608440578, blue: 0.6136831641, alpha: 1)
+           button.setTitleColor(#colorLiteral(red: 0.9489166141, green: 0.9490789771, blue: 0.9489063621, alpha: 1), for: .normal)
+           button2.backgroundColor = #colorLiteral(red: 0.9489166141, green: 0.9490789771, blue: 0.9489063621, alpha: 1)
+           button2.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+       }
+    
     @IBAction func startupdate(_ sender: Any) {
         setUI(flag: true, button: startUpdate, button2: updateButton)
+        
     }
     
     
@@ -174,6 +206,15 @@ class userProfileViewController: UIViewController{
                 self.chooseCity.text = chosenCity
                     
                 }
+                
+                if let gender = responseObject.gender {
+                    if gender == "MALE" {
+                        self.isSelected(button: self.maleB, button2: self.femaleB)
+                    } else if gender == "FEMALE" {
+                        self.isSelected(button: self.femaleB, button2: self.maleB)
+                    }
+                    self.gender = gender
+                }
                 //self.neighboorhoodID = responseObject.neighborhood.id
                 print("User Info: \(responseObject)")
                 
@@ -210,6 +251,14 @@ class userProfileViewController: UIViewController{
             i.stopAnimating()
             parameters["name"] = userName.text! as AnyObject
         }
+        
+        if gender == "MALE" || gender == "FEMALE" {
+            i.stopAnimating()
+            parameters["gender"] = gender as AnyObject
+        } else {
+            AlertView.instance.showAlert(message: "الرجاء اختيار الجنس", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
+        }
        
         if userPhone.text != self.phone {
             if self.isValidPhone(phone: userPhone.text!) == true {
@@ -227,19 +276,6 @@ class userProfileViewController: UIViewController{
             parameters["neighborhood"] = self.neighboorhoodID  as AnyObject
         }
 
-//       else if parameters.isEmpty {
-//            i.stopAnimating()
-//            AlertView.instance.showAlert(message: "لا يوجد ما يتم تحديثه!", alertType: .failure)
-//            self.view.addSubview(AlertView.instance.ParentView)
-//        }
-        
-        //        switch self.neighboorhoodID {
-        //        case 3377...3437:
-        //            print("passed")
-        //        default:
-        //            print("The neighborhood must be between 3377 and 3437.")
-        //            self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
-        //        }
         
         
         
