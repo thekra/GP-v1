@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import BonsaiController
 
 class signinController: UIViewController {
     
@@ -18,9 +19,26 @@ class signinController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
     
+    var roleID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //if self.isKeyPresentInUserDefaults(key: "token") == true {
+           //                     if roleID == 1 {
+        if UserDefaults.standard.bool(forKey: "isUserLoggedIn") == true {
+            onBoarding.instance.flag = false
+                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapVieww") as! mapViewController
+                                   // self.present(vc, animated: false, completion: nil)
+                                   self.navigationController?.pushViewController(vc, animated: false)
+                                    
+                                }
+            if UserDefaults.standard.bool(forKey: "isEmpLoggedIn") == true {
+                                    let storyboard = UIStoryboard(name: "Employee", bundle: nil)
+                                                               let vc = storyboard.instantiateViewController(withIdentifier: "TableViewEmp") as! TicketsListEmpViewController
+                                                              self.navigationController?.pushViewController(vc, animated: false)
+                                  // self.present(vc, animated: false, completion: nil)
+                                }
+                    
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         mainV.addGestureRecognizer(tap)
         setupUI()
@@ -48,9 +66,15 @@ class signinController: UIViewController {
     
     //MARK: - Signup Button
     @IBAction func signupButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "signup", sender: nil)
+        let vc = self.storyboard?.instantiateViewController(identifier: "signup") as! signupViewController
+        self.present(vc, animated: true, completion: nil)
+        //self.performSegue(withIdentifier: "signup", sender: nil)
     }
     
+    @IBAction func resetPressed(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(identifier: "resetPassword") as! resetPasswordViewController
+        self.present(vc, animated: true, completion: nil)
+    }
     
     @IBAction func signinButton(_ sender: Any) {
         
@@ -96,19 +120,7 @@ class signinController: UIViewController {
                         
                         print("Token: \(token)")
                         UserDefaults.standard.set(token, forKey: "access_token")
-                        
-//                        if name!.components(separatedBy: " ").filter({ !$0.isEmpty}).count == 1 {
-//
-//                            print("One word")
-//
-//                        UserDefaults.standard.set(name, forKey: "name")
-//
-//                        } else {
-//                            print("Not one word")
-//                            let firstName = name!.components(separatedBy: " ")
-//
-//                            UserDefaults.standard.set(firstName[0], forKey: "name")
-//                        }
+                        UserDefaults.standard.synchronize()
                         UserDefaults.standard.set(name, forKey: "name")
                         
                         UserDefaults.standard.set(phone, forKey: "phone")
@@ -116,14 +128,23 @@ class signinController: UIViewController {
                        // (responseObject.userData.name as AnyObject? as? String) ?? ""
                        if response.response?.statusCode == 200 {
                         i.stopAnimating()
+                        
                         let roleID = responseObject.userData.roleID
                         if roleID == "1" {
+                            UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                            self.roleID = Int(roleID)!
+                            print(self.roleID)
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapVieww") as! mapViewController
+                            //self.navigationController?.pushViewController(vc, animated: true)
                         self.present(vc, animated: true, completion: nil)
                             
                         } else if roleID == "4" {
+                            UserDefaults.standard.set(true, forKey: "isEmpLoggedIn")
+                            self.roleID = Int(roleID)!
+                            print(self.roleID)
                             let storyboard = UIStoryboard(name: "Employee", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "TableViewEmp") as! TicketsListEmpViewController
+                            //self.navigationController?.pushViewController(vc, animated: true)
                             self.present(vc, animated: true, completion: nil)
                         }
                         }
@@ -137,8 +158,8 @@ class signinController: UIViewController {
                         //self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
                         i.stopAnimating()
                         AlertView.instance.showAlert(message: "الايميل/الكلمة السرية غير صحيحة", alertType: .failure)
-                        self.view.addSubview(AlertView.instance.ParentView)
-
+                       // let vc = AlertView(nib) self.view.addSubview(AlertView.instance.ParentView)
+                      
                         
                     } else if response.response?.statusCode == 422 {
                        // self.showAlert(title: "خطأ", message: "مدخل غير صالح/مدخل مفقود")
@@ -215,3 +236,27 @@ class signinController: UIViewController {
  - Naming: Class name starts with Uppercase
  
  */
+
+
+extension signinController: BonsaiControllerDelegate {
+    
+    // return the frame of your Bonsai View Controller
+    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+            print(containerViewFrame.height)
+            print(containerViewFrame.height / (4/3))
+        
+        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (3/2)))
+        
+    }
+    
+    // return a Bonsai Controller with SlideIn or Bubble transition animator
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        // Slide animation from .left, .right, .top, .bottom
+        return BonsaiController(fromDirection: .bottom, presentedViewController: presented, delegate: self)
+        
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
+    }
+}

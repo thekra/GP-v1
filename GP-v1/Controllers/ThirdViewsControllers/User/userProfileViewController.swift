@@ -88,12 +88,6 @@ class userProfileViewController: UIViewController{
         userEmail.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         maleB.isUserInteractionEnabled = flag
         femaleB.isUserInteractionEnabled = flag
-//        updateButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-//        startUpdate.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-//        maleB.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-//        femaleB.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-//        profileView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
-//        scrollView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         }
     
     

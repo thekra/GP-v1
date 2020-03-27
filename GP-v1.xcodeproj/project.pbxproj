@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CF4954EBC4BC0255F872828 /* Pods_GP_v1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */; };
+		431C43DA04C582F64E53283F /* Pods_GP_v1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B6C8D4750782B96DAD769A /* Pods_GP_v1.framework */; };
 		7924B91A23F949C000E889A2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7924B91923F949C000E889A2 /* Alamofire.framework */; };
 		792D5B9624041833007D46C8 /* userProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5B9524041833007D46C8 /* userProfileViewController.swift */; };
 		792D5B982406F300007D46C8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792D5B972406F300007D46C8 /* User.swift */; };
@@ -37,6 +37,7 @@
 		794A3A9623FEB31D003CDE02 /* TicketInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */; };
 		794A3A9923FEB4A0003CDE02 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9823FEB4A0003CDE02 /* Extension.swift */; };
 		794A3A9B23FFF7C4003CDE02 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9A23FFF7C3003CDE02 /* File.swift */; };
+		7956406F242CFB010078A5BF /* confirmTicketMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7956406E242CFB010078A5BF /* confirmTicketMessageViewController.swift */; };
 		797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC723E56CB500960C79 /* AppDelegate.swift */; };
 		797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC923E56CB500960C79 /* SceneDelegate.swift */; };
 		797F8BCF23E56CB500960C79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797F8BCD23E56CB500960C79 /* Main.storyboard */; };
@@ -78,8 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B5E666E5E9AC94C73DA3A93 /* Pods-GP-v1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP-v1.debug.xcconfig"; path = "Target Support Files/Pods-GP-v1/Pods-GP-v1.debug.xcconfig"; sourceTree = "<group>"; };
-		48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP_v1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A5CF18F971FF3F16EC7B746 /* Pods-GP-v1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP-v1.debug.xcconfig"; path = "Target Support Files/Pods-GP-v1/Pods-GP-v1.debug.xcconfig"; sourceTree = "<group>"; };
+		33B6C8D4750782B96DAD769A /* Pods_GP_v1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP_v1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7924B91523F945B500E889A2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7924B91923F949C000E889A2 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		792D5B9524041833007D46C8 /* userProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfileViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoViewController.swift; sourceTree = "<group>"; };
 		794A3A9823FEB4A0003CDE02 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		794A3A9A23FFF7C3003CDE02 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		7956406E242CFB010078A5BF /* confirmTicketMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmTicketMessageViewController.swift; sourceTree = "<group>"; };
 		797F8BC423E56CB500960C79 /* GP-v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GP-v1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		797F8BC723E56CB500960C79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		797F8BC923E56CB500960C79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,7 +139,7 @@
 		79BFCA082419358000067783 /* onBoarding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = onBoarding.xib; sourceTree = "<group>"; };
 		79BFCA0C241A358A00067783 /* Ahlan-world-Arbfonts.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ahlan-world-Arbfonts.otf"; sourceTree = "<group>"; };
 		79CABF6F2425546C00FBB906 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
-		99A16A7BC0D840E024DABE90 /* Pods-GP-v1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP-v1.release.xcconfig"; path = "Target Support Files/Pods-GP-v1/Pods-GP-v1.release.xcconfig"; sourceTree = "<group>"; };
+		CB66B667B5EC193CE00304DD /* Pods-GP-v1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP-v1.release.xcconfig"; path = "Target Support Files/Pods-GP-v1/Pods-GP-v1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +149,7 @@
 			files = (
 				798639F923EEFD5A00131A9E /* CoreData.framework in Frameworks */,
 				7924B91A23F949C000E889A2 /* Alamofire.framework in Frameworks */,
-				0CF4954EBC4BC0255F872828 /* Pods_GP_v1.framework in Frameworks */,
+				431C43DA04C582F64E53283F /* Pods_GP_v1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +173,8 @@
 		3C86EE86A55FD1CE4B958519 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2B5E666E5E9AC94C73DA3A93 /* Pods-GP-v1.debug.xcconfig */,
-				99A16A7BC0D840E024DABE90 /* Pods-GP-v1.release.xcconfig */,
+				1A5CF18F971FF3F16EC7B746 /* Pods-GP-v1.debug.xcconfig */,
+				CB66B667B5EC193CE00304DD /* Pods-GP-v1.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -338,6 +340,7 @@
 				797F8C1423EC2C7E00960C79 /* mapViewController.swift */,
 				797F8C1623EC323D00960C79 /* onboardingViewController.swift */,
 				798639F623EDCB2300131A9E /* ticketViewController.swift */,
+				7956406E242CFB010078A5BF /* confirmTicketMessageViewController.swift */,
 			);
 			path = SecondViewsControllers;
 			sourceTree = "<group>";
@@ -365,7 +368,7 @@
 				7924B91923F949C000E889A2 /* Alamofire.framework */,
 				7924B91523F945B500E889A2 /* Alamofire.framework */,
 				798639F823EEFD5900131A9E /* CoreData.framework */,
-				48D46BEE71E0A67BE5F2C16C /* Pods_GP_v1.framework */,
+				33B6C8D4750782B96DAD769A /* Pods_GP_v1.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -377,12 +380,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 797F8BEE23E56CBB00960C79 /* Build configuration list for PBXNativeTarget "GP-v1" */;
 			buildPhases = (
-				11AFADAA2CE4FED961522FD4 /* [CP] Check Pods Manifest.lock */,
+				D0F7B4FCBDB75CEC9B6D954B /* [CP] Check Pods Manifest.lock */,
 				797F8BC023E56CB500960C79 /* Sources */,
 				797F8BC123E56CB500960C79 /* Frameworks */,
 				797F8BC223E56CB500960C79 /* Resources */,
-				4508B4A5EC97E5D4E6FB6E73 /* [CP] Embed Pods Frameworks */,
-				F3A9C97D9B604C16C1189A9E /* [CP] Copy Pods Resources */,
+				AA42F7E257152D4C85669A04 /* [CP] Embed Pods Frameworks */,
+				740A5693EE2D42F1D237A28E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -505,7 +508,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11AFADAA2CE4FED961522FD4 /* [CP] Check Pods Manifest.lock */ = {
+		740A5693EE2D42F1D237A28E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA42F7E257152D4C85669A04 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0F7B4FCBDB75CEC9B6D954B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -525,40 +562,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4508B4A5EC97E5D4E6FB6E73 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F3A9C97D9B604C16C1189A9E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GP-v1/Pods-GP-v1-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -584,6 +587,7 @@
 				794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */,
 				794255C823F6AA170051DE63 /* TicketResponse.swift in Sources */,
 				797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */,
+				7956406F242CFB010078A5BF /* confirmTicketMessageViewController.swift in Sources */,
 				794A3A9B23FFF7C4003CDE02 /* File.swift in Sources */,
 				794A3A9223FE89D4003CDE02 /* TicketCell.swift in Sources */,
 				792D5BA824158167007D46C8 /* ShowTicket.swift in Sources */,
@@ -784,7 +788,7 @@
 		};
 		797F8BEF23E56CBB00960C79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B5E666E5E9AC94C73DA3A93 /* Pods-GP-v1.debug.xcconfig */;
+			baseConfigurationReference = 1A5CF18F971FF3F16EC7B746 /* Pods-GP-v1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -803,7 +807,7 @@
 		};
 		797F8BF023E56CBB00960C79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99A16A7BC0D840E024DABE90 /* Pods-GP-v1.release.xcconfig */;
+			baseConfigurationReference = CB66B667B5EC193CE00304DD /* Pods-GP-v1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -10,7 +10,8 @@ import UIKit
 import Alamofire
 
 class ticketListViewController: UIViewController {
-    
+    static let instance = ticketListViewController()
+
     @IBOutlet weak var ViewT: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noTickets: UILabel!

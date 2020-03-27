@@ -8,8 +8,13 @@
 
 import UIKit
 import Alamofire
+import BonsaiController
 
-class ticketViewController:  UIViewController {
+protocol con {
+    func confirmPressed()
+}
+
+class ticketViewController:  UIViewController, con{
     
     
     let picker: UIPickerView! = UIPickerView()
@@ -21,7 +26,7 @@ class ticketViewController:  UIViewController {
     @IBOutlet weak var choosenNei: UITextField!
     var imgView: UIImageView!
     var image: UIImage!
-
+    
     
     var NeiArr = [Neighborhood]()
     var temp = Data()
@@ -96,7 +101,7 @@ class ticketViewController:  UIViewController {
             setupPic(pic: pic_2, action: #selector(self.imageTap_2))
             
         case 2: setupPic(pic: pic_3, action: #selector(self.imageTap_3))
-           
+            
         case 3: setupPic(pic: pic_4, action: #selector(self.imageTap_4))
             
         default:
@@ -112,8 +117,8 @@ class ticketViewController:  UIViewController {
     
     func enablePic(pic: UIImageView) {
         
-            pic.isUserInteractionEnabled = true
-            pic.image = UIImage(named: "Repeat Grid 1 copy")
+        pic.isUserInteractionEnabled = true
+        pic.image = UIImage(named: "Repeat Grid 1 copy")
         
     }
     
@@ -130,7 +135,7 @@ class ticketViewController:  UIViewController {
         
         self.imgView = pic_2
         showImage()
-       enablePic(pic: pic_3)
+        enablePic(pic: pic_3)
     }
     
     @objc func imageTap_3() {
@@ -138,7 +143,7 @@ class ticketViewController:  UIViewController {
         
         self.imgView = self.pic_3
         showImage()
-       enablePic(pic: pic_4)
+        enablePic(pic: pic_4)
     }
     
     @objc func imageTap_4() {
@@ -171,9 +176,8 @@ class ticketViewController:  UIViewController {
         view.endEditing(true)
     }
     
-    
-    @IBAction func confirmTicket(_ sender: Any) {
-        // let i = self.startAnActivityIndicator()
+    func confirmPressed()  {
+        var code = 0
         let urlString = "http://www.ai-rdm.website/api/ticket/create"
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -193,31 +197,8 @@ class ticketViewController:  UIViewController {
             "city": self.cityID,
             "neighborhood": self.neighboorhoodID
             ] as [String : AnyObject]
+        
         let i = self.startAnActivityIndicator1()
-
-        if self.imgArr.isEmpty {
-            print("Array Count: \(self.imgArr.count)")
-            i.stopAnimating()
-            //self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
-            
-            AlertView.instance.showAlert(message: "الرجاء ارفاق ١ - ٤ صور", alertType: .failure)
-            AlertView.instance.ParentView.frame = CGRect(x: 0, y: -221, width: 414, height: 896) // not AutoLayout
-            self.view.addSubview(AlertView.instance.ParentView)
-        }
-        
-        
-        
-        switch self.neighboorhoodID {
-        case 3377...3437:
-            print("passed")
-        default:
-            print("The neighborhood must be between 3377 and 3437.")
-           i.stopAnimating()
-            //self.showAlert(title: "خطأ", message: "الرجاء اختيار حي")
-            
-//            AlertView.instance.showAlert(message: "الرجاء اختيار حي", alertType: .failure)
-//            self.view.addSubview(AlertView.instance.ParentView)
-        }
         
         if Connectivity.isConnectedToInternet {
             Alamofire.upload(multipartFormData:
@@ -265,7 +246,8 @@ class ticketViewController:  UIViewController {
                         
                         if response.response?.statusCode == 200 {
                             i.stopAnimating()
-                        self.goToTicketList()
+                            self.goToTicketList()
+                            code = 200
                         }
                         guard let data = response.data else {
                             
@@ -279,7 +261,7 @@ class ticketViewController:  UIViewController {
                         do {
                             let responseObject =  try decoder.decode(TicketResponse.self, from: data)
                             print("response Object MESSAGE: \([responseObject].self)")
-
+                            
                         } // end of do
                         catch let parsingError {
                             print("Error", parsingError)
@@ -289,7 +271,7 @@ class ticketViewController:  UIViewController {
                     
                     upload.responseJSON { response in
                         
-                     
+                        
                         print("the resopnse code is : \(response.response?.statusCode)")
                         
                         // من هنا يطلع رسالة الايرور تمام
@@ -310,7 +292,39 @@ class ticketViewController:  UIViewController {
             AlertView.instance.ParentView.frame = CGRect(x: 0, y: -200, width: 414, height: 896)
             self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection
+        //return code
+    }
+    
+    @IBAction func confirmTicket(_ sender: Any) {
         
+        let i = self.startAnActivityIndicator1()
+        
+        if self.imgArr.isEmpty {
+            print("Array Count: \(self.imgArr.count)")
+            i.stopAnimating()
+            //self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
+            
+            AlertView.instance.showAlert(message: "الرجاء ارفاق ١ - ٤ صور", alertType: .failure)
+            AlertView.instance.ParentView.frame = CGRect(x: 0, y: -221, width: 414, height: 896) // not AutoLayout
+            self.view.addSubview(AlertView.instance.ParentView)
+        } else {
+            
+            if Connectivity.isConnectedToInternet {
+                i.stopAnimating()
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "confirm") as! confirmTicketMessageViewController
+                vc.delegate?.confirmPressed()
+                vc.transitioningDelegate = self
+                vc.modalPresentationStyle = .custom
+                vc.delegate = self
+                
+                self.present(vc, animated: true, completion: nil)
+            } else {
+                i.stopAnimating()
+                AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+                AlertView.instance.ParentView.frame = CGRect(x: 0, y: -200, width: 414, height: 896)
+                self.view.addSubview(AlertView.instance.ParentView)
+            }
+        }
     } // End of ConfirmTicket Button
     
     func goToTicketList() {
@@ -329,41 +343,41 @@ class ticketViewController:  UIViewController {
             "Accept": "application/json"
         ]
         if Connectivity.isConnectedToInternet {
-
-        Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
-            response in
             
-            print(response.response!)
-            
-            guard let data = response.data else {
+            Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
+                response in
+                
+                print(response.response!)
+                
+                guard let data = response.data else {
+                    
+                    DispatchQueue.main.async {
+                        print(response.error!)
+                    }
+                    return
+                }
+                let decoder = JSONDecoder()
+                do {
+                    let responseObject =  try decoder.decode([Neighborhood].self, from: data)
+                    print("response Object MESSAGE: \(responseObject.self)")
+                    self.NeiArr = responseObject.self
+                    print("NeiArr\(self.NeiArr)")
+                    
+                    self.choosenNei.text = responseObject[0].nameAr
+                    self.neighboorhoodID = responseObject[0].id
+                    self.cityID = Int(responseObject[0].cityID)!
+                    
+                    
+                } // end of do
+                catch let parsingError {
+                    print("Error", parsingError)
+                }
                 
                 DispatchQueue.main.async {
-                    print(response.error!)
+                    self.picker.reloadComponent(0)
                 }
-                return
-            }
-            let decoder = JSONDecoder()
-            do {
-                let responseObject =  try decoder.decode([Neighborhood].self, from: data)
-                print("response Object MESSAGE: \(responseObject.self)")
-                self.NeiArr = responseObject.self
-                print("NeiArr\(self.NeiArr)")
-                
-                self.choosenNei.text = responseObject[0].nameAr
-                self.neighboorhoodID = responseObject[0].id
-                self.cityID = Int(responseObject[0].cityID)!
-                
-                
-            } // end of do
-            catch let parsingError {
-                print("Error", parsingError)
-            }
-            
-            DispatchQueue.main.async {
-                self.picker.reloadComponent(0)
             }
         }
-    }
     }
 } // End of class
 
@@ -386,30 +400,30 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
             pic_2.image = UIImage(named: "Rectangle 3")
             dismiss(animated: true, completion: nil)
         }
-
+        
         if self.imgView.tag == 1 {
-         pic_3.isUserInteractionEnabled = false
-          pic_3.image = UIImage(named: "Rectangle 3")
+            pic_3.isUserInteractionEnabled = false
+            pic_3.image = UIImage(named: "Rectangle 3")
             dismiss(animated: true, completion: nil)
-               }
-
+        }
+        
         if self.imgView.tag == 2 {
-             pic_4.isUserInteractionEnabled = false
+            pic_4.isUserInteractionEnabled = false
             pic_4.image = UIImage(named: "Rectangle 3")
             dismiss(animated: true, completion: nil)
-               }
+        }
         
         if self.imgView.tag == 3 {
-         pic_4.isUserInteractionEnabled = false
-        pic_4.image = UIImage(named: "Rectangle 3")
-        dismiss(animated: true, completion: nil)
-           }
+            pic_4.isUserInteractionEnabled = false
+            pic_4.image = UIImage(named: "Rectangle 3")
+            dismiss(animated: true, completion: nil)
+        }
         
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.image = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
-    
+        
         self.imgView.image = self.image
         let imgData = self.imgView.image!.jpegData(compressionQuality: 0.5)!
         print("img tag \(self.imgView.tag)")
@@ -430,47 +444,47 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         }
         
         if self.imgView.tag == 1 {
-          
-                   if count2 == 0 {
-                       self.temp = imgData
-                       imgArr.append(imgData)
-                       count2 += 1
-                   } else if count2 == 1 {
-                       let i = imgArr.firstIndex(of: temp)!
-                       imgArr.remove(at: i)
-                       imgArr.append(imgData)
-                       count2 -= 1
-                   }
+            
+            if count2 == 0 {
+                self.temp = imgData
+                imgArr.append(imgData)
+                count2 += 1
+            } else if count2 == 1 {
+                let i = imgArr.firstIndex(of: temp)!
+                imgArr.remove(at: i)
+                imgArr.append(imgData)
+                count2 -= 1
+            }
             print("c2 \(count2)")
-               }
+        }
         
         if self.imgView.tag == 2 {
-                   if count3 == 0 {
-                       self.temp = imgData
-                       imgArr.append(imgData)
-                       count3 += 1
-                   } else if count3 == 1 {
-                       let i = imgArr.firstIndex(of: temp)!
-                       imgArr.remove(at: i)
-                       imgArr.append(imgData)
-                       count3 -= 1
-                   }
+            if count3 == 0 {
+                self.temp = imgData
+                imgArr.append(imgData)
+                count3 += 1
+            } else if count3 == 1 {
+                let i = imgArr.firstIndex(of: temp)!
+                imgArr.remove(at: i)
+                imgArr.append(imgData)
+                count3 -= 1
+            }
             print("c3 \(count3)")
-               }
+        }
         
         if self.imgView.tag == 3 {
-                   if count4 == 0 {
-                       self.temp = imgData
-                       imgArr.append(imgData)
-                       count4 += 1
-                   } else if count4 == 1 {
-                       let i = imgArr.firstIndex(of: temp)!
-                       imgArr.remove(at: i)
-                       imgArr.append(imgData)
-                       count4 -= 1
-                   }
+            if count4 == 0 {
+                self.temp = imgData
+                imgArr.append(imgData)
+                count4 += 1
+            } else if count4 == 1 {
+                let i = imgArr.firstIndex(of: temp)!
+                imgArr.remove(at: i)
+                imgArr.append(imgData)
+                count4 -= 1
+            }
             print("c4 \(count4)")
-               }
+        }
         
         
         print("Image Array: \(imgArr)")
@@ -509,3 +523,25 @@ extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 
 
+extension ticketViewController: BonsaiControllerDelegate {
+    
+    // return the frame of your Bonsai View Controller
+    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
+        print(containerViewFrame.height)
+        print(containerViewFrame.height / (4/3))
+        
+        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
+        
+    }
+    
+    // return a Bonsai Controller with SlideIn or Bubble transition animator
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        
+        // Slide animation from .left, .right, .top, .bottom
+        return BonsaiController(fromDirection: .bottom, presentedViewController: presented, delegate: self)
+        
+        
+        // or Bubble animation initiated from a view
+        //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
+    }
+}

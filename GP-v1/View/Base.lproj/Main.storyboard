@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a4O-Gu-Ngg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -12,6 +12,21 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="tyV-r4-ugR">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="a4O-Gu-Ngg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XA8-35-hJM">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wcE-Qe-It4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TGe-uT-NzY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1267" y="90"/>
+        </scene>
         <!--Signin View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -117,7 +132,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="S25-DA-Y6D" kind="show" id="RId-en-EeO"/>
+                                            <action selector="resetPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="71S-Df-gFz"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0q-F7-NH7">
@@ -142,7 +157,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="signupButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ewj-82-zkQ"/>
-                                                    <segue destination="vcq-Mh-txs" kind="show" identifier="signup" id="xQh-pI-Iel"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ليس لديك حساب؟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS7-Im-RWr">
@@ -190,6 +204,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jLf-Nc-aXJ"/>
                     <connections>
                         <outlet property="childView" destination="qPv-Cc-uuc" id="tGJ-2n-xCc"/>
                         <outlet property="emailTextField" destination="LCO-Bp-kko" id="IqX-31-hPi"/>
@@ -255,14 +270,14 @@
             <objects>
                 <viewController storyboardIdentifier="signup" id="vcq-Mh-txs" userLabel="Signup View Controller" customClass="signupViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UNQ-rP-n4m">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EXL-Cj-TGe" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="266"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="334-sK-9A6">
-                                        <rect key="frame" x="132" y="50" width="150" height="150"/>
+                                        <rect key="frame" x="132" y="58" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="334-sK-9A6" secondAttribute="height" multiplier="1:1" id="TGI-uG-tzi"/>
                                             <constraint firstAttribute="width" constant="150" id="hzE-If-qNR"/>
@@ -275,7 +290,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-CW-Cc1" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="249" width="414" height="593"/>
+                                <rect key="frame" x="0.0" y="309" width="414" height="587"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تسجيل جديد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5t6-86-aFy">
                                         <rect key="frame" x="158.5" y="20" width="97.5" height="26"/>
@@ -1013,26 +1028,26 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقييم التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdy-Hb-sGl">
-                                                                <rect key="frame" x="296.5" y="24" width="101.5" height="24"/>
+                                                                <rect key="frame" x="301" y="24" width="97" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvA-nU-fcf" userLabel="goToMap">
-                                                                <rect key="frame" x="16" y="24" width="30.5" height="24"/>
+                                                                <rect key="frame" x="16" y="24" width="35" height="48"/>
                                                                 <state key="normal" image="Icon ionic-ios-arrow-back"/>
                                                                 <connections>
                                                                     <action selector="backToTicket:" destination="qqf-pE-4xW" eventType="touchUpInside" id="KJ8-UG-qO9"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="صور الاصلاح" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8we-zQ-QQ2">
-                                                                <rect key="frame" x="296.5" y="83" width="101.5" height="24"/>
+                                                                <rect key="frame" x="301" y="82.5" width="97" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleAspectFit" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Kmq-c5-Yt3">
-                                                                <rect key="frame" x="16" y="131" width="382" height="77"/>
+                                                                <rect key="frame" x="16" y="130" width="382" height="77"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1" translatesAutoresizingMaskIntoConstraints="NO" id="nrD-Mo-8fV" userLabel="pic-4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="97" height="77"/>
@@ -1070,7 +1085,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleAspectFit" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="D3A-1r-Pbn">
-                                                                <rect key="frame" x="50" y="258" width="314" height="34.5"/>
+                                                                <rect key="frame" x="50" y="257" width="314" height="34.5"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon ionic-ios-star-unfill" translatesAutoresizingMaskIntoConstraints="NO" id="VvB-FI-Bs7">
                                                                         <rect key="frame" x="0.0" y="0.0" width="37" height="34.5"/>
@@ -1115,13 +1130,13 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعليق" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-AQ-X2e">
-                                                                <rect key="frame" x="296.5" y="346" width="101.5" height="24"/>
+                                                                <rect key="frame" x="301" y="345" width="97" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="uBb-2T-Ec6">
-                                                                <rect key="frame" x="16" y="390" width="382" height="120"/>
+                                                                <rect key="frame" x="16" y="388.5" width="382" height="120"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="uBb-2T-Ec6" secondAttribute="height" multiplier="191:60" id="Cv9-2a-3lq"/>
@@ -1268,7 +1283,7 @@
                                 <rect key="frame" x="0.0" y="40" width="414" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fus-kL-psr" userLabel="goToMap">
-                                        <rect key="frame" x="20" y="0.0" width="41" height="41"/>
+                                        <rect key="frame" x="20" y="0.0" width="82" height="41"/>
                                         <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="goToMap:" destination="dao-zn-6i0" eventType="touchUpInside" id="1y3-Vp-Tm1"/>
@@ -1281,7 +1296,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7f-Bj-Jeq" userLabel="signout">
-                                        <rect key="frame" x="366.5" y="4" width="27.5" height="28"/>
+                                        <rect key="frame" x="339" y="4" width="55" height="28"/>
                                         <state key="normal" image="Icon ionic-ios-log-out"/>
                                         <connections>
                                             <action selector="signOut:" destination="dao-zn-6i0" eventType="touchUpInside" id="1SX-uB-Dt0"/>
@@ -1308,46 +1323,46 @@
                                 </userGuides>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiS-Ab-qte">
-                                        <rect key="frame" x="121" y="1" width="172" height="172"/>
+                                        <rect key="frame" x="54" y="-171" width="306" height="344"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                                         </accessibility>
                                         <state key="normal" image="Group 33"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مرحباً،" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siy-t8-2Os">
-                                        <rect key="frame" x="121" y="133" width="172" height="19"/>
+                                        <rect key="frame" x="54" y="133" width="306" height="19"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAw-9J-IoZ" userLabel="tickets">
-                                        <rect key="frame" x="0.0" y="19" width="154" height="154"/>
+                                        <rect key="frame" x="0.0" y="19" width="308" height="154"/>
                                         <state key="normal" image="profile"/>
                                         <connections>
                                             <action selector="ticketListButton:" destination="dao-zn-6i0" eventType="touchUpInside" id="yeL-Kb-nOL"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التذاكر" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ap1-8w-ewU">
-                                        <rect key="frame" x="0.0" y="133" width="154" height="20"/>
+                                        <rect key="frame" x="0.0" y="133" width="308" height="20"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgI-jh-Wtw" userLabel="profile">
-                                        <rect key="frame" x="254" y="19" width="154" height="154"/>
+                                        <rect key="frame" x="100" y="19" width="308" height="154"/>
                                         <state key="normal" image="Icon feather-settings"/>
                                         <connections>
                                             <action selector="profile:" destination="dao-zn-6i0" eventType="touchUpInside" id="ocB-4V-fVK"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحساب" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oag-ur-K1v">
-                                        <rect key="frame" x="254" y="133" width="154" height="20"/>
+                                        <rect key="frame" x="100" y="133" width="308" height="20"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuZ-aY-1as">
-                                        <rect key="frame" x="44" y="71" width="67" height="50"/>
+                                        <rect key="frame" x="44" y="71" width="0.0" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="4ja-b5-Qxw"/>
                                         </constraints>
@@ -1408,16 +1423,16 @@
         <!--reset View Controller-->
         <scene sceneID="EWz-0z-PJA">
             <objects>
-                <viewController id="S25-DA-Y6D" userLabel="reset View Controller" customClass="resetPasswordViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resetPassword" id="S25-DA-Y6D" userLabel="reset View Controller" customClass="resetPasswordViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lvr-1Y-PAA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYF-4V-tww" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="266"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="zW4-8s-Nw4">
-                                        <rect key="frame" x="132" y="50" width="150" height="150"/>
+                                        <rect key="frame" x="132" y="58" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zW4-8s-Nw4" secondAttribute="height" multiplier="1:1" id="t4l-tO-5jx"/>
                                             <constraint firstAttribute="width" constant="150" id="xE9-Do-cIV"/>
@@ -1431,7 +1446,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2aJ-nu-466" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="258" width="414" height="584"/>
+                                <rect key="frame" x="0.0" y="318" width="414" height="578"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="استعادة كلمة المرور" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkB-UT-No1">
                                         <rect key="frame" x="134" y="20" width="146" height="26"/>
@@ -1549,26 +1564,26 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقييم التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-0x-Cgq">
-                                                                <rect key="frame" x="288.5" y="24" width="101.5" height="24"/>
+                                                                <rect key="frame" x="293" y="24" width="97" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Li0-pV-GsL" userLabel="back">
-                                                                <rect key="frame" x="24" y="24" width="24.5" height="24"/>
+                                                                <rect key="frame" x="24" y="24" width="29" height="48"/>
                                                                 <state key="normal" image="Icon ionic-ios-arrow-back"/>
                                                                 <connections>
                                                                     <action selector="back:" destination="OOv-gf-24G" eventType="touchUpInside" id="Aqz-3W-6OQ"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="صور الاصلاح" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdc-qF-nbB">
-                                                                <rect key="frame" x="288.5" y="83" width="101.5" height="24"/>
+                                                                <rect key="frame" x="293" y="82.5" width="97" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hNE-dE-5eM">
-                                                                <rect key="frame" x="24" y="131" width="366" height="77.5"/>
+                                                                <rect key="frame" x="24" y="130" width="366" height="77.5"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1" translatesAutoresizingMaskIntoConstraints="NO" id="x8l-dg-JPg" userLabel="pic-4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="81.5" height="77.5"/>
@@ -1604,7 +1619,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="34F-Fb-RtQ">
-                                                                <rect key="frame" x="50" y="258.5" width="314" height="35"/>
+                                                                <rect key="frame" x="50" y="257.5" width="314" height="35"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon ionic-ios-star-unfill" translatesAutoresizingMaskIntoConstraints="NO" id="SZc-1Y-7Ri">
                                                                         <rect key="frame" x="0.0" y="0.0" width="43" height="35"/>
@@ -1647,13 +1662,13 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعليق" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDM-4n-Sls">
-                                                                <rect key="frame" x="288.5" y="343.5" width="101.5" height="24"/>
+                                                                <rect key="frame" x="293" y="342.5" width="97" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="DRq-9n-wrr">
-                                                                <rect key="frame" x="24" y="391.5" width="366" height="121"/>
+                                                                <rect key="frame" x="24" y="390" width="366" height="121"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="DRq-9n-wrr" secondAttribute="height" multiplier="121:40" id="Zow-qN-QgF"/>
@@ -1790,7 +1805,7 @@
                                         <color key="backgroundColor" red="0.40478605029999998" green="0.60844057799999995" blue="0.61368316410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 33" translatesAutoresizingMaskIntoConstraints="NO" id="c4d-J9-4lx">
-                                        <rect key="frame" x="242" y="10" width="172" height="172"/>
+                                        <rect key="frame" x="242" y="10" width="172" height="344"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2027,6 +2042,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4D-lj-XSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="112" y="2541"/>
+        </scene>
+        <!--Confirm Ticket Message View Controller-->
+        <scene sceneID="Zep-7H-fuY">
+            <objects>
+                <viewController storyboardIdentifier="confirm" id="e5E-xD-UO9" customClass="confirmTicketMessageViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D3u-R4-CUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تأكيد اعتماد التذكرة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsu-jn-U2F">
+                                <rect key="frame" x="50" y="244" width="314" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Fsu-jn-U2F" secondAttribute="height" multiplier="178:29" id="Zcn-gg-KLE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWQ-9a-Fwv">
+                                <rect key="frame" x="50" y="345" width="314" height="33"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhX-pC-F8F">
+                                        <rect key="frame" x="182.5" y="0.0" width="91.5" height="33"/>
+                                        <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
+                                        <state key="normal" title="موافق">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="yesPressed:" destination="e5E-xD-UO9" eventType="touchUpInside" id="lSh-Ry-Nnd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epd-Bl-Ynd">
+                                        <rect key="frame" x="40" y="0.0" width="91" height="33"/>
+                                        <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
+                                        <state key="normal" title="الغاء">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelPressed:" destination="e5E-xD-UO9" eventType="touchUpInside" id="UuE-hc-GpE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="epd-Bl-Ynd" firstAttribute="leading" secondItem="AWQ-9a-Fwv" secondAttribute="leading" constant="40" id="Bl2-EZ-691"/>
+                                    <constraint firstItem="epd-Bl-Ynd" firstAttribute="height" secondItem="nhX-pC-F8F" secondAttribute="height" id="DKw-w0-a9c"/>
+                                    <constraint firstAttribute="trailing" secondItem="nhX-pC-F8F" secondAttribute="trailing" constant="40" id="Ks0-jo-G4E"/>
+                                    <constraint firstItem="nhX-pC-F8F" firstAttribute="width" secondItem="AWQ-9a-Fwv" secondAttribute="height" multiplier="59:36" constant="37.638888888888893" id="NDg-8d-Vrs"/>
+                                    <constraint firstItem="epd-Bl-Ynd" firstAttribute="width" secondItem="nhX-pC-F8F" secondAttribute="width" multiplier="1.29474" constant="-28" id="W98-aI-qBs"/>
+                                    <constraint firstItem="nhX-pC-F8F" firstAttribute="top" secondItem="AWQ-9a-Fwv" secondAttribute="top" id="WES-fr-ZWG"/>
+                                    <constraint firstAttribute="bottom" secondItem="nhX-pC-F8F" secondAttribute="bottom" id="bqd-vc-OJV"/>
+                                    <constraint firstItem="epd-Bl-Ynd" firstAttribute="centerY" secondItem="nhX-pC-F8F" secondAttribute="centerY" id="yDT-rC-fG3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50980392159999999" green="0.76470588240000004" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AWQ-9a-Fwv" secondAttribute="trailing" constant="50" id="9WU-Lq-0e0"/>
+                            <constraint firstItem="AWQ-9a-Fwv" firstAttribute="top" secondItem="Fsu-jn-U2F" secondAttribute="bottom" constant="50" id="AWE-15-eUS"/>
+                            <constraint firstItem="AWQ-9a-Fwv" firstAttribute="leading" secondItem="D3u-R4-CUJ" secondAttribute="leading" constant="50" id="U3o-X6-mrs"/>
+                            <constraint firstItem="Fsu-jn-U2F" firstAttribute="leading" secondItem="Ske-Kk-YgC" secondAttribute="leading" constant="50" id="dZa-6j-auo"/>
+                            <constraint firstItem="Ske-Kk-YgC" firstAttribute="trailing" secondItem="Fsu-jn-U2F" secondAttribute="trailing" constant="50" id="kjT-Xz-Rk5"/>
+                            <constraint firstItem="Fsu-jn-U2F" firstAttribute="top" secondItem="Ske-Kk-YgC" secondAttribute="top" constant="200" id="pTh-dD-9A0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ske-Kk-YgC"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="600"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="epd-Bl-Ynd" id="l9k-Lf-U4d"/>
+                        <outlet property="yesButton" destination="nhX-pC-F8F" id="ZEd-8O-SiJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d56-0w-4dF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="820" y="2537"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="l5z-d5-2BU">
@@ -2327,6 +2418,6 @@
         <image name="profile" width="154" height="154"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gdb-mx-XRY"/>
+        <segue reference="OrN-0g-0n7"/>
     </inferredMetricsTieBreakers>
 </document>

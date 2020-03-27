@@ -90,7 +90,46 @@ class switchViewController: UIViewController {
         }
     }
     
+    @objc func logOut() {
+        let urlString = "http://www.ai-rdm.website/api/auth/logout"
+
+                   let headers: HTTPHeaders = [
+                       "Authorization": "Bearer \(self.token)",
+                       "Content-Type": "multipart/form-data",
+                       "Accept": "application/json"
+                   ]
+
+                   Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
+                       response in
+
+                       print(response.response!)
+
+                       guard let data = response.data else {
+
+                           DispatchQueue.main.async {
+                               print(response.error!)
+                           }
+                           return
+                       }
+                    if response.response?.statusCode == 200 {
+                        UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
+                                                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signinController
+                                                              self.present(vc, animated: true, completion: nil)
+                        //self.navigationController?.popToViewController(vc, animated: true)
+
+                   }
+                     print("the response is : \(response)")
+            //UserDefaults.standard.removeObject(forKey: "access_token")
+           // let vc = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signinController
+            //self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     @IBAction func signOut(_ sender: Any) {
+        
+        //AlertView.instance.showConAlert(message: "هل انت متأكد؟", alertType: .confirm, action: #selector(self.logOut))
+        //ticketListViewController.instance.view.addSubview(AlertView.instance.ParentView)
+        
         let urlString = "http://www.ai-rdm.website/api/auth/logout"
 
                let headers: HTTPHeaders = [
@@ -112,8 +151,10 @@ class switchViewController: UIViewController {
                        return
                    }
                 if response.response?.statusCode == 200 {
+                    UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
                                                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signinController
                                                           self.present(vc, animated: true, completion: nil)
+                    //self.navigationController?.popToViewController(vc, animated: true)
 
                }
                  print("the response is : \(response)")
