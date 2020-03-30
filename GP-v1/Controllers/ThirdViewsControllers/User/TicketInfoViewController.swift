@@ -20,7 +20,7 @@ class TicketInfoViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var neighborhood: UILabel!
-    @IBOutlet weak var descView: UILabel!
+    @IBOutlet weak var descView: UITextView!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var showRatingB: UIButton!
     @IBOutlet weak var rateButton: UIButton!
@@ -40,7 +40,6 @@ class TicketInfoViewController: UIViewController {
         neighborhood.text = ticket?[0].location[0].neighborhood
         
         picArr = [pic_1, pic_2, pic_3, pic_4]
-        // images = [pic_1.image!, pic_2.image!, pic_3.image!, pic_4.image!]
         
         loadImages()
         
@@ -235,6 +234,7 @@ class TicketInfoViewController: UIViewController {
     @IBAction func deleteTicket(_ sender: Any) {
         AlertView.instance.showAlert(message: "هل انت متأكد؟", alertType: .confirm)
         AlertView.instance.yesButton.addTarget(self, action: #selector(self.deleteTicketCon), for: .touchUpInside)
+        AlertView.instance.ParentView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view.addSubview(AlertView.instance.ParentView)
         
     }

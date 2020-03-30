@@ -18,25 +18,24 @@ class signinController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signinButton: UIButton!
+    @IBOutlet weak var passwordView: UIView!
     
     var roleID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //if self.isKeyPresentInUserDefaults(key: "token") == true {
-           //                     if roleID == 1 {
+        
         if UserDefaults.standard.bool(forKey: "isUserLoggedIn") == true {
             onBoarding.instance.flag = false
                                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapVieww") as! mapViewController
-                                   // self.present(vc, animated: false, completion: nil)
-                                   self.navigationController?.pushViewController(vc, animated: false)
+            self.navigationController?.pushViewController(vc, animated: false)
                                     
                                 }
             if UserDefaults.standard.bool(forKey: "isEmpLoggedIn") == true {
                                     let storyboard = UIStoryboard(name: "Employee", bundle: nil)
                                                                let vc = storyboard.instantiateViewController(withIdentifier: "TableViewEmp") as! TicketsListEmpViewController
                                                               self.navigationController?.pushViewController(vc, animated: false)
-                                  // self.present(vc, animated: false, completion: nil)
+                
                                 }
                     
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
@@ -68,7 +67,7 @@ class signinController: UIViewController {
     @IBAction func signupButtonPressed(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "signup") as! signupViewController
         self.present(vc, animated: true, completion: nil)
-        //self.performSegue(withIdentifier: "signup", sender: nil)
+
     }
     
     @IBAction func resetPressed(_ sender: Any) {
@@ -158,7 +157,8 @@ class signinController: UIViewController {
                         //self.showAlert(title: "خطأ", message: "الايميل/الكلمة السرية غير صحيحة")
                         i.stopAnimating()
                         AlertView.instance.showAlert(message: "الايميل/الكلمة السرية غير صحيحة", alertType: .failure)
-                       // let vc = AlertView(nib) self.view.addSubview(AlertView.instance.ParentView)
+                       // let vc = AlertView(nib)
+                        self.view.addSubview(AlertView.instance.ParentView)
                       
                         
                     } else if response.response?.statusCode == 422 {
@@ -193,7 +193,6 @@ class signinController: UIViewController {
     
     // MARK: - Keyboard Functions
     
-    // فيه احهزة ماتحتاح ان الكيبورد ينرفع سو احتاج احدد حجم الشاشة اللي يصيرلها كذا
     func subscribeToKeyboardNotification(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -209,15 +208,25 @@ class signinController: UIViewController {
     
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        if passwordTextField.isFirstResponder{
-            self.view.frame.origin.y =
-                getKeyboardHeight(notification) * -1
+        
+        let textFieldPosition = passwordTextField.frame.origin.y + passwordTextField.frame.size.height
+        
+        if textFieldPosition > (view.frame.size.height - getKeyboardHeight(notification)){
+
+    if self.view.frame.origin.y == 0 {
+
+          self.view.frame.origin.y -=
+            
+                getKeyboardHeight(notification)
+        
+            }
         }
     }
     
     @objc func keyboardWillHide(_ notifcation: Notification) {
         if passwordTextField.isFirstResponder {
-            self.view.frame.origin.y = 0}
+            self.view.frame.origin.y = 0
+        }
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -237,26 +246,3 @@ class signinController: UIViewController {
  
  */
 
-
-extension signinController: BonsaiControllerDelegate {
-    
-    // return the frame of your Bonsai View Controller
-    func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
-            print(containerViewFrame.height)
-            print(containerViewFrame.height / (4/3))
-        
-        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (3/2)))
-        
-    }
-    
-    // return a Bonsai Controller with SlideIn or Bubble transition animator
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        
-        // Slide animation from .left, .right, .top, .bottom
-        return BonsaiController(fromDirection: .bottom, presentedViewController: presented, delegate: self)
-        
-        
-        // or Bubble animation initiated from a view
-        //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
-    }
-}

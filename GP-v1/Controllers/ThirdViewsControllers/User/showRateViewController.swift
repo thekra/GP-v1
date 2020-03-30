@@ -98,6 +98,8 @@ class showRateViewController: UIViewController {
     
     @objc func imageTap() {
         print("image  clicked")
+         previewView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        preview.layer.cornerRadius = 20
         preview.isHidden = false
         previewView.isHidden = false
         preview.image = pic_1.image

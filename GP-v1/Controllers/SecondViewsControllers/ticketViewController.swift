@@ -14,7 +14,7 @@ protocol con {
     func confirmPressed()
 }
 
-class ticketViewController:  UIViewController, con{
+class ticketViewController:  UIViewController, UITextViewDelegate, con {
     
     
     let picker: UIPickerView! = UIPickerView()
@@ -28,6 +28,7 @@ class ticketViewController:  UIViewController, con{
     var image: UIImage!
     
     
+    @IBOutlet weak var charactersCount: UILabel!
     var NeiArr = [Neighborhood]()
     var temp = Data()
     var imgArr = [Data]()
@@ -42,17 +43,25 @@ class ticketViewController:  UIViewController, con{
     var cityID: Int = 0
     var neighboorhoodID: Int = 0
     var selectedNeighborhood: String?
+    var aNum = ""
+    var bNum = ""
     
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         firstPicUI()
+        subscribeToKeyboardNotification()
+        aNum = self.convertEngNumToArabicNumm(num: 190)
+        bNum = self.convertEngNumToArabicNumm(num: 0)
+        charactersCount.text = "\(bNum) / \(aNum)"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        textView.delegate = self
+        subscribeToKeyboardNotification()
+
         getNeighborhoodList()
         
         // Text View UI
@@ -66,13 +75,98 @@ class ticketViewController:  UIViewController, con{
         
         // Set up pickerview
         createPicker()
-        
-        print("latitude(TICKET): \(self.latitude)")
-        print("longitude(TICKET): \(self.longitude)")
-        print("Token(ticketViewDidLoad): \(self.token)")
-        print("Image Array: \(imgArr)")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        var flag = true
+        let newLength = textView.text.utf16.count + text.utf16.count - range.length
+        let str = textView.text + text
+        
+        let aNum = self.convertEngNumToArabicNumm(num: newLength)
+        charactersCount.text =  "\(aNum) / \(self.aNum)"
+        if str.utf16.count < 190 {
+        flag = true
+        } else {
+            flag = false
+        }
+        return flag
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.unsubscribeToKeyboardNotification()
+    }
+    
+    //MARK: - dismiss keyboard function
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // MARK: - Keyboard Functions
+
+    func subscribeToKeyboardNotification(){
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func unsubscribeToKeyboardNotification(){
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+         if textView.isFirstResponder{
+        let textFieldPosition = textView.frame.origin.y + textView.frame.size.height
+            print("textView.frame.origin.y: \(textView.frame.origin.y)")
+            print("textView.frame.size.height: \(textView.frame.size.height)")
+            print("self.view.frame.size.height: \(self.view.frame.size.height)")
+            print("self.view.frame.origin.y: \(self.view.frame.origin.y)")
+//
+//        if textFieldPosition > (view.frame.size.height - getKeyboardHeight(notification)) {
+
+    if self.view.frame.origin.y == 231 {
+
+          self.view.frame.origin.y -=
+            180
+                //getKeyboardHeight(notification)
+        
+            
+    } else if self.view.frame.origin.y == 391 {
+        self.view.frame.origin.y -=
+        260
+    } else if self.view.frame.origin.y == 162 {
+        self.view.frame.origin.y -=
+        170
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notifcation: Notification) {
+        if textView.isFirstResponder {
+            if self.view.frame.origin.y == 51 {
+                
+                self.view.frame.origin.y += 180
+                
+            } else if self.view.frame.origin.y == 131 {
+                self.view.frame.origin.y += 260
+                
+            } else if self.view.frame.origin.y == -8 {
+                self.view.frame.origin.y += 170
+            }
+        }
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        
+        return keyboardFrame.cgRectValue.height
+        
+    }
     
     func setupTextViewUI() {
         textView.clipsToBounds = true
@@ -172,12 +266,9 @@ class ticketViewController:  UIViewController, con{
         return toolbar
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
     
     func confirmPressed()  {
-        var code = 0
+
         let urlString = "http://www.ai-rdm.website/api/ticket/create"
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -246,8 +337,7 @@ class ticketViewController:  UIViewController, con{
                         
                         if response.response?.statusCode == 200 {
                             i.stopAnimating()
-                            self.goToTicketList()
-                            code = 200
+                            //self.goToTicketList()
                         }
                         guard let data = response.data else {
                             
@@ -289,7 +379,7 @@ class ticketViewController:  UIViewController, con{
             //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
             i.stopAnimating()
             AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
-            AlertView.instance.ParentView.frame = CGRect(x: 0, y: -200, width: 414, height: 896)
+            AlertView.instance.ParentView.frame = CGRect(x: 0, y: 200 - self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
             self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection
         //return code
@@ -491,6 +581,8 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         
         dismiss(animated: true, completion: nil)
     }
+    
+     
 }
 
 
@@ -521,27 +613,43 @@ extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
+//extension ticketViewController : UIPresentationController {
+//    override var frameOfPresentedViewInContainerView: CGRect {
+//        get {
+//            guard let theView = containerView else {
+//                return CGRect.zero
+//            }
+//
+//            return CGRect(x: 0, y: theView.bounds.height/2, width: theView.bounds.width, height: theView.bounds.height/2)
+//        }
+//    }
+//}
 
-
+//
 extension ticketViewController: BonsaiControllerDelegate {
-    
+
     // return the frame of your Bonsai View Controller
     func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
         print(containerViewFrame.height)
         print(containerViewFrame.height / (4/3))
-        
-        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
-        
+
+//        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
+
+        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height - 505), size: CGSize(width: containerViewFrame.width, height: 505))
     }
-    
+
     // return a Bonsai Controller with SlideIn or Bubble transition animator
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        
+
         // Slide animation from .left, .right, .top, .bottom
         return BonsaiController(fromDirection: .bottom, presentedViewController: presented, delegate: self)
-        
-        
+
+
         // or Bubble animation initiated from a view
         //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
     }
+//
+//
+//
 }
+

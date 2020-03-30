@@ -12,5 +12,6 @@ pod 'AlamofireImage'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
 pod 'BonsaiController'
+pod 'LayoutHelper'
 
 end

@@ -110,7 +110,8 @@ var token: String = UserDefaults.standard.string(forKey: "access_token")!
                        }
                     if response.response?.statusCode == 200 {
                         UserDefaults.standard.set(false, forKey: "isEmpLoggedIn")
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "signin") as! signinController
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "signin") as! signinController
                                                                                 self.present(vc, animated: true, completion: nil)
                         //self.navigationController?.popToRootViewController(animated: true)
 //                        let storyboard = UIStoryboard(name: "Main", bundle: nil)

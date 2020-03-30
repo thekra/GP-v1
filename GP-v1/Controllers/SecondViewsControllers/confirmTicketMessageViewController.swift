@@ -25,7 +25,6 @@ class confirmTicketMessageViewController: UIViewController {
    
     
     @IBAction func yesPressed(_ sender: Any) {
-
         self.delegate?.confirmPressed()
         self.dismiss(animated: true, completion: nil)
         
@@ -34,5 +33,4 @@ class confirmTicketMessageViewController: UIViewController {
     @IBAction func cancelPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }

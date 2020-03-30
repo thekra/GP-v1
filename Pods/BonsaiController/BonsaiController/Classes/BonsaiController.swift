@@ -108,7 +108,7 @@ public class BonsaiController: UIPresentationController, BonsaiTransitionPropert
         blurEffectView.addGestureRecognizer(tapGestureRecognizer)
         
         presentedView?.layer.masksToBounds = true
-        presentedView?.layer.cornerRadius = 10
+        presentedView?.roundCorner(corners: [.topLeft, .topRight], radius: 30)
         
         presentedViewController.modalPresentationStyle = .custom
         presentedViewController.transitioningDelegate = self
@@ -212,5 +212,16 @@ extension BonsaiController: UIViewControllerTransitioningDelegate {
         }
         
         return setupTransitioningProperties(transitioning: transitioning)
+    }
+}
+extension UIView {
+    func roundCorner(corners: UIRectCorner, radius: Int = 8) {
+        let maskPath1 = UIBezierPath(roundedRect: bounds,
+                                     byRoundingCorners: corners,
+                                     cornerRadii: CGSize(width: radius, height: radius))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = bounds
+        maskLayer1.path = maskPath1.cgPath
+        layer.mask = maskLayer1
     }
 }

@@ -24,7 +24,7 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hgn-6h-gYr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nAs-xU-oNQ"/>
                             <constraint firstItem="hgn-6h-gYr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="tJ8-zt-p2Z"/>

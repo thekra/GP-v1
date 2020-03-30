@@ -56,8 +56,16 @@ class signupViewController: UIViewController {
     @IBAction func signupButton(_ sender: Any) {
         let urlString = "http://www.ai-rdm.website/api/auth/register"
         
-        let body = Signup(email: emailTF.text!, password: passwordTF.text!, password_confirmation: conPasswordTF.text!)
         
+        if passwordTF.text != conPasswordTF.text {
+            AlertView.instance.showAlert(message: "كلمة السر غير متطابقة", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
+            
+        } else {
+           
+        
+        let body = Signup(email: emailTF.text!, password: passwordTF.text!, password_confirmation: conPasswordTF.text!)
+            
         let url = URL(string: urlString)
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
@@ -144,12 +152,14 @@ class signupViewController: UIViewController {
                 
             } // End of Alamofire
         } // End of connection
+            
         else {
             i.stopAnimating()
             //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
             AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
             self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection
+            }
     } // End of Signup Button
     
     

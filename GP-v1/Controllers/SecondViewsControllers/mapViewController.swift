@@ -71,6 +71,7 @@ class mapViewController: UIViewController {
         vc.latitude = self.latitude
         vc.longitude = self.longitude
         vc.transitioningDelegate = self
+        
         vc.modalPresentationStyle = .custom
         self.present(vc, animated: true, completion: nil)
         
@@ -104,25 +105,24 @@ extension mapViewController: CLLocationManagerDelegate {
     }
     
 }
-
+//
 extension mapViewController: BonsaiControllerDelegate {
-    
+
     // return the frame of your Bonsai View Controller
     func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
             print(containerViewFrame.height)
             print(containerViewFrame.height / (4/3))
-        
-        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: 600))
-        
+                 return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height - 505), size: CGSize(width: containerViewFrame.width, height: 505))
+        //return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: 505))
     }
-    
+
     // return a Bonsai Controller with SlideIn or Bubble transition animator
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        
+
         // Slide animation from .left, .right, .top, .bottom
         return BonsaiController(fromDirection: .bottom, presentedViewController: presented, delegate: self)
-        
-        
+
+
         // or Bubble animation initiated from a view
         //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
     }

@@ -43,6 +43,7 @@ class rateViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
         loadImages()
+        subscribeToKeyboardNotification()
     }
     
     override func viewDidLoad() {
@@ -56,9 +57,21 @@ class rateViewController: UIViewController {
         loadImages()
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.unsubscribeToKeyboardNotification()
+    }
+    
+    //MARK: - dismiss keyboard function
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func setUI() {
         textV.layer.cornerRadius = 20
         rateView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        previewView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        previewImg.layer.cornerRadius = 20
         rateButton.roundCorners(corners: [.topLeft, .topRight], radius: 15)
         
                 self.imagesCount = (ticket?[0].photos.count)!
@@ -184,14 +197,14 @@ class rateViewController: UIViewController {
         switch sender.tag {
             
         case 0:
-            setupPic(pic: pic_1, action: #selector(self.imageTap))
+            setupPic(pic: pic_1, action: #selector(self.picTap))
             
         case 1:
-            setupPic(pic: pic_2, action: #selector(self.imageTap2))
+            setupPic(pic: pic_2, action: #selector(self.picTap2))
 
-        case 2: setupPic(pic: pic_3, action: #selector(self.imageTap3))
+        case 2: setupPic(pic: pic_3, action: #selector(self.picTap3))
 
-        case 3: setupPic(pic: pic_4, action: #selector(self.imageTap4))
+        case 3: setupPic(pic: pic_4, action: #selector(self.picTap4))
             
         default: break
             //setupPic(pic: star1, action: #selector(self.imageTap(sender:)))
@@ -345,4 +358,50 @@ class rateViewController: UIViewController {
         
         } // end of else
     }
-}
+    
+        // MARK: - Keyboard Functions
+        
+        func subscribeToKeyboardNotification(){
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+        
+        func unsubscribeToKeyboardNotification(){
+            NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+            
+            NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+        
+        
+        @objc func keyboardWillShow(_ notification: Notification) {
+            
+            let textFieldPosition = textV.frame.origin.y + textV.frame.size.height
+            
+            if textFieldPosition > (view.frame.size.height - getKeyboardHeight(notification)){
+
+        if self.view.frame.origin.y == 0 {
+
+              self.view.frame.origin.y -=
+                
+                    getKeyboardHeight(notification)
+            
+                }
+            }
+        }
+        
+        @objc func keyboardWillHide(_ notifcation: Notification) {
+            if textV.isFirstResponder {
+                self.view.frame.origin.y = 0
+            }
+        }
+        
+        func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+            let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+            
+            return keyboardFrame.cgRectValue.height
+            
+        }
+    }
+

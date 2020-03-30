@@ -50,7 +50,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="38Q-VW-lEa" firstAttribute="centerX" secondItem="khB-Fc-Itl" secondAttribute="centerX" id="YYK-ua-ERD"/>
                                     <constraint firstItem="38Q-VW-lEa" firstAttribute="centerY" secondItem="khB-Fc-Itl" secondAttribute="centerY" id="wq4-nM-nXY"/>
@@ -60,15 +60,15 @@
                                 <rect key="frame" x="0.0" y="257" width="414" height="639"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تسجيل الدخول" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKQ-Kv-mfM">
-                                        <rect key="frame" x="16" y="20" width="382" height="23.5"/>
+                                        <rect key="frame" x="16" y="20" width="382" height="24"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbX-Z6-z55" userLabel="EmailView">
-                                        <rect key="frame" x="49" y="93.5" width="316" height="40"/>
+                                        <rect key="frame" x="49" y="94" width="316" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="الايميل" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-Bp-kko" userLabel="emailTextField">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="الايميل" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-Bp-kko" userLabel="emailTextField">
                                                 <rect key="frame" x="1" y="2" width="283" height="29"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="18"/>
@@ -96,7 +96,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhh-9g-Qze" userLabel="PasswordView">
-                                        <rect key="frame" x="49" y="159.5" width="316" height="40"/>
+                                        <rect key="frame" x="49" y="160" width="316" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="كلمة المرور" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O1Z-1Y-Q4e" userLabel="PasswordTextField">
                                                 <rect key="frame" x="1" y="2" width="283" height="29"/>
@@ -126,7 +126,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTi-Ox-loK">
-                                        <rect key="frame" x="50" y="223.5" width="93" height="30"/>
+                                        <rect key="frame" x="50" y="224" width="112" height="30"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                         <state key="normal" title="نسيت كلمة المرور؟">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -136,7 +136,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0q-F7-NH7">
-                                        <rect key="frame" x="49" y="343.5" width="316" height="36"/>
+                                        <rect key="frame" x="49" y="344" width="316" height="36"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                         <state key="normal" title="تسجيل الدخول">
@@ -147,10 +147,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="arc-Ao-oQU">
-                                        <rect key="frame" x="126" y="399.5" width="162.5" height="30"/>
+                                        <rect key="frame" x="118" y="400" width="178.5" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kV-lY-vvu">
-                                                <rect key="frame" x="0.0" y="0.0" width="67" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                 <state key="normal" title="تسجيل جديد">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -160,7 +160,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ليس لديك حساب؟" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yS7-Im-RWr">
-                                                <rect key="frame" x="71" y="0.0" width="91.5" height="30"/>
+                                                <rect key="frame" x="74" y="0.0" width="104.5" height="30"/>
                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -198,7 +198,7 @@
                             <constraint firstItem="khB-Fc-Itl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="1" id="SvD-Qn-XUz"/>
                             <constraint firstItem="qPv-Cc-uuc" firstAttribute="top" secondItem="khB-Fc-Itl" secondAttribute="bottom" id="TB5-h8-xMn"/>
                             <constraint firstItem="qPv-Cc-uuc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TLU-eU-WrX"/>
-                            <constraint firstAttribute="trailing" secondItem="qPv-Cc-uuc" secondAttribute="trailing" id="Wxm-jg-8cj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qPv-Cc-uuc" secondAttribute="trailing" id="Wxm-jg-8cj"/>
                             <constraint firstItem="qPv-Cc-uuc" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="mYg-QG-fl3"/>
                             <constraint firstItem="khB-Fc-Itl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="1" id="uBm-ei-5dx"/>
                         </constraints>
@@ -210,6 +210,7 @@
                         <outlet property="emailTextField" destination="LCO-Bp-kko" id="IqX-31-hPi"/>
                         <outlet property="mainV" destination="8bC-Xf-vdC" id="xrg-3W-vmn"/>
                         <outlet property="passwordTextField" destination="O1Z-1Y-Q4e" id="tQb-KI-s8g"/>
+                        <outlet property="passwordView" destination="xhh-9g-Qze" id="iTc-iM-Fr7"/>
                         <outlet property="signinButton" destination="P0q-F7-NH7" id="BYy-L8-eri"/>
                     </connections>
                 </viewController>
@@ -293,7 +294,7 @@
                                 <rect key="frame" x="0.0" y="309" width="414" height="587"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تسجيل جديد" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5t6-86-aFy">
-                                        <rect key="frame" x="158.5" y="20" width="97.5" height="26"/>
+                                        <rect key="frame" x="155.5" y="20" width="103" height="26"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -610,16 +611,16 @@
                                                             <rect key="frame" x="0.0" y="12" width="414" height="84"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="eyp-Ys-6UG">
-                                                            <rect key="frame" x="225" y="30" width="129" height="20"/>
+                                                            <rect key="frame" x="201.5" y="30" width="152.5" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8Y-4d-gd5">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="20"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="67" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم التذكرة:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gd-Uc-aVh">
-                                                                    <rect key="frame" x="61" y="0.0" width="68" height="20"/>
+                                                                    <rect key="frame" x="72" y="0.0" width="80.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -627,16 +628,16 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="d1W-6f-Sut">
-                                                            <rect key="frame" x="225" y="62.5" width="129" height="20"/>
+                                                            <rect key="frame" x="201.5" y="63" width="152.5" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="١٠\٥" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwW-dD-9Gg">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="20"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMC-Ug-FmO">
-                                                                    <rect key="frame" x="85.5" y="0.0" width="43.5" height="20"/>
+                                                                    <rect key="frame" x="109" y="0.0" width="43.5" height="20.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="43.5" id="3r8-3c-Fwn"/>
                                                                     </constraints>
@@ -647,16 +648,16 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="EIc-LY-9vJ">
-                                                            <rect key="frame" x="50" y="63" width="71" height="20.5"/>
+                                                            <rect key="frame" x="50" y="63" width="85.5" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مغلقة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PD-gk-uP3">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="27" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="39" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحالة:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UW1-Tq-RB9">
-                                                                    <rect key="frame" x="32" y="0.0" width="39" height="20.5"/>
+                                                                    <rect key="frame" x="44" y="0.0" width="41.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -689,7 +690,7 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="hTZ-KD-bVZ" firstAttribute="top" secondItem="ZFO-Av-S5s" secondAttribute="top" id="AMH-gX-1el"/>
                                     <constraint firstAttribute="bottom" secondItem="hTZ-KD-bVZ" secondAttribute="bottom" id="K0l-Q1-kWi"/>
@@ -763,25 +764,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="640"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Pye-kw-NXY">
-                                                <rect key="frame" x="0.0" y="-7" width="414" height="500"/>
+                                                <rect key="frame" x="0.0" y="-7" width="414" height="550"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3Q-KW-kb2" userLabel="ContentView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="معلومات التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7w-Os-s43">
-                                                                <rect key="frame" x="16" y="24" width="382" height="23.5"/>
+                                                                <rect key="frame" x="16" y="24" width="382" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الصور" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgF-vx-098">
-                                                                <rect key="frame" x="16" y="71.5" width="382" height="23.5"/>
+                                                                <rect key="frame" x="16" y="72" width="382" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Iks-K7-3G0">
-                                                                <rect key="frame" x="16" y="113" width="382" height="81"/>
+                                                                <rect key="frame" x="16" y="114" width="382" height="81"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1" translatesAutoresizingMaskIntoConstraints="NO" id="mVu-ln-XLA" userLabel="pic-4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="97" height="81"/>
@@ -819,13 +820,13 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubc-3B-t0b">
-                                                                <rect key="frame" x="16" y="205" width="382" height="23.5"/>
+                                                                <rect key="frame" x="16" y="206" width="382" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgA-xp-w3u">
-                                                                <rect key="frame" x="16" y="244.5" width="382" height="39"/>
+                                                                <rect key="frame" x="16" y="246" width="382" height="39"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="39" id="Dpt-Us-UDI"/>
@@ -835,38 +836,42 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="الوصف" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLj-hf-V0h">
-                                                                <rect key="frame" x="16" y="299.5" width="382" height="23.5"/>
+                                                                <rect key="frame" x="16" y="301" width="382" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is super long long text. " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQx-dL-alh">
-                                                                <rect key="frame" x="16" y="339" width="382" height="23.5"/>
+                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k1D-dt-59R">
+                                                                <rect key="frame" x="16" y="341" width="382" height="120"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="120" id="DWA-LU-Yby"/>
+                                                                </constraints>
+                                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            </textView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="T7w-Os-s43" firstAttribute="top" secondItem="O3Q-KW-kb2" secondAttribute="top" constant="24" id="0Xv-HW-EpG"/>
+                                                            <constraint firstItem="k1D-dt-59R" firstAttribute="trailing" secondItem="XgA-xp-w3u" secondAttribute="trailing" id="0y0-U3-eL6"/>
                                                             <constraint firstItem="Iks-K7-3G0" firstAttribute="trailing" secondItem="XgF-vx-098" secondAttribute="trailing" id="9jg-to-I86"/>
                                                             <constraint firstItem="LLj-hf-V0h" firstAttribute="trailing" secondItem="ubc-3B-t0b" secondAttribute="trailing" id="EMz-hW-szA"/>
                                                             <constraint firstItem="LLj-hf-V0h" firstAttribute="leading" secondItem="ubc-3B-t0b" secondAttribute="leading" id="LDg-Mm-dqG"/>
+                                                            <constraint firstItem="k1D-dt-59R" firstAttribute="top" secondItem="LLj-hf-V0h" secondAttribute="bottom" constant="16" id="PZL-T9-2hp"/>
                                                             <constraint firstItem="Iks-K7-3G0" firstAttribute="leading" secondItem="XgF-vx-098" secondAttribute="leading" id="Rcp-NZ-14F"/>
                                                             <constraint firstItem="Iks-K7-3G0" firstAttribute="top" secondItem="XgF-vx-098" secondAttribute="bottom" constant="18" id="Sqo-P7-CF5"/>
                                                             <constraint firstItem="LLj-hf-V0h" firstAttribute="top" secondItem="XgA-xp-w3u" secondAttribute="bottom" constant="16" id="U8g-Y6-ejl"/>
                                                             <constraint firstItem="XgA-xp-w3u" firstAttribute="top" secondItem="ubc-3B-t0b" secondAttribute="bottom" constant="16" id="Xj3-gj-tgp"/>
-                                                            <constraint firstItem="uQx-dL-alh" firstAttribute="trailing" secondItem="LLj-hf-V0h" secondAttribute="trailing" id="aNz-Nd-gZz"/>
                                                             <constraint firstItem="ubc-3B-t0b" firstAttribute="leading" secondItem="T7w-Os-s43" secondAttribute="leading" id="dCK-eR-bCj"/>
                                                             <constraint firstItem="XgA-xp-w3u" firstAttribute="trailing" secondItem="ubc-3B-t0b" secondAttribute="trailing" id="dic-Y3-ghd"/>
                                                             <constraint firstAttribute="trailing" secondItem="T7w-Os-s43" secondAttribute="trailing" constant="16" id="eW1-DT-R15"/>
+                                                            <constraint firstItem="k1D-dt-59R" firstAttribute="leading" secondItem="XgA-xp-w3u" secondAttribute="leading" id="hzr-tF-DuY"/>
                                                             <constraint firstItem="ubc-3B-t0b" firstAttribute="top" secondItem="Iks-K7-3G0" secondAttribute="bottom" constant="11" id="k6z-LD-T8V"/>
                                                             <constraint firstItem="T7w-Os-s43" firstAttribute="leading" secondItem="O3Q-KW-kb2" secondAttribute="leading" constant="16" id="oKj-mb-XfU"/>
-                                                            <constraint firstItem="uQx-dL-alh" firstAttribute="leading" secondItem="LLj-hf-V0h" secondAttribute="leading" id="oje-N7-5Xl"/>
                                                             <constraint firstItem="ubc-3B-t0b" firstAttribute="trailing" secondItem="T7w-Os-s43" secondAttribute="trailing" id="sXW-QN-K7X"/>
-                                                            <constraint firstItem="uQx-dL-alh" firstAttribute="top" secondItem="LLj-hf-V0h" secondAttribute="bottom" constant="16" id="ttv-W1-HWW"/>
                                                             <constraint firstItem="XgF-vx-098" firstAttribute="top" secondItem="T7w-Os-s43" secondAttribute="bottom" constant="24" id="vjD-V0-yGE"/>
                                                             <constraint firstItem="XgF-vx-098" firstAttribute="leading" secondItem="T7w-Os-s43" secondAttribute="leading" id="w11-bE-xce"/>
                                                             <constraint firstItem="XgF-vx-098" firstAttribute="trailing" secondItem="T7w-Os-s43" secondAttribute="trailing" id="xNC-Lf-76X"/>
@@ -875,7 +880,7 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="500" id="Nln-tQ-oYj"/>
+                                                    <constraint firstAttribute="height" constant="550" id="Nln-tQ-oYj"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -890,7 +895,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="1wc-jB-fVy"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="IK0-ei-GzE" secondAttribute="trailing" id="1V3-dG-xts"/>
                                     <constraint firstItem="IK0-ei-GzE" firstAttribute="leading" secondItem="9tB-P2-HaJ" secondAttribute="leading" id="2KW-2l-IqS"/>
@@ -981,7 +986,7 @@
                     <navigationItem key="navigationItem" id="N27-iB-mfB"/>
                     <connections>
                         <outlet property="deleteButton" destination="6i9-iA-9YL" id="m81-WV-k0s"/>
-                        <outlet property="descView" destination="uQx-dL-alh" id="8OL-m1-PrR"/>
+                        <outlet property="descView" destination="k1D-dt-59R" id="XtX-4e-gzV"/>
                         <outlet property="neighborhood" destination="XgA-xp-w3u" id="kAJ-1o-e9S"/>
                         <outlet property="pic_1" destination="0GJ-5O-JYZ" id="Cn2-yR-qG3"/>
                         <outlet property="pic_2" destination="Q4w-y6-VPx" id="Gi6-DS-e93"/>
@@ -1022,32 +1027,32 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="648"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Wp-lX-A51">
-                                                <rect key="frame" x="0.0" y="-7" width="414" height="600"/>
+                                                <rect key="frame" x="0.0" y="-7" width="414" height="550"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZF-g3-ZKj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقييم التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdy-Hb-sGl">
-                                                                <rect key="frame" x="301" y="24" width="97" height="23.5"/>
+                                                                <rect key="frame" x="296.5" y="24" width="101.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvA-nU-fcf" userLabel="goToMap">
-                                                                <rect key="frame" x="16" y="24" width="35" height="48"/>
+                                                                <rect key="frame" x="16" y="24" width="30.5" height="24"/>
                                                                 <state key="normal" image="Icon ionic-ios-arrow-back"/>
                                                                 <connections>
                                                                     <action selector="backToTicket:" destination="qqf-pE-4xW" eventType="touchUpInside" id="KJ8-UG-qO9"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="صور الاصلاح" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8we-zQ-QQ2">
-                                                                <rect key="frame" x="301" y="82.5" width="97" height="23.5"/>
+                                                                <rect key="frame" x="296.5" y="83" width="101.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleAspectFit" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Kmq-c5-Yt3">
-                                                                <rect key="frame" x="16" y="130" width="382" height="77"/>
+                                                                <rect key="frame" x="16" y="131" width="382" height="77"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1" translatesAutoresizingMaskIntoConstraints="NO" id="nrD-Mo-8fV" userLabel="pic-4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="97" height="77"/>
@@ -1085,7 +1090,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleAspectFit" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="D3A-1r-Pbn">
-                                                                <rect key="frame" x="50" y="257" width="314" height="34.5"/>
+                                                                <rect key="frame" x="50" y="258" width="314" height="34.5"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon ionic-ios-star-unfill" translatesAutoresizingMaskIntoConstraints="NO" id="VvB-FI-Bs7">
                                                                         <rect key="frame" x="0.0" y="0.0" width="37" height="34.5"/>
@@ -1130,13 +1135,13 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعليق" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-AQ-X2e">
-                                                                <rect key="frame" x="301" y="345" width="97" height="23.5"/>
+                                                                <rect key="frame" x="296.5" y="322.5" width="101.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="uBb-2T-Ec6">
-                                                                <rect key="frame" x="16" y="388.5" width="382" height="120"/>
+                                                                <rect key="frame" x="16" y="366.5" width="382" height="120"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="uBb-2T-Ec6" secondAttribute="height" multiplier="191:60" id="Cv9-2a-3lq"/>
@@ -1151,7 +1156,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="Kmq-c5-Yt3" firstAttribute="top" secondItem="8we-zQ-QQ2" secondAttribute="bottom" constant="24" id="7QC-LK-ems"/>
                                                             <constraint firstItem="8we-zQ-QQ2" firstAttribute="top" secondItem="Kdy-Hb-sGl" secondAttribute="bottom" constant="35" id="Cbv-Ec-wTI"/>
@@ -1163,7 +1168,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="D3A-1r-Pbn" secondAttribute="trailing" constant="50" id="ReA-Io-YH1"/>
                                                             <constraint firstItem="D3A-1r-Pbn" firstAttribute="leading" secondItem="IZF-g3-ZKj" secondAttribute="leading" constant="50" id="Vcw-aC-qaO"/>
                                                             <constraint firstAttribute="trailing" secondItem="Kmq-c5-Yt3" secondAttribute="trailing" constant="16" id="Yau-nc-YGN"/>
-                                                            <constraint firstItem="tPy-AQ-X2e" firstAttribute="top" secondItem="D3A-1r-Pbn" secondAttribute="bottom" constant="53.5" id="a3p-zW-yT4"/>
+                                                            <constraint firstItem="tPy-AQ-X2e" firstAttribute="top" secondItem="D3A-1r-Pbn" secondAttribute="bottom" constant="30" id="a3p-zW-yT4"/>
                                                             <constraint firstAttribute="trailing" secondItem="Kdy-Hb-sGl" secondAttribute="trailing" constant="16" id="b6f-W8-9iZ"/>
                                                             <constraint firstItem="uBb-2T-Ec6" firstAttribute="leading" secondItem="Kmq-c5-Yt3" secondAttribute="leading" id="c8E-Yu-LsW"/>
                                                             <constraint firstItem="uBb-2T-Ec6" firstAttribute="top" secondItem="tPy-AQ-X2e" secondAttribute="bottom" constant="20" id="ntG-xd-J6Y"/>
@@ -1177,7 +1182,7 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="600" id="rq1-Vg-w1D"/>
+                                                    <constraint firstAttribute="height" constant="550" id="rq1-Vg-w1D"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -1192,7 +1197,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="LTd-hv-M8J"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="5GJ-Mm-crB" firstAttribute="top" secondItem="kNk-y6-tMA" secondAttribute="top" id="3RT-jX-dd2"/>
                                     <constraint firstAttribute="bottom" secondItem="5GJ-Mm-crB" secondAttribute="bottom" id="3uz-Ad-BGa"/>
@@ -1283,20 +1288,20 @@
                                 <rect key="frame" x="0.0" y="40" width="414" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fus-kL-psr" userLabel="goToMap">
-                                        <rect key="frame" x="20" y="0.0" width="82" height="41"/>
+                                        <rect key="frame" x="20" y="0.0" width="41" height="41"/>
                                         <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="goToMap:" destination="dao-zn-6i0" eventType="touchUpInside" id="1y3-Vp-Tm1"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تسجيل الخروج" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqB-qv-Gzu">
-                                        <rect key="frame" x="281" y="0.0" width="73" height="36"/>
+                                        <rect key="frame" x="280" y="0.0" width="74" height="36"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7f-Bj-Jeq" userLabel="signout">
-                                        <rect key="frame" x="339" y="4" width="55" height="28"/>
+                                        <rect key="frame" x="366.5" y="4" width="27.5" height="28"/>
                                         <state key="normal" image="Icon ionic-ios-log-out"/>
                                         <connections>
                                             <action selector="signOut:" destination="dao-zn-6i0" eventType="touchUpInside" id="1SX-uB-Dt0"/>
@@ -1323,46 +1328,46 @@
                                 </userGuides>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiS-Ab-qte">
-                                        <rect key="frame" x="54" y="-171" width="306" height="344"/>
+                                        <rect key="frame" x="121" y="1" width="172" height="172"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                                         </accessibility>
                                         <state key="normal" image="Group 33"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مرحباً،" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siy-t8-2Os">
-                                        <rect key="frame" x="54" y="133" width="306" height="19"/>
+                                        <rect key="frame" x="121" y="133" width="172" height="19"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAw-9J-IoZ" userLabel="tickets">
-                                        <rect key="frame" x="0.0" y="19" width="308" height="154"/>
+                                        <rect key="frame" x="0.0" y="19" width="154" height="154"/>
                                         <state key="normal" image="profile"/>
                                         <connections>
                                             <action selector="ticketListButton:" destination="dao-zn-6i0" eventType="touchUpInside" id="yeL-Kb-nOL"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التذاكر" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ap1-8w-ewU">
-                                        <rect key="frame" x="0.0" y="133" width="308" height="20"/>
+                                        <rect key="frame" x="0.0" y="133" width="154" height="20"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgI-jh-Wtw" userLabel="profile">
-                                        <rect key="frame" x="100" y="19" width="308" height="154"/>
+                                        <rect key="frame" x="254" y="19" width="154" height="154"/>
                                         <state key="normal" image="Icon feather-settings"/>
                                         <connections>
                                             <action selector="profile:" destination="dao-zn-6i0" eventType="touchUpInside" id="ocB-4V-fVK"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحساب" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oag-ur-K1v">
-                                        <rect key="frame" x="100" y="133" width="308" height="20"/>
+                                        <rect key="frame" x="254" y="133" width="154" height="20"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuZ-aY-1as">
-                                        <rect key="frame" x="44" y="71" width="0.0" height="50"/>
+                                        <rect key="frame" x="44" y="71" width="67" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="4ja-b5-Qxw"/>
                                         </constraints>
@@ -1439,7 +1444,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="zW4-8s-Nw4" firstAttribute="centerY" secondItem="mYF-4V-tww" secondAttribute="centerY" id="Zfc-Qw-gU8"/>
                                     <constraint firstItem="zW4-8s-Nw4" firstAttribute="centerX" secondItem="mYF-4V-tww" secondAttribute="centerX" id="tnM-UJ-KbP"/>
@@ -1449,7 +1454,7 @@
                                 <rect key="frame" x="0.0" y="318" width="414" height="578"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="استعادة كلمة المرور" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkB-UT-No1">
-                                        <rect key="frame" x="134" y="20" width="146" height="26"/>
+                                        <rect key="frame" x="120.5" y="20" width="173.5" height="26"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1558,32 +1563,32 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="648"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WBQ-f5-Gi3">
-                                                <rect key="frame" x="0.0" y="-7" width="414" height="600"/>
+                                                <rect key="frame" x="0.0" y="-7" width="414" height="550"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GiF-am-w7d">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تقييم التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jb-0x-Cgq">
-                                                                <rect key="frame" x="293" y="24" width="97" height="23.5"/>
+                                                                <rect key="frame" x="288.5" y="24" width="101.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Li0-pV-GsL" userLabel="back">
-                                                                <rect key="frame" x="24" y="24" width="29" height="48"/>
+                                                                <rect key="frame" x="24" y="24" width="24.5" height="24"/>
                                                                 <state key="normal" image="Icon ionic-ios-arrow-back"/>
                                                                 <connections>
                                                                     <action selector="back:" destination="OOv-gf-24G" eventType="touchUpInside" id="Aqz-3W-6OQ"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="صور الاصلاح" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdc-qF-nbB">
-                                                                <rect key="frame" x="293" y="82.5" width="97" height="23.5"/>
+                                                                <rect key="frame" x="288.5" y="83" width="101.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hNE-dE-5eM">
-                                                                <rect key="frame" x="24" y="130" width="366" height="77.5"/>
+                                                                <rect key="frame" x="24" y="131" width="366" height="77.5"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1" translatesAutoresizingMaskIntoConstraints="NO" id="x8l-dg-JPg" userLabel="pic-4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="81.5" height="77.5"/>
@@ -1619,7 +1624,7 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="34F-Fb-RtQ">
-                                                                <rect key="frame" x="50" y="257.5" width="314" height="35"/>
+                                                                <rect key="frame" x="50" y="258.5" width="314" height="35"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon ionic-ios-star-unfill" translatesAutoresizingMaskIntoConstraints="NO" id="SZc-1Y-7Ri">
                                                                         <rect key="frame" x="0.0" y="0.0" width="43" height="35"/>
@@ -1662,16 +1667,16 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعليق" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDM-4n-Sls">
-                                                                <rect key="frame" x="293" y="342.5" width="97" height="23.5"/>
+                                                                <rect key="frame" x="288.5" y="323.5" width="101.5" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="DRq-9n-wrr">
-                                                                <rect key="frame" x="24" y="390" width="366" height="121"/>
+                                                                <rect key="frame" x="16" y="370" width="382" height="120"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="DRq-9n-wrr" secondAttribute="height" multiplier="121:40" id="Zow-qN-QgF"/>
+                                                                    <constraint firstAttribute="width" secondItem="DRq-9n-wrr" secondAttribute="height" multiplier="121:40" constant="19" id="Zow-qN-QgF"/>
                                                                 </constraints>
                                                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="14"/>
@@ -1684,7 +1689,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textView>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="7Jb-0x-Cgq" firstAttribute="leading" secondItem="Li0-pV-GsL" secondAttribute="trailing" constant="240" id="1DB-Zb-IIL"/>
                                                             <constraint firstItem="kdc-qF-nbB" firstAttribute="leading" secondItem="7Jb-0x-Cgq" secondAttribute="leading" id="3mX-hD-RP2"/>
@@ -1692,25 +1697,25 @@
                                                             <constraint firstItem="34F-Fb-RtQ" firstAttribute="top" secondItem="hNE-dE-5eM" secondAttribute="bottom" constant="50" id="6FI-Ke-qMS"/>
                                                             <constraint firstItem="Li0-pV-GsL" firstAttribute="top" secondItem="GiF-am-w7d" secondAttribute="top" constant="24" id="7Jp-hu-mXh"/>
                                                             <constraint firstItem="hNE-dE-5eM" firstAttribute="leading" secondItem="GiF-am-w7d" secondAttribute="leading" constant="24" id="NbR-we-4ft"/>
-                                                            <constraint firstItem="DRq-9n-wrr" firstAttribute="top" secondItem="FDM-4n-Sls" secondAttribute="bottom" constant="24" id="PTH-Rr-kHl"/>
+                                                            <constraint firstItem="DRq-9n-wrr" firstAttribute="top" secondItem="FDM-4n-Sls" secondAttribute="bottom" constant="22.5" id="PTH-Rr-kHl"/>
                                                             <constraint firstAttribute="trailing" secondItem="7Jb-0x-Cgq" secondAttribute="trailing" constant="24" id="SNN-m3-YGr"/>
                                                             <constraint firstItem="Li0-pV-GsL" firstAttribute="leading" secondItem="GiF-am-w7d" secondAttribute="leading" constant="24" id="TSN-ka-BZZ"/>
                                                             <constraint firstItem="7Jb-0x-Cgq" firstAttribute="top" secondItem="GiF-am-w7d" secondAttribute="top" constant="24" id="WZZ-2V-qoB"/>
                                                             <constraint firstItem="FDM-4n-Sls" firstAttribute="trailing" secondItem="7Jb-0x-Cgq" secondAttribute="trailing" id="ams-tl-A27"/>
                                                             <constraint firstAttribute="trailing" secondItem="34F-Fb-RtQ" secondAttribute="trailing" constant="50" id="azM-96-3ne"/>
                                                             <constraint firstItem="FDM-4n-Sls" firstAttribute="leading" secondItem="7Jb-0x-Cgq" secondAttribute="leading" id="dQ9-Ay-kCe"/>
-                                                            <constraint firstItem="DRq-9n-wrr" firstAttribute="leading" secondItem="hNE-dE-5eM" secondAttribute="leading" id="h4O-qm-iun"/>
+                                                            <constraint firstItem="DRq-9n-wrr" firstAttribute="leading" secondItem="hNE-dE-5eM" secondAttribute="leading" constant="-8" id="h4O-qm-iun"/>
                                                             <constraint firstItem="kdc-qF-nbB" firstAttribute="top" secondItem="7Jb-0x-Cgq" secondAttribute="bottom" constant="35" id="lEL-eD-ohg"/>
                                                             <constraint firstAttribute="trailing" secondItem="hNE-dE-5eM" secondAttribute="trailing" constant="24" id="nak-di-eaJ"/>
                                                             <constraint firstItem="34F-Fb-RtQ" firstAttribute="leading" secondItem="GiF-am-w7d" secondAttribute="leading" constant="50" id="o91-8R-3uK"/>
                                                             <constraint firstItem="kdc-qF-nbB" firstAttribute="trailing" secondItem="7Jb-0x-Cgq" secondAttribute="trailing" id="rdS-Ds-NBy"/>
-                                                            <constraint firstItem="DRq-9n-wrr" firstAttribute="trailing" secondItem="hNE-dE-5eM" secondAttribute="trailing" id="sKi-b2-UsH"/>
-                                                            <constraint firstItem="FDM-4n-Sls" firstAttribute="top" secondItem="34F-Fb-RtQ" secondAttribute="bottom" constant="50" id="zHG-1x-qfx"/>
+                                                            <constraint firstItem="DRq-9n-wrr" firstAttribute="trailing" secondItem="hNE-dE-5eM" secondAttribute="trailing" constant="8" id="sKi-b2-UsH"/>
+                                                            <constraint firstItem="FDM-4n-Sls" firstAttribute="top" secondItem="34F-Fb-RtQ" secondAttribute="bottom" constant="30" id="zHG-1x-qfx"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="600" id="AGh-F7-wOK"/>
+                                                    <constraint firstAttribute="height" constant="550" id="AGh-F7-wOK"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -1725,7 +1730,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="f0q-vr-Lce"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="3HF-Es-7SC" secondAttribute="trailing" id="9Kp-eC-mDl"/>
                                     <constraint firstItem="3HF-Es-7SC" firstAttribute="leading" secondItem="gYY-WE-fLT" secondAttribute="leading" id="urJ-dA-Xoj"/>
@@ -1805,7 +1810,7 @@
                                         <color key="backgroundColor" red="0.40478605029999998" green="0.60844057799999995" blue="0.61368316410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 33" translatesAutoresizingMaskIntoConstraints="NO" id="c4d-J9-4lx">
-                                        <rect key="frame" x="242" y="10" width="172" height="344"/>
+                                        <rect key="frame" x="242" y="10" width="172" height="172"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1834,15 +1839,15 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="اعتماد الموقع" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMV-Kr-Lqf">
-                                <rect key="frame" x="100" y="817" width="214" height="56"/>
+                                <rect key="frame" x="100" y="808" width="214" height="70"/>
                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oMV-Kr-Lqf" firstAttribute="centerY" secondItem="zTg-Fy-ue7" secondAttribute="centerY" constant="7" id="2m6-4i-kKb"/>
+                            <constraint firstItem="oMV-Kr-Lqf" firstAttribute="centerY" secondItem="zTg-Fy-ue7" secondAttribute="centerY" constant="5" id="2m6-4i-kKb"/>
                             <constraint firstItem="YLY-9X-xkf" firstAttribute="leading" secondItem="auz-wY-NRh" secondAttribute="leading" id="6J9-eX-rob"/>
                             <constraint firstItem="iFh-TE-FBh" firstAttribute="width" secondItem="auz-wY-NRh" secondAttribute="width" id="6Yv-Fi-Afe"/>
                             <constraint firstItem="YLY-9X-xkf" firstAttribute="top" secondItem="auz-wY-NRh" secondAttribute="top" id="AxS-rg-8Zi"/>
@@ -1853,7 +1858,7 @@
                             <constraint firstAttribute="trailing" secondItem="YLY-9X-xkf" secondAttribute="trailing" id="Kjq-0M-sM8"/>
                             <constraint firstItem="oMV-Kr-Lqf" firstAttribute="leading" secondItem="MbG-wg-6LF" secondAttribute="leading" constant="100" id="PMB-B8-ydV"/>
                             <constraint firstAttribute="bottom" secondItem="zTg-Fy-ue7" secondAttribute="bottom" constant="-33" id="ZlD-Pa-krc"/>
-                            <constraint firstAttribute="bottom" secondItem="oMV-Kr-Lqf" secondAttribute="bottom" constant="23" id="c8j-3P-dWG"/>
+                            <constraint firstAttribute="bottom" secondItem="oMV-Kr-Lqf" secondAttribute="bottom" constant="18" id="c8j-3P-dWG"/>
                             <constraint firstItem="c4d-J9-4lx" firstAttribute="leading" secondItem="MbG-wg-6LF" secondAttribute="leading" constant="242" id="eQF-6m-KVW"/>
                             <constraint firstItem="MbG-wg-6LF" firstAttribute="bottom" secondItem="YLY-9X-xkf" secondAttribute="bottom" constant="60" id="g1E-KA-BS9"/>
                             <constraint firstItem="MbG-wg-6LF" firstAttribute="top" secondItem="c4d-J9-4lx" secondAttribute="top" constant="34" id="jFv-2R-NFO"/>
@@ -1880,157 +1885,180 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9f-vp-Tgi" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Dp-1m-JZd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleAspectFit" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="crq-Se-h5c">
-                                        <rect key="frame" x="14" y="55" width="386" height="82"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dlJ-XE-fzn">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="714"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="MUT-W1-Mko" userLabel="pic-4">
-                                                <rect key="frame" x="0.0" y="0.0" width="85" height="82"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9f-vp-Tgi" userLabel="TopView">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleAspectFit" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="crq-Se-h5c">
+                                                        <rect key="frame" x="14" y="55" width="386" height="82"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="MUT-W1-Mko" userLabel="pic-4">
+                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="82"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="MUT-W1-Mko" secondAttribute="height" multiplier="77:74" id="LWd-w9-7Xz"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="jFM-bG-pm5" userLabel="pic-3">
+                                                                <rect key="frame" x="98" y="0.0" width="87.5" height="82"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="jFM-bG-pm5" secondAttribute="height" multiplier="79:74" id="ATH-JR-KZc"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="xuf-0V-pGC" userLabel="pic-2">
+                                                                <rect key="frame" x="198.5" y="0.0" width="87" height="82"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="xuf-0V-pGC" secondAttribute="height" multiplier="79:74" id="CIJ-Ss-RIM"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="gYq-Ly-hNa" userLabel="pic-1">
+                                                                <rect key="frame" x="298.5" y="0.0" width="87.5" height="82"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="gYq-Ly-hNa" secondAttribute="height" multiplier="79:74" id="E7h-sQ-e6k"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="jFM-bG-pm5" firstAttribute="centerY" secondItem="crq-Se-h5c" secondAttribute="centerY" id="BY2-0H-BSh"/>
+                                                            <constraint firstItem="xuf-0V-pGC" firstAttribute="centerY" secondItem="crq-Se-h5c" secondAttribute="centerY" id="H78-8Z-H42"/>
+                                                            <constraint firstItem="MUT-W1-Mko" firstAttribute="centerY" secondItem="crq-Se-h5c" secondAttribute="centerY" id="KD6-t4-01W"/>
+                                                            <constraint firstItem="gYq-Ly-hNa" firstAttribute="centerY" secondItem="crq-Se-h5c" secondAttribute="centerY" id="s8h-CK-12w"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الصور" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3d-er-EvW">
+                                                        <rect key="frame" x="16" y="12" width="382" height="24"/>
+                                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="MUT-W1-Mko" secondAttribute="height" multiplier="77:74" id="LWd-w9-7Xz"/>
+                                                    <constraint firstAttribute="trailing" secondItem="crq-Se-h5c" secondAttribute="trailing" constant="14" id="2Rx-io-Xog"/>
+                                                    <constraint firstAttribute="bottom" secondItem="crq-Se-h5c" secondAttribute="bottom" constant="5" id="Ds2-78-pIL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="y3d-er-EvW" secondAttribute="trailing" constant="16" id="Heo-vW-eyj"/>
+                                                    <constraint firstItem="crq-Se-h5c" firstAttribute="leading" secondItem="p9f-vp-Tgi" secondAttribute="leading" constant="14" id="JNO-qL-yhC"/>
+                                                    <constraint firstAttribute="height" constant="142" id="Y1y-cH-SlU"/>
+                                                    <constraint firstItem="y3d-er-EvW" firstAttribute="leading" secondItem="p9f-vp-Tgi" secondAttribute="leading" constant="16" id="gJC-wn-c9d"/>
+                                                    <constraint firstItem="crq-Se-h5c" firstAttribute="top" secondItem="y3d-er-EvW" secondAttribute="bottom" constant="19" id="h7k-P8-iAe"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="jFM-bG-pm5" userLabel="pic-3">
-                                                <rect key="frame" x="98" y="0.0" width="87.5" height="82"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Jy-xJ-kE8" userLabel="MiddleView">
+                                                <rect key="frame" x="0.0" y="144" width="414" height="104"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRV-fs-DkL">
+                                                        <rect key="frame" x="14" y="56" width="386" height="38"/>
+                                                        <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xuj-tt-7Ck">
+                                                        <rect key="frame" x="16" y="16" width="382" height="24"/>
+                                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="jFM-bG-pm5" secondAttribute="height" multiplier="79:74" id="ATH-JR-KZc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="xRV-fs-DkL" secondAttribute="trailing" constant="14" id="23b-HT-axU"/>
+                                                    <constraint firstItem="xRV-fs-DkL" firstAttribute="leading" secondItem="1Jy-xJ-kE8" secondAttribute="leading" constant="14" id="3wm-US-gOB"/>
+                                                    <constraint firstItem="xRV-fs-DkL" firstAttribute="top" secondItem="Xuj-tt-7Ck" secondAttribute="bottom" constant="16" id="IGl-Aa-MDh"/>
+                                                    <constraint firstItem="Xuj-tt-7Ck" firstAttribute="leading" secondItem="1Jy-xJ-kE8" secondAttribute="leading" constant="16" id="Lqj-Ww-LEN"/>
+                                                    <constraint firstAttribute="height" constant="104" id="Qnc-EW-6LJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Xuj-tt-7Ck" secondAttribute="trailing" constant="16" id="X43-eS-KYv"/>
+                                                    <constraint firstItem="Xuj-tt-7Ck" firstAttribute="top" secondItem="1Jy-xJ-kE8" secondAttribute="top" constant="16" id="YYP-qP-13L"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xRV-fs-DkL" secondAttribute="bottom" constant="10" id="zkh-aF-PZs"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="xuf-0V-pGC" userLabel="pic-2">
-                                                <rect key="frame" x="198.5" y="0.0" width="87" height="82"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ywT-7Z-gBn" userLabel="BottomView">
+                                                <rect key="frame" x="0.0" y="250" width="414" height="200"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="p2d-2p-W5k">
+                                                        <rect key="frame" x="14" y="54" width="386" height="120"/>
+                                                        <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="120" id="GFO-6G-tzO"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="100"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyS-cI-zAv">
+                                                        <rect key="frame" x="14" y="185" width="386" height="19"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Label">
+                                                                <attributes>
+                                                                    <font key="NSFont" size="17" name=".SFNS-Medium"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الوصف" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MW8-JH-UDx">
+                                                        <rect key="frame" x="16" y="16" width="382" height="10"/>
+                                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="xuf-0V-pGC" secondAttribute="height" multiplier="79:74" id="CIJ-Ss-RIM"/>
+                                                    <constraint firstItem="fyS-cI-zAv" firstAttribute="leading" secondItem="p2d-2p-W5k" secondAttribute="leading" id="3mb-be-ulQ"/>
+                                                    <constraint firstItem="MW8-JH-UDx" firstAttribute="leading" secondItem="ywT-7Z-gBn" secondAttribute="leading" constant="16" id="44g-Hs-ipD"/>
+                                                    <constraint firstItem="fyS-cI-zAv" firstAttribute="top" secondItem="p2d-2p-W5k" secondAttribute="bottom" constant="11" id="Gyl-7B-6tp"/>
+                                                    <constraint firstItem="MW8-JH-UDx" firstAttribute="top" secondItem="ywT-7Z-gBn" secondAttribute="top" constant="16" id="NZd-ll-VID"/>
+                                                    <constraint firstAttribute="height" constant="200" id="QEV-CH-eG9"/>
+                                                    <constraint firstItem="p2d-2p-W5k" firstAttribute="leading" secondItem="ywT-7Z-gBn" secondAttribute="leading" constant="14" id="djO-DL-mnd"/>
+                                                    <constraint firstItem="p2d-2p-W5k" firstAttribute="top" secondItem="MW8-JH-UDx" secondAttribute="bottom" constant="28" id="h67-JZ-yvU"/>
+                                                    <constraint firstAttribute="trailing" secondItem="MW8-JH-UDx" secondAttribute="trailing" constant="16" id="iAJ-Bv-Ybt"/>
+                                                    <constraint firstAttribute="bottom" secondItem="p2d-2p-W5k" secondAttribute="bottom" constant="26" id="np5-uV-a4q"/>
+                                                    <constraint firstAttribute="trailing" secondItem="p2d-2p-W5k" secondAttribute="trailing" constant="14" id="wkD-Fp-f2X"/>
+                                                    <constraint firstItem="fyS-cI-zAv" firstAttribute="trailing" secondItem="p2d-2p-W5k" secondAttribute="trailing" id="zsT-iI-BAp"/>
                                                 </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1 copy" translatesAutoresizingMaskIntoConstraints="NO" id="gYq-Ly-hNa" userLabel="pic-1">
-                                                <rect key="frame" x="298.5" y="0.0" width="87.5" height="82"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="gYq-Ly-hNa" secondAttribute="height" multiplier="79:74" id="E7h-sQ-e6k"/>
-                                                </constraints>
-                                            </imageView>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRP-ZX-aw4">
+                                                <rect key="frame" x="0.0" y="452" width="414" height="262"/>
+                                                <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="25"/>
+                                                <state key="normal" title="اعتماد التذكرة">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="confirmTicket:" destination="t4y-NB-SYN" eventType="touchUpInside" id="Vcq-VF-hoF"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="jFM-bG-pm5" firstAttribute="centerY" secondItem="crq-Se-h5c" secondAttribute="centerY" id="BY2-0H-BSh"/>
-                                            <constraint firstItem="xuf-0V-pGC" firstAttribute="centerY" secondItem="crq-Se-h5c" secondAttribute="centerY" id="H78-8Z-H42"/>
-                                            <constraint firstItem="MUT-W1-Mko" firstAttribute="centerY" secondItem="crq-Se-h5c" secondAttribute="centerY" id="KD6-t4-01W"/>
-                                            <constraint firstItem="gYq-Ly-hNa" firstAttribute="centerY" secondItem="crq-Se-h5c" secondAttribute="centerY" id="s8h-CK-12w"/>
-                                        </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الصور" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3d-er-EvW">
-                                        <rect key="frame" x="356" y="12.5" width="43.5" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hL1-27-TUu">
+                                        <rect key="frame" x="0.0" y="714" width="414" height="182"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="crq-Se-h5c" secondAttribute="trailing" constant="14" id="2Rx-io-Xog"/>
-                                    <constraint firstAttribute="bottom" secondItem="crq-Se-h5c" secondAttribute="bottom" constant="5" id="Ds2-78-pIL"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y3d-er-EvW" secondAttribute="trailing" constant="14.5" id="Heo-vW-eyj"/>
-                                    <constraint firstItem="crq-Se-h5c" firstAttribute="leading" secondItem="p9f-vp-Tgi" secondAttribute="leading" constant="14" id="JNO-qL-yhC"/>
-                                    <constraint firstAttribute="height" constant="142" id="Y1y-cH-SlU"/>
-                                    <constraint firstItem="y3d-er-EvW" firstAttribute="leading" secondItem="p9f-vp-Tgi" secondAttribute="leading" constant="356" id="gJC-wn-c9d"/>
-                                    <constraint firstItem="crq-Se-h5c" firstAttribute="top" secondItem="y3d-er-EvW" secondAttribute="bottom" constant="19" id="h7k-P8-iAe"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Jy-xJ-kE8" userLabel="MiddleView">
-                                <rect key="frame" x="0.0" y="150" width="414" height="104"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xRV-fs-DkL">
-                                        <rect key="frame" x="14" y="62.5" width="386" height="34.5"/>
-                                        <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xuj-tt-7Ck">
-                                        <rect key="frame" x="368" y="20" width="32" height="23.5"/>
-                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="xRV-fs-DkL" secondAttribute="trailing" constant="14" id="23b-HT-axU"/>
-                                    <constraint firstItem="xRV-fs-DkL" firstAttribute="leading" secondItem="1Jy-xJ-kE8" secondAttribute="leading" constant="14" id="3wm-US-gOB"/>
-                                    <constraint firstItem="xRV-fs-DkL" firstAttribute="top" secondItem="Xuj-tt-7Ck" secondAttribute="bottom" constant="19" id="IGl-Aa-MDh"/>
-                                    <constraint firstItem="Xuj-tt-7Ck" firstAttribute="leading" secondItem="1Jy-xJ-kE8" secondAttribute="leading" constant="368" id="Lqj-Ww-LEN"/>
-                                    <constraint firstAttribute="height" constant="104" id="Qnc-EW-6LJ"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xuj-tt-7Ck" secondAttribute="trailing" constant="14" id="X43-eS-KYv"/>
-                                    <constraint firstItem="Xuj-tt-7Ck" firstAttribute="top" secondItem="1Jy-xJ-kE8" secondAttribute="top" constant="20" id="YYP-qP-13L"/>
-                                    <constraint firstAttribute="bottom" secondItem="xRV-fs-DkL" secondAttribute="bottom" constant="7" id="zkh-aF-PZs"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ywT-7Z-gBn" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="262" width="414" height="191"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="p2d-2p-W5k">
-                                        <rect key="frame" x="14" y="67" width="386" height="120"/>
-                                        <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="GFO-6G-tzO"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="100"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الوصف" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MW8-JH-UDx">
-                                        <rect key="frame" x="344" y="20" width="51.5" height="24"/>
-                                        <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="MW8-JH-UDx" firstAttribute="leading" secondItem="ywT-7Z-gBn" secondAttribute="leading" constant="344" id="44g-Hs-ipD"/>
-                                    <constraint firstItem="MW8-JH-UDx" firstAttribute="top" secondItem="ywT-7Z-gBn" secondAttribute="top" constant="20" id="NZd-ll-VID"/>
-                                    <constraint firstAttribute="height" constant="191" id="QEV-CH-eG9"/>
-                                    <constraint firstItem="p2d-2p-W5k" firstAttribute="leading" secondItem="ywT-7Z-gBn" secondAttribute="leading" constant="14" id="djO-DL-mnd"/>
-                                    <constraint firstItem="p2d-2p-W5k" firstAttribute="top" secondItem="MW8-JH-UDx" secondAttribute="bottom" constant="23" id="h67-JZ-yvU"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MW8-JH-UDx" secondAttribute="trailing" constant="14" id="iAJ-Bv-Ybt"/>
-                                    <constraint firstAttribute="bottom" secondItem="p2d-2p-W5k" secondAttribute="bottom" constant="4" id="np5-uV-a4q"/>
-                                    <constraint firstAttribute="trailing" secondItem="p2d-2p-W5k" secondAttribute="trailing" constant="14" id="wkD-Fp-f2X"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRP-ZX-aw4">
-                                <rect key="frame" x="0.0" y="461" width="414" height="42"/>
-                                <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="25"/>
-                                <state key="normal" title="اعتماد التذكرة">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="confirmTicket:" destination="t4y-NB-SYN" eventType="touchUpInside" id="Vcq-VF-hoF"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1Jy-xJ-kE8" firstAttribute="top" secondItem="p9f-vp-Tgi" secondAttribute="bottom" constant="8" symbolic="YES" id="3zI-cR-wHd"/>
-                            <constraint firstItem="1Jy-xJ-kE8" firstAttribute="leading" secondItem="xlM-2f-ont" secondAttribute="leading" id="760-l5-eq1"/>
-                            <constraint firstItem="ywT-7Z-gBn" firstAttribute="trailing" secondItem="xlM-2f-ont" secondAttribute="trailing" id="9gW-WK-Fso"/>
-                            <constraint firstItem="sRP-ZX-aw4" firstAttribute="leading" secondItem="xlM-2f-ont" secondAttribute="leading" id="BoE-uQ-mV7"/>
-                            <constraint firstItem="p9f-vp-Tgi" firstAttribute="leading" secondItem="xlM-2f-ont" secondAttribute="leading" id="JRx-0J-eXH"/>
-                            <constraint firstItem="sRP-ZX-aw4" firstAttribute="trailing" secondItem="xlM-2f-ont" secondAttribute="trailing" id="Kbq-4y-vwg"/>
-                            <constraint firstItem="p9f-vp-Tgi" firstAttribute="trailing" secondItem="xlM-2f-ont" secondAttribute="trailing" id="XxF-1h-AKY"/>
-                            <constraint firstItem="1Jy-xJ-kE8" firstAttribute="trailing" secondItem="xlM-2f-ont" secondAttribute="trailing" id="aNs-Di-4pX"/>
-                            <constraint firstItem="p9f-vp-Tgi" firstAttribute="top" secondItem="eas-mk-QmZ" secondAttribute="top" id="eNc-ME-p5K"/>
-                            <constraint firstItem="sRP-ZX-aw4" firstAttribute="top" secondItem="ywT-7Z-gBn" secondAttribute="bottom" constant="8" symbolic="YES" id="f9y-dg-IFk"/>
-                            <constraint firstItem="ywT-7Z-gBn" firstAttribute="top" secondItem="1Jy-xJ-kE8" secondAttribute="bottom" constant="8" symbolic="YES" id="jJz-Tu-TPZ"/>
-                            <constraint firstItem="ywT-7Z-gBn" firstAttribute="leading" secondItem="xlM-2f-ont" secondAttribute="leading" id="xp8-R5-y6k"/>
+                            <constraint firstItem="8Dp-1m-JZd" firstAttribute="top" secondItem="eas-mk-QmZ" secondAttribute="top" id="Wqe-9h-HJH"/>
+                            <constraint firstItem="8Dp-1m-JZd" firstAttribute="leading" secondItem="xlM-2f-ont" secondAttribute="leading" id="bz8-WP-oc3"/>
+                            <constraint firstAttribute="trailing" secondItem="8Dp-1m-JZd" secondAttribute="trailing" id="jM3-6j-hyJ"/>
+                            <constraint firstAttribute="bottom" secondItem="8Dp-1m-JZd" secondAttribute="bottom" id="mQF-8S-lXv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xlM-2f-ont"/>
                     </view>
                     <connections>
+                        <outlet property="charactersCount" destination="fyS-cI-zAv" id="q26-fY-Gdj"/>
                         <outlet property="choosenNei" destination="xRV-fs-DkL" id="aa4-Vs-4qH"/>
                         <outlet property="pic_1" destination="gYq-Ly-hNa" id="l3w-x3-7jm"/>
                         <outlet property="pic_2" destination="xuf-0V-pGC" id="DsU-ax-5SQ"/>
@@ -2041,7 +2069,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4D-lj-XSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="112" y="2541"/>
+            <point key="canvasLocation" x="111.59420289855073" y="2540.625"/>
         </scene>
         <!--Confirm Ticket Message View Controller-->
         <scene sceneID="Zep-7H-fuY">
@@ -2149,82 +2177,87 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="589"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تعديل الملف الشخصي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1I-LH-GTw">
-                                                                <rect key="frame" x="16" y="24" width="382" height="23.5"/>
+                                                                <rect key="frame" x="16" y="24" width="382" height="24"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الاسم" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxb-WF-Spr">
-                                                                <rect key="frame" x="16" y="63.5" width="382" height="20"/>
+                                                                <rect key="frame" x="16" y="64" width="382" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="الرجاء ادخال اسم للمستخدم" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7q-LA-VU7">
-                                                                <rect key="frame" x="16" y="99.5" width="382" height="34"/>
+                                                                <rect key="frame" x="16" y="100.5" width="382" height="34"/>
                                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الايميل" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7M-46-gjb">
-                                                                <rect key="frame" x="16" y="149.5" width="382" height="20"/>
+                                                                <rect key="frame" x="16" y="150.5" width="382" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="irp-I2-aib">
-                                                                <rect key="frame" x="16" y="185.5" width="382" height="34"/>
+                                                                <rect key="frame" x="16" y="187" width="382" height="34"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم الجوال" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta8-fD-mam">
-                                                                <rect key="frame" x="16" y="235.5" width="382" height="20"/>
+                                                                <rect key="frame" x="16" y="237" width="382" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="مثال:- ٠٥١٢٣٤٥٦٧" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mgc-IZ-2Oi">
-                                                                <rect key="frame" x="16" y="271.5" width="382" height="34"/>
+                                                                <rect key="frame" x="16" y="273.5" width="382" height="34"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="المدينة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwr-la-8kl">
-                                                                <rect key="frame" x="16" y="321.5" width="382" height="20"/>
+                                                                <rect key="frame" x="16" y="323.5" width="382" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edq-zY-U3b">
-                                                                <rect key="frame" x="16" y="357.5" width="382" height="34"/>
+                                                                <rect key="frame" x="16" y="360" width="382" height="34"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUd-pG-LVV">
-                                                                <rect key="frame" x="16" y="407.5" width="382" height="20"/>
+                                                                <rect key="frame" x="16" y="410" width="382" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0xi-9z-xuj">
-                                                                <rect key="frame" x="16" y="441" width="382" height="34"/>
+                                                                <rect key="frame" x="16" y="444" width="382" height="34"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الجنس" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtZ-at-Hz3">
-                                                                <rect key="frame" x="16" y="505" width="382" height="20"/>
+                                                                <rect key="frame" x="16" y="508" width="382" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCd-Xh-eSa">
-                                                                <rect key="frame" x="44" y="505" width="300" height="32"/>
+                                                                <rect key="frame" x="44" y="508" width="300" height="33"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeU-9n-QjE">
-                                                                        <rect key="frame" x="170" y="0.0" width="90" height="32"/>
+                                                                        <rect key="frame" x="168.5" y="0.0" width="91.5" height="33"/>
                                                                         <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                                                         <state key="normal" title="ذكر">
@@ -2235,7 +2268,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntr-MW-XM1">
-                                                                        <rect key="frame" x="40" y="0.0" width="88.5" height="32"/>
+                                                                        <rect key="frame" x="40" y="0.0" width="91" height="33"/>
                                                                         <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                                                         <state key="normal" title="أنثى">
@@ -2258,7 +2291,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="xwr-la-8kl" firstAttribute="leading" secondItem="Mgc-IZ-2Oi" secondAttribute="leading" id="0Bq-CS-VFd"/>
                                                             <constraint firstItem="p7q-LA-VU7" firstAttribute="top" secondItem="Lxb-WF-Spr" secondAttribute="bottom" constant="16" id="1Hn-pI-stp"/>
@@ -2317,7 +2350,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="v1v-BS-Ws4"/>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Lie-ce-1TD" secondAttribute="trailing" id="53D-Vf-MEJ"/>
                                     <constraint firstItem="Lie-ce-1TD" firstAttribute="leading" secondItem="fUr-Hs-RYK" secondAttribute="leading" id="JDa-pi-JhV"/>
@@ -2418,6 +2451,6 @@
         <image name="profile" width="154" height="154"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OrN-0g-0n7"/>
+        <segue reference="Gdb-mx-XRY"/>
     </inferredMetricsTieBreakers>
 </document>
