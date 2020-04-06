@@ -45,9 +45,10 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     var selectedNeighborhood: String?
     var aNum = ""
     var bNum = ""
+    var lastKeyboardHeight: CGFloat = 0.0
     
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         firstPicUI()
@@ -61,7 +62,7 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
         super.viewDidLoad()
         textView.delegate = self
         subscribeToKeyboardNotification()
-
+        
         getNeighborhoodList()
         
         // Text View UI
@@ -87,7 +88,7 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
         let aNum = self.convertEngNumToArabicNumm(num: newLength)
         charactersCount.text =  "\(aNum) / \(self.aNum)"
         if str.utf16.count < 190 {
-        flag = true
+            flag = true
         } else {
             flag = false
         }
@@ -104,59 +105,151 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     }
     
     // MARK: - Keyboard Functions
-
+    
     func subscribeToKeyboardNotification(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
     }
     
     func unsubscribeToKeyboardNotification(){
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     
     @objc func keyboardWillShow(_ notification: Notification) {
-         if textView.isFirstResponder{
-        let textFieldPosition = textView.frame.origin.y + textView.frame.size.height
-            print("textView.frame.origin.y: \(textView.frame.origin.y)")
-            print("textView.frame.size.height: \(textView.frame.size.height)")
-            print("self.view.frame.size.height: \(self.view.frame.size.height)")
-            print("self.view.frame.origin.y: \(self.view.frame.origin.y)")
-//
-//        if textFieldPosition > (view.frame.size.height - getKeyboardHeight(notification)) {
-
-    if self.view.frame.origin.y == 231 {
-
-          self.view.frame.origin.y -=
-            180
-                //getKeyboardHeight(notification)
-        
+        if textView.isFirstResponder{
             
-    } else if self.view.frame.origin.y == 391 {
-        self.view.frame.origin.y -=
-        260
-    } else if self.view.frame.origin.y == 162 {
-        self.view.frame.origin.y -=
-        170
+            print("self.view.frame.origin.y: \(self.view.frame.origin.y)")
+            print("keyboard height: \(getKeyboardHeight(notification))")
+            
+            //lastKeyboardHeight = getKeyboardHeight(notification)
+            
+            if self.view.frame.origin.y == 231 {
+                
+                if getKeyboardHeight(notification) == 271 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                }
+                else if getKeyboardHeight(notification) == 226 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                }
+                
+            } else if self.view.frame.origin.y == 391 {
+                if getKeyboardHeight(notification) == 346 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                }
+                else if getKeyboardHeight(notification) == 301 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                } 
+                
+            } else if self.view.frame.origin.y == 307 {
+                
+                if getKeyboardHeight(notification) == 336 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                    
+                } else if getKeyboardHeight(notification) == 335 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                }
+                    
+                else if getKeyboardHeight(notification) == 291 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                }
+                
+            } else if self.view.frame.origin.y == 162 {
+                
+                if getKeyboardHeight(notification) == 260 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                    
+                    print("eight 162, 260: y: \(self.view.frame.origin.y) , currentKey: \(getKeyboardHeight(notification)), lastKey: \(lastKeyboardHeight)")
+                }
+                else if getKeyboardHeight(notification) == 216 {
+                    self.view.frame.origin.y -=
+                        getKeyboardHeight(notification)
+                    
+                    print("eight 162, 216: y: \(self.view.frame.origin.y) , currentKey: \(getKeyboardHeight(notification)), lastKey: \(lastKeyboardHeight)")
+                }
             }
         }
     }
     
-    @objc func keyboardWillHide(_ notifcation: Notification) {
+    @objc func keyboardWillChange(_ notification: Notification) {
+        let keyboardSize1 = getKeyboardHeight(notification)
+
+        if lastKeyboardHeight != keyboardSize1 {
+            if lastKeyboardHeight < keyboardSize1{
+                let keyboardDifference: CGFloat = keyboardSize1 - lastKeyboardHeight
+                self.view.frame.origin.y -= keyboardDifference
+
+            } else {
+                let keyboardDifference: CGFloat = lastKeyboardHeight - keyboardSize1
+                self.view.frame.origin.y += keyboardDifference
+            }
+            lastKeyboardHeight = keyboardSize1
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        
         if textView.isFirstResponder {
-            if self.view.frame.origin.y == 51 {
+            let plus = 231 - lastKeyboardHeight
+            let eleven = 391 - lastKeyboardHeight
+            let eight = 162 - lastKeyboardHeight
+            let elevenPro = 307 - lastKeyboardHeight
+            
+            if self.view.frame.origin.y == plus {
                 
-                self.view.frame.origin.y += 180
+                if lastKeyboardHeight == 271 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                    
+                } else if lastKeyboardHeight == 226 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                }
                 
-            } else if self.view.frame.origin.y == 131 {
-                self.view.frame.origin.y += 260
+            } else if self.view.frame.origin.y == eleven {
+                if lastKeyboardHeight == 346 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                    
+                } else if lastKeyboardHeight == 301 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                }
                 
-            } else if self.view.frame.origin.y == -8 {
-                self.view.frame.origin.y += 170
+            } else if self.view.frame.origin.y == elevenPro {
+                if lastKeyboardHeight == 336 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                    
+                } else if lastKeyboardHeight == 335 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                    
+                } else if lastKeyboardHeight == 291 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                }
+                
+            } else if self.view.frame.origin.y == eight {
+                
+                if lastKeyboardHeight == 260 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                    print("eight 260: y: \(self.view.frame.origin.y) , currentKey: \(getKeyboardHeight(notification)), lastKey: \(lastKeyboardHeight)")
+                    
+                } else if lastKeyboardHeight == 216 {
+                    self.view.frame.origin.y += lastKeyboardHeight
+                    print("eight 216: y: \(self.view.frame.origin.y) , currentKey: \(getKeyboardHeight(notification)), lastKey: \(lastKeyboardHeight)")
+                }
             }
         }
     }
@@ -268,7 +361,7 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     
     
     func confirmPressed()  {
-
+        
         let urlString = "http://www.ai-rdm.website/api/ticket/create"
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -386,7 +479,7 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     }
     
     @IBAction func confirmTicket(_ sender: Any) {
-        
+        print("self.view.frame.origin.y: \(self.view.frame.origin.y)")
         let i = self.startAnActivityIndicator1()
         
         if self.imgArr.isEmpty {
@@ -582,7 +675,7 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
-     
+    
 }
 
 
@@ -627,29 +720,29 @@ extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
 //
 extension ticketViewController: BonsaiControllerDelegate {
-
+    
     // return the frame of your Bonsai View Controller
     func frameOfPresentedView(in containerViewFrame: CGRect) -> CGRect {
         print(containerViewFrame.height)
         print(containerViewFrame.height / (4/3))
-
-//        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
-
+        
+        //        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
+        
         return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height - 505), size: CGSize(width: containerViewFrame.width, height: 505))
     }
-
+    
     // return a Bonsai Controller with SlideIn or Bubble transition animator
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-
+        
         // Slide animation from .left, .right, .top, .bottom
         return BonsaiController(fromDirection: .bottom, presentedViewController: presented, delegate: self)
-
-
+        
+        
         // or Bubble animation initiated from a view
         //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
     }
-//
-//
-//
+    //
+    //
+    //
 }
 

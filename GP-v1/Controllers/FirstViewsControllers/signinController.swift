@@ -20,6 +20,7 @@ class signinController: UIViewController {
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var passwordView: UIView!
     
+
     var roleID = 0
     
     override func viewDidLoad() {
@@ -131,7 +132,7 @@ class signinController: UIViewController {
                         let roleID = responseObject.userData.roleID
                         if roleID == "1" {
                             UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
-                            self.roleID = Int(roleID)!
+                            self.roleID = Int(roleID!)!
                             print(self.roleID)
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "mapVieww") as! mapViewController
                             //self.navigationController?.pushViewController(vc, animated: true)
@@ -139,7 +140,7 @@ class signinController: UIViewController {
                             
                         } else if roleID == "4" {
                             UserDefaults.standard.set(true, forKey: "isEmpLoggedIn")
-                            self.roleID = Int(roleID)!
+                            self.roleID = Int(roleID!)!
                             print(self.roleID)
                             let storyboard = UIStoryboard(name: "Employee", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "TableViewEmp") as! TicketsListEmpViewController

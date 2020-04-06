@@ -11,11 +11,10 @@ import Alamofire
 
 class ticketListViewController: UIViewController {
     static let instance = ticketListViewController()
-
+    
     @IBOutlet weak var ViewT: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var noTickets: UILabel!
-    
+    @IBOutlet weak var labelView: UIView!
     
     
     var token: String = UserDefaults.standard.string(forKey: "access_token")!
@@ -37,7 +36,8 @@ class ticketListViewController: UIViewController {
         tableView.dataSource = self
         getTicketsList()
         ViewT.roundCorner(corners: [.topLeft, .topRight], radius: 30)
-        noTickets.isHidden = true
+        labelView.roundCorner(corners: [.topLeft, .topRight], radius: 30)
+        labelView.isHidden = true
         addRefresh()
     }
     
@@ -61,55 +61,58 @@ class ticketListViewController: UIViewController {
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
-         let i = self.startAnActivityIndicator()
-    if Connectivity.isConnectedToInternet {
-        Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
-            response in
-            
-            guard let data = response.data else {
+        
+        let i = self.startAnActivityIndicator()
+        
+        if Connectivity.isConnectedToInternet {
+            Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
+                response in
+                
+                guard let data = response.data else {
+                    
+                    DispatchQueue.main.async {
+                        print("Response async error \(response.error!)")
+                    }
+                    return
+                }
+                
+                let decoder = JSONDecoder()
+                
+                do {
+                    
+                    let responseObject =  try decoder.decode(TicketCell.self, from: data)
+                    
+                    self.ticketCell = responseObject
+                    
+                    if self.ticketCell.isEmpty {
+                        i.stopAnimating()
+                        //self.noTickets.isHidden = false
+                        self.labelView.isHidden = false
+                    }
+                    
+                    print("Ticket Cell: \(self.ticketCell)")
+                    
+                    
+                } // end of do
+                catch let parsingError {
+                    print("Error", parsingError)
+                }
                 
                 DispatchQueue.main.async {
-                    print("Response async error \(response.error!)")
-                }
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                
-                let responseObject =  try decoder.decode(TicketCell.self, from: data)
-                
-                self.ticketCell = responseObject
-                
-                if self.ticketCell.isEmpty {
                     i.stopAnimating()
-                    self.noTickets.isHidden = false
+                    self.tableView.reloadData()
+                    
                 }
-                
-                print("Ticket Cell: \(self.ticketCell)")
-                
-                
-            } // end of do
-            catch let parsingError {
-                print("Error", parsingError)
-            }
+            } // end of alamofire
             
-            DispatchQueue.main.async {
-                i.stopAnimating()
-                self.tableView.reloadData()
-                
-            }
-        } // end of alamofire
-        
-    } else {
-        //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
-        i.stopAnimating()
-        AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
-        self.view.addSubview(AlertView.instance.ParentView)
+        } else {
+            //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            i.stopAnimating()
+            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
+            self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection
         
-} // end of function
+    } // end of function
     
 } // end of class
 
@@ -155,7 +158,7 @@ extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource 
             
         } else if status == "CLOSED" {
             cell.cellImg.image = UIImage(named: "solved")
-        
+            
         } else if status == "EXCLUDED" {
             cell.cellImg.image = UIImage(named: "closed-2")
             
