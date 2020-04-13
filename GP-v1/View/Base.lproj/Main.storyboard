@@ -1060,7 +1060,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zvA-nU-fcf" userLabel="goToMap">
-                                                                <rect key="frame" x="16" y="24" width="30.5" height="22"/>
+                                                                <rect key="frame" x="16" y="24" width="30.5" height="24"/>
                                                                 <state key="normal" image="Icon ionic-ios-arrow-back"/>
                                                                 <connections>
                                                                     <action selector="backToTicket:" destination="qqf-pE-4xW" eventType="touchUpInside" id="KJ8-UG-qO9"/>
@@ -1309,7 +1309,7 @@
                                 <rect key="frame" x="0.0" y="40" width="414" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fus-kL-psr" userLabel="goToMap">
-                                        <rect key="frame" x="20" y="0.0" width="1" height="41"/>
+                                        <rect key="frame" x="20" y="0.0" width="41" height="41"/>
                                         <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="goToMap:" destination="dao-zn-6i0" eventType="touchUpInside" id="1y3-Vp-Tm1"/>
@@ -1322,7 +1322,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7f-Bj-Jeq" userLabel="signout">
-                                        <rect key="frame" x="393" y="4" width="1" height="28"/>
+                                        <rect key="frame" x="366.5" y="4" width="27.5" height="28"/>
                                         <state key="normal" image="Icon ionic-ios-log-out"/>
                                         <connections>
                                             <action selector="signOut:" destination="dao-zn-6i0" eventType="touchUpInside" id="1SX-uB-Dt0"/>
@@ -1349,46 +1349,46 @@
                                 </userGuides>
                                 <subviews>
                                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiS-Ab-qte">
-                                        <rect key="frame" x="189" y="151" width="36" height="22"/>
+                                        <rect key="frame" x="121" y="1" width="172" height="172"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
                                         </accessibility>
                                         <state key="normal" image="Group 33"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مرحباً،" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Siy-t8-2Os">
-                                        <rect key="frame" x="189" y="133" width="36" height="19"/>
+                                        <rect key="frame" x="121" y="133" width="172" height="19"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAw-9J-IoZ" userLabel="tickets">
-                                        <rect key="frame" x="0.0" y="19" width="40.5" height="154"/>
+                                        <rect key="frame" x="0.0" y="19" width="154" height="154"/>
                                         <state key="normal" image="profile"/>
                                         <connections>
                                             <action selector="ticketListButton:" destination="dao-zn-6i0" eventType="touchUpInside" id="yeL-Kb-nOL"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التذاكر" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ap1-8w-ewU">
-                                        <rect key="frame" x="0.0" y="133" width="40.5" height="20"/>
+                                        <rect key="frame" x="0.0" y="133" width="154" height="20"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgI-jh-Wtw" userLabel="profile">
-                                        <rect key="frame" x="358.5" y="19" width="49.5" height="154"/>
+                                        <rect key="frame" x="254" y="19" width="154" height="154"/>
                                         <state key="normal" image="Icon feather-settings"/>
                                         <connections>
                                             <action selector="profile:" destination="dao-zn-6i0" eventType="touchUpInside" id="ocB-4V-fVK"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحساب" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oag-ur-K1v">
-                                        <rect key="frame" x="358.5" y="133" width="49.5" height="20"/>
+                                        <rect key="frame" x="254" y="133" width="154" height="20"/>
                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuZ-aY-1as">
-                                        <rect key="frame" x="44" y="71" width="135" height="50"/>
+                                        <rect key="frame" x="44" y="71" width="67" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="4ja-b5-Qxw"/>
                                         </constraints>
@@ -1596,7 +1596,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Li0-pV-GsL" userLabel="back">
-                                                                <rect key="frame" x="24" y="24" width="24.5" height="22"/>
+                                                                <rect key="frame" x="24" y="24" width="24.5" height="24"/>
                                                                 <state key="normal" image="Icon ionic-ios-arrow-back"/>
                                                                 <connections>
                                                                     <action selector="back:" destination="OOv-gf-24G" eventType="touchUpInside" id="Aqz-3W-6OQ"/>
@@ -1831,7 +1831,7 @@
                                         <color key="backgroundColor" red="0.40478605029999998" green="0.60844057799999995" blue="0.61368316410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 33" translatesAutoresizingMaskIntoConstraints="NO" id="c4d-J9-4lx">
-                                        <rect key="frame" x="242" y="10" width="172" height="1"/>
+                                        <rect key="frame" x="242" y="10" width="172" height="172"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2008,7 +2008,7 @@
                                                         </constraints>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numbersAndPunctuation"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2017,7 +2017,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyS-cI-zAv">
-                                                        <rect key="frame" x="14" y="185" width="386" height="20"/>
+                                                        <rect key="frame" x="14" y="185" width="386" height="17"/>
                                                         <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

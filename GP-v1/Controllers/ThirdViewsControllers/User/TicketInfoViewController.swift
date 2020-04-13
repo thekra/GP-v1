@@ -165,7 +165,7 @@ class TicketInfoViewController: UIViewController {
     }
     
     @objc func deleteTicketCon() {
-        let urlString = "http://www.ai-rdm.website/api/ticket/delete"
+        let urlString = URLs.delete_ticket
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -269,7 +269,7 @@ class TicketInfoViewController: UIViewController {
     }
     
     func setImage(img: String, count: Int)  {
-        let urlString = "http://www.ai-rdm.website/storage/photos/\(img)"
+        let urlString = URLs.get_image + "\(img)"
         
         let i = self.startAnActivityIndicator()
         

@@ -147,7 +147,7 @@ class userProfileViewController: UIViewController{
     
     func getUserInfo() {
         
-        let urlString = "http://www.ai-rdm.website/api/auth/user"
+        let urlString = URLs.get_user
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -222,7 +222,8 @@ class userProfileViewController: UIViewController{
     }
     
     @IBAction func saveUpdates(_ sender: Any) {
-        let urlString = "http://www.ai-rdm.website/api/user/update"
+        let urlString = URLs.user_update
+        
         var parameters = [:] as [String : AnyObject]
         
         let headers: HTTPHeaders = [

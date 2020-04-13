@@ -168,7 +168,7 @@ class closeTicketViewController: UIViewController {
         
         @IBAction func closeTicket(_ sender: Any) {
             
-            let urlString = "http://www.ai-rdm.website/api/ticket/update"
+            let urlString = URLs.update_ticekt
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(self.token)",
                 "Content-Type": "multipart/form-data",
@@ -299,8 +299,12 @@ class closeTicketViewController: UIViewController {
         func showImage() {
             let imgPicker = UIImagePickerController()
             imgPicker.delegate = self
-            // imgPicker.sourceType = .camera
-            imgPicker.sourceType = .photoLibrary
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imgPicker.sourceType = .camera
+            } else {
+                self.showAlert(title: "مشكلة في الكاميرا", message: "يبدو انه ليس هنالك وجود لكاميرا الهاتف")
+            }
+            //imgPicker.sourceType = .photoLibrary
             imgPicker.modalPresentationStyle = .overFullScreen
             self.present(imgPicker, animated: true, completion: nil)
         }

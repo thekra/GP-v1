@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreLocation
 import GoogleMaps
 import BonsaiController
 
-class mapViewController: UIViewController {
+class mapViewController: UIViewController{
     
     var locationManager = CLLocationManager()
     
@@ -25,13 +26,7 @@ class mapViewController: UIViewController {
         
         super.viewDidLoad()
         confirmButton.roundCorners(corners:  [.topLeft, .topRight], radius: 15)
-//        confirmButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-//        confirmButton.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
-//        confirmButton.layer.shadowRadius = 1.7
-//        confirmButton.layer.shadowOpacity = 1.0
-       // print("Token(mapViewDidLoad): \(self.token)")
         if onBoarding.instance.flag == true {
-            //onBoarding.instance.showAlert(alertType: .show)
             self.view.addSubview(onBoarding.instance.pView)
         } else {
             onBoarding.instance.pView.removeFromSuperview()
@@ -42,13 +37,6 @@ class mapViewController: UIViewController {
         mv.settings.compassButton = true
         mv.isMyLocationEnabled = true
         mv.settings.myLocationButton = true
-        
-        
-//        let marker = GMSMarker()
-//        marker.position = CLLocationCoordinate2D(latitude: 21.422510, longitude: 39.826168)
-//        marker.title = "Mecca"
-//        marker.snippet = "Saudi Arabia"
-//        marker.map = mv
         
         //Location Manager code to fetch current location
         self.locationManager.delegate = self
@@ -66,14 +54,27 @@ class mapViewController: UIViewController {
     
     @IBAction func confirmPressed(_ sender: Any) {
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticket") as! ticketViewController
-        
-        vc.latitude = self.latitude
-        vc.longitude = self.longitude
-        vc.transitioningDelegate = self
-        
-        vc.modalPresentationStyle = .custom
-        self.present(vc, animated: true, completion: nil)
+
+           // check the permission status
+           switch(CLLocationManager.authorizationStatus()) {
+               case .authorizedAlways, .authorizedWhenInUse:
+                   print("Authorize.")
+            
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticket") as! ticketViewController
+                
+                vc.latitude = self.latitude
+                vc.longitude = self.longitude
+                vc.transitioningDelegate = self
+                
+                vc.modalPresentationStyle = .custom
+                self.present(vc, animated: true, completion: nil)
+            
+                   // get the user location
+               case .notDetermined, .restricted, .denied:
+                   // redirect the users to settings
+                   self.allowAlert(title: "الموقع غير متوفر", message: "الرجاء الذهاب الى الاعدادات وتفعيله")
+           }
+    //}
         
     }
 }

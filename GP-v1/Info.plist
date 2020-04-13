@@ -40,9 +40,9 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>تطبيق سالك يحتاج الى سماح الوصول الى كاميرا هاتفك</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Application needs your location</string>
+	<string>تطبيق سالك يحتاج الى موقعك</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Ahlan-world-Arbfonts.otf</string>

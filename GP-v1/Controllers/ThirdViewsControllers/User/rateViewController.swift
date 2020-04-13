@@ -97,7 +97,7 @@ class rateViewController: UIViewController {
     }
     
     func setImage(img: String, count: Int)  {
-        let urlString = "http://www.ai-rdm.website/storage/photos/\(img)"
+        let urlString = URLs.get_image + "\(img)"
         
          let i = self.startAnActivityIndicator()
         
@@ -264,7 +264,7 @@ class rateViewController: UIViewController {
     }
     
     @IBAction func ratePressed(_ sender: Any) {
-        let urlString = "http://www.ai-rdm.website/api/ticket/rate"
+        let urlString = URLs.rate_ticket
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",

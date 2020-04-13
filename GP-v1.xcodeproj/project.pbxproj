@@ -36,6 +36,9 @@
 		794A3A9623FEB31D003CDE02 /* TicketInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */; };
 		794A3A9923FEB4A0003CDE02 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9823FEB4A0003CDE02 /* Extension.swift */; };
 		794A3A9B23FFF7C4003CDE02 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A9A23FFF7C3003CDE02 /* File.swift */; };
+		794C6E9B244367AD0083C405 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C6E9A244367AD0083C405 /* API.swift */; };
+		794C6E9D244372260083C405 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C6E9C244372260083C405 /* Constants.swift */; };
+		794C6E9F2444DF6F0083C405 /* API+Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C6E9E2444DF6F0083C405 /* API+Ticket.swift */; };
 		7956406F242CFB010078A5BF /* confirmTicketMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7956406E242CFB010078A5BF /* confirmTicketMessageViewController.swift */; };
 		797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC723E56CB500960C79 /* AppDelegate.swift */; };
 		797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC923E56CB500960C79 /* SceneDelegate.swift */; };
@@ -109,6 +112,9 @@
 		794A3A9523FEB31D003CDE02 /* TicketInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoViewController.swift; sourceTree = "<group>"; };
 		794A3A9823FEB4A0003CDE02 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		794A3A9A23FFF7C3003CDE02 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		794C6E9A244367AD0083C405 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		794C6E9C244372260083C405 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		794C6E9E2444DF6F0083C405 /* API+Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Ticket.swift"; sourceTree = "<group>"; };
 		7956406E242CFB010078A5BF /* confirmTicketMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmTicketMessageViewController.swift; sourceTree = "<group>"; };
 		797F8BC423E56CB500960C79 /* GP-v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GP-v1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		797F8BC723E56CB500960C79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -194,9 +200,9 @@
 		7934B3C6242A848200D46436 /* Employee */ = {
 			isa = PBXGroup;
 			children = (
+				7934B3CB242A8CAF00D46436 /* switchEmpViewController.swift */,
 				7934B3C7242A84DD00D46436 /* TicketsListEmpViewController.swift */,
 				7934B3C9242A893E00D46436 /* TicketsListEmpTableViewCell.swift */,
-				7934B3CB242A8CAF00D46436 /* switchEmpViewController.swift */,
 				7934B3CD242AAFE600D46436 /* TicketInfoEmpViewController.swift */,
 				7934B3CF242AB3CC00D46436 /* closeTicketViewController.swift */,
 			);
@@ -212,6 +218,15 @@
 				79BFCA062419356A00067783 /* onBoarding.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		794C6E99244367960083C405 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				794C6E9A244367AD0083C405 /* API.swift */,
+				794C6E9E2444DF6F0083C405 /* API+Ticket.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		797F8BBB23E56CB500960C79 = {
@@ -242,6 +257,7 @@
 				797F8BC723E56CB500960C79 /* AppDelegate.swift */,
 				797F8BC923E56CB500960C79 /* SceneDelegate.swift */,
 				79BFCA0A241A355600067783 /* Fonts */,
+				794C6E99244367960083C405 /* API */,
 				797F8BFA23E56D1E00960C79 /* Network */,
 				794A3A9723FEB480003CDE02 /* Extension */,
 				797F8BF923E56D1800960C79 /* Models */,
@@ -317,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				794A3A9A23FFF7C3003CDE02 /* File.swift */,
+				794C6E9C244372260083C405 /* Constants.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -583,6 +600,7 @@
 				797F8C1123EA16E700960C79 /* signupResponse.swift in Sources */,
 				794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */,
 				794255C823F6AA170051DE63 /* TicketResponse.swift in Sources */,
+				794C6E9D244372260083C405 /* Constants.swift in Sources */,
 				797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */,
 				7956406F242CFB010078A5BF /* confirmTicketMessageViewController.swift in Sources */,
 				794A3A9B23FFF7C4003CDE02 /* File.swift in Sources */,
@@ -596,12 +614,14 @@
 				797F8C1523EC2C7E00960C79 /* mapViewController.swift in Sources */,
 				79BFCA072419356A00067783 /* onBoarding.swift in Sources */,
 				794A3A9423FE962E003CDE02 /* ticketListTableViewCell.swift in Sources */,
+				794C6E9F2444DF6F0083C405 /* API+Ticket.swift in Sources */,
 				794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */,
 				794A3A9623FEB31D003CDE02 /* TicketInfoViewController.swift in Sources */,
 				797F8C0F23EA169300960C79 /* signup.swift in Sources */,
 				792D5B9A24100969007D46C8 /* UpdateResponse.swift in Sources */,
 				792D5BA42414BE35007D46C8 /* rateViewController.swift in Sources */,
 				797F8C0D23EA0AF900960C79 /* signupViewController.swift in Sources */,
+				794C6E9B244367AD0083C405 /* API.swift in Sources */,
 				797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */,
 				792D5B9E2413C499007D46C8 /* resetPasswordViewController.swift in Sources */,
 				792D5BB024182E16007D46C8 /* AlertView.swift in Sources */,

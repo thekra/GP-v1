@@ -51,7 +51,7 @@ class TicketsListEmpViewController: UIViewController {
         
         @objc func getTicketsList() {
             
-            let urlString = "http://www.ai-rdm.website/api/ticket/list"
+            let urlString = URLs.tickets_list
             
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(self.token)",
@@ -163,7 +163,7 @@ class TicketsListEmpViewController: UIViewController {
             self.convertEngNumToArabicNum(num: ticketID, textF: cell.ticketInfo)
             
             let ticketDate = self.ticketCell[indexPath.row].ticket.createdAt
-            self.convertDateFormater(ticketDate, textF: cell.ticketDate)
+            self.convertDateFormater(ticketDate!, textF: cell.ticketDate)
             
             return cell
         }

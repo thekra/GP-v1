@@ -63,7 +63,7 @@ struct UserRating: Codable {
 struct Ticket: Codable {
     let id: Int
     let ticketDescription, status, statusAr: String
-    let classification, classificationAr, degree, degreeAr, createdAt, updatedAt: String
+    let classification, classificationAr, degree, degreeAr, createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id

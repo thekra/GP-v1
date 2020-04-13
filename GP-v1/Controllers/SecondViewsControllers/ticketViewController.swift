@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import BonsaiController
+import AVFoundation
 
 protocol con {
     func confirmPressed()
@@ -311,10 +312,29 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     
     @objc func imageTap() {
         print("image clicked")
+       
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
         
-        self.imgView = pic_1
-        showImage()
-        enablePic(pic: pic_2)
+        switch cameraAuthorizationStatus {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
+                    guard accessGranted == true else { return }
+                DispatchQueue.main.async {
+                    self.imgView = self.pic_1
+                    self.showImage()
+                    self.enablePic(pic: self.pic_2)
+                }
+                })
+        case .authorized:
+            self.imgView = pic_1
+            showImage()
+            enablePic(pic: pic_2)
+        case .restricted, .denied:
+            self.allowAlert(title: "الكاميرا غير مفعلة", message: "الرجاء الذهاب الى الاعدادات وتفعيلها")
+        }
+//        self.imgView = pic_1
+//        showImage()
+//        enablePic(pic: pic_2)
     }
     
     @objc func imageTap_2() {
@@ -362,7 +382,7 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     
     func confirmPressed()  {
         
-        let urlString = "http://www.ai-rdm.website/api/ticket/create"
+        let urlString = URLs.new_ticket
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
             "Content-Type": "multipart/form-data",
@@ -518,7 +538,7 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     
     func getNeighborhoodList() {
         
-        let urlString = "http://www.ai-rdm.website/api/ticket/neighborhoods"
+        let urlString = URLs.neighborhood
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
@@ -570,8 +590,12 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
     func showImage() {
         let imgPicker = UIImagePickerController()
         imgPicker.delegate = self
-        // imgPicker.sourceType = .camera
-        imgPicker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imgPicker.sourceType = .camera
+        } else {
+            self.showAlert(title: "مشكلة في الكاميرا", message: "يبدو انه ليس هنالك وجود لكاميرا الهاتف")
+        }
+        //imgPicker.sourceType = .photoLibrary
         imgPicker.modalPresentationStyle = .overFullScreen
         self.present(imgPicker, animated: true, completion: nil)
     }

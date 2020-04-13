@@ -149,12 +149,12 @@ class TicketInfoEmpViewController: UIViewController {
         }
         
         func setImage(img: String, count: Int)  {
-            let urlString = "http://www.ai-rdm.website/storage/photos/\(img)"
+            let urlString = URLs.get_image + "\(img)"
             
              let i = self.startAnActivityIndicator()
             
         if Connectivity.isConnectedToInternet {
-            Alamofire.request(urlString, method: .get).responseImage { response in
+            Alamofire.request(urlString, method: .get ).responseImage { response in
                 guard let image = response.result.value else {
                     // Handle error
                     return

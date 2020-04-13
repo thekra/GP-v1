@@ -61,6 +61,24 @@ extension UIViewController {
               return UserDefaults.standard.object(forKey: key) != nil
           }
     
+    func allowAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let settingsAction = UIAlertAction(title: "الاعدادات", style: .default) { (_) -> Void in
+         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+               DispatchQueue.main.async {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+               }
+             }
+        }
+        let cancelAction = UIAlertAction(title: "الغاء", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
@@ -95,16 +113,8 @@ extension UIViewController {
         self.view.addSubview(ai)
         self.view.bringSubviewToFront(ai)
         ai.transform = CGAffineTransform(scaleX: 2, y: 2)
-        //ai.frame = CGRect(x: UIScreen.main.bounds.maxX, y: UIScreen.main.bounds.maxY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         ai.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         ai.frame = CGRect(x: 210, y: 290, width: 5, height: 5)
-        //ai.frame = CGRect(x: self.view.bounds/CGFloat(3), y: 290, width: 5, height: 5)
-        //ai.topAnchor =
-       // ai.topAnchor.anchorWithOffset(to: )
-//        let top = ai.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50)
-//        top.isActive = true
-//        let left = ai.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 50)
-//        left.isActive = true
         
         ai.hidesWhenStopped = true
         ai.startAnimating()

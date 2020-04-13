@@ -152,7 +152,7 @@ class showRateViewController: UIViewController {
     }
     
     func setImage(img: String, count: Int)  {
-        let urlString = "http://www.ai-rdm.website/storage/photos/\(img)"
+        let urlString = URLs.get_image + "\(img)"
         
          let i = self.startAnActivityIndicator()
         
@@ -204,114 +204,11 @@ class showRateViewController: UIViewController {
            }
        }
    
-    
-//    func showRating() {
-//        let urlString = "http://www.ai-rdm.website/api/ticket/show"
-//
-//        let headers: HTTPHeaders = [
-//            "Authorization": "Bearer \(self.token)",
-//            "Content-Type": "multipart/form-data",
-//            "Accept": "application/json"
-//        ]
-//        let parameters = [
-//            "ticket_id": self.ticket_id
-//        ] as [String : AnyObject]
-//
-// //let i = self.startAnActivityIndicator()
-//         if Connectivity.isConnectedToInternet {
-//
-//                      Alamofire.upload(multipartFormData:
-//                          { (multipartFormData ) in
-//
-//                              for (key, value) in parameters {
-//                                  if let temp = value as? Int {
-//                                      multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-//                                  }
-//                                  print("Sent Parameters: \(parameters)")
-//                              }
-//                      }, to: urlString,
-//                         method: .post,
-//                         headers: headers,
-//                         encodingCompletion: {
-//                          encodingResult in
-//                          switch encodingResult {
-//                          case .success(let upload, _, _):
-//
-//
-//
-//                              upload.responseData { response in
-//                                  debugPrint("SUCCESS RESPONSE: \(response)")
-//                                  debugPrint(response.debugDescription)
-//                                  print("REsponse: \(response)")
-//
-//                                  guard let data = response.data else {
-//
-//                                      DispatchQueue.main.async {
-//                                          print(response.error!)
-//                                      }
-//                                      return
-//                                  }
-//                                  let decoder = JSONDecoder()
-//                                  do {
-//                                    let responseObject =  try decoder.decode(ShowTicket.self, from: data)
-//                                      print("response Object MESSAGE: \(responseObject)")
-//                                  //  i.stopAnimating()
-//                                    self.starsRating = Int(responseObject.userRating[0].rating)!
-//                                    if self.starsRating == 1 {
-//                                        self.set(rating: 1)
-//
-//                                    } else if self.starsRating == 2 {
-//                                        self.set(rating: 2)
-//
-//                                    } else if self.starsRating == 3 {
-//                                        self.set(rating: 3)
-//
-//                                    } else if self.starsRating == 4 {
-//                                        self.set(rating: 4)
-//
-//                                    } else if self.starsRating == 5 {
-//                                        self.set(rating: 5)
-//                                                      }
-//                                    self.comment.text = responseObject.userRating[0].comment
-//
-//                                    print(self.comment.text!)
-//                                    print("Stars \(self.starsRating)")
-//                                  } // end of do
-//                                  catch let parsingError {
-//                                      print("Error", parsingError)
-//                                  } // End of catch
-//
-//                              } // End of upload
-//
-//                              upload.responseJSON { response in
-//
-//                                  print("the resopnse code is : \(response.response?.statusCode ?? 0)")            // من هنا يطلع رسالة الايرور تمام
-//                                  print("the response is : \(response)")
-//                              }
-//
-//                          case .failure(let encodingError):
-//                              // hide progressbas here
-//                              print("ERROR RESPONSE: \(encodingError)")
-//                          }
-//                      }) // End of Alamofire
-//
-//
-//              } // End of Connection check
-//              else {
-//           // i.stopAnimating()
-//                  //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
-//            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
-//            self.view.addSubview(AlertView.instance.ParentView)
-//              }
-//    }
-    
-    
     @IBAction func back(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ticketInfo") as! TicketInfoViewController
         
         vc.ticket = self.ticket
         self.present(vc, animated: true, completion: nil)
-        //self.performSegue(withIdentifier: "backToTickett", sender: nil)
     }
     
 }

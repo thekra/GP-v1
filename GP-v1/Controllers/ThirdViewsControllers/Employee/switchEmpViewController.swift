@@ -49,7 +49,7 @@ var token: String = UserDefaults.standard.string(forKey: "access_token")!
         
         
         func getCount() {
-            let urlString = "http://www.ai-rdm.website/api/ticket/ticketsCount"
+            let urlString = URLs.tickets_count
             
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(self.token)",
@@ -88,7 +88,7 @@ var token: String = UserDefaults.standard.string(forKey: "access_token")!
         }
         
         @IBAction func signOut(_ sender: Any) {
-            let urlString = "http://www.ai-rdm.website/api/auth/logout"
+            let urlString = URLs.logout
 
                    let headers: HTTPHeaders = [
                        "Authorization": "Bearer \(self.token)",
