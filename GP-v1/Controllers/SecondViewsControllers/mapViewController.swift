@@ -20,7 +20,7 @@ class mapViewController: UIViewController{
     @IBOutlet weak var confirmButton: UIButton!
     var longitude = 0.0
     var latitude = 0.0
-   // var token = UserDefaults.standard.string(forKey: "access_token")
+    
     
     override func viewDidLoad() {
         
@@ -74,7 +74,6 @@ class mapViewController: UIViewController{
                    // redirect the users to settings
                    self.allowAlert(title: "الموقع غير متوفر", message: "الرجاء الذهاب الى الاعدادات وتفعيله")
            }
-    //}
         
     }
 }

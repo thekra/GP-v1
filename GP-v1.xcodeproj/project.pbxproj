@@ -39,6 +39,8 @@
 		794C6E9B244367AD0083C405 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C6E9A244367AD0083C405 /* API.swift */; };
 		794C6E9D244372260083C405 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C6E9C244372260083C405 /* Constants.swift */; };
 		794C6E9F2444DF6F0083C405 /* API+Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C6E9E2444DF6F0083C405 /* API+Ticket.swift */; };
+		79536AF1244AABBF00007818 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79536AF0244AABBF00007818 /* helper.swift */; };
+		79536AF3244AB7CC00007818 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79536AF2244AB7CC00007818 /* ErrorViewController.swift */; };
 		7956406F242CFB010078A5BF /* confirmTicketMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7956406E242CFB010078A5BF /* confirmTicketMessageViewController.swift */; };
 		797F8BC823E56CB500960C79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC723E56CB500960C79 /* AppDelegate.swift */; };
 		797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797F8BC923E56CB500960C79 /* SceneDelegate.swift */; };
@@ -115,6 +117,8 @@
 		794C6E9A244367AD0083C405 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		794C6E9C244372260083C405 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		794C6E9E2444DF6F0083C405 /* API+Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Ticket.swift"; sourceTree = "<group>"; };
+		79536AF0244AABBF00007818 /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
+		79536AF2244AB7CC00007818 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		7956406E242CFB010078A5BF /* confirmTicketMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmTicketMessageViewController.swift; sourceTree = "<group>"; };
 		797F8BC423E56CB500960C79 /* GP-v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GP-v1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		797F8BC723E56CB500960C79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 				797F8BF823E56D1300960C79 /* View */,
 				797F8BF723E56D0800960C79 /* Controllers */,
 				797F8BD523E56CBA00960C79 /* Info.plist */,
+				79536AF0244AABBF00007818 /* helper.swift */,
 			);
 			path = "GP-v1";
 			sourceTree = "<group>";
@@ -355,6 +360,7 @@
 				797F8C1623EC323D00960C79 /* onboardingViewController.swift */,
 				798639F623EDCB2300131A9E /* ticketViewController.swift */,
 				7956406E242CFB010078A5BF /* confirmTicketMessageViewController.swift */,
+				79536AF2244AB7CC00007818 /* ErrorViewController.swift */,
 			);
 			path = SecondViewsControllers;
 			sourceTree = "<group>";
@@ -594,9 +600,11 @@
 				792D5B982406F300007D46C8 /* User.swift in Sources */,
 				797F8BFE23E5C11400960C79 /* signinController.swift in Sources */,
 				7932B5A324007A85009FE071 /* TicketID.swift in Sources */,
+				79536AF1244AABBF00007818 /* helper.swift in Sources */,
 				797F8C0223E7135E00960C79 /* signinResponse.swift in Sources */,
 				792D5B9C24113944007D46C8 /* switchViewController.swift in Sources */,
 				797F8C1723EC323D00960C79 /* onboardingViewController.swift in Sources */,
+				79536AF3244AB7CC00007818 /* ErrorViewController.swift in Sources */,
 				797F8C1123EA16E700960C79 /* signupResponse.swift in Sources */,
 				794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */,
 				794255C823F6AA170051DE63 /* TicketResponse.swift in Sources */,

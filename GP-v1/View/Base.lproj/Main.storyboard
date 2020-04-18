@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a4O-Gu-Ngg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a4O-Gu-Ngg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2162,6 +2162,54 @@
             </objects>
             <point key="canvasLocation" x="820" y="2537"/>
         </scene>
+        <!--Error View Controller-->
+        <scene sceneID="axv-Dq-DHh">
+            <objects>
+                <viewController storyboardIdentifier="Error" id="eQJ-E0-Rzm" customClass="ErrorViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WYA-zm-uiZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدث خطأ ما !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EJ-y0-ZTC">
+                                <rect key="frame" x="50" y="244" width="314" height="36"/>
+                                <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدث خطأ ما !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2J-n8-58F">
+                                <rect key="frame" x="50" y="319" width="314" height="36"/>
+                                <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3MY-QA-uVJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="dismiss:" destination="eQJ-E0-Rzm" eventType="touchUpInside" id="ZOX-nA-RW6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92941176469999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4EJ-y0-ZTC" firstAttribute="leading" secondItem="1lm-0B-1xm" secondAttribute="leading" constant="50" id="2Mg-UP-aee"/>
+                            <constraint firstItem="1lm-0B-1xm" firstAttribute="trailing" secondItem="4EJ-y0-ZTC" secondAttribute="trailing" constant="50" id="BFW-rh-iLc"/>
+                            <constraint firstItem="4EJ-y0-ZTC" firstAttribute="top" secondItem="1lm-0B-1xm" secondAttribute="top" constant="200" id="NW0-ij-uV0"/>
+                            <constraint firstItem="h2J-n8-58F" firstAttribute="leading" secondItem="1lm-0B-1xm" secondAttribute="leading" constant="50" id="PGv-4a-7aV"/>
+                            <constraint firstItem="1lm-0B-1xm" firstAttribute="trailing" secondItem="h2J-n8-58F" secondAttribute="trailing" constant="50" id="Zhf-9U-ThI"/>
+                            <constraint firstItem="h2J-n8-58F" firstAttribute="top" secondItem="4EJ-y0-ZTC" secondAttribute="bottom" constant="39" id="i1e-kc-r6s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1lm-0B-1xm"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="600"/>
+                    <connections>
+                        <outlet property="errorMessage" destination="h2J-n8-58F" id="2a6-5n-Zr7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Kr-Lu-dQe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1537.68115942029" y="2536.6071428571427"/>
+        </scene>
         <!--User Profile View Controller-->
         <scene sceneID="l5z-d5-2BU">
             <objects>
@@ -2448,6 +2496,9 @@
             <point key="canvasLocation" x="961" y="3345"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8NX-EO-8nn"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Group 33" width="172" height="172"/>
         <image name="Icon feather-settings" width="154" height="154"/>
@@ -2465,7 +2516,4 @@
         <image name="password-text" width="280" height="27"/>
         <image name="profile" width="154" height="154"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="8NX-EO-8nn"/>
-    </inferredMetricsTieBreakers>
 </document>

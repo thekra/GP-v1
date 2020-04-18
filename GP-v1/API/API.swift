@@ -16,6 +16,7 @@ class API: NSObject {
     /// takes email and password and returns role id
     class func login(email:String, password: String, completion: @escaping (_ error: Error?, _ success: Bool, _ role_id: String, _ message: String) -> Void) {
         
+        if Connectivity.isConnectedToInternet {
         let urlString      = URLs.login
         let body           = Signin(email: email, password: password)
         let url            = URL(string: urlString)
@@ -49,11 +50,9 @@ class API: NSObject {
                     let name           = responseObject.userData.name
                     let phone          = responseObject.userData.phone
                     
-                    print("Token: \(token)")
-                    UserDefaults.standard.set(token, forKey: "access_token")
-                    UserDefaults.standard.synchronize()
-                    UserDefaults.standard.set(name, forKey: "name")
-                    UserDefaults.standard.set(phone, forKey: "phone")
+                    helper.saveApiToken(token: token)
+                    helper.saveName(name: name!)
+                    helper.savePhone(phone: phone!)
                     
                     if response.response?.statusCode == 200 {
                         let roleID = responseObject.userData.roleID
@@ -82,7 +81,9 @@ class API: NSObject {
             }
             
         } // End of Alamofire
-        
+        } else {
+            completion(nil, false, "", "لا يوجد اتصال بالانترنت")
+        }
     } // End of function login
     
     

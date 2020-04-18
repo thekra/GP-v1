@@ -12,7 +12,6 @@ class confirmTicketMessageViewController: UIViewController {
     
     static let instance = confirmTicketMessageViewController()
     var delegate: con?
-    var code = 0
 
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!

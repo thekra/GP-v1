@@ -332,9 +332,7 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
         case .restricted, .denied:
             self.allowAlert(title: "الكاميرا غير مفعلة", message: "الرجاء الذهاب الى الاعدادات وتفعيلها")
         }
-//        self.imgView = pic_1
-//        showImage()
-//        enablePic(pic: pic_2)
+        
     }
     
     @objc func imageTap_2() {
@@ -382,159 +380,67 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     
     func confirmPressed()  {
         
-        let urlString = URLs.new_ticket
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(self.token)",
-            "Content-Type": "multipart/form-data",
-            "Accept": "application/json"
-        ]
-        
-        if self.textView.text == "" {
-            self.textView.textColor = UIColor.lightGray // Need to change the color
-            self.textView.text = "."
-        }
-        
-        let parameters = [
-            "description": textView.text!,
-            "latitude": latitude,
-            "longitude": longitude,
-            "city": self.cityID,
-            "neighborhood": self.neighboorhoodID
-            ] as [String : AnyObject]
-        
         let i = self.startAnActivityIndicator1()
-        
         if Connectivity.isConnectedToInternet {
-            Alamofire.upload(multipartFormData:
-                { (multipartFormData ) in
-                    
-                    for i in 0..<self.imgArr.count {
-                        multipartFormData.append(
-                            self.imgArr[i] ,
-                            withName: "photos[\(i)]",
-                            fileName: "swift_file_\(i).jpeg",
-                            mimeType: "image/jpeg"
-                        )
-                        
-                    }
-                    
-                    for (key, value) in parameters {
-                        
-                        if let temp = value as? String {
-                            multipartFormData.append(temp.data(using: .utf8)!, withName: key)
-                        }
-                        
-                        if let temp = value as? Int {
-                            multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-                        }
-                        
-                        if let temp = value as? Double {
-                            multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-                        }
-                        
-                        print("Sent Parameters: \(parameters)")
-                    }
-            }, to: urlString,
-               method: .post,
-               headers: headers,
-               encodingCompletion: {
-                encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    
-                    upload.responseData { response in
-                        debugPrint("SUCCESS RESPONSE: \(response)")
-                        debugPrint(response.debugDescription)
-                        print("REsponse: \(response)")
-                        
-                        
-                        if response.response?.statusCode == 200 {
-                            i.stopAnimating()
-                            //self.goToTicketList()
-                        }
-                        guard let data = response.data else {
-                            
-                            DispatchQueue.main.async {
-                                print(response.error!)
-                            }
-                            return
-                        }
-                        
-                        let decoder = JSONDecoder()
-                        do {
-                            let responseObject =  try decoder.decode(TicketResponse.self, from: data)
-                            print("response Object MESSAGE: \([responseObject].self)")
-                            
-                        } // end of do
-                        catch let parsingError {
-                            print("Error", parsingError)
-                        } // End of catch
-                        
-                    } // End of upload
-                    
-                    upload.responseJSON { response in
-                        
-                        
-                        print("the resopnse code is : \(response.response?.statusCode)")
-                        
-                        // من هنا يطلع رسالة الايرور تمام
-                        print("the response is : \(response)")
-                    }
-                    
-                case .failure(let encodingError):
-                    // hide progressbas here
-                    print("ERROR RESPONSE: \(encodingError)")
+            API.newTicket(decription: textView, latitude: self.latitude, longitude: self.longitude, cityID: self.cityID, neighborhoodID: self.neighboorhoodID, imgArr: self.imgArr) { (error: Error?, success: Bool, message: String) in
+                if success {
+                    i.stopAnimating()
+                    self.goToTicketList()
                 }
-            })
-            
+            }
         } // End of Connection check
         else {
-            //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
-            i.stopAnimating()
-            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
-            AlertView.instance.ParentView.frame = CGRect(x: 0, y: 200 - self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
-            self.view.addSubview(AlertView.instance.ParentView)
+            errorView(message: "لا يوجد اتصال بالانترنت")
+            
         } // end of else connection
-        //return code
+    }
+    
+    func goToTicketList() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func errorView(message: String) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Error") as! ErrorViewController
+        
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .custom
+        vc.message = message
+        self.present(vc, animated: true, completion: nil)
+
+    }
+    
+    func confirmView() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "confirm") as! confirmTicketMessageViewController
+                     vc.delegate?.confirmPressed()
+                     vc.transitioningDelegate = self
+                     vc.modalPresentationStyle = .custom
+                     vc.delegate = self
+        self.present(vc, animated: true, completion: nil)
+
     }
     
     @IBAction func confirmTicket(_ sender: Any) {
-        print("self.view.frame.origin.y: \(self.view.frame.origin.y)")
+        
         let i = self.startAnActivityIndicator1()
         
         if self.imgArr.isEmpty {
             print("Array Count: \(self.imgArr.count)")
-            i.stopAnimating()
-            //self.showAlert(title: "خطأ", message: "الرجاء ارفاق ١ - ٤ صور")
+            errorView(message: "الرجاء ارفاق ١ - ٤ صور")
             
-            AlertView.instance.showAlert(message: "الرجاء ارفاق ١ - ٤ صور", alertType: .failure)
-            AlertView.instance.ParentView.frame = CGRect(x: 0, y: -221, width: 414, height: 896) // not AutoLayout
-            self.view.addSubview(AlertView.instance.ParentView)
         } else {
             
             if Connectivity.isConnectedToInternet {
                 i.stopAnimating()
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "confirm") as! confirmTicketMessageViewController
-                vc.delegate?.confirmPressed()
-                vc.transitioningDelegate = self
-                vc.modalPresentationStyle = .custom
-                vc.delegate = self
-                
-                self.present(vc, animated: true, completion: nil)
+               confirmView()
             } else {
                 i.stopAnimating()
-                AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
-                AlertView.instance.ParentView.frame = CGRect(x: 0, y: -200, width: 414, height: 896)
-                self.view.addSubview(AlertView.instance.ParentView)
+                            errorView(message: "لا يوجد اتصال بالانترنت")
             }
         }
     } // End of ConfirmTicket Button
     
-    func goToTicketList() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
-        //vc.getTicketsList()
-        self.present(vc, animated: true, completion: nil)
-    }
+  
     
     func getNeighborhoodList() {
         
@@ -590,12 +496,12 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
     func showImage() {
         let imgPicker = UIImagePickerController()
         imgPicker.delegate = self
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imgPicker.sourceType = .camera
-        } else {
-            self.showAlert(title: "مشكلة في الكاميرا", message: "يبدو انه ليس هنالك وجود لكاميرا الهاتف")
-        }
-        //imgPicker.sourceType = .photoLibrary
+//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//            imgPicker.sourceType = .camera
+//        } else {
+//            self.showAlert(title: "مشكلة في الكاميرا", message: "يبدو انه ليس هنالك وجود لكاميرا الهاتف")
+//        }
+        imgPicker.sourceType = .photoLibrary
         imgPicker.modalPresentationStyle = .overFullScreen
         self.present(imgPicker, animated: true, completion: nil)
     }
@@ -730,19 +636,7 @@ extension ticketViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-//extension ticketViewController : UIPresentationController {
-//    override var frameOfPresentedViewInContainerView: CGRect {
-//        get {
-//            guard let theView = containerView else {
-//                return CGRect.zero
-//            }
-//
-//            return CGRect(x: 0, y: theView.bounds.height/2, width: theView.bounds.width, height: theView.bounds.height/2)
-//        }
-//    }
-//}
 
-//
 extension ticketViewController: BonsaiControllerDelegate {
     
     // return the frame of your Bonsai View Controller
@@ -750,7 +644,6 @@ extension ticketViewController: BonsaiControllerDelegate {
         print(containerViewFrame.height)
         print(containerViewFrame.height / (4/3))
         
-        //        return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height / 3), size: CGSize(width: containerViewFrame.width, height: containerViewFrame.height / (4/3)))
         
         return CGRect(origin: CGPoint(x: 0, y: containerViewFrame.height - 505), size: CGSize(width: containerViewFrame.width, height: 505))
     }
@@ -765,8 +658,6 @@ extension ticketViewController: BonsaiControllerDelegate {
         // or Bubble animation initiated from a view
         //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
     }
-    //
-    //
-    //
+    
 }
 

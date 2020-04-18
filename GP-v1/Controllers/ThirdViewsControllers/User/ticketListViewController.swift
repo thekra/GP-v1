@@ -106,7 +106,7 @@ class ticketListViewController: UIViewController {
             } // end of alamofire
             
         } else {
-            //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
+            
             i.stopAnimating()
             AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
             self.view.addSubview(AlertView.instance.ParentView)
