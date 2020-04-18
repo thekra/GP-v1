@@ -2095,7 +2095,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="تأكيد اعتماد التذكرة" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsu-jn-U2F">
-                                <rect key="frame" x="50" y="244" width="314" height="51"/>
+                                <rect key="frame" x="50" y="243" width="314" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Fsu-jn-U2F" secondAttribute="height" multiplier="178:29" id="Zcn-gg-KLE"/>
                                 </constraints>
@@ -2104,7 +2104,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWQ-9a-Fwv">
-                                <rect key="frame" x="50" y="345" width="314" height="33"/>
+                                <rect key="frame" x="50" y="344" width="314" height="33"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhX-pC-F8F">
                                         <rect key="frame" x="182.5" y="0.0" width="91.5" height="33"/>
@@ -2140,15 +2140,25 @@
                                     <constraint firstItem="epd-Bl-Ynd" firstAttribute="centerY" secondItem="nhX-pC-F8F" secondAttribute="centerY" id="yDT-rC-fG3"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon awesome-check-circle" translatesAutoresizingMaskIntoConstraints="NO" id="3tr-rZ-TsE">
+                                <rect key="frame" x="114" y="89" width="187" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="RK4-Ra-UEO"/>
+                                    <constraint firstAttribute="width" constant="187" id="xLP-fQ-ILo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.50980392159999999" green="0.76470588240000004" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AWQ-9a-Fwv" secondAttribute="trailing" constant="50" id="9WU-Lq-0e0"/>
                             <constraint firstItem="AWQ-9a-Fwv" firstAttribute="top" secondItem="Fsu-jn-U2F" secondAttribute="bottom" constant="50" id="AWE-15-eUS"/>
+                            <constraint firstItem="3tr-rZ-TsE" firstAttribute="leading" secondItem="Ske-Kk-YgC" secondAttribute="leading" constant="114" id="DkN-iH-ZNt"/>
                             <constraint firstItem="AWQ-9a-Fwv" firstAttribute="leading" secondItem="D3u-R4-CUJ" secondAttribute="leading" constant="50" id="U3o-X6-mrs"/>
                             <constraint firstItem="Fsu-jn-U2F" firstAttribute="leading" secondItem="Ske-Kk-YgC" secondAttribute="leading" constant="50" id="dZa-6j-auo"/>
+                            <constraint firstItem="Fsu-jn-U2F" firstAttribute="top" secondItem="3tr-rZ-TsE" secondAttribute="bottom" constant="50" id="h9A-Jj-8fI"/>
                             <constraint firstItem="Ske-Kk-YgC" firstAttribute="trailing" secondItem="Fsu-jn-U2F" secondAttribute="trailing" constant="50" id="kjT-Xz-Rk5"/>
-                            <constraint firstItem="Fsu-jn-U2F" firstAttribute="top" secondItem="Ske-Kk-YgC" secondAttribute="top" constant="200" id="pTh-dD-9A0"/>
+                            <constraint firstItem="3tr-rZ-TsE" firstAttribute="top" secondItem="Ske-Kk-YgC" secondAttribute="top" constant="45" id="orQ-Oy-5wN"/>
+                            <constraint firstItem="Ske-Kk-YgC" firstAttribute="trailing" secondItem="3tr-rZ-TsE" secondAttribute="trailing" constant="113" id="vfz-PL-rbQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ske-Kk-YgC"/>
                     </view>
@@ -2171,14 +2181,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدث خطأ ما !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EJ-y0-ZTC">
-                                <rect key="frame" x="50" y="244" width="314" height="36"/>
+                                <rect key="frame" x="50" y="243" width="314" height="36"/>
                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حدث خطأ ما !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2J-n8-58F">
-                                <rect key="frame" x="50" y="319" width="314" height="36"/>
-                                <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="30"/>
+                                <rect key="frame" x="50" y="318" width="314" height="30"/>
+                                <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -2189,14 +2199,24 @@
                                     <action selector="dismiss:" destination="eQJ-E0-Rzm" eventType="touchUpInside" id="ZOX-nA-RW6"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon material-error-outline" translatesAutoresizingMaskIntoConstraints="NO" id="GCt-fc-sHP">
+                                <rect key="frame" x="114" y="89" width="187" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="187" id="JmA-QA-JsJ"/>
+                                    <constraint firstAttribute="height" constant="104" id="R6s-aQ-JoC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.92941176469999998" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4EJ-y0-ZTC" firstAttribute="leading" secondItem="1lm-0B-1xm" secondAttribute="leading" constant="50" id="2Mg-UP-aee"/>
+                            <constraint firstItem="4EJ-y0-ZTC" firstAttribute="top" secondItem="GCt-fc-sHP" secondAttribute="bottom" constant="50" id="3Qw-UH-rj3"/>
                             <constraint firstItem="1lm-0B-1xm" firstAttribute="trailing" secondItem="4EJ-y0-ZTC" secondAttribute="trailing" constant="50" id="BFW-rh-iLc"/>
-                            <constraint firstItem="4EJ-y0-ZTC" firstAttribute="top" secondItem="1lm-0B-1xm" secondAttribute="top" constant="200" id="NW0-ij-uV0"/>
+                            <constraint firstItem="GCt-fc-sHP" firstAttribute="leading" secondItem="1lm-0B-1xm" secondAttribute="leading" constant="114" id="O0e-Eo-Snh"/>
+                            <constraint firstItem="1lm-0B-1xm" firstAttribute="trailing" secondItem="GCt-fc-sHP" secondAttribute="trailing" constant="113" id="Oh3-qp-L0M"/>
                             <constraint firstItem="h2J-n8-58F" firstAttribute="leading" secondItem="1lm-0B-1xm" secondAttribute="leading" constant="50" id="PGv-4a-7aV"/>
                             <constraint firstItem="1lm-0B-1xm" firstAttribute="trailing" secondItem="h2J-n8-58F" secondAttribute="trailing" constant="50" id="Zhf-9U-ThI"/>
+                            <constraint firstItem="GCt-fc-sHP" firstAttribute="top" secondItem="1lm-0B-1xm" secondAttribute="top" constant="45" id="btV-NS-etT"/>
                             <constraint firstItem="h2J-n8-58F" firstAttribute="top" secondItem="4EJ-y0-ZTC" secondAttribute="bottom" constant="39" id="i1e-kc-r6s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1lm-0B-1xm"/>
@@ -2501,10 +2521,12 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Group 33" width="172" height="172"/>
+        <image name="Icon awesome-check-circle" width="56.5" height="56.5"/>
         <image name="Icon feather-settings" width="154" height="154"/>
         <image name="Icon ionic-ios-arrow-back" width="13.5" height="24"/>
         <image name="Icon ionic-ios-log-out" width="27.5" height="23"/>
         <image name="Icon ionic-ios-star-unfill" width="37" height="34.5"/>
+        <image name="Icon material-error-outline" width="58" height="58"/>
         <image name="Logo-1" width="260" height="260"/>
         <image name="Repeat Grid 1" width="82" height="77"/>
         <image name="Repeat Grid 1 copy" width="79" height="74"/>

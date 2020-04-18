@@ -229,6 +229,7 @@
 		794C6E99244367960083C405 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				794C6E9C244372260083C405 /* Constants.swift */,
 				794C6E9A244367AD0083C405 /* API.swift */,
 				794C6E9E2444DF6F0083C405 /* API+Ticket.swift */,
 				79499311244AD6DD000CB24F /* API+User.swift */,
@@ -263,6 +264,7 @@
 			children = (
 				797F8BC723E56CB500960C79 /* AppDelegate.swift */,
 				797F8BC923E56CB500960C79 /* SceneDelegate.swift */,
+				79536AF0244AABBF00007818 /* helper.swift */,
 				79BFCA0A241A355600067783 /* Fonts */,
 				794C6E99244367960083C405 /* API */,
 				797F8BFA23E56D1E00960C79 /* Network */,
@@ -271,7 +273,6 @@
 				797F8BF823E56D1300960C79 /* View */,
 				797F8BF723E56D0800960C79 /* Controllers */,
 				797F8BD523E56CBA00960C79 /* Info.plist */,
-				79536AF0244AABBF00007818 /* helper.swift */,
 			);
 			path = "GP-v1";
 			sourceTree = "<group>";
@@ -341,7 +342,6 @@
 			isa = PBXGroup;
 			children = (
 				794A3A9A23FFF7C3003CDE02 /* File.swift */,
-				794C6E9C244372260083C405 /* Constants.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
