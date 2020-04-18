@@ -161,10 +161,6 @@ extension API {
                         let responseObject =  try decoder.decode(TicketCell.self, from: data)
                         if response.response?.statusCode == 200 {
                             
-                                                   
-//                                                   if ticketCell.isEmpty {
-//                                                       labelView.isHidden = false
-//                                                   }
                             DispatchQueue.main.async {
                                 completion(nil, true, responseObject,"")
                             }
@@ -188,6 +184,184 @@ extension API {
             
         } // end of function
     
+    // MARK:- List Tickets
+       
+       /// takes email and password and returns role id
+    class func deleteTicket( ticket_id: Int, completion: @escaping (_ error: Error?, _ success: Bool, _ message: String) -> Void) {
+        guard let api_token = helper.getApiToken() else {
+            completion(nil, false,"")
+            return
+        }
+        
+        let urlString = URLs.delete_ticket
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(api_token)",
+            "Content-Type": "multipart/form-data",
+            "Accept": "application/json"
+        ]
+        
+        let parameters = [
+            "ticket_id": ticket_id
+            ] as [String : AnyObject]
+        
+        
+        if Connectivity.isConnectedToInternet {
+            
+            Alamofire.upload(multipartFormData:
+                { (multipartFormData ) in
+                    
+                    for (key, value) in parameters {
+                        if let temp = value as? Int {
+                            multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
+                        }
+                        print("Sent Parameters: \(parameters)")
+                    }
+            }, to: urlString,
+               method: .post,
+               headers: headers,
+               encodingCompletion: {
+                encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    
+                    
+                    
+                    upload.responseData { response in
+                        debugPrint("SUCCESS RESPONSE: \(response)")
+                        debugPrint(response.debugDescription)
+                        print("REsponse: \(response)")
+                        
+                        
+                    } // End of upload
+                    
+                    upload.responseJSON { response in
+                        
+                        print("the resopnse code is : \(response.response?.statusCode ?? 0)")            // من هنا يطلع رسالة الايرور تمام
+                        print("the response is : \(response)")
+                        if response.response?.statusCode == 200 {
+
+                            completion(nil, true,"")
+                        }
+                    }
+                    
+                case .failure(let encodingError):
+                    // hide progressbas here
+                    print("ERROR RESPONSE: \(encodingError)")
+                }
+            }) // End of Alamofire
+            
+            
+        } // End of Connection check
+        else {
+           completion(nil, false,"لا يوجد اتصال بالانترنت")
+        }
     }
+    
+    // MARK:- List Tickets
+        
+        /// takes email and password and returns role id
+    class func closeTicket( ticket_id: Int, status: String, degree_id: Int, imgArr: [Data], completion: @escaping (_ error: Error?, _ success: Bool, _ message: String) -> Void) {
+        
+         guard let api_token = helper.getApiToken() else {
+             completion(nil, false,"")
+             return
+        }
+        
+        let urlString = URLs.update_ticekt
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(api_token)",
+            "Content-Type": "multipart/form-data",
+            "Accept": "application/json"
+        ]
+        
+        
+        let parameters = [
+           "ticket_id": ticket_id,
+            "status" : status,
+            "degree_id" : degree_id
+            ] as [String : AnyObject]
+        
+        if degree_id == 0 {
+            
+            completion(nil, false, "الرجاء اختيار حجم الضرر")
+        }
+        
+        if imgArr.isEmpty {
+           
+            completion(nil, false, "الرجاء ارفاق ١ - ٤ صور")
+        }
+        
+        if Connectivity.isConnectedToInternet {
+            Alamofire.upload(multipartFormData:
+                { (multipartFormData ) in
+                    
+                    for i in 0..<imgArr.count {
+                        multipartFormData.append(
+                            imgArr[i] ,
+                            withName: "photos[\(i)]",
+                            fileName: "swift_file_\(i).jpeg",
+                            mimeType: "image/jpeg"
+                        )
+                        
+                    }
+                    
+                    for (key, value) in parameters {
+                        
+                        if let temp = value as? String {
+                            multipartFormData.append(temp.data(using: .utf8)!, withName: key)
+                        }
+                        
+                        if let temp = value as? Int {
+                            multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
+                        }
+                        
+                        print("Sent Parameters: \(parameters)")
+                    }
+            }, to: urlString,
+               method: .post,
+               headers: headers,
+               encodingCompletion: {
+                encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    
+                    upload.responseData { response in
+                        debugPrint("SUCCESS RESPONSE: \(response)")
+                        debugPrint(response.debugDescription)
+                        print("REsponse: \(response)")
+                        
+                        
+                        if response.response?.statusCode == 200 {
+                            completion(nil, true, "")
+                        //self.goToTicketList()
+                        }
+                    } // End of upload
+                    
+                    upload.responseJSON { response in
+                        
+                     
+                        print("the resopnse code is : \(response.response?.statusCode)")
+                        
+                        // من هنا يطلع رسالة الايرور تمام
+                        print("the response is : \(response)")
+                    }
+                    
+                case .failure(let encodingError):
+                    // hide progressbas here
+                    print("ERROR RESPONSE: \(encodingError)")
+                }
+            })
+            
+        } // End of Connection check
+        else {
+            
+            completion(nil, false, "لا يوجد اتصال بالانترنت")
+        } // end of else connection
+        
+    }
+
+}
+    
 
 

@@ -149,12 +149,12 @@ class userProfileViewController: UIViewController{
         
         let urlString = URLs.get_user
         
+        
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(self.token)",
             "Content-Type": "multipart/form-data",
             "Accept": "application/json"
         ]
-        
         
         
         Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
@@ -180,7 +180,6 @@ class userProfileViewController: UIViewController{
                 }
                 
                 if let uPhone = responseObject.phone {
-                    //let phoneCon = self.convertEngNumToArabicNumm(num: Int(uPhone)!)
                     self.userPhone.text = uPhone
                     self.phone = uPhone
                 } else {
@@ -192,7 +191,6 @@ class userProfileViewController: UIViewController{
                 if let chosenNei = responseObject.neighborhood?.nameAr{
                     
                 self.chooseNeighborhood.text = chosenNei
-                //self.oldSelectedNei = responseObject.neighborhood!.nameAr//chosenNei
                 }
                 
                 if let chosenCity = responseObject.city?.nameAr {
@@ -209,7 +207,6 @@ class userProfileViewController: UIViewController{
                     }
                     self.gender = gender
                 }
-                //self.neighboorhoodID = responseObject.neighborhood.id
                 print("User Info: \(responseObject)")
                 
                 
@@ -328,25 +325,12 @@ class userProfileViewController: UIViewController{
 //                                    print("One word")
 //                                    self.name = name!
                                 UserDefaults.standard.set(name, forKey: "name")
-//
-//                                } else {
-//                                    print("Not one word")
-//                                    let firstName = name!.components(separatedBy: " ")
-//                                    self.name = firstName[0]
-//                                    UserDefaults.standard.set(firstName[0], forKey: "name")
-//                                }
                                 
                                 let phone = responseObject.phone
-                                //let convertedPhone = self.convertEngNumToArabicNumm(num: Int(phone)!)
-                                //self.name = name
                                 self.phone = phone!
-                                
-                                //UserDefaults.standard.set(name, forKey: "name")
                                 
                                 UserDefaults.standard.set(phone, forKey: "phone")
                                 self.chooseNeighborhood.text = responseObject.neighborhood?.nameAr
-                                //self.chooseNeighborhood.text = self.selectedNeighborhood
-                                //self.neighboorhoodID = responseObject.neighborhood.id
                                 
                             } // end of do
                             catch let parsingError {
@@ -360,7 +344,6 @@ class userProfileViewController: UIViewController{
                             print("the resopnse code is : \(response.response?.statusCode ?? 0)")
                             if response.response?.statusCode == 200 {
                             i.stopAnimating()
-                            //self.showAnAlert()
                                            AlertView.instance.showAlert(message: "تم تحديث بياناتك", alertType: .success)
                                 
                                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "userProfilee") as! userProfileViewController
@@ -386,8 +369,6 @@ class userProfileViewController: UIViewController{
         } // End of Connection check
         else {
             i.stopAnimating()
-           // self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
-            
                        AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
                        self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection

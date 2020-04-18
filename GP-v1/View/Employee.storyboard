@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,16 +41,16 @@
                                                             <rect key="frame" x="0.0" y="12" width="414" height="84"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Y7T-TY-Ybu">
-                                                            <rect key="frame" x="201.5" y="30" width="152.5" height="20.5"/>
+                                                            <rect key="frame" x="225" y="30" width="129" height="20"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="or4-JP-Knl">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="67" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="20"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="رقم التذكرة:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvM-HW-1yg">
-                                                                    <rect key="frame" x="72" y="0.0" width="80.5" height="20.5"/>
+                                                                    <rect key="frame" x="61" y="0.0" width="68" height="20"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -58,16 +58,16 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yL2-DA-SxM">
-                                                            <rect key="frame" x="201.5" y="63" width="152.5" height="20.5"/>
+                                                            <rect key="frame" x="225" y="62.5" width="129" height="20"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="١٠\٥" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbo-mo-N6U">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="20"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="التاريخ:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1P-7g-DSV">
-                                                                    <rect key="frame" x="109" y="0.0" width="43.5" height="20.5"/>
+                                                                    <rect key="frame" x="85.5" y="0.0" width="43.5" height="20"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="43.5" id="VNw-tD-kBK"/>
                                                                     </constraints>
@@ -78,16 +78,16 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ei5-hM-8R4">
-                                                            <rect key="frame" x="50" y="63" width="85.5" height="20.5"/>
+                                                            <rect key="frame" x="50" y="63" width="71" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="مغلقة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZt-Kl-0pO">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="39" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="27" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحالة:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xO9-tl-5wA">
-                                                                    <rect key="frame" x="44" y="0.0" width="41.5" height="20.5"/>
+                                                                    <rect key="frame" x="32" y="0.0" width="39" height="20.5"/>
                                                                     <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -200,19 +200,19 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="550"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="معلومات التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hva-GM-iLw">
-                                                                <rect key="frame" x="16" y="24" width="382" height="24"/>
+                                                                <rect key="frame" x="16" y="24" width="382" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الصور" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Le-uj-m4G">
-                                                                <rect key="frame" x="16" y="72" width="382" height="24"/>
+                                                                <rect key="frame" x="16" y="71.5" width="382" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="C6J-fr-evG">
-                                                                <rect key="frame" x="16" y="114" width="382" height="81"/>
+                                                                <rect key="frame" x="16" y="113" width="382" height="81"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Repeat Grid 1" translatesAutoresizingMaskIntoConstraints="NO" id="rWW-xz-9DV" userLabel="pic-4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="97" height="81"/>
@@ -250,13 +250,13 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="الحي" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnF-uJ-JNJ">
-                                                                <rect key="frame" x="16" y="206" width="382" height="24"/>
+                                                                <rect key="frame" x="16" y="205" width="382" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkJ-AH-gbv">
-                                                                <rect key="frame" x="16" y="254" width="382" height="39"/>
+                                                                <rect key="frame" x="16" y="252.5" width="382" height="39"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="39" id="jrh-ar-m9H"/>
@@ -266,20 +266,20 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="الوصف" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxr-Yf-Wl9">
-                                                                <rect key="frame" x="16" y="309" width="382" height="24"/>
+                                                                <rect key="frame" x="16" y="307.5" width="382" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is super long long text. " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diV-CX-LM9">
-                                                                <rect key="frame" x="16" y="357" width="382" height="24"/>
+                                                                <rect key="frame" x="16" y="355" width="382" height="23.5"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzu-sV-MFU">
-                                                                <rect key="frame" x="16" y="445" width="382" height="39"/>
+                                                                <rect key="frame" x="16" y="442" width="382" height="39"/>
                                                                 <color key="backgroundColor" red="0.94891661410000006" green="0.9490789771" blue="0.94890636210000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="rzu-sV-MFU" secondAttribute="height" multiplier="382:39" id="W6x-Bx-tLI"/>
@@ -290,7 +290,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="موقع التذكرة" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7T-mb-tM1">
-                                                                <rect key="frame" x="16" y="405" width="382" height="24"/>
+                                                                <rect key="frame" x="16" y="402.5" width="382" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -439,13 +439,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="صور الإصلاح" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLc-6o-HrD">
-                                                                <rect key="frame" x="16" y="24" width="382" height="24"/>
+                                                                <rect key="frame" x="16" y="24" width="382" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="x3g-65-cvu">
-                                                                <rect key="frame" x="90" y="98" width="234" height="233"/>
+                                                                <rect key="frame" x="90" y="97.5" width="234" height="233"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleAspectFit" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="cFP-Js-9d1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="234" height="109.5"/>
@@ -496,13 +496,13 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="حجم الضرر" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKS-Qd-rV2">
-                                                                <rect key="frame" x="16" y="361" width="382" height="24"/>
+                                                                <rect key="frame" x="16" y="360.5" width="382" height="23.5"/>
                                                                 <fontDescription key="fontDescription" name="AhlanworldArbfonts" family="Ahlan World Arbfonts" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TWA-bS-3Zk">
-                                                                <rect key="frame" x="36" y="401" width="342" height="36"/>
+                                                                <rect key="frame" x="36" y="400" width="342" height="36"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1U-r0-aQ5">
                                                                         <rect key="frame" x="236.5" y="0.0" width="95" height="36"/>
@@ -651,7 +651,7 @@
             <objects>
                 <viewController storyboardIdentifier="switchEmp" id="MRm-Fj-zft" customClass="switchEmpViewController" customModule="GP_v1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ovY-G5-nGM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="248"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJA-1b-x7u" userLabel="TopView">
@@ -770,6 +770,9 @@
             <point key="canvasLocation" x="2193" y="3428"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tyL-kS-2x6"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Group 33" width="172" height="172"/>
         <image name="Icon ionic-ios-log-out" width="27.5" height="23"/>
@@ -778,7 +781,4 @@
         <image name="closed-2" width="336" height="77"/>
         <image name="profile" width="154" height="154"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="tyL-kS-2x6"/>
-    </inferredMetricsTieBreakers>
 </document>

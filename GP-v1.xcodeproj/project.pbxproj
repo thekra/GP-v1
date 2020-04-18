@@ -28,6 +28,7 @@
 		7934B3CE242AAFE600D46436 /* TicketInfoEmpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934B3CD242AAFE600D46436 /* TicketInfoEmpViewController.swift */; };
 		7934B3D0242AB3CC00D46436 /* closeTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7934B3CF242AB3CC00D46436 /* closeTicketViewController.swift */; };
 		794255C823F6AA170051DE63 /* TicketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794255C723F6AA170051DE63 /* TicketResponse.swift */; };
+		79499312244AD6DD000CB24F /* API+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79499311244AD6DD000CB24F /* API+User.swift */; };
 		794A3A8C23FD4BA7003CDE02 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8B23FD4BA7003CDE02 /* City.swift */; };
 		794A3A8E23FD4C26003CDE02 /* Neighborhood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */; };
 		794A3A9023FE7BC1003CDE02 /* ticketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */; };
@@ -106,6 +107,7 @@
 		7934B3CD242AAFE600D46436 /* TicketInfoEmpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoEmpViewController.swift; sourceTree = "<group>"; };
 		7934B3CF242AB3CC00D46436 /* closeTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = closeTicketViewController.swift; sourceTree = "<group>"; };
 		794255C723F6AA170051DE63 /* TicketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketResponse.swift; sourceTree = "<group>"; };
+		79499311244AD6DD000CB24F /* API+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+User.swift"; sourceTree = "<group>"; };
 		794A3A8B23FD4BA7003CDE02 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		794A3A8D23FD4C26003CDE02 /* Neighborhood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Neighborhood.swift; sourceTree = "<group>"; };
 		794A3A8F23FE7BC1003CDE02 /* ticketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ticketListViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				794C6E9A244367AD0083C405 /* API.swift */,
 				794C6E9E2444DF6F0083C405 /* API+Ticket.swift */,
+				79499311244AD6DD000CB24F /* API+User.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				794C6E9B244367AD0083C405 /* API.swift in Sources */,
 				797F8BCA23E56CB500960C79 /* SceneDelegate.swift in Sources */,
 				792D5B9E2413C499007D46C8 /* resetPasswordViewController.swift in Sources */,
+				79499312244AD6DD000CB24F /* API+User.swift in Sources */,
 				792D5BB024182E16007D46C8 /* AlertView.swift in Sources */,
 				7934B3CE242AAFE600D46436 /* TicketInfoEmpViewController.swift in Sources */,
 			);

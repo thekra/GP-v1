@@ -167,124 +167,17 @@ class closeTicketViewController: UIViewController {
         
         
         @IBAction func closeTicket(_ sender: Any) {
-            
-            let urlString = URLs.update_ticekt
-            let headers: HTTPHeaders = [
-                "Authorization": "Bearer \(self.token)",
-                "Content-Type": "multipart/form-data",
-                "Accept": "application/json"
-            ]
-            
-            
-            let parameters = [
-               "ticket_id": self.ticket_id,
-                "status" : "SOLVED",
-                "degree_id" : self.degree_id
-                ] as [String : AnyObject]
-            let i = self.startAnActivityIndicator1()
-            
-            if degree_id == 0 {
-                i.stopAnimating()
-                               
-                AlertView.instance.showAlert(message: "الرجاء اختيار حجم الضرر", alertType: .failure)
-                           self.view.addSubview(AlertView.instance.ParentView)
+            let i = self.startAnActivityIndicator()
+            API.closeTicket(ticket_id: self.ticket_id, status: "SOLVED", degree_id: self.degree_id, imgArr: self.imgArr) { (error: Error?, success: Bool, message: String) in
+                if success {
+                    i.stopAnimating()
+                    self.goToTicketList()
+                } else {
+                    i.stopAnimating()
+                                       AlertView.instance.showAlert(message: message, alertType: .failure)
+                                                  self.view.addSubview(AlertView.instance.ParentView)
+                }
             }
-            
-            if self.imgArr.isEmpty {
-                print("Array Count: \(self.imgArr.count)")
-                i.stopAnimating()
-                
-                AlertView.instance.showAlert(message: "الرجاء ارفاق ١ - ٤ صور", alertType: .failure)
-            self.view.addSubview(AlertView.instance.ParentView)
-            }
-            
-            if Connectivity.isConnectedToInternet {
-                Alamofire.upload(multipartFormData:
-                    { (multipartFormData ) in
-                        
-                        for i in 0..<self.imgArr.count {
-                            multipartFormData.append(
-                                self.imgArr[i] ,
-                                withName: "photos[\(i)]",
-                                fileName: "swift_file_\(i).jpeg",
-                                mimeType: "image/jpeg"
-                            )
-                            
-                        }
-                        
-                        for (key, value) in parameters {
-                            
-                            if let temp = value as? String {
-                                multipartFormData.append(temp.data(using: .utf8)!, withName: key)
-                            }
-                            
-                            if let temp = value as? Int {
-                                multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-                            }
-                            
-                            print("Sent Parameters: \(parameters)")
-                        }
-                }, to: urlString,
-                   method: .post,
-                   headers: headers,
-                   encodingCompletion: {
-                    encodingResult in
-                    switch encodingResult {
-                    case .success(let upload, _, _):
-                        
-                        upload.responseData { response in
-                            debugPrint("SUCCESS RESPONSE: \(response)")
-                            debugPrint(response.debugDescription)
-                            print("REsponse: \(response)")
-                            
-                            
-                            if response.response?.statusCode == 200 {
-                                i.stopAnimating()
-                            self.goToTicketList()
-                            }
-                            guard let data = response.data else {
-                                
-                                DispatchQueue.main.async {
-                                    print(response.error!)
-                                }
-                                return
-                            }
-                            
-                            let decoder = JSONDecoder()
-                            do {
-                                let responseObject =  try decoder.decode(TicketResponse.self, from: data)
-                                print("response Object MESSAGE: \([responseObject].self)")
-
-                            } // end of do
-                            catch let parsingError {
-                                print("Error", parsingError)
-                            } // End of catch
-                            
-                        } // End of upload
-                        
-                        upload.responseJSON { response in
-                            
-                         
-                            print("the resopnse code is : \(response.response?.statusCode)")
-                            
-                            // من هنا يطلع رسالة الايرور تمام
-                            print("the response is : \(response)")
-                        }
-                        
-                    case .failure(let encodingError):
-                        // hide progressbas here
-                        print("ERROR RESPONSE: \(encodingError)")
-                    }
-                })
-                
-            } // End of Connection check
-            else {
-                //self.showAlert(title: "خطأ", message: "لا يوجد اتصال بالانترنت")
-                i.stopAnimating()
-                AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
-                self.view.addSubview(AlertView.instance.ParentView)
-            } // end of else connection
-            
         } // End of ConfirmTicket Button
         
         func goToTicketList() {

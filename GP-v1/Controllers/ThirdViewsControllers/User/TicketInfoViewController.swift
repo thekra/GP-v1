@@ -74,20 +74,18 @@ class TicketInfoViewController: UIViewController {
         statusLabel.roundCornerr(corners: [.topLeft, .topRight], radius: 15)
         // descLabel.layer.masksToBounds = true
         //descView.text = ticket?[0].ticket.ticketDescription
-        
-        if ticket?[0].ticket.ticketDescription == "." {
-            descView.text = ""
-        } else {
+//
+//        if ticket?[0].ticket.ticketDescription == "." {
+//            descView.text = ""
+//        } else {
             descView.text = ticket?[0].ticket.ticketDescription
-        }
+        //}
         
         neighborhood.text = ticket?[0].location[0].neighborhood
         
         picArr = [pic_1, pic_2, pic_3, pic_4]
         
-        //self.ticket_id = (ticket?[0].ticket.id)!
         loadImages()
-        //flag()
         
         checkForRating()
     }
@@ -165,69 +163,13 @@ class TicketInfoViewController: UIViewController {
     }
     
     @objc func deleteTicketCon() {
-        let urlString = URLs.delete_ticket
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(self.token)",
-            "Content-Type": "multipart/form-data",
-            "Accept": "application/json"
-        ]
-        let parameters = [
-            "ticket_id": self.ticket_id
-            ] as [String : AnyObject]
-        
-        //let i = self.startAnActivityIndicator()
-        if Connectivity.isConnectedToInternet {
-            
-            Alamofire.upload(multipartFormData:
-                { (multipartFormData ) in
-                    
-                    for (key, value) in parameters {
-                        if let temp = value as? Int {
-                            multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-                        }
-                        print("Sent Parameters: \(parameters)")
-                    }
-            }, to: urlString,
-               method: .post,
-               headers: headers,
-               encodingCompletion: {
-                encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    
-                    
-                    
-                    upload.responseData { response in
-                        debugPrint("SUCCESS RESPONSE: \(response)")
-                        debugPrint(response.debugDescription)
-                        print("REsponse: \(response)")
-                        
-                        
-                    } // End of upload
-                    
-                    upload.responseJSON { response in
-                        
-                        print("the resopnse code is : \(response.response?.statusCode ?? 0)")            // من هنا يطلع رسالة الايرور تمام
-                        print("the response is : \(response)")
-                        if response.response?.statusCode == 200 {
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
-                            self.present(vc, animated: true, completion: nil)
-                        }
-                    }
-                    
-                case .failure(let encodingError):
-                    // hide progressbas here
-                    print("ERROR RESPONSE: \(encodingError)")
-                }
-            }) // End of Alamofire
-            
-            
-        } // End of Connection check
-        else {
-            //                   i.stopAnimating()
-            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
-            self.view.addSubview(AlertView.instance.ParentView)
+        API.deleteTicket(ticket_id: self.ticket_id) { (error: Error?, success: Bool, message: String) in
+            if success {
+                                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
+                                            self.present(vc, animated: true, completion: nil)
+            } else {
+                
+            }
         }
     }
     
@@ -236,7 +178,6 @@ class TicketInfoViewController: UIViewController {
         AlertView.instance.yesButton.addTarget(self, action: #selector(self.deleteTicketCon), for: .touchUpInside)
         AlertView.instance.ParentView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view.addSubview(AlertView.instance.ParentView)
-        
     }
     
     @IBAction func ratePressed(_ sender: Any) {
@@ -250,7 +191,7 @@ class TicketInfoViewController: UIViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "showRate") as! showRateViewController
         
         vc.ticket_id = ticket_id
-        vc.ticket = self.ticket
+        vc.ticket    = self.ticket
         
         self.present(vc, animated: true, completion: nil)
     }
@@ -286,7 +227,6 @@ class TicketInfoViewController: UIViewController {
                     print("image downloaded: \(image)")
                     
                     self.picArr[count].image =  image
-                    // self.images[count] = image
                 }
             }
             

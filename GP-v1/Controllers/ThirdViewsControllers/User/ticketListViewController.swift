@@ -53,69 +53,26 @@ class ticketListViewController: UIViewController {
     }
     
     @objc func getTicketsList() {
-        
-        let urlString = URLs.tickets_list
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(self.token)",
-            "Content-Type": "multipart/form-data",
-            "Accept": "application/json"
-        ]
-        
         let i = self.startAnActivityIndicator()
         
-        if Connectivity.isConnectedToInternet {
-            Alamofire.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.httpBody, headers: headers).responseJSON {
-                response in
-                
-                guard let data = response.data else {
-                    
-                    DispatchQueue.main.async {
-                        print("Response async error \(response.error!)")
-                    }
-                    return
-                }
-                
-                let decoder = JSONDecoder()
-                
-                do {
-                    
-                    let responseObject =  try decoder.decode(TicketCell.self, from: data)
-                    
-                    self.ticketCell = responseObject
-                    
-                    if self.ticketCell.isEmpty {
-                        i.stopAnimating()
-                        //self.noTickets.isHidden = false
-                        self.labelView.isHidden = false
-                    }
-                    
-                    print("Ticket Cell: \(self.ticketCell)")
-                    
-                    
-                } // end of do
-                catch let parsingError {
-                    print("Error", parsingError)
-                }
-                
-                DispatchQueue.main.async {
+        API.listTickets(tableView: self.tableView) { (error: Error?, success: Bool, ticketCell: TicketCell, message: String) in
+            if success {
+                i.stopAnimating()
+                self.ticketCell = ticketCell
+                if self.ticketCell.isEmpty {
                     i.stopAnimating()
-                    self.tableView.reloadData()
-                    
+                    self.labelView.isHidden = false
                 }
-            } // end of alamofire
-            
         } else {
-            
             i.stopAnimating()
-            AlertView.instance.showAlert(message: "لا يوجد اتصال بالانترنت", alertType: .failure)
-            self.view.addSubview(AlertView.instance.ParentView)
+            AlertView.instance.showAlert(message: message, alertType: .failure)
+                       self.view.addSubview(AlertView.instance.ParentView)
         } // end of else connection
         
     } // end of function
     
 } // end of class
-
+}
 extension ticketListViewController:  UITableViewDelegate, UITableViewDataSource {
     
     // number of rows in table view
