@@ -74,11 +74,11 @@ class TicketInfoViewController: UIViewController {
         statusLabel.roundCornerr(corners: [.topLeft, .topRight], radius: 15)
         // descLabel.layer.masksToBounds = true
         //descView.text = ticket?[0].ticket.ticketDescription
-//
-//        if ticket?[0].ticket.ticketDescription == "." {
-//            descView.text = ""
-//        } else {
-            descView.text = ticket?[0].ticket.ticketDescription
+        //
+        //        if ticket?[0].ticket.ticketDescription == "." {
+        //            descView.text = ""
+        //        } else {
+        descView.text = ticket?[0].ticket.ticketDescription
         //}
         
         neighborhood.text = ticket?[0].location[0].neighborhood
@@ -165,8 +165,8 @@ class TicketInfoViewController: UIViewController {
     @objc func deleteTicketCon() {
         API.deleteTicket(ticket_id: self.ticket_id) { (error: Error?, success: Bool, message: String) in
             if success {
-                                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
-                                            self.present(vc, animated: true, completion: nil)
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TableView") as! ticketListViewController
+                self.present(vc, animated: true, completion: nil)
             } else {
                 
             }
@@ -221,7 +221,6 @@ class TicketInfoViewController: UIViewController {
                     return
                 }
                 print("Image: \(image)")
-                // Do stuff with your image
                 if case .success(let image) = response.result {
                     i.stopAnimating()
                     print("image downloaded: \(image)")

@@ -268,9 +268,6 @@ class userProfileViewController: UIViewController{
             parameters["neighborhood"] = self.neighboorhoodID  as AnyObject
         }
 
-        
-        
-        
         if Connectivity.isConnectedToInternet {
             
             if self.name == self.userName.text && self.phone == self.userPhone.text && chooseNeighborhood.text == oldSelectedNei {

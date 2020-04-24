@@ -51,8 +51,12 @@ class API: NSObject {
                     let phone          = responseObject.userData.phone
                     
                     helper.saveApiToken(token: token)
-                    helper.saveName(name: name!)
-                    helper.savePhone(phone: phone!)
+                    if name != nil {
+                        helper.saveName(name: name!)
+                    }
+                    if phone != nil {
+                        helper.savePhone(phone: phone!)
+                    }
                     
                     if response.response?.statusCode == 200 {
                         let roleID = responseObject.userData.roleID
@@ -240,7 +244,6 @@ class API: NSObject {
                                 completion(nil, true, "تم ارسال رسالة استعادة الكلمة السرية الى بريدك المدخل")
                             }
                         }
-                        // من هنا يطلع رسالة الايرور تمام
                         print("the response is : \(response)")
                     }
                     

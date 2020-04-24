@@ -37,6 +37,7 @@ class mapViewController: UIViewController{
         mv.settings.compassButton = true
         mv.isMyLocationEnabled = true
         mv.settings.myLocationButton = true
+        mv.padding = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         
         //Location Manager code to fetch current location
         self.locationManager.delegate = self

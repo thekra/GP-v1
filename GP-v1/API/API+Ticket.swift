@@ -39,7 +39,6 @@ extension API {
             "neighborhood": neighborhoodID
             ] as [String : AnyObject]
         
-        //if Connectivity.isConnectedToInternet {
             Alamofire.upload(multipartFormData:
                 { (multipartFormData ) in
                     
