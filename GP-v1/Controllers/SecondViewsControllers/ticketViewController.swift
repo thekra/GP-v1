@@ -53,7 +53,6 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         firstPicUI()
-        subscribeToKeyboardNotification()
         aNum = self.convertEngNumToArabicNumm(num: 190)
         bNum = self.convertEngNumToArabicNumm(num: 0)
         charactersCount.text = "\(bNum) / \(aNum)"
@@ -105,6 +104,53 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
         view.endEditing(true)
     }
     
+    @objc func dismissKeyboardPicker() {
+        view.endEditing(true)
+        let plus = 231 - lastKeyboardHeight
+        let eleven = 391 - lastKeyboardHeight
+        let eight = 162 - lastKeyboardHeight
+        let elevenPro = 307 - lastKeyboardHeight
+        
+        if self.view.frame.origin.y == plus {
+            
+            if lastKeyboardHeight == 271 {
+                self.view.frame.origin.y += lastKeyboardHeight
+                
+            } else if lastKeyboardHeight == 226 {
+                self.view.frame.origin.y += lastKeyboardHeight
+            }
+            
+        } else if self.view.frame.origin.y == eleven {
+            if lastKeyboardHeight == 346 {
+                self.view.frame.origin.y += lastKeyboardHeight
+                
+            } else if lastKeyboardHeight == 301 {
+                self.view.frame.origin.y += lastKeyboardHeight
+            }
+            
+        } else if self.view.frame.origin.y == elevenPro {
+            if lastKeyboardHeight == 336 {
+                self.view.frame.origin.y += lastKeyboardHeight
+                
+            } else if lastKeyboardHeight == 335 {
+                self.view.frame.origin.y += lastKeyboardHeight
+                
+            } else if lastKeyboardHeight == 291 {
+                self.view.frame.origin.y += lastKeyboardHeight
+            }
+            
+        } else if self.view.frame.origin.y == eight {
+            
+            if lastKeyboardHeight == 260 {
+                self.view.frame.origin.y += lastKeyboardHeight
+                
+            } else if lastKeyboardHeight == 216 {
+                self.view.frame.origin.y += lastKeyboardHeight
+            }
+        }
+    }
+    
+    
     // MARK: - Keyboard Functions
     
     func subscribeToKeyboardNotification(){
@@ -114,7 +160,6 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-
     }
     
     func unsubscribeToKeyboardNotification(){
@@ -122,20 +167,22 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
         
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         
-         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        if textView.isFirstResponder{
+        if textView.isFirstResponder {
             
             print("self.view.frame.origin.y: \(self.view.frame.origin.y)")
             print("keyboard height: \(getKeyboardHeight(notification))")
             
             //lastKeyboardHeight = getKeyboardHeight(notification)
+            //picker.frame.origin.y = getKeyboardHeight(notification)
             
+            // 8 plus
             if self.view.frame.origin.y == 231 {
-                
+                print("picker.frame.origin.y: \(picker.frame.origin.y)")
                 if getKeyboardHeight(notification) == 271 {
                     self.view.frame.origin.y -=
                         getKeyboardHeight(notification)
@@ -145,6 +192,8 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
                         getKeyboardHeight(notification)
                 }
                 
+                
+                // 11
             } else if self.view.frame.origin.y == 391 {
                 if getKeyboardHeight(notification) == 346 {
                     self.view.frame.origin.y -=
@@ -153,8 +202,9 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
                 else if getKeyboardHeight(notification) == 301 {
                     self.view.frame.origin.y -=
                         getKeyboardHeight(notification)
-                } 
+                }
                 
+                // 11 Pro
             } else if self.view.frame.origin.y == 307 {
                 
                 if getKeyboardHeight(notification) == 336 {
@@ -171,6 +221,7 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
                         getKeyboardHeight(notification)
                 }
                 
+                // 8
             } else if self.view.frame.origin.y == 162 {
                 
                 if getKeyboardHeight(notification) == 260 {
@@ -190,22 +241,25 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     }
     
     @objc func keyboardWillChange(_ notification: Notification) {
-        let keyboardSize1 = getKeyboardHeight(notification)
-
-        if lastKeyboardHeight != keyboardSize1 {
-            if lastKeyboardHeight < keyboardSize1{
-                let keyboardDifference: CGFloat = keyboardSize1 - lastKeyboardHeight
-                self.view.frame.origin.y -= keyboardDifference
-
-            } else {
-                let keyboardDifference: CGFloat = lastKeyboardHeight - keyboardSize1
-                self.view.frame.origin.y += keyboardDifference
+        if textView.isFirstResponder {
+            let keyboardSize1 = getKeyboardHeight(notification)
+            
+            if lastKeyboardHeight != keyboardSize1 {
+                if lastKeyboardHeight < keyboardSize1{
+                    let keyboardDifference: CGFloat = keyboardSize1 - lastKeyboardHeight
+                    self.view.frame.origin.y -= keyboardDifference
+                    
+                } else {
+                    let keyboardDifference: CGFloat = lastKeyboardHeight - keyboardSize1
+                    self.view.frame.origin.y += keyboardDifference
+                }
+                lastKeyboardHeight = keyboardSize1
             }
-            lastKeyboardHeight = keyboardSize1
         }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
+        
         
         if textView.isFirstResponder {
             let plus = 231 - lastKeyboardHeight
@@ -242,14 +296,17 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
                 }
                 
             } else if self.view.frame.origin.y == eight {
-                
-                if lastKeyboardHeight == 260 {
+                print("picker.frame.origin.y: \(picker.frame.origin.y)")
+                if picker.frame.origin.y == 44 {
                     self.view.frame.origin.y += lastKeyboardHeight
-                    print("eight 260: y: \(self.view.frame.origin.y) , currentKey: \(getKeyboardHeight(notification)), lastKey: \(lastKeyboardHeight)")
-                    
-                } else if lastKeyboardHeight == 216 {
-                    self.view.frame.origin.y += lastKeyboardHeight
-                    print("eight 216: y: \(self.view.frame.origin.y) , currentKey: \(getKeyboardHeight(notification)), lastKey: \(lastKeyboardHeight)")
+                } else
+                    if lastKeyboardHeight == 260 {
+                        self.view.frame.origin.y += lastKeyboardHeight
+                        print("eight 260: y: \(self.view.frame.origin.y) , currentKey: \(getKeyboardHeight(notification)), lastKey: \(lastKeyboardHeight)")
+                        
+                    } else if lastKeyboardHeight == 216 {
+                        self.view.frame.origin.y += lastKeyboardHeight
+                        print("eight 216: y: \(self.view.frame.origin.y) , currentKey: \(getKeyboardHeight(notification)), lastKey: \(lastKeyboardHeight)")
                 }
             }
         }
@@ -312,19 +369,19 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
     
     @objc func imageTap() {
         print("image clicked")
-       
+        
         let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
         
         switch cameraAuthorizationStatus {
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
-                    guard accessGranted == true else { return }
+                guard accessGranted == true else { return }
                 DispatchQueue.main.async {
                     self.imgView = self.pic_1
                     self.showImage()
                     self.enablePic(pic: self.pic_2)
                 }
-                })
+            })
         case .authorized:
             self.imgView = pic_1
             showImage()
@@ -363,13 +420,14 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
         picker.dataSource = self
         choosenNei.inputView = picker
         choosenNei.inputAccessoryView = createToolBar()
+        
     }
     
     func createToolBar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissKeyboard))
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissKeyboardPicker))
         
         toolbar.setItems([doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
@@ -407,17 +465,17 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
         vc.modalPresentationStyle = .custom
         vc.message = message
         self.present(vc, animated: true, completion: nil)
-
+        
     }
     
     func confirmView() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "confirm") as! confirmTicketMessageViewController
-                     vc.delegate?.confirmPressed()
-                     vc.transitioningDelegate = self
-                     vc.modalPresentationStyle = .custom
-                     vc.delegate = self
+        vc.delegate?.confirmPressed()
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .custom
+        vc.delegate = self
         self.present(vc, animated: true, completion: nil)
-
+        
     }
     
     @IBAction func confirmTicket(_ sender: Any) {
@@ -432,15 +490,15 @@ class ticketViewController:  UIViewController, UITextViewDelegate, con {
             
             if Connectivity.isConnectedToInternet {
                 i.stopAnimating()
-               confirmView()
+                confirmView()
             } else {
                 i.stopAnimating()
-                            errorView(message: "لا يوجد اتصال بالانترنت")
+                errorView(message: "لا يوجد اتصال بالانترنت")
             }
         }
     } // End of ConfirmTicket Button
     
-  
+    
     
     func getNeighborhoodList() {
         
@@ -496,12 +554,12 @@ extension ticketViewController: UIImagePickerControllerDelegate, UINavigationCon
     func showImage() {
         let imgPicker = UIImagePickerController()
         imgPicker.delegate = self
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//            imgPicker.sourceType = .camera
-//        } else {
-//            self.showAlert(title: "مشكلة في الكاميرا", message: "يبدو انه ليس هنالك وجود لكاميرا الهاتف")
-//        }
-        imgPicker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imgPicker.sourceType = .camera
+        } else {
+            self.showAlert(title: "مشكلة في الكاميرا", message: "يبدو انه ليس هنالك وجود لكاميرا الهاتف")
+        }
+        //imgPicker.sourceType = .photoLibrary
         imgPicker.modalPresentationStyle = .overFullScreen
         self.present(imgPicker, animated: true, completion: nil)
     }
@@ -658,6 +716,4 @@ extension ticketViewController: BonsaiControllerDelegate {
         // or Bubble animation initiated from a view
         //return BonsaiController(fromView: yourOriginView, blurEffectStyle: .dark,  presentedViewController: presented, delegate: self)
     }
-    
 }
-
